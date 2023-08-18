@@ -1,0 +1,3 @@
+packages:
+  - 'vike-vue/'
+  - 'examples/*'
