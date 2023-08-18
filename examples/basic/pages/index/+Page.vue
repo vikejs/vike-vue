@@ -3,7 +3,7 @@
   This page is:
   <ul>
     <li>Rendered to HTML.</li>
-    <li>Interactive. <Counter /></li>
+    <li>Interactive.</li>
   </ul>
 </template>
 

@@ -8,7 +8,7 @@
     ".": "./dist/renderer/+config.js",
     "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
-    "./renderer/usePageContext": "./dist/renderer/usePageContext.js"
+    "./usePageContext": "./dist/components/usePageContext.js"
   },
   "dependencies": {},
   "scripts": {
@@ -35,8 +35,8 @@
       ".": [
         "./dist/renderer/+config.d.ts"
       ],
-      "renderer/usePageContext": [
-        "./dist/renderer/usePageContext.d.ts"
+      "usePageContext": [
+        "./dist/components/usePageContext.d.ts"
       ],
       "renderer/onRenderHtml": [
         "./dist/renderer/onRenderHtml.d.ts"
