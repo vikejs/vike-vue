@@ -4,6 +4,7 @@ import type { Component } from './types'
 import type { Effect } from 'vite-plugin-ssr/types'
 
 export type Config = ConfigCore & {
+  Layout?: Component
   /** &lt;title>${title}&lt;/title> */
   title?: string
   /** &lt;meta name="description" content="${description}" /> */
@@ -60,6 +61,9 @@ export default {
   clientRouting: true,
   hydrationCanBeAborted: true,
   meta: {
+    Layout: {
+      env: 'server-and-client'
+    },
     title: {
       env: 'server-and-client'
     },
