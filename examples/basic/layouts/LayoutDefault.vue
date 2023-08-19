@@ -4,7 +4,7 @@
       <a href="/" class="logo">
         <img src="../assets/logo.svg" height="64" width="64" />
       </a>
-      <a href="/">Welcome</a>
+      <Link href="/">Welcome</Link>
       <!--<a href="/markdown">Markdown</a>
       <a href="/star-wars">Data Fetching</a>
       <a href="/hello">Routing</a>-->
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-// import Link from './Link.vue'
+import Link from '../components/Link.vue'
 </script>
 
 <style>
