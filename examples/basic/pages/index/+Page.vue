@@ -3,8 +3,12 @@
   This page is:
   <ul>
     <li>Rendered to HTML.</li>
-    <li>Interactive.</li>
+    <li>Interactive. <Counter /></li>
   </ul>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts">
+import Counter from '../../components/Counter.vue'
+const components = { Counter }
+export default { components }
+</script>
