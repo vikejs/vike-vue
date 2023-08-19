@@ -1,5 +1,5 @@
 <template>
-  <h1>Welcome to <code>vite-plugin-ssr</code></h1>
+  <h1>My Vike + Vue app</h1>
   This page is:
   <ul>
     <li>Rendered to HTML.</li>
