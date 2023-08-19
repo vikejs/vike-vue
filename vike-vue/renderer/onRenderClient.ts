@@ -9,6 +9,8 @@ async function onRenderClient(pageContext: PageContextClient) {
   if (!app) {
     app = createApp(pageContext)
     app.mount('#page-view')
+  } else {
+    app.changePage(pageContext)
   }
 
   const title = getTitle(pageContext)

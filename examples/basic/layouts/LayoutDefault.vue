@@ -5,9 +5,10 @@
         <img src="../assets/logo.svg" height="64" width="64" />
       </a>
       <Link href="/">Welcome</Link>
-      <!--<a href="/markdown">Markdown</a>
-      <a href="/star-wars">Data Fetching</a>
-      <a href="/hello">Routing</a>-->
+      <Link href="/about">About</Link>
+      <!--<Link href="/markdown">Markdown</Link>
+      <Link href="/star-wars">Data Fetching</Link>
+      <Link href="/hello">Routing</Link>-->
     </div>
     <div class="content"><slot /></div>
   </div>

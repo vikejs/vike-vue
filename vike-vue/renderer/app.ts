@@ -1,28 +1,37 @@
-import { createSSRApp, h, markRaw, reactive } from 'vue'
-import type { Component, PageContext, PageProps } from './types'
+import { createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
+import type { Component, Config, PageContext, PageProps } from './types'
 import { setPageContext } from '../components/usePageContext'
 
 export { createApp }
 
 function createApp(pageContext: PageContext) {
-  const { Page, pageProps } = pageContext
+  const { Page } = pageContext
 
-  let rootComponent: Component & { Page: Component; pageProps: PageProps }
-  const PageWithLayout = !pageContext.config.Layout
-    ? Page
-    : {
-        render() {
-          return h(
-            pageContext.config.Layout as any,
-            {},
-            {
-              default: () => {
-                return h(Page, pageProps || {})
-              }
+  let rootComponent: Component & { Page: Component; pageProps: PageProps; config: Config }
+  const PageWithLayout = defineComponent({
+    data: () => ({
+      Page: markRaw(Page),
+      pageProps: markRaw(pageContext.pageProps || {}),
+      config: markRaw(pageContext.config)
+    }),
+    created() {
+      rootComponent = this
+    },
+    render() {
+      if (!!this.config.Layout) {
+        return h(
+          this.config.Layout,
+          {},
+          {
+            default: () => {
+              return h(this.Page, this.pageProps)
             }
-          )
-        }
+          }
+        )
       }
+      return h(this.Page, this.pageProps)
+    }
+  })
 
   const app = createSSRApp(PageWithLayout)
 
@@ -32,6 +41,7 @@ function createApp(pageContext: PageContext) {
       Object.assign(pageContextReactive, pageContext)
       rootComponent.Page = markRaw(pageContext.Page)
       rootComponent.pageProps = markRaw(pageContext.pageProps || {})
+      rootComponent.config = markRaw(pageContext.config)
     }
   })
 

@@ -4,6 +4,7 @@ export type { PageContext }
 export type { PageProps }
 export type { Page }
 export type { Component }
+export type { Config }
 
 import type {
   PageContextBuiltIn,
