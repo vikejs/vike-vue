@@ -20,7 +20,7 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.2.47",
     "@vue/server-renderer": "^3.2.47",
-    "vite": "^4.3.8",
+    "vite": "^4.4.9",
     "vite-plugin-ssr": "^0.4.136",
     "vue": "^3.3.4"
   },

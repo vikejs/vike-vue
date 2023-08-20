@@ -57,7 +57,7 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^4.0.0
-        version: 4.2.3(vite@4.4.8)(vue@3.3.4)
+        version: 4.3.1(vite@4.4.9)(vue@3.3.4)
       '@vue/compiler-sfc':
         specifier: ^3.2.47
         version: 3.3.4
@@ -65,11 +65,11 @@ importers:
         specifier: ^3.2.47
         version: 3.3.4(vue@3.3.4)
       vite:
-        specifier: ^4.3.8
-        version: 4.4.8(@types/node@20.5.1)
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@20.5.1)
       vite-plugin-ssr:
         specifier: ^0.4.136
-        version: 0.4.136(vite@4.4.8)
+        version: 0.4.136(vite@4.4.9)
     devDependencies:
       '@brillout/release-me':
         specifier: ^0.1.7
@@ -640,17 +640,6 @@ packages:
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
-
-  /@vitejs/plugin-vue@4.2.3(vite@4.4.8)(vue@3.3.4):
-    resolution: {integrity: sha512-R6JDUfiZbJA9cMiguQ7jxALsgiprjBeHL5ikpXfJCH62pPHtI+JdJ5xWj6Ev73yXSlYl86+blXn1kZHQ7uElxw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.0.0
-      vue: ^3.2.25
-    dependencies:
-      vite: 4.4.8(@types/node@20.5.1)
-      vue: 3.3.4
-    dev: false
 
   /@vitejs/plugin-vue@4.3.1(vite@4.4.9)(vue@3.3.4):
     resolution: {integrity: sha512-tUBEtWcF7wFtII7ayNiLNDTCE1X1afySEo+XNVMNkFXaThENyCowIEX095QqbJZGTgoOcSVDJGlnde2NG4jtbQ==}
@@ -2612,32 +2601,6 @@ packages:
       - terser
     dev: false
 
-  /vite-plugin-ssr@0.4.136(vite@4.4.8):
-    resolution: {integrity: sha512-2a9huIue8AkoE2SUccVpo+9uQoEYFGdnObtRgGMyOZWaBw8mQ7jxn0k4lE66ScsfasF4B4F3UWC37sLfEneP8w==}
-    engines: {node: '>=16.0.0'}
-    hasBin: true
-    peerDependencies:
-      react-streaming: '>=0.3.5'
-      vite: '>=3.1.0'
-    peerDependenciesMeta:
-      react-streaming:
-        optional: true
-    dependencies:
-      '@brillout/import': 0.2.3
-      '@brillout/json-serializer': 0.5.4
-      '@brillout/picocolors': 1.0.6
-      '@brillout/require-shim': 0.1.2
-      '@brillout/vite-plugin-import-build': 0.2.18
-      acorn: 8.10.0
-      cac: 6.7.14
-      es-module-lexer: 0.10.5
-      esbuild: 0.17.19
-      fast-glob: 3.3.1
-      sirv: 2.0.3
-      source-map-support: 0.5.21
-      vite: 4.4.8(@types/node@20.5.1)
-    dev: false
-
   /vite-plugin-ssr@0.4.136(vite@4.4.9):
     resolution: {integrity: sha512-2a9huIue8AkoE2SUccVpo+9uQoEYFGdnObtRgGMyOZWaBw8mQ7jxn0k4lE66ScsfasF4B4F3UWC37sLfEneP8w==}
     engines: {node: '>=16.0.0'}
@@ -2662,42 +2625,6 @@ packages:
       sirv: 2.0.3
       source-map-support: 0.5.21
       vite: 4.4.9(@types/node@20.5.1)
-    dev: false
-
-  /vite@4.4.8(@types/node@20.5.1):
-    resolution: {integrity: sha512-LONawOUUjxQridNWGQlNizfKH89qPigK36XhMI7COMGztz8KNY0JHim7/xDd71CZwGT4HtSRgI7Hy+RlhG0Gvg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 20.5.1
-      esbuild: 0.18.20
-      postcss: 8.4.28
-      rollup: 3.28.0
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: false
 
   /vite@4.4.9(@types/node@20.5.1):
