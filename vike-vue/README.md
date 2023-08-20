@@ -14,5 +14,5 @@ To run the example:
 
 - Clone the repo: `git clone git@github.com:vikejs/vike-vue`
 - Install dependencies: `pnpm install`
-- Build vike-solid: `pnpm run build`
+- Build vike-vue: `pnpm run build`
 - Run the example: `cd examples/basic/ && pnpm run dev`
