@@ -8,6 +8,8 @@ import type { OnRenderClientAsync } from 'vike/types'
 let app: ReturnType<typeof createVueApp>
 const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
   if (!app) {
+    // First rendering/hydration
+
     const container = document.getElementById('page-view')!
     const ssr = container.innerHTML !== ''
     app = createVueApp(pageContext, ssr)
@@ -18,11 +20,15 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     }
     app.mount(container)
   } else {
-    app.changePage(pageContext)
-  }
+    // Client routing
+    // See https://vike.dev/server-routing-vs-client-routing
 
-  const title = getTitle(pageContext)
-  if (title !== null) {
-    document.title = title
+    app.changePage(pageContext)
+
+    // Get the page's `title` config value, which may be different from the
+    // previous page. It can even be null, in which case we should unset the
+    // document title.
+    const title = getTitle(pageContext)
+    document.title = title || ''
   }
 }
