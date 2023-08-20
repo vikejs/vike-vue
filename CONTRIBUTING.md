@@ -27,7 +27,7 @@ You can then test your modifications against an example, e.g. `examples/basic/`:
 ```bash
 cd examples/basic/
 pnpm dev
-cd ../
+cd ../../
 ```
 
 ## Releasing
