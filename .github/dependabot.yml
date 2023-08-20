@@ -1,0 +1,40 @@
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+
+    # Do not get one pull request per version bump. Instead get one pull request
+    # bumping several dependency versions at once:
+    groups:
+      all-deps:
+        patterns:
+          - '*'
+
+  - package-ecosystem: 'npm'
+    directory: '/vike-vue/'
+    schedule:
+      interval: 'weekly'
+
+    # Do not get one pull request per version bump. Instead get one pull request
+    # bumping several dependency versions at once:
+    groups:
+      all-deps:
+        patterns:
+          - '*'
+
+  - package-ecosystem: 'npm'
+    directory: '/examples/basic/'
+    schedule:
+      interval: 'weekly'
+
+    # Do not get one pull request per version bump. Instead get one pull request
+    # bumping several dependency versions at once:
+    groups:
+      all-deps:
+        patterns:
+          - '*'
