@@ -25,5 +25,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build packages
+      - name: Build vike-vue
         run: pnpm run build
+
+      - name: Build example basic
+        run: pnpm run build
+        working-directory: ./examples/basic
