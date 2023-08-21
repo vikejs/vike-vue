@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@types/node": "^20.5.1",
-    "@types/node-fetch": "^2.5.12",
+    "@types/node-fetch": "^2.6.4",
     "@vitejs/plugin-vue": "^4.3.1",
     "@vue/compiler-sfc": "^3.3.4",
     "@vue/server-renderer": "^3.3.4",
