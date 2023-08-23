@@ -1,13 +1,14 @@
 export default onRenderHtml
 
+import { defineComponent, markRaw } from 'vue'
 import { renderToNodeStream } from '@vue/server-renderer'
 import { escapeInject } from 'vite-plugin-ssr/server'
 import { getTitle } from './getTitle.js'
 import type { PageContextServer } from './types'
-import { createApp } from './app'
+import { createVueApp } from './app'
 
 async function onRenderHtml(pageContext: PageContextServer) {
-  const app = createApp(pageContext)
+  const app = createVueApp(pageContext)
   const stream = renderToNodeStream(app)
 
   const title = getTitle(pageContext)

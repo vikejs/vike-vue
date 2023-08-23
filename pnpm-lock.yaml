@@ -53,6 +53,42 @@ importers:
         specifier: ^3.3.4
         version: 3.3.4
 
+  examples/ssr-spa:
+    dependencies:
+      '@types/node':
+        specifier: ^20.5.1
+        version: 20.5.1
+      '@types/node-fetch':
+        specifier: ^2.6.4
+        version: 2.6.4
+      '@vitejs/plugin-vue':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@4.4.9)(vue@3.3.4)
+      '@vue/compiler-sfc':
+        specifier: ^3.3.4
+        version: 3.3.4
+      '@vue/server-renderer':
+        specifier: ^3.3.4
+        version: 3.3.4(vue@3.3.4)
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
+      vike-vue:
+        specifier: link:../../vike-vue
+        version: link:../../vike-vue
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@20.5.1)
+      vite-plugin-md:
+        specifier: ^0.21.5
+        version: 0.21.5(@vitejs/plugin-vue@4.3.1)(vite@4.4.9)
+      vite-plugin-ssr:
+        specifier: 0.4.136
+        version: 0.4.136(vite@4.4.9)
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
+
   vike-vue:
     dependencies:
       '@vitejs/plugin-vue':

@@ -31,3 +31,7 @@ jobs:
       - name: Build example basic
         run: pnpm run build
         working-directory: ./examples/basic
+
+      - name: Build example ssr-spa
+        run: pnpm run build
+        working-directory: ./examples/ssr-spa
