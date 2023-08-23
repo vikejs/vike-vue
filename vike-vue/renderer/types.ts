@@ -20,10 +20,7 @@ type PageProps = Record<string, unknown>
 type WrapperComponent = Component
 
 export type PageContextCommon = {
-  // Note: Page will typically be undefined in onRenderHtml() when setting the `ssr` config flag
-  // to `false` (SPA mode).
-  Page?: Page
-
+  Page: Page
   pageProps?: PageProps
   config: {
     Layout?: WrapperComponent

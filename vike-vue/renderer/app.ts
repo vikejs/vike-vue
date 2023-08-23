@@ -1,28 +1,16 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
-import type { Component, Config, PageContext, PageProps } from './types'
+import type { Component, Config, Page, PageContext, PageProps } from './types'
 import { setPageContext } from '../components/usePageContext'
 
 export { createVueApp }
 
-function createVueApp(pageContext: PageContext, ssrAppIfPossible = true) {
+function createVueApp(pageContext: PageContext, ssrApp = true) {
   const { Page } = pageContext
-
-  // Note: if Page is undefined, we're typically on the server and SSR is disabled (SPA mode).
-  const doNotRenderPage = Page === undefined
-  ssrAppIfPossible &&= !doNotRenderPage
 
   let rootComponent: Component & { Page: Component; pageProps: PageProps; config: Config }
   const PageWithLayout = defineComponent({
     data: () => ({
-      Page: markRaw(
-        Page || {
-          // We're typically on the server and SSR is disabled (SPA mode).
-          render() {
-            return ''
-          }
-        }
-      ),
-
+      Page: markRaw(Page),
       pageProps: markRaw(pageContext.pageProps || {}),
       config: markRaw(pageContext.config)
     }),
@@ -30,7 +18,7 @@ function createVueApp(pageContext: PageContext, ssrAppIfPossible = true) {
       rootComponent = this
     },
     render() {
-      if (!!this.config.Layout && !doNotRenderPage) {
+      if (!!this.config.Layout) {
         return h(
           this.config.Layout,
           {},
@@ -45,7 +33,7 @@ function createVueApp(pageContext: PageContext, ssrAppIfPossible = true) {
     }
   })
 
-  const app = ssrAppIfPossible ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
+  const app = ssrApp ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
 
   // We use `app.changePage()` to do Client Routing, see `_default.page.client.js`
   objectAssign(app, {

@@ -7,8 +7,14 @@ import type { PageContextServer } from './types'
 import { createVueApp } from './app'
 
 async function onRenderHtml(pageContext: PageContextServer) {
-  const app = createVueApp(pageContext)
-  const stream = renderToNodeStream(app)
+  let stream: ReturnType<typeof renderToNodeStream> | string
+  if (pageContext.Page === undefined) {
+    // SSR is disabled (SPA mode)
+    stream = ''
+  } else {
+    const app = createVueApp(pageContext)
+    stream = renderToNodeStream(app)
+  }
 
   const title = getTitle(pageContext)
   const titleTag = !title ? '' : escapeInject`<title>${title}</title>`
