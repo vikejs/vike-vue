@@ -1,6 +1,5 @@
 export default onRenderHtml
 
-import { defineComponent, markRaw } from 'vue'
 import { renderToNodeStream } from '@vue/server-renderer'
 import { escapeInject } from 'vite-plugin-ssr/server'
 import { getTitle } from './getTitle.js'
