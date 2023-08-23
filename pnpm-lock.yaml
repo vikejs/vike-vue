@@ -14,14 +14,14 @@ importers:
   examples/basic:
     dependencies:
       '@types/node':
-        specifier: ^20.5.1
-        version: 20.5.1
+        specifier: ^20.5.3
+        version: 20.5.3
       '@types/node-fetch':
         specifier: ^2.6.4
         version: 2.6.4
       '@vitejs/plugin-vue':
-        specifier: ^4.3.1
-        version: 4.3.1(vite@4.4.9)(vue@3.3.4)
+        specifier: ^4.3.3
+        version: 4.3.3(vite@4.4.9)(vue@3.3.4)
       '@vue/compiler-sfc':
         specifier: ^3.3.4
         version: 3.3.4
@@ -42,13 +42,13 @@ importers:
         version: link:../../vike-vue
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.5.1)
+        version: 4.4.9(@types/node@20.5.3)
       vite-plugin-md:
         specifier: ^0.21.5
-        version: 0.21.5(@vitejs/plugin-vue@4.3.1)(vite@4.4.9)
+        version: 0.21.5(@vitejs/plugin-vue@4.3.3)(vite@4.4.9)
       vite-plugin-ssr:
-        specifier: 0.4.136
-        version: 0.4.136(vite@4.4.9)
+        specifier: 0.4.137
+        version: 0.4.137(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -56,14 +56,14 @@ importers:
   examples/ssr-spa:
     dependencies:
       '@types/node':
-        specifier: ^20.5.1
-        version: 20.5.1
+        specifier: ^20.5.3
+        version: 20.5.3
       '@types/node-fetch':
         specifier: ^2.6.4
         version: 2.6.4
       '@vitejs/plugin-vue':
-        specifier: ^4.3.1
-        version: 4.3.1(vite@4.4.9)(vue@3.3.4)
+        specifier: ^4.3.3
+        version: 4.3.3(vite@4.4.9)(vue@3.3.4)
       '@vue/compiler-sfc':
         specifier: ^3.3.4
         version: 3.3.4
@@ -78,13 +78,13 @@ importers:
         version: link:../../vike-vue
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.5.1)
+        version: 4.4.9(@types/node@20.5.3)
       vite-plugin-md:
         specifier: ^0.21.5
-        version: 0.21.5(@vitejs/plugin-vue@4.3.1)(vite@4.4.9)
+        version: 0.21.5(@vitejs/plugin-vue@4.3.3)(vite@4.4.9)
       vite-plugin-ssr:
-        specifier: 0.4.136
-        version: 0.4.136(vite@4.4.9)
+        specifier: 0.4.137
+        version: 0.4.137(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -102,7 +102,7 @@ importers:
         version: 3.3.4(vue@3.3.4)
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.5.1)
+        version: 4.4.9(@types/node@20.5.3)
       vite-plugin-ssr:
         specifier: ^0.4.136
         version: 0.4.136(vite@4.4.9)
@@ -111,8 +111,8 @@ importers:
         specifier: ^0.1.7
         version: 0.1.7
       '@types/node':
-        specifier: ^20.5.1
-        version: 20.5.1
+        specifier: ^20.5.3
+        version: 20.5.3
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -172,6 +172,10 @@ packages:
 
   /@brillout/picocolors@1.0.6:
     resolution: {integrity: sha512-Ln5rMxhWyGaQxZu6LTbA7izEI7xytbvK9QFwuH3Rj61rAPArLeKYMUmNa3f8COHl3++iBs98gTu9Slmyvnst2Q==}
+    dev: false
+
+  /@brillout/picocolors@1.0.7:
+    resolution: {integrity: sha512-VQtuP4T/y9Ba5XgG78AN4vNmkndYm7dR4DzLeYs7SRJcNl3rcMgQUMCYbvSco/QDOKWW6ZmJ7G7wloyAGdbbOA==}
     dev: false
 
   /@brillout/release-me@0.1.7:
@@ -666,12 +670,12 @@ packages:
   /@types/node-fetch@2.6.4:
     resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
     dependencies:
-      '@types/node': 20.5.1
+      '@types/node': 20.5.3
       form-data: 3.0.1
     dev: false
 
-  /@types/node@20.5.1:
-    resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
+  /@types/node@20.5.3:
+    resolution: {integrity: sha512-ITI7rbWczR8a/S6qjAW7DMqxqFMjjTo61qZVWJ1ubPvbIQsL5D/TvwjYEalM8Kthpe3hTzOGrF2TGbAu2uyqeA==}
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -684,7 +688,18 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.9(@types/node@20.5.1)
+      vite: 4.4.9(@types/node@20.5.3)
+      vue: 3.3.4
+    dev: false
+
+  /@vitejs/plugin-vue@4.3.3(vite@4.4.9)(vue@3.3.4):
+    resolution: {integrity: sha512-ssxyhIAZqB0TrpUg6R0cBpCuMk9jTIlO1GNSKKQD6S8VjnXi6JXKfUXjSsxey9IwQiaRGsO1WnW9Rkl1L6AJVw==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^4.0.0
+      vue: ^3.2.25
+    dependencies:
+      vite: 4.4.9(@types/node@20.5.3)
       vue: 3.3.4
     dev: false
 
@@ -761,7 +776,7 @@ packages:
   /@vue/shared@3.3.4:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
 
-  /@yankeeinlondon/builder-api@1.4.1(@vitejs/plugin-vue@4.3.1)(vite@4.4.9):
+  /@yankeeinlondon/builder-api@1.4.1(@vitejs/plugin-vue@4.3.3)(vite@4.4.9):
     resolution: {integrity: sha512-qc6HyfqtuS06FvA5rK0L62Nmc1LnarVOt8/V/mTX2DBZlpTfIDpudpbE/7/kxjme9pP4PFMCk7cPSrprLEorjw==}
     dependencies:
       '@types/markdown-it': 12.2.3
@@ -769,7 +784,7 @@ packages:
       fp-ts: 2.16.1
       inferred-types: 0.37.6
       markdown-it: 13.0.1
-      vite-plugin-md: 0.22.5(@vitejs/plugin-vue@4.3.1)(vite@4.4.9)
+      vite-plugin-md: 0.22.5(@vitejs/plugin-vue@4.3.3)(vite@4.4.9)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitejs/plugin-vue'
@@ -1313,6 +1328,10 @@ packages:
     resolution: {integrity: sha512-+7IwY/kiGAacQfY+YBhKMvEmyAJnw5grTUgjG85Pe7vcUI/6b7pZjZG8nQ7+48YhzEAEqrEgD2dCz/JIK+AYvw==}
     dev: false
 
+  /es-module-lexer@1.3.0:
+    resolution: {integrity: sha512-vZK7T0N2CBmBOixhmjdqx2gWVbFZ4DXZ/NyRMZVlJXPa7CyFS+/a4QQsDGDQy9ZfEzxFuNEsMLeQJnKP2p5/JA==}
+    dev: false
+
   /esbuild@0.17.19:
     resolution: {integrity: sha512-XQ0jAPFkK/u3LcVRcvVHQcTIqD6E2H1fvZMA5dQPSOWb3suUbWbfbRf94pjc0bNzRYLfIrDRQXr7X+LHIm5oHw==}
     engines: {node: '>=12'}
@@ -1475,8 +1494,8 @@ packages:
     resolution: {integrity: sha512-by7U5W8dkIzcvDofUcO42yl9JbnHTEDBrzu3pt5fKT+Z4Oy85I21K80EYJYdjQGC2qum4Vo55Ag57iiIK4FYuA==}
     dev: false
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -2276,7 +2295,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: false
 
   /run-parallel@1.2.0:
@@ -2580,17 +2599,17 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-md@0.21.5(@vitejs/plugin-vue@4.3.1)(vite@4.4.9):
+  /vite-plugin-md@0.21.5(@vitejs/plugin-vue@4.3.3)(vite@4.4.9):
     resolution: {integrity: sha512-gxiiSq2PmU2zUY5ZAFLEGmDFRV6J6gF85ns3hcvtgERibNST4gWxRSabqSZbGbHp3LEBwwK7C1CRLsl46yEiWg==}
     peerDependencies:
       vite: ^4.0.0
     dependencies:
-      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.3.1)(vite@4.4.9)
+      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.3.3)(vite@4.4.9)
       '@yankeeinlondon/gray-matter': 6.1.1
       '@yankeeinlondon/happy-wrapper': 2.10.1
       markdown-it: 13.0.1
       source-map-js: 1.0.2
-      vite: 4.4.9(@types/node@20.5.1)
+      vite: 4.4.9(@types/node@20.5.3)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitejs/plugin-vue'
@@ -2608,19 +2627,19 @@ packages:
       - terser
     dev: false
 
-  /vite-plugin-md@0.22.5(@vitejs/plugin-vue@4.3.1)(vite@4.4.9):
+  /vite-plugin-md@0.22.5(@vitejs/plugin-vue@4.3.3)(vite@4.4.9):
     resolution: {integrity: sha512-ex6yQfan2teBT2uMzoIlDHRhKTOsNiyvblA9eLU/+uygpg4KikJPFeyBX300LqQ3pZ9qGHz35qoGJ0oLw47eZg==}
     peerDependencies:
       '@vitejs/plugin-vue': '>=2.3.4'
       vite: ^4.0.0 || ^3.0.0
     dependencies:
-      '@vitejs/plugin-vue': 4.3.1(vite@4.4.9)(vue@3.3.4)
-      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.3.1)(vite@4.4.9)
+      '@vitejs/plugin-vue': 4.3.3(vite@4.4.9)(vue@3.3.4)
+      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.3.3)(vite@4.4.9)
       '@yankeeinlondon/gray-matter': 6.1.1
       '@yankeeinlondon/happy-wrapper': 2.10.1
       markdown-it: 13.0.1
       source-map-js: 1.0.2
-      vite: 4.4.9(@types/node@20.5.1)
+      vite: 4.4.9(@types/node@20.5.3)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -2660,10 +2679,36 @@ packages:
       fast-glob: 3.3.1
       sirv: 2.0.3
       source-map-support: 0.5.21
-      vite: 4.4.9(@types/node@20.5.1)
+      vite: 4.4.9(@types/node@20.5.3)
     dev: false
 
-  /vite@4.4.9(@types/node@20.5.1):
+  /vite-plugin-ssr@0.4.137(vite@4.4.9):
+    resolution: {integrity: sha512-8j/2Ltly0hw8iYdnarj7aF9ux3igZBtSKzuJqlgRcx+lknX+vrcffMe7HnCjUapTc2ynkooxea9fa/2twTvCWQ==}
+    engines: {node: '>=16.0.0'}
+    hasBin: true
+    peerDependencies:
+      react-streaming: '>=0.3.5'
+      vite: '>=3.1.0'
+    peerDependenciesMeta:
+      react-streaming:
+        optional: true
+    dependencies:
+      '@brillout/import': 0.2.3
+      '@brillout/json-serializer': 0.5.4
+      '@brillout/picocolors': 1.0.7
+      '@brillout/require-shim': 0.1.2
+      '@brillout/vite-plugin-import-build': 0.2.18
+      acorn: 8.10.0
+      cac: 6.7.14
+      es-module-lexer: 1.3.0
+      esbuild: 0.17.19
+      fast-glob: 3.3.1
+      sirv: 2.0.3
+      source-map-support: 0.5.21
+      vite: 4.4.9(@types/node@20.5.3)
+    dev: false
+
+  /vite@4.4.9(@types/node@20.5.3):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2691,12 +2736,12 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.5.1
+      '@types/node': 20.5.3
       esbuild: 0.18.20
       postcss: 8.4.28
       rollup: 3.28.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: false
 
   /vitest@0.25.8(happy-dom@8.9.0):
@@ -2723,7 +2768,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.5.1
+      '@types/node': 20.5.3
       acorn: 8.10.0
       acorn-walk: 8.2.0
       chai: 4.3.7
@@ -2735,7 +2780,7 @@ packages:
       tinybench: 2.5.0
       tinypool: 0.3.1
       tinyspy: 1.1.1
-      vite: 4.4.9(@types/node@20.5.1)
+      vite: 4.4.9(@types/node@20.5.3)
     transitivePeerDependencies:
       - less
       - lightningcss
