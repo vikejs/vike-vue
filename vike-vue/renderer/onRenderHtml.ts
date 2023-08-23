@@ -4,11 +4,17 @@ import { renderToNodeStream } from '@vue/server-renderer'
 import { escapeInject } from 'vite-plugin-ssr/server'
 import { getTitle } from './getTitle.js'
 import type { PageContextServer } from './types'
-import { createApp } from './app'
+import { createVueApp } from './app'
 
 async function onRenderHtml(pageContext: PageContextServer) {
-  const app = createApp(pageContext)
-  const stream = renderToNodeStream(app)
+  let stream: ReturnType<typeof renderToNodeStream> | string
+  if (pageContext.Page === undefined) {
+    // SSR is disabled (SPA mode)
+    stream = ''
+  } else {
+    const app = createVueApp(pageContext)
+    stream = renderToNodeStream(app)
+  }
 
   const title = getTitle(pageContext)
   const titleTag = !title ? '' : escapeInject`<title>${title}</title>`

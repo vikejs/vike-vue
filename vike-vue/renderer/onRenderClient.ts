@@ -1,14 +1,16 @@
 export default onRenderClient
 
-import { createApp } from './app'
+import { createVueApp } from './app'
 import { getTitle } from './getTitle.js'
 import type { PageContextClient } from './types'
 
-let app: ReturnType<typeof createApp>
+let app: ReturnType<typeof createVueApp>
 async function onRenderClient(pageContext: PageContextClient) {
   if (!app) {
-    app = createApp(pageContext)
-    app.mount('#page-view')
+    const container = document.getElementById('page-view')!
+    const ssr = container.innerHTML !== ''
+    app = createVueApp(pageContext, ssr)
+    app.mount(container)
   } else {
     app.changePage(pageContext)
   }

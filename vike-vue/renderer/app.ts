@@ -1,10 +1,10 @@
-import { createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
-import type { Component, Config, PageContext, PageProps } from './types'
+import { createApp, createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
+import type { Component, Config, Page, PageContext, PageProps } from './types'
 import { setPageContext } from '../components/usePageContext'
 
-export { createApp }
+export { createVueApp }
 
-function createApp(pageContext: PageContext) {
+function createVueApp(pageContext: PageContext, ssrApp = true) {
   const { Page } = pageContext
 
   let rootComponent: Component & { Page: Component; pageProps: PageProps; config: Config }
@@ -33,7 +33,7 @@ function createApp(pageContext: PageContext) {
     }
   })
 
-  const app = createSSRApp(PageWithLayout)
+  const app = ssrApp ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
 
   // We use `app.changePage()` to do Client Routing, see `_default.page.client.js`
   objectAssign(app, {
