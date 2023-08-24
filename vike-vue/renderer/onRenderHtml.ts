@@ -1,19 +1,17 @@
 export default onRenderHtml
 
-import { renderToNodeStream } from '@vue/server-renderer'
-import { escapeInject } from 'vite-plugin-ssr/server'
+import { renderToString } from '@vue/server-renderer'
+import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr/server'
 import { getTitle } from './getTitle.js'
 import type { PageContextServer } from './types'
 import { createVueApp } from './app'
 
 async function onRenderHtml(pageContext: PageContextServer) {
-  let stream: ReturnType<typeof renderToNodeStream> | string
-  if (pageContext.Page === undefined) {
-    // SSR is disabled (SPA mode)
-    stream = ''
-  } else {
+  let pageHtml = ''
+  if (pageContext.Page !== undefined) {
+    // SSR is enabled
     const app = createVueApp(pageContext)
-    stream = renderToNodeStream(app)
+    pageHtml = await renderToString(app)
   }
 
   const title = getTitle(pageContext)
@@ -25,6 +23,17 @@ async function onRenderHtml(pageContext: PageContextServer) {
   const { favicon } = pageContext.config
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
 
+  let headHtml = ''
+  if (pageContext.config.Head !== undefined) {
+    const headContext: PageContextServer = {
+      ...pageContext,
+      Page: pageContext.config.Head,
+      config: {} // so we have no layout
+    }
+    const app = createVueApp(headContext)
+    headHtml = await renderToString(app)
+  }
+
   const lang = pageContext.config.lang || 'en'
 
   const documentHtml = escapeInject`<!DOCTYPE html>
@@ -34,9 +43,10 @@ async function onRenderHtml(pageContext: PageContextServer) {
         ${faviconTag}
         ${titleTag}
         ${descriptionTag}
+        ${dangerouslySkipEscape(headHtml)}
       </head>
       <body>
-        <div id="page-view">${stream}</div>
+        <div id="page-view">${dangerouslySkipEscape(pageHtml)}</div>
       </body>
     </html>`
 

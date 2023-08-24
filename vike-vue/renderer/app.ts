@@ -4,6 +4,13 @@ import { setPageContext } from '../components/usePageContext'
 
 export { createVueApp }
 
+/**
+ * Isomorphic function to create a Vue app.
+ *
+ * @param pageContext Object providing the Vue component to be rendered, the props for that component, and additional
+ *                    config and data.
+ * @param ssrApp Whether to use `createSSRApp()` or `createApp()`. See https://vuejs.org/api/application.html
+ */
 function createVueApp(pageContext: PageContext, ssrApp = true) {
   const { Page } = pageContext
 
