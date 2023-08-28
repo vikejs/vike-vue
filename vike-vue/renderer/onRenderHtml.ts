@@ -25,12 +25,7 @@ async function onRenderHtml(pageContext: PageContextServer) {
 
   let headHtml = ''
   if (pageContext.config.Head !== undefined) {
-    const headContext: PageContextServer = {
-      ...pageContext,
-      Page: pageContext.config.Head,
-      config: {} // so we have no layout
-    }
-    const app = createVueApp(headContext)
+    const app = createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
     headHtml = await renderToString(app)
   }
 
