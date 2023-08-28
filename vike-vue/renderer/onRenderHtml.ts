@@ -1,17 +1,17 @@
 export default onRenderHtml
 
-import { renderToString } from '@vue/server-renderer'
+import { renderToNodeStream, renderToString } from '@vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr/server'
 import { getTitle } from './getTitle.js'
 import type { PageContextServer } from './types'
 import { createVueApp } from './app'
 
 async function onRenderHtml(pageContext: PageContextServer) {
-  let pageHtml = ''
+  let pageStream: ReturnType<typeof renderToNodeStream> | string = ''
   if (pageContext.Page !== undefined) {
     // SSR is enabled
     const app = createVueApp(pageContext)
-    pageHtml = await renderToString(app)
+    pageStream = await renderToNodeStream(app)
   }
 
   const title = getTitle(pageContext)
@@ -46,7 +46,7 @@ async function onRenderHtml(pageContext: PageContextServer) {
         ${dangerouslySkipEscape(headHtml)}
       </head>
       <body>
-        <div id="page-view">${dangerouslySkipEscape(pageHtml)}</div>
+        <div id="page-view">${pageStream}</div>
       </body>
     </html>`
 
