@@ -1,16 +1,25 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
-import type { Component, Config, Page, PageContext, PageProps } from './types'
+import type { Component, Config, PageContext, PageProps } from './types'
 import { setPageContext } from '../components/usePageContext'
 
 export { createVueApp }
 
-function createVueApp(pageContext: PageContext, ssrApp = true) {
+/**
+ * Isomorphic function to create a Vue app.
+ *
+ * @param pageContext Object providing the Vue component to be rendered, the props for that component, and additional
+ *                    config and data.
+ * @param ssrApp Whether to use `createSSRApp()` or `createApp()`. See https://vuejs.org/api/application.html
+ * @param renderHead If true, `pageContext.config.Head` will be rendered instead of `pageContext.Page`.
+ */
+function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = false) {
   const { Page } = pageContext
+  const Head = renderHead ? (pageContext.config.Head as Component) : undefined
 
   let rootComponent: Component & { Page: Component; pageProps: PageProps; config: Config }
   const PageWithLayout = defineComponent({
     data: () => ({
-      Page: markRaw(Page),
+      Page: markRaw(Head ? Head : Page),
       pageProps: markRaw(pageContext.pageProps || {}),
       config: markRaw(pageContext.config)
     }),
@@ -18,7 +27,7 @@ function createVueApp(pageContext: PageContext, ssrApp = true) {
       rootComponent = this
     },
     render() {
-      if (!!this.config.Layout) {
+      if (!!this.config.Layout && !renderHead) {
         return h(
           this.config.Layout,
           {},

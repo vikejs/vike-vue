@@ -4,19 +4,27 @@ import type { Component } from './types'
 import type { Effect } from 'vite-plugin-ssr/types'
 
 export type Config = ConfigCore & {
+  /** Vue component rendered and appended into <head></head> */
+  Head?: Component
+
   Layout?: Component
-  /** &lt;title>${title}&lt;/title> */
+
+  /** <title>${title}</title> */
   title?: string
-  /** &lt;meta name="description" content="${description}" /> */
+
+  /** <meta name="description" content="${description}" /> */
   description?: string
-  /** &lt;link rel="icon" href="${favicon}" /> */
+
+  /** <link rel="icon" href="${favicon}" /> */
   favicon?: string
-  /** &lt;html lang="${lang}">
+
+  /** <html lang="${lang}">
    *
    *  @default 'en'
    *
    */
   lang?: string
+
   /**
    * If true, render mode is SSR or pre-rendering (aka SSG). In other words, the
    * page's HTML will be rendered at build-time or request-time.
@@ -29,6 +37,7 @@ export type Config = ConfigCore & {
    *
    */
   ssr?: boolean
+
   Page?: Component
 }
 
@@ -61,6 +70,9 @@ export default {
   clientRouting: true,
   hydrationCanBeAborted: true,
   meta: {
+    Head: {
+      env: 'server-only'
+    },
     Layout: {
       env: 'server-and-client'
     },
