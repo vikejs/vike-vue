@@ -16,7 +16,7 @@
     "vike-vue": "0.2.0",
     "vite": "^4.4.9",
     "vite-plugin-md": "^0.21.5",
-    "vite-plugin-ssr": "0.4.139",
+    "vite-plugin-ssr": "0.4.136",
     "vue": "^3.3.4"
   },
   "type": "module"

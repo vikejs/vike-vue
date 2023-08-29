@@ -4,20 +4,6 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'weekly'
-    commit-message:
-      prefix: 'chore: '
-
-    # Do not get one pull request per version bump. Instead get one pull request
-    # bumping several dependency versions at once:
-    groups:
-      all-deps:
-        patterns:
-          - '*'
-
-  - package-ecosystem: 'npm'
     directory: '/vike-vue/'
     schedule:
       interval: 'weekly'
@@ -30,6 +16,11 @@ updates:
       all-deps:
         patterns:
           - '*'
+
+    # Avoid mismatching versions between vike-vue and examples for these
+    # dependencies:
+    ignore:
+      - dependency-name: 'vite-plugin-ssr'
 
   - package-ecosystem: 'npm'
     directory: '/examples/basic/'
@@ -45,6 +36,11 @@ updates:
         patterns:
           - '*'
 
+    # Avoid mismatching versions between vike-vue and examples for these
+    # dependencies:
+    ignore:
+      - dependency-name: 'vite-plugin-ssr'
+
   - package-ecosystem: 'npm'
     directory: '/examples/ssr-spa/'
     schedule:
@@ -58,3 +54,8 @@ updates:
       all-deps:
         patterns:
           - '*'
+
+    # Avoid mismatching versions between vike-vue and examples for these
+    # dependencies:
+    ignore:
+      - dependency-name: 'vite-plugin-ssr'
