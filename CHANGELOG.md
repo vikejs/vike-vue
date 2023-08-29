@@ -1,8 +1,6 @@
 ## [0.2.1](https://github.com/vikejs/vike-vue/compare/v0.2.0...v0.2.1) (2023-08-29)
 
-
-
-# Changelog
+* Fix peer dependency on `vite-plugin-ssr`.
 
 ## [0.2.0](https://github.com/vikejs/vike-vue/compare/v0.1.1...v0.2.0) (2023-08-28)
 
