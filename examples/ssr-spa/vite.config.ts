@@ -1,5 +1,5 @@
 import vue from '@vitejs/plugin-vue'
-import md from 'vite-plugin-md'
+import md from 'unplugin-vue-markdown/vite'
 import ssr from 'vite-plugin-ssr/plugin'
 import { UserConfig } from 'vite'
 
@@ -9,7 +9,7 @@ const config: UserConfig = {
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    md()
+    md({})
   ]
 }
 
