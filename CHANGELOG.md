@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/vikejs/vike-vue/compare/v0.2.1...v0.2.2) (2023-09-05)
+
+
+### Bug Fixes
+
+* Fix 'Error: Cannot find module' ([6b35d81](https://github.com/vikejs/vike-vue/commit/6b35d8138aa943a717d621de68f66bdc97cfc73d))
+
+
+
 ## [0.2.1](https://github.com/vikejs/vike-vue/compare/v0.2.0...v0.2.1) (2023-08-29)
 
 * Fix peer dependency on `vite-plugin-ssr`.
