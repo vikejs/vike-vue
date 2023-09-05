@@ -1,6 +1,6 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
 import type { Component, Config, PageContext, PageProps } from './types'
-import { setPageContext } from '../components/usePageContext'
+import { setPageContext } from '../components/usePageContext.js'
 
 export { createVueApp }
 

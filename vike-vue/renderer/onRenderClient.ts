@@ -1,6 +1,6 @@
 export default onRenderClient
 
-import { createVueApp } from './app'
+import { createVueApp } from './app.js'
 import { getTitle } from './getTitle.js'
 import type { PageContextClient } from './types'
 

@@ -4,7 +4,7 @@ import { renderToNodeStream, renderToString } from '@vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr/server'
 import { getTitle } from './getTitle.js'
 import type { PageContextServer } from './types'
-import { createVueApp } from './app'
+import { createVueApp } from './app.js'
 
 async function onRenderHtml(pageContext: PageContextServer) {
   let pageStream: ReturnType<typeof renderToNodeStream> | string = ''
