@@ -47,8 +47,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: 0.4.136
-        version: 0.4.136(vite@4.4.9)
+        specifier: 0.4.140
+        version: 0.4.140(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -83,8 +83,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: 0.4.136
-        version: 0.4.136(vite@4.4.9)
+        specifier: 0.4.140
+        version: 0.4.140(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -104,8 +104,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: ^0.4.136
-        version: 0.4.136(vite@4.4.9)
+        specifier: ^0.4.140
+        version: 0.4.140(vite@4.4.9)
     devDependencies:
       '@brillout/release-me':
         specifier: ^0.1.7
@@ -1172,8 +1172,8 @@ packages:
       is-arrayish: 0.2.1
     dev: true
 
-  /es-module-lexer@0.10.5:
-    resolution: {integrity: sha512-+7IwY/kiGAacQfY+YBhKMvEmyAJnw5grTUgjG85Pe7vcUI/6b7pZjZG8nQ7+48YhzEAEqrEgD2dCz/JIK+AYvw==}
+  /es-module-lexer@1.3.0:
+    resolution: {integrity: sha512-vZK7T0N2CBmBOixhmjdqx2gWVbFZ4DXZ/NyRMZVlJXPa7CyFS+/a4QQsDGDQy9ZfEzxFuNEsMLeQJnKP2p5/JA==}
     dev: false
 
   /esbuild@0.17.19:
@@ -2356,8 +2356,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-ssr@0.4.136(vite@4.4.9):
-    resolution: {integrity: sha512-2a9huIue8AkoE2SUccVpo+9uQoEYFGdnObtRgGMyOZWaBw8mQ7jxn0k4lE66ScsfasF4B4F3UWC37sLfEneP8w==}
+  /vite-plugin-ssr@0.4.140(vite@4.4.9):
+    resolution: {integrity: sha512-UcUOszxAdf2Kau4VbVeNRZwVvINtrQIuI8NzuwXXW41nq2f2ej9T/+8uRF6ICUi99Y0HwiK1kZX0+Ox7oY17gg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
@@ -2374,7 +2374,7 @@ packages:
       '@brillout/vite-plugin-import-build': 0.2.18
       acorn: 8.10.0
       cac: 6.7.14
-      es-module-lexer: 0.10.5
+      es-module-lexer: 1.3.0
       esbuild: 0.17.19
       fast-glob: 3.3.1
       sirv: 2.0.3
