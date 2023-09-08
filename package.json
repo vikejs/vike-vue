@@ -13,5 +13,6 @@
     "overrides": {
       "vike-vue": "link:./vike-vue/"
     }
-  }
+  },
+  "packageManager": "pnpm@8.6.12"
 }
