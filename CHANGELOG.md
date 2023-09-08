@@ -1,3 +1,12 @@
+## [0.2.3](https://github.com/vikejs/vike-vue/compare/v0.2.2...v0.2.3) (2023-09-08)
+
+
+### Bug Fixes
+
+* Fix `__name is not defined` ([11417ca](https://github.com/vikejs/vike-vue/commit/11417cac897d4405af393ff5312ae746e5ce1662))
+
+
+
 ## [0.2.2](https://github.com/vikejs/vike-vue/compare/v0.2.1...v0.2.2) (2023-09-05)
 
 
