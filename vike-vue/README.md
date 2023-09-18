@@ -7,9 +7,6 @@
 
 Vue integration for [Vike](https://github.com/brillout/vite-plugin-ssr/issues/736).
 
-<!-- [!NOTE] is documented at https://github.com/orgs/community/discussions/16925 -->
-
-> [!NOTE]
 > For integrations with React and Solid, see
 > [`vike-*` packages](https://vite-plugin-ssr.com/vike-packages).
 
