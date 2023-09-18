@@ -3,11 +3,7 @@ export { getTitle }
 import type { ConfigEntries } from 'vite-plugin-ssr/types'
 import { isCallable } from './utils/isCallable.js'
 
-function getTitle(pageContext: {
-  title?: unknown
-  config: Record<string, unknown>
-  configEntries: ConfigEntries
-}): null | string {
+function getTitle(pageContext: { title?: unknown; configEntries: ConfigEntries }): null | string {
   if (pageContext.title) {
     if (typeof pageContext.title !== 'string') {
       throw new Error('pageContext.title should be a string')
