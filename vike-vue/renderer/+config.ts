@@ -54,11 +54,11 @@ export default {
   }
 } satisfies Config
 
-// We purposely define the ConfigVikeReact interface in this file: that way we ensure it's always applied whenever the user `import vikeReact from 'vike-react'`
+// We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue'`
 import type { Component } from './types'
 declare global {
   namespace VikePackages {
-    export interface ConfigVikeReact {
+    export interface ConfigVikeVue {
       /** Vue component rendered and appended into &lt;head>&lt;/head> */
       Head?: Component
 
