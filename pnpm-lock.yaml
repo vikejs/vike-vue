@@ -47,8 +47,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: 0.4.140
-        version: 0.4.140(vite@4.4.9)
+        specifier: 0.4.141
+        version: 0.4.141(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -83,8 +83,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: 0.4.140
-        version: 0.4.140(vite@4.4.9)
+        specifier: 0.4.141
+        version: 0.4.141(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -104,8 +104,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: ^0.4.140
-        version: 0.4.140(vite@4.4.9)
+        specifier: ^0.4.141
+        version: 0.4.141(vite@4.4.9)
     devDependencies:
       '@brillout/release-me':
         specifier: ^0.1.7
@@ -166,12 +166,12 @@ packages:
     resolution: {integrity: sha512-1T8WlD75eeFSMrptGy8jiLHmfHgMmSjWvLOIUvHmSVZt+6k0eQqYUoK4KbmE4T9pVLIfxvZSOm2D68VEqKRHRw==}
     dev: false
 
-  /@brillout/json-serializer@0.5.5:
-    resolution: {integrity: sha512-kvT3sKCujZ2pn0Aq+yR3+JFrpee5UprimYXPO14BpLBWcVnoiGd6vyjubHPH6H5zU9QSJbSZ1/cUFWjYonoSmQ==}
+  /@brillout/json-serializer@0.5.6:
+    resolution: {integrity: sha512-48u+Wthh0muDueyooi/Or59DDFCPitnuCN9OkMWoj7MQAbDn5pS/cVBB7ds6ENmtC1Qb0spI4PfKZxQSBEkubg==}
     dev: false
 
-  /@brillout/picocolors@1.0.7:
-    resolution: {integrity: sha512-VQtuP4T/y9Ba5XgG78AN4vNmkndYm7dR4DzLeYs7SRJcNl3rcMgQUMCYbvSco/QDOKWW6ZmJ7G7wloyAGdbbOA==}
+  /@brillout/picocolors@1.0.9:
+    resolution: {integrity: sha512-Lt/W5JsA75hcDJ2cOAlE4TqSMl6c9K+rXGRo/cU2fApnmhbRcNdkR4UHQDAwtWfZyUKWaxdwSui+jp+74J1pZg==}
     dev: false
 
   /@brillout/release-me@0.1.7:
@@ -2356,8 +2356,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-ssr@0.4.140(vite@4.4.9):
-    resolution: {integrity: sha512-UcUOszxAdf2Kau4VbVeNRZwVvINtrQIuI8NzuwXXW41nq2f2ej9T/+8uRF6ICUi99Y0HwiK1kZX0+Ox7oY17gg==}
+  /vite-plugin-ssr@0.4.141(vite@4.4.9):
+    resolution: {integrity: sha512-mRYP7CWauioeCFWFhzNjYK/4Gv+mtfClM4oj5NZrHS3kmd2vQ/uHENOSccFZniqRTZoMzQoufqpGTd+1uT9vEg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
@@ -2368,8 +2368,8 @@ packages:
         optional: true
     dependencies:
       '@brillout/import': 0.2.3
-      '@brillout/json-serializer': 0.5.5
-      '@brillout/picocolors': 1.0.7
+      '@brillout/json-serializer': 0.5.6
+      '@brillout/picocolors': 1.0.9
       '@brillout/require-shim': 0.1.2
       '@brillout/vite-plugin-import-build': 0.2.18
       acorn: 8.10.0

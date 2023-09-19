@@ -1,4 +1,4 @@
-import type { Config } from 'vike-vue/types'
+import type { Config } from 'vite-plugin-ssr/types'
 import logoUrl from '../assets/logo.svg'
 import Layout from '../layouts/LayoutDefault.vue'
 import Head from '../layouts/HeadDefault.vue'
