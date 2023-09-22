@@ -1,5 +1,4 @@
 import vue from '@vitejs/plugin-vue'
-import md from 'unplugin-vue-markdown/vite'
 import ssr from 'vite-plugin-ssr/plugin'
 import { UserConfig } from 'vite'
 
@@ -8,8 +7,7 @@ const config: UserConfig = {
     ssr({ prerender: true }),
     vue({
       include: [/\.vue$/, /\.md$/]
-    }),
-    md({})
+    })
   ]
 }
 
