@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/vikejs/vike-vue/compare/v0.2.5...v0.3.0) (2023-09-22)
+
+
+### Features
+
+* Add vuePlugins config option // [#16](https://github.com/vikejs/vike-vue/issues/16) ([4a1dddd](https://github.com/vikejs/vike-vue/commit/4a1ddddcd1f33bd2755b6ccb91ad7f1d6d0942c6))
+
+
+
 ## [0.2.5](https://github.com/vikejs/vike-vue/compare/v0.2.4...v0.2.5) (2023-09-18)
 
 * Minor README improvements.
