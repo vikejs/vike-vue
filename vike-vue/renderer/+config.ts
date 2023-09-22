@@ -1,4 +1,5 @@
 import type { Config, ConfigEffect } from 'vite-plugin-ssr/types'
+import { Plugin } from 'vue'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -50,9 +51,21 @@ export default {
     ssr: {
       env: 'config-only',
       effect: toggleSsrRelatedConfig
+    },
+    vuePlugins: {
+      // List of vue plugins to be installed with app.vue() in onRenderHtml and
+      // onRenderClient. We make this config available both on the server and
+      // the client always, but if SSR is disabled, onRenderHtml won't make use
+      // of it.
+      env: 'server-and-client'
     }
   }
 } satisfies Config
+
+type VuePluginWithOptions = {
+  plugin: Plugin
+  options?: any
+}
 
 // We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue'`
 import type { Component } from './types'
@@ -92,6 +105,17 @@ declare global {
        *
        */
       ssr?: boolean
+
+      /**
+       * List of Vue plugins (and their respective options) to be installed with
+       * `app.vue(plugin, options)`.
+       *
+       * See https://vuejs.org/guide/reusability/plugins.html
+       *
+       * @default []
+       *
+       */
+      vuePlugins?: VuePluginWithOptions[]
 
       Page?: Component
     }

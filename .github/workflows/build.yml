@@ -26,6 +26,9 @@ jobs:
       - name: Test building examples/ssr-spa
         run: pnpm run build
         working-directory: ./examples/ssr-spa
+      - name: Test building examples/with-vue-plugin
+        run: pnpm run build
+        working-directory: ./examples/with-vue-plugin
 
       - name: Test TypeScript examples/basic
         run: pnpm run test
@@ -33,3 +36,6 @@ jobs:
       - name: Test TypeScript examples/ssr-spa
         run: pnpm run test
         working-directory: ./examples/ssr-spa
+      - name: Test TypeScript examples/with-vue-plugin
+        run: pnpm run test
+        working-directory: ./examples/with-vue-plugin

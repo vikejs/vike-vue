@@ -11,6 +11,11 @@ async function onRenderHtml(pageContext: PageContextServer) {
   if (pageContext.Page !== undefined) {
     // SSR is enabled
     const app = createVueApp(pageContext)
+    if (pageContext.config.vuePlugins) {
+      pageContext.config.vuePlugins.forEach(({ plugin, options }) => {
+        app.use(plugin, options)
+      })
+    }
     pageStream = renderToNodeStream(app)
   }
 

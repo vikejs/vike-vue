@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^4.3.3",
+    "@vue/compiler-sfc": "^3.3.4",
+    "@vue/server-renderer": "^3.3.4",
+    "typescript": "^5.2.2",
+    "vike-vue": "0.2.5",
+    "vite": "^4.4.9",
+    "vite-plugin-ssr": "0.4.141",
+    "vue": "^3.3.4"
+  },
+  "type": "module"
+}

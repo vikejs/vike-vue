@@ -80,6 +80,33 @@ importers:
         specifier: ^3.3.4
         version: 3.3.4
 
+  examples/with-vue-plugin:
+    dependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^4.3.3
+        version: 4.3.3(vite@4.4.9)(vue@3.3.4)
+      '@vue/compiler-sfc':
+        specifier: ^3.3.4
+        version: 3.3.4
+      '@vue/server-renderer':
+        specifier: ^3.3.4
+        version: 3.3.4(vue@3.3.4)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      vike-vue:
+        specifier: link:../../vike-vue
+        version: link:../../vike-vue
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@20.5.7)
+      vite-plugin-ssr:
+        specifier: 0.4.141
+        version: 0.4.141(vite@4.4.9)
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
+
   vike-vue:
     dependencies:
       '@vitejs/plugin-vue':
