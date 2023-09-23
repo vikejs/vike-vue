@@ -14,12 +14,12 @@ export default { components }
 </script>
 
 <script lang="ts" setup>
-import { useToast } from 'vue-toast-notification'
+import * as toastPlugin from 'vue-toast-notification'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  const toastPlugin = useToast()
-  toastPlugin.success('I am a Vue plugin!', {
+  const useToast = toastPlugin.useToast()
+  useToast.success('I am a Vue plugin!', {
     position: 'bottom',
     duration: 0 // infinite
   })
