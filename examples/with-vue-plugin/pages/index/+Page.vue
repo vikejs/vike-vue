@@ -15,7 +15,7 @@ export default { components }
 
 <script lang="ts" setup>
 import * as toastPlugin from 'vue-toast-notification'
-import { onMounted } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 
 onMounted(() => {
   const useToast = toastPlugin.useToast()
@@ -23,6 +23,11 @@ onMounted(() => {
     position: 'bottom',
     duration: 0 // infinite
   })
+})
+
+onBeforeUnmount(() => {
+  const useToast = toastPlugin.useToast()
+  useToast.clear()
 })
 </script>
 
