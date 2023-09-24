@@ -1,9 +1,9 @@
-import type { Config, ConfigEffect } from 'vite-plugin-ssr/types'
+import type { Config, ConfigEffect } from 'vike/types'
 import { Plugin } from 'vue'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
-// See https://vite-plugin-ssr.com/meta#modify-existing-configurations
+// See https://vike.dev/meta#modify-existing-configurations
 const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) => {
   if (typeof configValue !== 'boolean') {
     throw new Error(`${configDefinedAt} should be a boolean`)
@@ -99,7 +99,7 @@ declare global {
        * If false, render mode is SPA. In other words, the page will only be
        * rendered in the browser.
        *
-       * See https://vite-plugin-ssr.com/render-modes
+       * See https://vike.dev/render-modes
        *
        * @default true
        *
@@ -128,11 +128,11 @@ declare global {
 // Without this, when running vike-vue with tsx (for example when scaffolding a
 // Vue+Express project with Bati), querying the server will fail with the
 // following error:
-//     [vite-plugin-ssr][request(1)] HTTP request: /
+//     [vike][request(1)] HTTP request: /
 //     [vite][request(1)] __name is not defined
 //     [vite][request(1)] __name is not defined
 //     [vite][request(1)] __name is not defined
-//     [vite][request(1)] Error when evaluating SSR module virtual:vite-plugin-ssr:importPageCode:server:/pages/index: failed to import "/pages/index/+Page.vue"
+//     [vite][request(1)] Error when evaluating SSR module virtual:vike:importPageCode:server:/pages/index: failed to import "/pages/index/+Page.vue"
 //     |- ReferenceError: __name is not defined
 const globalName = (target: Object, value: string) =>
   Object.defineProperty(target, 'name', {

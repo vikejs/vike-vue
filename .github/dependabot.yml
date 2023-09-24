@@ -20,7 +20,7 @@ updates:
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
     ignore:
-      - dependency-name: 'vite-plugin-ssr'
+      - dependency-name: 'vike'
 
   - package-ecosystem: 'npm'
     directory: '/examples/basic/'
@@ -39,7 +39,7 @@ updates:
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
     ignore:
-      - dependency-name: 'vite-plugin-ssr'
+      - dependency-name: 'vike'
 
   - package-ecosystem: 'npm'
     directory: '/examples/ssr-spa/'
@@ -58,7 +58,7 @@ updates:
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
     ignore:
-      - dependency-name: 'vite-plugin-ssr'
+      - dependency-name: 'vike'
 
   - package-ecosystem: 'npm'
     directory: '/examples/with-vue-plugin/'
@@ -77,4 +77,4 @@ updates:
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
     ignore:
-      - dependency-name: 'vite-plugin-ssr'
+      - dependency-name: 'vike'
