@@ -1,3 +1,18 @@
+# [0.4.0](https://github.com/vikejs/vike-vue/compare/v0.3.0...v0.4.0) (2023-09-24)
+
+
+### Bug Fixes
+
+* migrate to `vike` ([79d5da9](https://github.com/vikejs/vike-vue/commit/79d5da9b535f082e3c58d4d5b37aa8d45fda9002))
+
+
+### BREAKING CHANGES
+
+* use npm package `vike` instead of `vite-plugin-ssr`,
+see https://vite-plugin-ssr.com/vike
+
+
+
 # [0.3.0](https://github.com/vikejs/vike-vue/compare/v0.2.5...v0.3.0) (2023-09-22)
 
 
