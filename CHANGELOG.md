@@ -1,26 +1,14 @@
 # [0.4.0](https://github.com/vikejs/vike-vue/compare/v0.3.0...v0.4.0) (2023-09-24)
 
-
-### Bug Fixes
-
-* migrate to `vike` ([79d5da9](https://github.com/vikejs/vike-vue/commit/79d5da9b535f082e3c58d4d5b37aa8d45fda9002))
-
-
 ### BREAKING CHANGES
 
-* use npm package `vike` instead of `vite-plugin-ssr`,
-see https://vite-plugin-ssr.com/vike
-
-
+* The dependency `vite-plugin-ssr` has been renamed to `vike` ([79d5da9](https://github.com/vikejs/vike-vue/commit/79d5da9b535f082e3c58d4d5b37aa8d45fda9002))
 
 # [0.3.0](https://github.com/vikejs/vike-vue/compare/v0.2.5...v0.3.0) (2023-09-22)
-
 
 ### Features
 
 * Add vuePlugins config option // [#16](https://github.com/vikejs/vike-vue/issues/16) ([4a1dddd](https://github.com/vikejs/vike-vue/commit/4a1ddddcd1f33bd2755b6ccb91ad7f1d6d0942c6))
-
-
 
 ## [0.2.5](https://github.com/vikejs/vike-vue/compare/v0.2.4...v0.2.5) (2023-09-18)
 
