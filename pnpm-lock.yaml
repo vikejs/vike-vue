@@ -40,15 +40,15 @@ importers:
       unplugin-vue-markdown:
         specifier: ^0.24.3
         version: 0.24.3(vite@4.4.9)
+      vike:
+        specifier: 0.4.142
+        version: 0.4.142(vite@4.4.9)
       vike-vue:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
-      vite-plugin-ssr:
-        specifier: 0.4.141
-        version: 0.4.141(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -67,15 +67,15 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+      vike:
+        specifier: 0.4.142
+        version: 0.4.142(vite@4.4.9)
       vike-vue:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
-      vite-plugin-ssr:
-        specifier: 0.4.141
-        version: 0.4.141(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -94,15 +94,15 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+      vike:
+        specifier: 0.4.142
+        version: 0.4.142(vite@4.4.9)
       vike-vue:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
-      vite-plugin-ssr:
-        specifier: 0.4.141
-        version: 0.4.141(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -121,12 +121,12 @@ importers:
       '@vue/server-renderer':
         specifier: ^3.2.47
         version: 3.3.4(vue@3.3.4)
+      vike:
+        specifier: ^0.4.142
+        version: 0.4.142(vite@4.4.9)
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
-      vite-plugin-ssr:
-        specifier: ^0.4.141
-        version: 0.4.141(vite@4.4.9)
     devDependencies:
       '@brillout/release-me':
         specifier: ^0.1.7
@@ -2377,8 +2377,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-ssr@0.4.141(vite@4.4.9):
-    resolution: {integrity: sha512-mRYP7CWauioeCFWFhzNjYK/4Gv+mtfClM4oj5NZrHS3kmd2vQ/uHENOSccFZniqRTZoMzQoufqpGTd+1uT9vEg==}
+  /vike@0.4.142(vite@4.4.9):
+    resolution: {integrity: sha512-eciryBs3k29SwSQM2esZzjt9Fyig/tNAgQ5xlduw9XVNUnd1hdWPr8CBi7yzvWgeavggPmywbt+Da1OLBoO8Kg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:

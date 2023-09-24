@@ -1,7 +1,7 @@
 export default onRenderHtml
 
 import { renderToNodeStream, renderToString } from '@vue/server-renderer'
-import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr/server'
+import { dangerouslySkipEscape, escapeInject } from 'vike/server'
 import { getTitle } from './getTitle.js'
 import type { PageContextServer } from './types'
 import { createVueApp } from './app.js'

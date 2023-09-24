@@ -10,7 +10,7 @@ import type {
   Config,
   PageContextBuiltInServer,
   PageContextBuiltInClientWithClientRouting as PageContextBuiltInClient
-} from 'vite-plugin-ssr/types'
+} from 'vike/types'
 import type { defineComponent } from 'vue'
 
 // See https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
