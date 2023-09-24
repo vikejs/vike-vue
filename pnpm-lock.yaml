@@ -47,8 +47,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: 0.4.141
-        version: 0.4.141(vite@4.4.9)
+        specifier: 0.4.142
+        version: 0.4.142(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -74,8 +74,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: 0.4.141
-        version: 0.4.141(vite@4.4.9)
+        specifier: 0.4.142
+        version: 0.4.142(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -101,8 +101,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: 0.4.141
-        version: 0.4.141(vite@4.4.9)
+        specifier: 0.4.142
+        version: 0.4.142(vite@4.4.9)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -125,8 +125,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.5.7)
       vite-plugin-ssr:
-        specifier: ^0.4.141
-        version: 0.4.141(vite@4.4.9)
+        specifier: ^0.4.142
+        version: 0.4.142(vite@4.4.9)
     devDependencies:
       '@brillout/release-me':
         specifier: ^0.1.7
@@ -2377,8 +2377,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-ssr@0.4.141(vite@4.4.9):
-    resolution: {integrity: sha512-mRYP7CWauioeCFWFhzNjYK/4Gv+mtfClM4oj5NZrHS3kmd2vQ/uHENOSccFZniqRTZoMzQoufqpGTd+1uT9vEg==}
+  /vite-plugin-ssr@0.4.142(vite@4.4.9):
+    resolution: {integrity: sha512-ZDgpocnTEUmhYxGgMah8ZNK1Sfy5CFVcdXu+Ll3zRtGIPyWT5vYvASs2BLYEneqantHpde2b31Khzb0hxmP62w==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
