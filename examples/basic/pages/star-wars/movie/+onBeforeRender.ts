@@ -3,10 +3,10 @@ export default onBeforeRender
 import fetch from 'cross-fetch'
 import { filterMovieData } from '../filterMovieData'
 import type { MovieDetails } from '../types'
-import type { PageContextBuiltInServer } from 'vike/types'
+import type { PageContext } from 'vike/types'
 
-async function onBeforeRender(pageContext: PageContextBuiltInServer) {
-  const response = await fetch(`https://star-wars.brillout.com/api/films/${pageContext.routeParams.movieId}.json`)
+async function onBeforeRender(pageContext: PageContext) {
+  const response = await fetch(`https://star-wars.brillout.com/api/films/${pageContext.routeParams?.movieId}.json`)
   let movie = (await response.json()) as MovieDetails
 
   // We remove data we don't need because we pass `pageContext.movie` to

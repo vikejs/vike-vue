@@ -1,4 +1,5 @@
-import type { Config, ConfigEffect } from 'vike/types'
+import type { Config, ConfigEffect, PageContext } from 'vike/types'
+import type { Component } from './types'
 import { Plugin } from 'vue'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
@@ -68,17 +69,16 @@ type VuePluginWithOptions = {
 }
 
 // We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue'`
-import type { Component } from './types'
 declare global {
   namespace VikePackages {
-    export interface ConfigVikeVue {
+    interface ConfigVikeVue {
       /** Vue component rendered and appended into &lt;head>&lt;/head> */
       Head?: Component
 
       Layout?: Component
 
       /** &lt;title>${title}&lt;/title> */
-      title?: string
+      title?: string | ((pageContext: PageContext) => string)
 
       /** &lt;meta name="description" content="${description}" /> */
       description?: string
@@ -117,6 +117,7 @@ declare global {
        */
       vuePlugins?: VuePluginWithOptions[]
 
+      /** The page's root Vue component */
       Page?: Component
     }
   }

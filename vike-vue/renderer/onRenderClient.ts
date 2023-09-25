@@ -2,7 +2,7 @@ export default onRenderClient
 
 import { createVueApp } from './app.js'
 import { getTitle } from './getTitle.js'
-import type { PageContextClient } from './types'
+import type { PageContextClient } from 'vike/types'
 
 let app: ReturnType<typeof createVueApp>
 async function onRenderClient(pageContext: PageContextClient) {

@@ -1,5 +1,6 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
-import type { Component, Config, PageContext, PageProps } from './types'
+import type { Component, PageProps } from './types'
+import type { Config, PageContext } from 'vike/types'
 import { setPageContext } from '../components/usePageContext.js'
 
 export { createVueApp }

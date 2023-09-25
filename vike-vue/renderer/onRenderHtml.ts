@@ -3,10 +3,10 @@ export default onRenderHtml
 import { renderToNodeStream, renderToString } from '@vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject } from 'vike/server'
 import { getTitle } from './getTitle.js'
-import type { PageContextServer } from './types'
+import type { PageContext } from 'vike/types'
 import { createVueApp } from './app.js'
 
-async function onRenderHtml(pageContext: PageContextServer) {
+async function onRenderHtml(pageContext: PageContext) {
   let pageStream: ReturnType<typeof renderToNodeStream> | string = ''
   if (pageContext.Page !== undefined) {
     // SSR is enabled
