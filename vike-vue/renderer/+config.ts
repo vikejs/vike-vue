@@ -25,8 +25,8 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 }
 
 export default {
-  onRenderHtml: 'import:vike-vue/renderer/onRenderHtml',
-  onRenderClient: 'import:vike-vue/renderer/onRenderClient',
+  onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
+  onRenderClient: 'import:vike-vue/renderer/onRenderClient:onRenderClient',
   passToClient: ['pageProps', 'title'],
   clientRouting: true,
   hydrationCanBeAborted: true,

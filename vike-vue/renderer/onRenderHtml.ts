@@ -1,12 +1,13 @@
-export default onRenderHtml
+// https://vike.dev/onRenderHtml
+export { onRenderHtml }
 
 import { renderToNodeStream, renderToString } from '@vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject } from 'vike/server'
 import { getTitle } from './getTitle.js'
-import type { PageContext } from 'vike/types'
+import type { OnRenderHtmlAsync } from 'vike/types'
 import { createVueApp } from './app.js'
 
-async function onRenderHtml(pageContext: PageContext) {
+const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   let pageStream: ReturnType<typeof renderToNodeStream> | string = ''
   if (pageContext.Page !== undefined) {
     // SSR is enabled
