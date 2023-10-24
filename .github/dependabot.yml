@@ -6,16 +6,16 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/vike-vue/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
     commit-message:
       prefix: 'chore: '
 
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
-    groups:
-      all-deps:
-        patterns:
-          - '*'
+    # groups:
+    #   all-deps:
+    #     patterns:
+    #       - '*'
 
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
@@ -25,16 +25,16 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/examples/basic/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
     commit-message:
       prefix: 'chore: '
 
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
-    groups:
-      all-deps:
-        patterns:
-          - '*'
+    # groups:
+    #   all-deps:
+    #     patterns:
+    #       - '*'
 
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
@@ -44,16 +44,16 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/examples/ssr-spa/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
     commit-message:
       prefix: 'chore: '
 
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
-    groups:
-      all-deps:
-        patterns:
-          - '*'
+    # groups:
+    #   all-deps:
+    #     patterns:
+    #       - '*'
 
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
@@ -63,16 +63,16 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/examples/with-vue-plugin/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
     commit-message:
       prefix: 'chore: '
 
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
-    groups:
-      all-deps:
-        patterns:
-          - '*'
+    # groups:
+    #   all-deps:
+    #     patterns:
+    #       - '*'
 
     # Avoid mismatching versions between vike-vue and examples for these
     # dependencies:
