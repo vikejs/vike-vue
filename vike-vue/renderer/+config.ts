@@ -27,7 +27,15 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 export default {
   onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
   onRenderClient: 'import:vike-vue/renderer/onRenderClient:onRenderClient',
+
+  // A page can define an onBeforeRender() hook to be run on the server, which
+  // can fetch data and return it as additional page context. Typically it will
+  // return the page's root Vue component's props and additional data that can
+  // be used by the renderers.
+  // It is a cumulative config option, so a web app using vike-vue can extend
+  // this list.
   passToClient: ['pageProps', 'title'],
+
   clientRouting: true,
   hydrationCanBeAborted: true,
   meta: {
