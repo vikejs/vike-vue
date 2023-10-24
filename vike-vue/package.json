@@ -25,10 +25,10 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.1.7",
-    "@types/node": "^20.5.7",
+    "@brillout/release-me": "^0.1.8",
+    "@types/node": "^20.8.8",
     "typescript": "^5.2.2",
-    "vue": "^3.3.4"
+    "vue": "^3.3.6"
   },
   "typesVersions": {
     "*": {
