@@ -6,11 +6,11 @@
     "test": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/node": "^20.8.8",
+    "@types/node": "^20.8.9",
     "@types/node-fetch": "^2.6.7",
     "@vitejs/plugin-vue": "^4.4.0",
-    "@vue/compiler-sfc": "^3.3.6",
-    "@vue/server-renderer": "^3.3.6",
+    "@vue/compiler-sfc": "^3.3.7",
+    "@vue/server-renderer": "^3.3.7",
     "cross-fetch": "^4.0.0",
     "node-fetch": "^3.3.2",
     "typescript": "^5.2.2",
@@ -18,7 +18,7 @@
     "vite": "^4.5.0",
     "unplugin-vue-markdown": "^0.24.3",
     "vike": "0.4.144",
-    "vue": "^3.3.6"
+    "vue": "^3.3.7"
   },
   "type": "module"
 }
