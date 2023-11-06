@@ -14,7 +14,7 @@
     "vite": "^4.5.0",
     "vike": "0.4.144",
     "vue": "^3.3.7",
-    "vue-toast-notification": "^3.1.1"
+    "vue-toast-notification": "^3.1.2"
   },
   "type": "module"
 }

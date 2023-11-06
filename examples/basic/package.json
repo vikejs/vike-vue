@@ -6,8 +6,8 @@
     "test": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/node": "^20.8.9",
-    "@types/node-fetch": "^2.6.7",
+    "@types/node": "^20.8.10",
+    "@types/node-fetch": "^2.6.8",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vue/compiler-sfc": "^3.3.7",
     "@vue/server-renderer": "^3.3.7",
