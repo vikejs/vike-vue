@@ -45,7 +45,7 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
 
   const app = ssrApp ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
 
-  // We use `app.changePage()` to do Client Routing, see `_default.page.client.js`
+  // We use `app.changePage()` to do Client Routing, see `onRenderClient.ts`
   objectAssign(app, {
     changePage: (pageContext: PageContext) => {
       Object.assign(pageContextReactive, pageContext)
@@ -55,7 +55,7 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
     }
   })
 
-  // When doing Client Routing, we mutate pageContext (see usage of `app.changePage()` in `_default.page.client.js`).
+  // When doing Client Routing, we mutate pageContext (see usage of `app.changePage()` in `onRenderClient.ts`).
   // We therefore use a reactive pageContext.
   const pageContextReactive = reactive(pageContext)
 
