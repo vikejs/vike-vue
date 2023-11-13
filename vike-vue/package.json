@@ -26,9 +26,9 @@
   },
   "devDependencies": {
     "@brillout/release-me": "^0.1.8",
-    "@types/node": "^20.8.10",
+    "@types/node": "^20.9.0",
     "typescript": "^5.2.2",
-    "vue": "^3.3.7"
+    "vue": "^3.3.8"
   },
   "typesVersions": {
     "*": {
