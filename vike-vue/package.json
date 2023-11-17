@@ -21,7 +21,7 @@
     "@vue/compiler-sfc": "^3.2.47",
     "@vue/server-renderer": "^3.2.47",
     "vite": "^4.4.9",
-    "vike": "^0.4.144",
+    "vike": "^0.4.147",
     "vue": "^3.3.4"
   },
   "devDependencies": {
