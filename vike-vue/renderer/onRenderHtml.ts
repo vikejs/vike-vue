@@ -2,10 +2,12 @@
 export { onRenderHtml }
 
 import { renderToNodeStream, renderToString } from '@vue/server-renderer'
-import { dangerouslySkipEscape, escapeInject } from 'vike/server'
+import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getTitle } from './getTitle.js'
 import type { OnRenderHtmlAsync } from 'vike/types'
 import { createVueApp } from './app.js'
+
+checkVikeVersion()
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   let pageStream: ReturnType<typeof renderToNodeStream> | string = ''
@@ -58,4 +60,14 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       enableEagerStreaming: true
     }
   }
+}
+
+function checkVikeVersion() {
+  if (version) {
+    const versionParts = version.split('.').map((s) => parseInt(s, 10)) as [number, number, number]
+    if (versionParts[0] > 0) return
+    if (versionParts[1] > 4) return
+    if (versionParts[2] >= 147) return
+  }
+  throw new Error('Update Vike to its latest version (or vike@0.4.147 and any version above)')
 }
