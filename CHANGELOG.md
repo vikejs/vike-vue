@@ -1,3 +1,18 @@
+# [0.5.0](https://github.com/vikejs/vike-vue/compare/v0.4.0...v0.5.0) (2023-11-17)
+
+
+### Bug Fixes
+
+* possibly unset document title on client routing ([984cb76](https://github.com/vikejs/vike-vue/commit/984cb760cf6f36984de5e3f1174005f21cf9e697)), closes [vikejs/vike-react#27](https://github.com/vikejs/vike-react/issues/27)
+* use latest version of the Vike V1 design ([70f02b7](https://github.com/vikejs/vike-vue/commit/70f02b72c9f2f30030d703ed9f70229ebe36fd5f))
+
+
+### Features
+
+* add link to repo to SSR shell ([d63c9d3](https://github.com/vikejs/vike-vue/commit/d63c9d3e3b0dce8318a8a8c14bb62115d4949318)), closes [vikejs/vike-react#32](https://github.com/vikejs/vike-react/issues/32) [vikejs/vike-solid#32](https://github.com/vikejs/vike-solid/issues/32)
+
+
+
 # [0.4.0](https://github.com/vikejs/vike-vue/compare/v0.3.0...v0.4.0) (2023-09-24)
 
 ### BREAKING CHANGES
