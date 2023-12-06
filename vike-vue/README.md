@@ -5,7 +5,7 @@
 
 # `vike-vue`
 
-Vue integration for [Vike](https://vike.dev/) (using the [V1 design](https://vike.dev/migration/v1-design)).
+Vue integration for [Vike](https://vike.dev/).
 
 > For integrations with React and Solid, see
 > [`vike-*` packages](https://vike.dev/vike-packages).
