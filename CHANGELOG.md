@@ -1,5 +1,9 @@
 ## [0.5.1](https://github.com/vikejs/vike-vue/compare/v0.5.0...v0.5.1) (2023-12-07)
 
+### Features
+
+* add `stream` setting ([#30](https://github.com/vikejs/vike-vue/pull/30))
+
 
 
 # [0.5.0](https://github.com/vikejs/vike-vue/compare/v0.4.0...v0.5.0) (2023-11-17)
