@@ -10,8 +10,10 @@ import { createVueApp } from './app.js'
 checkVikeVersion()
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
-  let pageStream: ReturnType<typeof renderToNodeStream> | string = ''
-  if (pageContext.Page !== undefined) {
+  const { stream } = pageContext.config
+  let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
+
+  if (!!pageContext.Page) {
     // SSR is enabled
     const app = createVueApp(pageContext)
     if (pageContext.config.vuePlugins) {
@@ -19,7 +21,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         app.use(plugin, options)
       })
     }
-    pageStream = renderToNodeStream(app)
+    pageView = !stream ? dangerouslySkipEscape(await renderToString(app)) : renderToNodeStream(app)
   }
 
   const title = getTitle(pageContext)
@@ -31,10 +33,10 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   const { favicon } = pageContext.config
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
 
-  let headHtml = ''
-  if (pageContext.config.Head !== undefined) {
+  let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
+  if (!!pageContext.config.Head) {
     const app = createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
-    headHtml = await renderToString(app)
+    headHtml = dangerouslySkipEscape(await renderToString(app))
   }
 
   const lang = pageContext.config.lang || 'en'
@@ -46,10 +48,10 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         ${faviconTag}
         ${titleTag}
         ${descriptionTag}
-        ${dangerouslySkipEscape(headHtml)}
+        ${headHtml}
       </head>
       <body>
-        <div id="page-view">${pageStream}</div>
+        <div id="page-view">${pageView}</div>
       </body>
       <!-- built with https://github.com/vikejs/vike-vue -->
     </html>`
