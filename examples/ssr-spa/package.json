@@ -10,7 +10,7 @@
     "@vue/compiler-sfc": "^3.3.9",
     "@vue/server-renderer": "^3.3.9",
     "typescript": "^5.3.2",
-    "vike-vue": "0.5.0",
+    "vike-vue": "0.5.1",
     "vite": "^5.0.4",
     "vike": "0.4.147",
     "vue": "^3.3.9"
