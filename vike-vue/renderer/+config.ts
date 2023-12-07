@@ -61,6 +61,9 @@ export default {
       env: { config: true },
       effect: toggleSsrRelatedConfig
     },
+    stream: {
+      env: { server: true }
+    },
     vuePlugins: {
       // List of vue plugins to be installed with app.vue() in onRenderHtml and
       // onRenderClient. We make this config available both on the server and
@@ -113,6 +116,13 @@ declare global {
        *
        */
       ssr?: boolean
+      /**
+       * Whether to stream the page's HTML. Requires Server-Side Rendering (`ssr: true`).
+       *
+       * @default false
+       *
+       */
+      stream?: boolean
 
       /**
        * List of Vue plugins (and their respective options) to be installed with
