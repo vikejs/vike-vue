@@ -1,11 +1,12 @@
 // https://vike.dev/onRenderHtml
 export { onRenderHtml }
 
-import { renderToNodeStream, renderToString } from 'vue/server-renderer'
+import { renderToNodeStream as renderToNodeStream_, renderToString as renderToString_ } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getTitle } from './getTitle.js'
 import type { OnRenderHtmlAsync } from 'vike/types'
 import { createVueApp } from './app.js'
+import { App } from 'vue'
 
 checkVikeVersion()
 
@@ -62,6 +63,27 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       enableEagerStreaming: true
     }
   }
+}
+
+async function renderToString(app: App) {
+  let err: unknown
+  // Workaround: renderToString_() swallows errors in production, see https://github.com/vuejs/core/issues/7876
+  app.config.errorHandler = (err_) => {
+    err = err_
+  }
+  const appHtml = await renderToString_(app)
+  if (err) throw err
+  return appHtml
+}
+
+function renderToNodeStream(app: App) {
+  let err: unknown
+  app.config.errorHandler = (err_) => {
+    err = err_
+  }
+  const appHtml = renderToNodeStream_(app)
+  if (err) throw err
+  return appHtml
 }
 
 function checkVikeVersion() {
