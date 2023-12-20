@@ -2,7 +2,12 @@
   // Inspired by https://github.com/vikejs/vike-solid/blob/main/.github/renovate.json5
   // See https://docs.renovatebot.com/configuration-options/
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "schedule:weekly", "group:allNonMajor", ":disablePeerDependencies"],
+  "extends": [
+    "config:base",
+    // "schedule:weekly",
+    "group:allNonMajor",
+    ":disablePeerDependencies"
+  ],
   "labels": ["dependencies"],
   "rangeStrategy": "auto",
   "ignoreDeps": [
