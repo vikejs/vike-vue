@@ -1,10 +1,30 @@
 {
   // Inspired by https://github.com/vikejs/vike-solid/blob/main/.github/renovate.json5
+  // See https://docs.renovatebot.com/configuration-options/
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "schedule:weekly", "group:allNonMajor"],
+  "extends": ["config:base", "schedule:weekly"],
   "labels": ["dependencies"],
   "rangeStrategy": "auto",
   "ignoreDeps": [
     "pnpm"
+  ],
+  // Modified https://docs.renovatebot.com/presets-group/#groupallnonmajor to skip peerDependencies
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchDepTypes": [
+        "dependencies",
+        "devDependencies"
+        // not peerDependencies
+      ]
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    }
   ]
 }
