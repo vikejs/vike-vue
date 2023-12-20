@@ -1,0 +1,10 @@
+{
+  // Inspired by https://github.com/vikejs/vike-solid/blob/main/.github/renovate.json5
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", "schedule:weekly", "group:allNonMajor"],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "ignoreDeps": [
+    "pnpm"
+  ]
+}
