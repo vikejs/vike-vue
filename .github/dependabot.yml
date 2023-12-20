@@ -13,7 +13,7 @@ updates:
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
     groups:
-      all-deps:
+      vike-vue:
         patterns:
           - '*'
 
@@ -31,7 +31,7 @@ updates:
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
     groups:
-      all-deps:
+      examples:
         patterns:
           - '*'
 
@@ -45,7 +45,7 @@ updates:
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
     groups:
-      all-deps:
+      examples:
         patterns:
           - '*'
 
@@ -59,6 +59,6 @@ updates:
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
     groups:
-      all-deps:
+      examples:
         patterns:
           - '*'
