@@ -13,7 +13,7 @@
     "node-fetch": "^3.3.2",
     "typescript": "^5.3.3",
     "vike-vue": "0.5.1",
-    "vite": "^4.5.1",
+    "vite": "^5.0.7",
     "unplugin-vue-markdown": "^0.25.2",
     "vike": "^0.4.150",
     "vue": "^3.3.12"
