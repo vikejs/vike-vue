@@ -18,7 +18,7 @@
   },
   "peerDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^4.5.1",
+    "vite": "^4.5.1 || ^5.0.7",
     "vike": "^0.4.150",
     "vue": "^3.3.12"
   },
