@@ -4,7 +4,7 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: '/examples/basic/'
+    directory: '/'
     schedule:
       interval: 'weekly'
     commit-message:
@@ -17,10 +17,23 @@ updates:
         patterns:
           - '*'
 
-    # Avoid mismatching versions between vike-vue and examples for these
-    # dependencies:
-    ignore:
-      - dependency-name: 'vike'
+    # Do not bump peer dependencies:
+    allow:
+      - dependency-type: 'development'
+
+  - package-ecosystem: 'npm'
+    directory: '/examples/basic/'
+    schedule:
+      interval: 'weekly'
+    commit-message:
+      prefix: 'chore: '
+
+    # Do not get one pull request per version bump. Instead get one pull request
+    # bumping several dependency versions at once:
+    groups:
+      all-deps:
+        patterns:
+          - '*'
 
   - package-ecosystem: 'npm'
     directory: '/examples/ssr-spa/'
@@ -36,11 +49,6 @@ updates:
         patterns:
           - '*'
 
-    # Avoid mismatching versions between vike-vue and examples for these
-    # dependencies:
-    ignore:
-      - dependency-name: 'vike'
-
   - package-ecosystem: 'npm'
     directory: '/examples/with-vue-plugin/'
     schedule:
@@ -54,8 +62,3 @@ updates:
       all-deps:
         patterns:
           - '*'
-
-    # Avoid mismatching versions between vike-vue and examples for these
-    # dependencies:
-    ignore:
-      - dependency-name: 'vike'
