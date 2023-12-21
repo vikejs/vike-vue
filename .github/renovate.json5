@@ -16,7 +16,7 @@
     ":widenPeerDependencies"
   ],
   "labels": ["dependencies"],
-  "rangeStrategy": "auto",
+  "rangeStrategy": "bump",
   "ignoreDeps": [
     "pnpm"
   ]
