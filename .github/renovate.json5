@@ -6,7 +6,7 @@
     // "config:base",
     // "config:recommended",
     // "schedule:weekly",
-    "group:allNonMajor",
+    // "group:allNonMajor",
     ":disablePeerDependencies"
   ],
   "labels": ["dependencies"],
