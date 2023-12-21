@@ -6,8 +6,7 @@
     "group:allNonMajor",
 
     // peerDependencies ranges should be left untouched/wide.
-    ":disablePeerDependencies",
-    ":widenPeerDependencies"
+    ":disablePeerDependencies"
   ],
   "labels": ["dependencies"],
   "rangeStrategy": "bump",
