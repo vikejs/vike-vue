@@ -3,15 +3,9 @@
   // See https://docs.renovatebot.com/configuration-options/
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    // "config:base",
-    // "config:recommended",
-    // "schedule:weekly",
-    // "group:allNonMajor",
-    ":dependencyDashboard",
-    ":disableRateLimiting",
-    ":prHourlyLimitNone",
-    ":prImmediately",
-    ":rebaseStalePrs",
+    "group:allNonMajor",
+
+    // peerDependencies ranges should be left untouched/wide.
     ":disablePeerDependencies",
     ":widenPeerDependencies"
   ],
