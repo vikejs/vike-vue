@@ -9,6 +9,7 @@
     // "group:allNonMajor",
     ":dependencyDashboard",
     ":disableRateLimiting",
+    ":prHourlyLimitNone",
     ":prImmediately",
     ":rebaseStalePrs",
     ":disablePeerDependencies",
