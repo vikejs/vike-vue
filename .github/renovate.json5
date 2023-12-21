@@ -4,10 +4,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     // "config:base",
-    "config:recommended",
+    // "config:recommended",
     // "schedule:weekly",
     // "group:allNonMajor",
-    ":disablePeerDependencies"
+    ":dependencyDashboard",
+    ":disableRateLimiting",
+    ":prImmediately",
+    ":rebaseStalePrs",
+    ":disablePeerDependencies",
+    ":widenPeerDependencies"
   ],
   "labels": ["dependencies"],
   "rangeStrategy": "auto",
