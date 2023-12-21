@@ -41,7 +41,7 @@ importers:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
       vite:
-        specifier: ^5.0.7
+        specifier: ^5.0.10
         version: 5.0.10(@types/node@20.10.4)
       vue:
         specifier: ^3.3.12
@@ -62,7 +62,7 @@ importers:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
       vite:
-        specifier: ^5.0.7
+        specifier: ^5.0.10
         version: 5.0.10(@types/node@20.10.4)
       vue:
         specifier: ^3.3.12
@@ -83,7 +83,7 @@ importers:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
       vite:
-        specifier: ^5.0.7
+        specifier: ^5.0.10
         version: 5.0.10(@types/node@20.10.4)
       vue:
         specifier: ^3.3.12
