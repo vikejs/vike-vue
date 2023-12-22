@@ -66,22 +66,34 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 }
 
 async function renderToString(app: App) {
+  let returned = false
   let err: unknown
   // Workaround: renderToString_() swallows errors in production, see https://github.com/vuejs/core/issues/7876
   app.config.errorHandler = (err_) => {
-    err = err_
+    if (returned) {
+      console.error(err_)
+    } else {
+      err = err_
+    }
   }
   const appHtml = await renderToString_(app)
+  returned = true
   if (err) throw err
   return appHtml
 }
 
 function renderToNodeStream(app: App) {
+  let returned = false
   let err: unknown
   app.config.errorHandler = (err_) => {
-    err = err_
+    if (returned) {
+      console.error(err_)
+    } else {
+      err = err_
+    }
   }
   const appHtml = renderToNodeStream_(app)
+  returned = true
   if (err) throw err
   return appHtml
 }
