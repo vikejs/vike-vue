@@ -1,7 +1,7 @@
 // https://vike.dev/onRenderHtml
 export { onRenderHtml }
 
-import { renderToNodeStream as renderToNodeStream_, renderToString as renderToString_ } from 'vue/server-renderer'
+import { renderToNodeStream, renderToString } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getTitle } from './getTitle.js'
 import type { OnRenderHtmlAsync } from 'vike/types'
@@ -22,7 +22,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         app.use(plugin, options)
       })
     }
-    pageView = !stream ? dangerouslySkipEscape(await renderToString(app)) : renderToNodeStream(app)
+    pageView = !stream
+      ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
+      : renderToNodeStreamWithErrorHandling(app)
   }
 
   const title = getTitle(pageContext)
@@ -37,7 +39,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   if (!!pageContext.config.Head) {
     const app = createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
-    headHtml = dangerouslySkipEscape(await renderToString(app))
+    headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
   const lang = pageContext.config.lang || 'en'
@@ -65,7 +67,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   }
 }
 
-async function renderToString(app: App) {
+async function renderToStringWithErrorHandling(app: App) {
   let returned = false
   let err: unknown
   // Workaround: renderToString_() swallows errors in production, see https://github.com/vuejs/core/issues/7876
@@ -76,13 +78,13 @@ async function renderToString(app: App) {
       err = err_
     }
   }
-  const appHtml = await renderToString_(app)
+  const appHtml = await renderToString(app)
   returned = true
   if (err) throw err
   return appHtml
 }
 
-function renderToNodeStream(app: App) {
+function renderToNodeStreamWithErrorHandling(app: App) {
   let returned = false
   let err: unknown
   app.config.errorHandler = (err_) => {
@@ -92,7 +94,7 @@ function renderToNodeStream(app: App) {
       err = err_
     }
   }
-  const appHtml = renderToNodeStream_(app)
+  const appHtml = renderToNodeStream(app)
   returned = true
   if (err) throw err
   return appHtml
