@@ -28,6 +28,8 @@ export default {
   onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
   onRenderClient: 'import:vike-vue/renderer/onRenderClient:onRenderClient',
 
+  // TODO/next-major-release: remove pageProps (i.e. tell users to use data() instead of onBeforeRender() to fetch data)
+  // TODO/next-major-release: remove support for setting title over onBeforeRender()
   // A page can define an onBeforeRender() hook to be run on the server, which
   // can fetch data and return it as additional page context. Typically it will
   // return the page's root Vue component's props and additional data that can

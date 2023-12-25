@@ -4,7 +4,6 @@ export { onBeforePrerenderStart }
 import type { OnBeforePrerenderStartAsync } from 'vike/types'
 import { filterMovieData } from '../filterMovieData'
 import { fetchStarWarsMovies, filterMoviesData, getTitle } from './data'
-import { Movie } from '../types'
 
 const onBeforePrerenderStart: OnBeforePrerenderStartAsync = async (): ReturnType<OnBeforePrerenderStartAsync> => {
   const movies = await fetchStarWarsMovies()
@@ -13,13 +12,13 @@ const onBeforePrerenderStart: OnBeforePrerenderStartAsync = async (): ReturnType
     {
       url: '/star-wars',
       // We already provide `pageContext` here so that Vike
-      // will *not* have to call the `data()` hook defined
+      // will *not* have to call the `onBeforeRender()` hook defined
       // above in this file.
       pageContext: {
-        data: {
-          movies: filterMoviesData(movies),
-          title: getTitle(movies)
-        }
+        pageProps: {
+          movies: filterMoviesData(movies)
+        },
+        title: getTitle(movies)
       }
     },
     ...movies.map((movie) => {
@@ -28,24 +27,15 @@ const onBeforePrerenderStart: OnBeforePrerenderStartAsync = async (): ReturnType
         url,
         // Note that we can also provide the `pageContext` of other pages.
         // This means that Vike will not call any
-        // `data()` hook and the Star Wars API will be called
+        // `onBeforeRender()` hook and the Star Wars API will be called
         // only once (in this `prerender()` hook).
         pageContext: {
-          data: {
-            movie: filterMovieData(movie),
-            title: movie.title
-          }
+          pageProps: {
+            movie: filterMovieData(movie)
+          },
+          title: movie.title
         }
       }
     })
   ]
-}
-
-declare global {
-  namespace Vike {
-    interface Data {
-      movies?: Movie[]
-      movie?: Movie
-    }
-  }
 }

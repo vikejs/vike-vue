@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/node": "^20.10.5",
+    "@types/node-fetch": "^2.6.9",
+    "@vitejs/plugin-vue": "^4.6.0",
+    "cross-fetch": "^4.0.0",
+    "node-fetch": "^3.3.2",
+    "typescript": "^5.3.3",
+    "vike-vue": "0.5.2",
+    "vite": "^5.0.10",
+    "unplugin-vue-markdown": "^0.25.2",
+    "vike": "^0.4.151",
+    "vue": "^3.3.13"
+  },
+  "type": "module"
+}

@@ -17,6 +17,7 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
   const { Page } = pageContext
   const Head = renderHead ? (pageContext.config.Head as Component) : undefined
 
+  // TODO/next-major-release: remove pageProps (i.e. tell users to use data() instead of onBeforeRender() to fetch data)
   let rootComponent: Component & { Page: Component; pageProps: PageProps; config: Config }
   const PageWithLayout = defineComponent({
     data: () => ({
