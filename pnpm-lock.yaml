@@ -20,8 +20,8 @@ importers:
         specifier: ^2.6.9
         version: 2.6.9
       '@vitejs/plugin-vue':
-        specifier: ^4.5.2
-        version: 4.5.2(vite@5.0.10)(vue@3.3.13)
+        specifier: ^4.6.0
+        version: 4.6.0(vite@5.0.10)(vue@3.3.13)
       cross-fetch:
         specifier: ^4.0.0
         version: 4.0.0
@@ -35,8 +35,8 @@ importers:
         specifier: ^0.25.2
         version: 0.25.2(vite@5.0.10)
       vike:
-        specifier: ^0.4.150
-        version: 0.4.150(vite@5.0.10)
+        specifier: ^0.4.151
+        version: 0.4.151(vite@5.0.10)
       vike-vue:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
@@ -50,14 +50,14 @@ importers:
   examples/ssr-spa:
     dependencies:
       '@vitejs/plugin-vue':
-        specifier: ^4.5.2
-        version: 4.5.2(vite@5.0.10)(vue@3.3.13)
+        specifier: ^4.6.0
+        version: 4.6.0(vite@5.0.10)(vue@3.3.13)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
-        specifier: ^0.4.150
-        version: 0.4.150(vite@5.0.10)
+        specifier: ^0.4.151
+        version: 0.4.151(vite@5.0.10)
       vike-vue:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
@@ -71,14 +71,14 @@ importers:
   examples/with-vue-plugin:
     dependencies:
       '@vitejs/plugin-vue':
-        specifier: ^4.5.2
-        version: 4.5.2(vite@5.0.10)(vue@3.3.13)
+        specifier: ^4.6.0
+        version: 4.6.0(vite@5.0.10)(vue@3.3.13)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
-        specifier: ^0.4.150
-        version: 0.4.150(vite@5.0.10)
+        specifier: ^0.4.151
+        version: 0.4.151(vite@5.0.10)
       vike-vue:
         specifier: link:../../vike-vue
         version: link:../../vike-vue
@@ -189,6 +189,12 @@ packages:
 
   /@brillout/vite-plugin-import-build@0.2.20:
     resolution: {integrity: sha512-/bdw1dg+H1nOYSy2PzYInQoZlIFP2uwyaF2GX64fyBqVAEWGopiMlnx294CbysjmP9Z+fJe48TkMzyogkyIDLw==}
+    dependencies:
+      '@brillout/import': 0.2.3
+    dev: false
+
+  /@brillout/vite-plugin-import-build@0.3.1:
+    resolution: {integrity: sha512-ynQfW8o8a/WKaWn4r2y6t7dwzGj9t3KIWv2N4BJAr+3lqjlCP9+YVtoshMziLprlctpMnKzOOKqVMjwLWzx0Eg==}
     dependencies:
       '@brillout/import': 0.2.3
     dev: false
@@ -806,6 +812,17 @@ packages:
 
   /@vitejs/plugin-vue@4.5.2(vite@5.0.10)(vue@3.3.13):
     resolution: {integrity: sha512-UGR3DlzLi/SaVBPX0cnSyE37vqxU3O6chn8l0HJNzQzDia6/Au2A4xKv+iIJW8w2daf80G7TYHhi1pAUjdZ0bQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^4.0.0 || ^5.0.0
+      vue: ^3.2.25
+    dependencies:
+      vite: 5.0.10(@types/node@20.10.5)
+      vue: 3.3.13(typescript@5.3.3)
+    dev: false
+
+  /@vitejs/plugin-vue@4.6.0(vite@5.0.10)(vue@3.3.13):
+    resolution: {integrity: sha512-XHuyFdAikWRmHuAd89FOyUGIjrBU5KlxJtyi2hVeR9ySGFxQwE0bl5xAQju/ArMq5azdBivY4d+D2yPKwoYWUg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0 || ^5.0.0
@@ -2016,6 +2033,32 @@ packages:
       '@brillout/picocolors': 1.0.10
       '@brillout/require-shim': 0.1.2
       '@brillout/vite-plugin-import-build': 0.2.20
+      acorn: 8.10.0
+      cac: 6.7.14
+      es-module-lexer: 1.3.0
+      esbuild: 0.17.19
+      fast-glob: 3.3.1
+      sirv: 2.0.3
+      source-map-support: 0.5.21
+      vite: 5.0.10(@types/node@20.10.5)
+    dev: false
+
+  /vike@0.4.151(vite@5.0.10):
+    resolution: {integrity: sha512-Jq71YsW3QWdWAQQt5mZfDoeBNVOG4gbQecNZT3wV/a2Sp9s5v8YTK5wLlCSmh/mzioRo1rEo5q7jXPIfWtG7FA==}
+    engines: {node: '>=16.0.0'}
+    hasBin: true
+    peerDependencies:
+      react-streaming: '>=0.3.5'
+      vite: '>=3.1.0'
+    peerDependenciesMeta:
+      react-streaming:
+        optional: true
+    dependencies:
+      '@brillout/import': 0.2.3
+      '@brillout/json-serializer': 0.5.8
+      '@brillout/picocolors': 1.0.10
+      '@brillout/require-shim': 0.1.2
+      '@brillout/vite-plugin-import-build': 0.3.1
       acorn: 8.10.0
       cac: 6.7.14
       es-module-lexer: 1.3.0
