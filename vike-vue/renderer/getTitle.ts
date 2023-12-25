@@ -8,6 +8,13 @@ import { isCallable } from './utils/isCallable.js'
  * the page's onBeforeRender() hook or from the config.
  */
 function getTitle(pageContext: PageContext): null | string {
+  // from data() hook
+  if (pageContext.data?.title !== undefined) {
+    return pageContext.data.title
+  }
+
+  // TODO/next-major-release: remove support for setting title over onBeforeRender()
+  // from onBeforeRender() hook
   if (pageContext.title !== undefined) {
     return pageContext.title
   }

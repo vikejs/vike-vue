@@ -8,7 +8,8 @@
     ".": "./dist/renderer/+config.js",
     "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
-    "./usePageContext": "./dist/components/usePageContext.js"
+    "./usePageContext": "./dist/components/usePageContext.js",
+    "./useData": "./dist/components/useData.js"
   },
   "dependencies": {},
   "scripts": {
@@ -19,7 +20,7 @@
   "peerDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
     "vite": "^4.5.1 || ^5.0.7",
-    "vike": "^0.4.150",
+    "vike": "^0.4.151",
     "vue": "^3.3.12"
   },
   "devDependencies": {
@@ -35,6 +36,9 @@
       ],
       "usePageContext": [
         "./dist/components/usePageContext.d.ts"
+      ],
+      "useData": [
+        "./dist/components/useData.d.ts"
       ],
       "renderer/onRenderHtml": [
         "./dist/renderer/onRenderHtml.d.ts"

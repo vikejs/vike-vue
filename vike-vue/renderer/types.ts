@@ -15,10 +15,22 @@ declare global {
       // to `false` (SPA mode).
       Page?: Component
 
-      /** Properties of the page's root Vue component. */
+      // TODO/next-major-release: remove pageProps (i.e. tell users to use data() instead of onBeforeRender() to fetch data)
+      /** Properties of the page's root Vue component - e.g. set by onBeforeRender() hook */
       pageProps?: PageProps
 
-      /** &lt;title>${title}&lt;/title> - has precedence over the config */
+      // TODO/next-major-release: remove support for setting title over onBeforeRender()
+      /** &lt;title>${title}&lt;/title> - set by onBeforeRender() hook, has precedence over the config */
+      title?: string
+
+      // Needed by getTitle()
+      data?: Data
+    }
+
+    // Can be extended by the user, see examples/basic/pages/star-wars/index/+onBeforePrerenderStart.ts
+    interface Data {
+      // Needed by getTitle()
+      /** &lt;title>${title}&lt;/title> - set by data() hook, has precedence over the onBeforeRender() hook */
       title?: string
     }
   }

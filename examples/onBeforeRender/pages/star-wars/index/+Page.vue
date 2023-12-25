@@ -6,11 +6,9 @@
     </li>
   </ol>
   <p>Source: <a href="https://star-wars.brillout.com">star-wars.brillout.com</a>.</p>
-  <p>Data can be fetched by using the <code>data()</code> hook.</p>
+  <p>Data can be fetched by using the <code>onBeforeRender()</code> hook.</p>
 </template>
 
 <script lang="ts" setup>
-import type { Data } from './+data'
-import { useData } from 'vike-vue/useData'
-const { movies } = useData<Data>()
+defineProps(['movies'])
 </script>
