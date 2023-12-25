@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/vikejs/vike-vue/compare/v0.5.1...v0.5.2) (2023-12-25)
+
+
+### Bug Fixes
+
+* further ensure Vue doesn't swallow errors ([1a0acc0](https://github.com/vikejs/vike-vue/commit/1a0acc03de36e32ee137c480e9e761726001ddaf))
+
+
+
 ## [0.5.1](https://github.com/vikejs/vike-vue/compare/v0.5.0...v0.5.1) (2023-12-07)
 
 ### Features
