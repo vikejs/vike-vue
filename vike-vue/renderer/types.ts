@@ -24,14 +24,10 @@ declare global {
       title?: string
 
       // Needed by getTitle()
-      data?: Data
-    }
-
-    // Can be extended by the user, see examples/basic/pages/star-wars/index/+onBeforePrerenderStart.ts
-    interface Data {
-      // Needed by getTitle()
-      /** &lt;title>${title}&lt;/title> - set by data() hook, has precedence over the onBeforeRender() hook */
-      title?: string
+      data?: {
+        /** &lt;title>${title}&lt;/title> - set by data() hook, has precedence over the onBeforeRender() hook */
+        title?: string
+      }
     }
   }
 }

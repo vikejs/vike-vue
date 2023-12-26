@@ -2,11 +2,16 @@
 export { onBeforePrerenderStart }
 
 import type { OnBeforePrerenderStartAsync } from 'vike/types'
+import type { Data as DataMovies } from './+data'
+import type { Data as DataMovie } from '../movie/+data'
 import { filterMovieData } from '../filterMovieData'
 import { fetchStarWarsMovies, filterMoviesData, getTitle } from './data'
-import { Movie } from '../types'
 
-const onBeforePrerenderStart: OnBeforePrerenderStartAsync = async (): ReturnType<OnBeforePrerenderStartAsync> => {
+type Data = DataMovie | DataMovies
+
+const onBeforePrerenderStart: OnBeforePrerenderStartAsync<Data> = async (): ReturnType<
+  OnBeforePrerenderStartAsync<Data>
+> => {
   const movies = await fetchStarWarsMovies()
 
   return [
@@ -39,13 +44,4 @@ const onBeforePrerenderStart: OnBeforePrerenderStartAsync = async (): ReturnType
       }
     })
   ]
-}
-
-declare global {
-  namespace Vike {
-    interface Data {
-      movies?: Movie[]
-      movie?: Movie
-    }
-  }
 }

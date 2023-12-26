@@ -10,7 +10,7 @@
     "typescript": "^5.3.3",
     "vike-vue": "0.5.2",
     "vite": "^5.0.10",
-    "vike": "^0.4.151",
+    "vike": "^0.4.152",
     "vue": "^3.3.13",
     "vue-toast-notification": "^3.1.2"
   },
