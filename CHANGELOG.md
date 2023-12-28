@@ -1,3 +1,12 @@
+## [0.5.3](https://github.com/vikejs/vike-vue/compare/v0.5.2...v0.5.3) (2023-12-28)
+
+
+### Features
+
+* useData() ([7409c4e](https://github.com/vikejs/vike-vue/commit/7409c4ead9f185c5c95bb871375683a7d4fe1a45))
+
+
+
 ## [0.5.2](https://github.com/vikejs/vike-vue/compare/v0.5.1...v0.5.2) (2023-12-25)
 
 
