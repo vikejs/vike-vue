@@ -17,7 +17,7 @@ import { useAttrs, computed } from 'vue'
 import { usePageContext } from 'vike-vue/usePageContext'
 
 const pageContext = usePageContext()
-const { href } = useAttrs()
+const { href } = useAttrs() as { href: string }
 const isActive = computed(() => {
   const { urlPathname } = pageContext
   return href === '/' ? urlPathname === href : urlPathname.startsWith(href)
