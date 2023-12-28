@@ -12,7 +12,8 @@ const key = '__vike-vue__bcc79e46-5797-40d8-9cec-e9daf9c62ce8'
 
 function usePageContext() {
   const pageContext = inject(key)
-  return pageContext
+  if (!pageContext) throw new Error('setPageContext() not called in parent')
+  return pageContext as PageContext
 }
 
 function setPageContext(app: App, pageContext: PageContext) {
