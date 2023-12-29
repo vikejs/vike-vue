@@ -15,7 +15,7 @@
     "vike-vue": "0.5.3",
     "vite": "^5.0.10",
     "unplugin-vue-markdown": "^0.25.2",
-    "vike": "^0.4.152",
+    "vike": "0.4.152-commit-6f928f9",
     "vue": "^3.3.13"
   },
   "type": "module"
