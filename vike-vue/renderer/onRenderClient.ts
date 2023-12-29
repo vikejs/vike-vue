@@ -23,7 +23,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     // Client routing
     // See https://vike.dev/server-routing-vs-client-routing
 
-    app.changePage(pageContext)
+    await app.changePage(pageContext)
 
     // Get the page's `title` config value, which may be different from the
     // previous page. It can even be null, in which case we should unset the
