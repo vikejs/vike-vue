@@ -2,6 +2,7 @@ import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactiv
 import type { Component, PageProps } from './types'
 import type { Config, PageContext } from 'vike/types'
 import { setPageContext } from '../components/usePageContext.js'
+import { objectAssign } from '../utils/objectAssign'
 
 export { createVueApp }
 
@@ -76,12 +77,4 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
   setPageContext(app, pageContextReactive)
 
   return app
-}
-
-// Same as `Object.assign()` but with type inference
-function objectAssign<Obj extends object, ObjAddendum>(
-  obj: Obj,
-  objAddendum: ObjAddendum
-): asserts obj is Obj & ObjAddendum {
-  Object.assign(obj, objAddendum)
 }
