@@ -1,5 +1,10 @@
 ## [0.5.3](https://github.com/vikejs/vike-vue/compare/v0.5.2...v0.5.3) (2023-12-28)
 
+> [!WARNING]
+> [`pageContext.pageProps` and `pageContext.title`](https://github.com/vikejs/vike-vue/blob/cc929d396a/examples/onBeforeRender/pages/star-wars/index/%2BonBeforeRender.ts)
+> are deprecated. Set `pageContext.data` instead. See
+> [example](https://github.com/vikejs/vike-vue/blob/cc929d396a/examples/basic/pages/star-wars/index/%2Bdata.ts#L11).
+
 
 ### Features
 
