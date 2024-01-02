@@ -5,7 +5,7 @@ import { isCallable } from './utils/isCallable.js'
 
 /**
  * Get the page's title if defined, either from the additional data fetched by
- * the page's onBeforeRender() hook or from the config.
+ * the page's data() and onBeforeRender() hook or from the config.
  */
 function getTitle(pageContext: PageContext): null | string {
   // from data() hook
