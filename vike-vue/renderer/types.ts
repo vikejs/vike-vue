@@ -23,6 +23,8 @@ declare global {
       /** &lt;title>${title}&lt;/title> - set by onBeforeRender() hook, has precedence over the config */
       title?: string
 
+      lang?: string
+
       // Needed by getTitle()
       data?: {
         /** &lt;title>${title}&lt;/title> - set by data() hook, has precedence over the onBeforeRender() hook */
