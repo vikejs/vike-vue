@@ -4,6 +4,7 @@ export { onRenderHtml }
 import { renderToNodeStream, renderToString } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getTitle } from './getTitle.js'
+import { getLang } from './getLang.js'
 import type { OnRenderHtmlAsync } from 'vike/types'
 import { createVueApp } from './app.js'
 import { App } from 'vue'
@@ -42,7 +43,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
-  const lang = pageContext.config.lang || 'en'
+  const lang = getLang(pageContext) || 'en'
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang='${lang}'>

@@ -2,6 +2,7 @@
 export { onRenderClient }
 
 import { createVueApp } from './app.js'
+import { getLang } from './getLang.js'
 import { getTitle } from './getTitle.js'
 import type { OnRenderClientAsync } from 'vike/types'
 
@@ -29,6 +30,8 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     // previous page. It can even be null, in which case we should unset the
     // document title.
     const title = getTitle(pageContext)
+    const lang = getLang(pageContext) || 'en'
     document.title = title || ''
+    document.documentElement.lang = lang
   }
 }
