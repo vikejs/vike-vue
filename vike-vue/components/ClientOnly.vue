@@ -1,17 +1,10 @@
 <template>
-  <Suspense>
-    <component :is="shown ? AsyncComponent : EmptyComponent" v-bind="$attrs" />
-    <template v-if="!shown" #fallback>
-      <slot name="fallback" />
-    </template>
-  </Suspense>
+  <component :is="client ? ClientComponent : ServerComponent" />
 </template>
 
 <script lang="ts" setup generic="T extends AsyncComponentLoader">
 import { h, ref, onMounted, defineComponent, defineAsyncComponent, useSlots, type AsyncComponentLoader } from 'vue';
-import type { Component } from '../renderer/types';
-
-defineOptions({ inheritAttrs: false })
+import type { Component } from "../renderer/types"
 
 type Props = {
   load: T
@@ -27,26 +20,23 @@ type Slots = {
 defineSlots<Slots>()
 const slots = useSlots()
 
-const ClientOnlyError = defineComponent({
-  setup: () => h("p", "Error loading component"),
-})
-
-const AsyncComponent = defineAsyncComponent({
+const ClientComponent = defineAsyncComponent({
   loader: props.load,
   loadingComponent: slots.fallback,
-  errorComponent: slots.error ?? ClientOnlyError,
+  errorComponent: slots.error ?? (() => h("p", "Error loading component")),
   onError: (e) => {
     console.error("Component loading failed:", e)
+    throw e
   },
   suspensible: false,
 })
 
-const EmptyComponent = defineComponent({
-  render: () => null,
+const ServerComponent = defineComponent({
+  render: () => slots.fallback?.(),
 })
 
-const shown = ref(false)
+const client = ref(false)
 onMounted(() => {
-  shown.value = true
+  client.value = true
 })
 </script>
