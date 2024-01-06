@@ -16,10 +16,17 @@
       <p>Custom error message when component fails to load</p>
     </template>
   </ClientOnly>
+  <h2>ClientOnly with sync component</h2>
+  <ClientOnly>
+    <p>I get rendered!</p>
+    <template #fallback>
+      <p>Loading...</p>
+    </template>
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect } from "vue"
+import { ref, watchEffect } from 'vue';
 import ClientOnly from '../../../../vike-vue/components/ClientOnly.vue'
 
 const delay = 3000;
