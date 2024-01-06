@@ -8,6 +8,7 @@
       <Link href="/about">About</Link>
       <Link href="/markdown">Markdown</Link>
       <Link href="/star-wars">Data Fetching</Link>
+      <Link href="/client-only">Client-only</Link>
     </div>
     <div class="content"><slot /></div>
   </div>
