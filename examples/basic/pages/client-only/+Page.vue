@@ -1,5 +1,12 @@
 <template>
   <h1>ClientOnly</h1>
+  <h2>Basic Usage</h2>
+  <pre><code>{{ `<ClientOnly :load="() => import('../../components/Counter.vue')">
+  <template #fallback>
+    <p>Loading...</p>
+  </template>
+</ClientOnly>
+` }}</code></pre>
   <p>Time until load: {{ timeLeft / 1000 }}s</p>
   <h2>ClientOnly that succeeds</h2>
   <ClientOnly :load="load">
@@ -14,13 +21,6 @@
     </template>
     <template #error>
       <p>Custom error message when component fails to load</p>
-    </template>
-  </ClientOnly>
-  <h2>ClientOnly with sync component</h2>
-  <ClientOnly>
-    <p>I get rendered!</p>
-    <template #fallback>
-      <p>Loading...</p>
     </template>
   </ClientOnly>
 </template>
@@ -52,3 +52,10 @@ const fail = () => new Promise((resolve, reject) => setTimeout(() => {
   reject('Component did not laod')
 }, delay))
 </script>
+
+<style scoped>
+pre {
+  background-color: #eee;
+  padding: 1rem;
+}
+</style>
