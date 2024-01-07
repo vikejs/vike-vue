@@ -6,12 +6,12 @@
     "test": "tsc --noEmit"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^4.6.0",
+    "@vitejs/plugin-vue": "^4.6.2",
     "typescript": "^5.3.3",
     "vike-vue": "0.5.3",
-    "vite": "^5.0.10",
-    "vike": "0.4.152-commit-6f928f9",
-    "vue": "^3.3.13",
+    "vite": "^5.0.11",
+    "vike": "0.4.155",
+    "vue": "^3.4.5",
     "vue-toast-notification": "^3.1.2"
   },
   "type": "module"

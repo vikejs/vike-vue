@@ -24,11 +24,11 @@
     "vue": "^3.3.12"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.1.13",
-    "@types/node": "^20.10.5",
+    "@brillout/release-me": "^0.1.14",
+    "@types/node": "^20.10.7",
     "typescript": "^5.3.3",
-    "vike": "0.4.152-commit-6f928f9",
-    "vue": "^3.3.13"
+    "vike": "0.4.155",
+    "vue": "^3.4.5"
   },
   "typesVersions": {
     "*": {
