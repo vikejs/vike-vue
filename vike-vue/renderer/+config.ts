@@ -1,6 +1,12 @@
+export type { OnCreateAppSync }
+export type { OnCreateAppAsync }
+
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
 import type { Component } from './types'
-import { Plugin } from 'vue'
+import type { App, Plugin } from 'vue'
+
+type OnCreateAppSync = (app: App, pageContext: PageContext) => void
+type OnCreateAppAsync = (app: App, pageContext: PageContext) => Promise<void>
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -72,6 +78,9 @@ export default {
       // the client always, but if SSR is disabled, onRenderHtml won't make use
       // of it.
       env: { server: true, client: true }
+    },
+    onCreateApp: {
+      env: { server: true, client: true }
     }
   }
 } satisfies Config
@@ -139,6 +148,11 @@ declare global {
 
       /** The page's root Vue component */
       Page?: Component
+
+      /**
+       * Hook that is invoked after the app has been created.
+       */
+      onCreateApp?: OnCreateAppSync | OnCreateAppAsync
     }
   }
 }
