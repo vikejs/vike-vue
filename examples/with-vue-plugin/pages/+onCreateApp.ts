@@ -1,8 +1,10 @@
-import type { OnCreateAppSync } from "vike-vue"
+export { onCreateApp }
 
-// callback that is invoked right after creating the app - useful for registering plugins, etc.
-const onCreateApp: OnCreateAppSync = ({ app }): ReturnType<OnCreateAppSync> => {
+import type { OnCreateAppSync } from 'vike-vue'
+import ToastPlugin from 'vue-toast-notification'
+
+const onCreateApp: OnCreateAppSync = (pageContext): ReturnType<OnCreateAppSync> => {
+  const { app } = pageContext
+  app.use(ToastPlugin)
   console.log(`Vue version: ${app.version}`)
 }
-
-export default onCreateApp
