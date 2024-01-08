@@ -12,7 +12,6 @@ export default defineConfig({
     lib: {
       entry: {
         config: resolve(__dirname, "./renderer/+config.ts"),
-        clientOnly: resolve(__dirname, "./components/ClientOnly.vue"),
         onRenderClient: resolve(__dirname, "./renderer/onRenderClient.ts"),
         onRenderHtml: resolve(__dirname, "./renderer/onRenderHtml.ts"),
         usePageContext: resolve(__dirname, "./components/usePageContext.ts"),
