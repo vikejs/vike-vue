@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from "node:path"
-import dts from "vite-plugin-dts"
+import { resolve } from 'node:path'
+import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,31 +11,22 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: {
-        config: resolve(__dirname, "./renderer/+config.ts"),
-        onRenderClient: resolve(__dirname, "./renderer/onRenderClient.ts"),
-        onRenderHtml: resolve(__dirname, "./renderer/onRenderHtml.ts"),
-        usePageContext: resolve(__dirname, "./components/usePageContext.ts"),
-        useData: resolve(__dirname, "./components/useData.ts"),
+        ['renderer/+config']: resolve(__dirname, './renderer/+config.ts'),
+        ['renderer/onRenderClient']: resolve(__dirname, './renderer/onRenderClient.ts'),
+        ['renderer/onRenderHtml']: resolve(__dirname, './renderer/onRenderHtml.ts'),
+        ['components/usePageContext']: resolve(__dirname, './components/usePageContext.ts'),
+        ['components/useData']: resolve(__dirname, './components/useData.ts')
       },
-      formats: ["es", "cjs"],
-      fileName: (format, entryName) => {
-        if (entryName === "config") {
-          entryName = "+config"
-        }
-
-        const extension = format === "es" ? "js" : "cjs"
-
-        return `${entryName}.${extension}`
-      },
+      formats: ['es']
     },
     rollupOptions: {
-      external: ["vue", "vike", "vike/server", "vike/types"],
+      external: ['vue', 'vike', 'vike/server', 'vike/types'],
       output: {
         sanitizeFileName: false,
         globals: {
-          vue: "Vue"
+          vue: 'Vue'
         }
       }
     }
-  },
+  }
 })
