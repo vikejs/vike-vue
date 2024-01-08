@@ -14,11 +14,6 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     const container = document.getElementById('page-view')!
     const ssr = container.innerHTML !== ''
     app = createVueApp(pageContext, ssr)
-    if (pageContext.config.vuePlugins) {
-      pageContext.config.vuePlugins.forEach(({ plugin, options }) => {
-        app.use(plugin, options)
-      })
-    }
     app.mount(container)
   } else {
     // Client routing
