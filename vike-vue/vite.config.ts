@@ -28,7 +28,8 @@ export default defineConfig({
           vue: 'Vue'
         }
       }
-    }
+    },
+    minify: false
   }
 })
 
