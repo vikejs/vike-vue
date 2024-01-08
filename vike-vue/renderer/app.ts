@@ -82,7 +82,11 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
       app.use(plugin, options)
     })
   }
-  pageContext.config.onCreateApp?.(app, pageContext)
+
+  // avoid copying here
+  const ctxWithApp = Object.assign(pageContext, { app })
+
+  pageContext.config.onCreateApp?.(ctxWithApp)
 
   return app
 }
