@@ -6,29 +6,29 @@
   "types": "./dist/renderer/+config.d.ts",
   "exports": {
     ".": {
-      "default": "./dist/+config.js",
+      "default": "./dist/renderer/+config.js",
       "types": "./dist/renderer/+config.d.ts"
     },
     "./renderer/onRenderHtml": {
-      "default": "./dist/onRenderHtml.js",
+      "default": "./dist/renderer/onRenderHtml.js",
       "types": "./dist/renderer/onRenderHtml.d.ts"
     },
     "./renderer/onRenderClient": {
-      "default": "./dist/onRenderClient.js",
+      "default": "./dist/renderer/onRenderClient.js",
       "types": "./dist/renderer/onRenderClient.d.ts"
     },
     "./usePageContext": {
-      "default": "./dist/usePageContext.js",
+      "default": "./dist/components/usePageContext.js",
       "types": "./dist/components/usePageContext.d.ts"
     },
     "./useData": {
-      "default": "./dist/useData.js",
+      "default": "./dist/components/useData.js",
       "types": "./dist/components/useData.d.ts"
     }
   },
   "scripts": {
     "dev": "vite build --watch",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "release": "release-me patch"
   },
   "peerDependencies": {

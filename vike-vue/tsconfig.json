@@ -19,10 +19,5 @@
     "declaration": true,
     "outDir": "./dist/",
     "noEmit": true
-  },
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  }
 }
