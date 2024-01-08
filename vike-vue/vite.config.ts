@@ -7,12 +7,21 @@ import dts from "vite-plugin-dts"
 export default defineConfig({
   plugins: [vue(), dts()],
   build: {
+    emptyOutDir: true,
+    sourcemap: true,
     lib: {
-      entry: resolve(__dirname, "index.ts"),
-      formats: ["es"]
+      entry: {
+        config: resolve(__dirname, "./renderer/+config.ts"),
+        clientOnly: resolve(__dirname, "./components/ClientOnly.vue"),
+        onRenderClient: resolve(__dirname, "./renderer/onRenderClient.ts"),
+        onRenderHtml: resolve(__dirname, "./renderer/onRenderHtml.ts"),
+        usePageContext: resolve(__dirname, "./components/usePageContext.ts"),
+        useData: resolve(__dirname, "./components/useData.ts"),
+      },
+      formats: ["es"],
     },
     rollupOptions: {
-      external: ["vue", "vike/server"],
+      external: ["vue", "vike", "vike/server", "vike/types"],
       output: {
         globals: {
           vue: "Vue"
