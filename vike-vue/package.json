@@ -11,6 +11,7 @@
     "./usePageContext": "./dist/components/usePageContext.js",
     "./useData": "./dist/components/useData.js"
   },
+  "dependencies": {},
   "scripts": {
     "dev": "vite build --watch",
     "build": "rm -rf dist/ && vite build",
