@@ -2,27 +2,14 @@
   "name": "vike-vue",
   "version": "0.5.3",
   "type": "module",
+  "main": "./dist/renderer/+config.js",
+  "types": "./dist/renderer/+config.d.ts",
   "exports": {
-    ".": {
-      "default": "./dist/renderer/+config.js",
-      "types": "./dist/renderer/+config.d.ts"
-    },
-    "./renderer/onRenderHtml": {
-      "default": "./dist/renderer/onRenderHtml.js",
-      "types": "./dist/renderer/onRenderHtml.d.ts"
-    },
-    "./renderer/onRenderClient": {
-      "default": "./dist/renderer/onRenderClient.js",
-      "types": "./dist/renderer/onRenderClient.d.ts"
-    },
-    "./usePageContext": {
-      "default": "./dist/components/usePageContext.js",
-      "types": "./dist/components/usePageContext.d.ts"
-    },
-    "./useData": {
-      "default": "./dist/components/useData.js",
-      "types": "./dist/components/useData.d.ts"
-    }
+    ".": "./dist/renderer/+config.js",
+    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
+    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
+    "./usePageContext": "./dist/components/usePageContext.js",
+    "./useData": "./dist/components/useData.js"
   },
   "scripts": {
     "dev": "vite build --watch",
