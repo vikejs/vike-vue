@@ -6,28 +6,23 @@
   "types": "./dist/renderer/+config.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/+config.js",
-      "require": "./dist/+config.cjs",
+      "default": "./dist/+config.js",
       "types": "./dist/renderer/+config.d.ts"
     },
     "./renderer/onRenderHtml": {
-      "import": "./dist/onRenderHtml.js",
-      "require": "./dist/onRenderHtml.cjs",
+      "default": "./dist/onRenderHtml.js",
       "types": "./dist/renderer/onRenderHtml.d.ts"
     },
     "./renderer/onRenderClient": {
-      "import": "./dist/onRenderClient.js",
-      "require": "./dist/onRenderClient.cjs",
+      "default": "./dist/onRenderClient.js",
       "types": "./dist/renderer/onRenderClient.d.ts"
     },
     "./usePageContext": {
-      "import": "./dist/usePageContext.js",
-      "require": "./dist/usePageContext.cjs",
+      "default": "./dist/usePageContext.js",
       "types": "./dist/components/usePageContext.d.ts"
     },
     "./useData": {
-      "import": "./dist/useData.js",
-      "require": "./dist/useData.cjs",
+      "default": "./dist/useData.js",
       "types": "./dist/components/useData.d.ts"
     }
   },
