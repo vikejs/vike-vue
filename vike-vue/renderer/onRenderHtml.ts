@@ -18,11 +18,6 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   if (!!pageContext.Page) {
     // SSR is enabled
     const app = createVueApp(pageContext)
-    if (pageContext.config.vuePlugins) {
-      pageContext.config.vuePlugins.forEach(({ plugin, options }) => {
-        app.use(plugin, options)
-      })
-    }
     pageView = !stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)

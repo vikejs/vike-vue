@@ -142,7 +142,7 @@ declare global {
        * See https://vuejs.org/guide/reusability/plugins.html
        *
        * @default []
-       *
+       * @deprecated Use {@link onCreateApp} instead
        */
       vuePlugins?: VuePluginWithOptions[]
 

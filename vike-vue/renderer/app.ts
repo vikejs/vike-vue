@@ -76,6 +76,12 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
   // Make `pageContext` accessible from any Vue component
   setPageContext(app, pageContextReactive)
 
+  if (pageContext.config.vuePlugins) {
+    console.warn('[Warning] +vuePlugins.js is deprecated, use +onCreateApp() instead')
+    pageContext.config.vuePlugins.forEach(({ plugin, options }) => {
+      app.use(plugin, options)
+    })
+  }
   pageContext.config.onCreateApp?.(app, pageContext)
 
   return app
