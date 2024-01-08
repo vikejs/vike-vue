@@ -26,7 +26,7 @@
   },
   "scripts": {
     "dev": "vite build --watch",
-    "build": "vite build",
+    "build": "rm -rf dist/ && vite build",
     "release": "release-me patch"
   },
   "peerDependencies": {
