@@ -10,7 +10,6 @@
     "allowSyntheticDefaultImports": true,
     "noUncheckedIndexedAccess": true,
     "strict": true,
-    "declaration": true,
     "outDir": "./dist/"
   }
 }
