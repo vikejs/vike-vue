@@ -2,32 +2,37 @@
   "name": "vike-vue",
   "version": "0.5.3",
   "type": "module",
-  "main": "./dist/renderer/+config.js",
+  "main": "./dist/+config.js",
   "types": "./dist/renderer/+config.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/config.js",
+      "import": "./dist/+config.js",
+      "require": "./dist/+config.cjs",
       "types": "./dist/renderer/+config.d.ts"
     },
     "./renderer/onRenderHtml": {
       "import": "./dist/onRenderHtml.js",
+      "require": "./dist/onRenderHtml.cjs",
       "types": "./dist/renderer/onRenderHtml.d.ts"
     },
     "./renderer/onRenderClient": {
       "import": "./dist/onRenderClient.js",
+      "require": "./dist/onRenderClient.cjs",
       "types": "./dist/renderer/onRenderClient.d.ts"
     },
     "./usePageContext": {
       "import": "./dist/usePageContext.js",
+      "require": "./dist/usePageContext.cjs",
       "types": "./dist/components/usePageContext.d.ts"
     },
     "./useData": {
       "import": "./dist/useData.js",
+      "require": "./dist/useData.cjs",
       "types": "./dist/components/useData.d.ts"
     }
   },
   "scripts": {
-    "dev": "vue-tsc --watch",
+    "dev": "vite build --watch",
     "build": "vue-tsc && vite build",
     "release": "release-me patch"
   },

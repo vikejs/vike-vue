@@ -17,11 +17,21 @@ export default defineConfig({
         usePageContext: resolve(__dirname, "./components/usePageContext.ts"),
         useData: resolve(__dirname, "./components/useData.ts"),
       },
-      formats: ["es"],
+      formats: ["es", "cjs"],
+      fileName: (format, entryName) => {
+        if (entryName === "config") {
+          entryName = "+config"
+        }
+
+        const extension = format === "es" ? "js" : "cjs"
+
+        return `${entryName}.${extension}`
+      },
     },
     rollupOptions: {
       external: ["vue", "vike", "vike/server", "vike/types"],
       output: {
+        sanitizeFileName: false,
         globals: {
           vue: "Vue"
         }
