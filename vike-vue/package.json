@@ -5,15 +5,34 @@
   "main": "./dist/renderer/+config.js",
   "types": "./dist/renderer/+config.d.ts",
   "exports": {
-    ".": "./dist/renderer/+config.js",
-    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
-    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
-    "./usePageContext": "./dist/components/usePageContext.js",
-    "./useData": "./dist/components/useData.js"
+    ".": {
+      "import": "./dist/config.js",
+      "types": "./dist/renderer/+config.d.ts"
+    },
+    "./renderer/onRenderHtml": {
+      "import": "./dist/onRenderHtml.js",
+      "types": "./dist/renderer/onRenderHtml.d.ts"
+    },
+    "./renderer/onRenderClient": {
+      "import": "./dist/onRenderClient.js",
+      "types": "./dist/renderer/onRenderClient.d.ts"
+    },
+    "./usePageContext": {
+      "import": "./dist/usePageContext.js",
+      "types": "./dist/components/usePageContext.d.ts"
+    },
+    "./useData": {
+      "import": "./dist/useData.js",
+      "types": "./dist/components/useData.d.ts"
+    },
+    "./ClientOnly": {
+      "import": "./dist/clientOnly.js",
+      "types": "./dist/components/ClientOnly.vue.d.ts"
+    }
   },
   "scripts": {
     "dev": "vue-tsc --watch",
-    "build": "rm -rf dist/ && vue-tsc && vite build",
+    "build": "vue-tsc && vite build",
     "release": "release-me patch"
   },
   "peerDependencies": {
@@ -49,6 +68,9 @@
       ],
       "renderer/onRenderClient": [
         "./dist/renderer/onRenderClient.d.ts"
+      ],
+      "components/ClientOnly": [
+        "./dist/components/ClientOnly.vue.d.ts"
       ]
     }
   },
