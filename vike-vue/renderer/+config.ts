@@ -5,8 +5,9 @@ import type { Config, ConfigEffect, PageContext } from 'vike/types'
 import type { Component } from './types'
 import type { App, Plugin } from 'vue'
 
-type OnCreateAppSync = (app: App, pageContext: PageContext) => void
-type OnCreateAppAsync = (app: App, pageContext: PageContext) => Promise<void>
+type PageContextWithApp = PageContext & { app: App }
+type OnCreateAppSync = (pageContext: PageContextWithApp) => void
+type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
