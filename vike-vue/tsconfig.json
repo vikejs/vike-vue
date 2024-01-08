@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
     "module": "ES2020",
     "moduleResolution": "Node",
     "target": "ES2019",
@@ -16,8 +17,6 @@
     "allowSyntheticDefaultImports": true,
     "noUncheckedIndexedAccess": true,
     "strict": true,
-    "declaration": true,
-    "outDir": "./dist/",
-    "noEmit": true
+    "declaration": true
   }
 }
