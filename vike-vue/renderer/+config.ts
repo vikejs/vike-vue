@@ -5,9 +5,26 @@ import type { Config, ConfigEffect, PageContext } from 'vike/types'
 import type { Component } from './types'
 import type { App, Plugin } from 'vue'
 
-type PageContextWithApp = PageContext & { app: App }
-type OnCreateAppSync = (pageContext: PageContextWithApp) => void
-type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
+/**
+ * Hook called right after creating Vue's `app` instance.
+ *
+ * Typically used for registering Vue plugins.
+ *
+ * See also:
+ *  - https://vuejs.org/guide/reusability/plugins.html
+ *  - https://vuejs.org/api/application.html#createapp
+ */
+type OnCreateAppSync = (pageContext: PageContext & { app: App }) => void
+/**
+ * Hook called right after creating Vue's `app` instance.
+ *
+ * Typically used for registering Vue plugins.
+ *
+ * See also:
+ *  - https://vuejs.org/guide/reusability/plugins.html
+ *  - https://vuejs.org/api/application.html#createapp
+ */
+type OnCreateAppAsync = (pageContext: PageContext & { app: App }) => Promise<void>
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -136,22 +153,20 @@ declare global {
        */
       stream?: boolean
 
-      /**
-       * List of Vue plugins (and their respective options) to be installed with
-       * `app.vue(plugin, options)`.
-       *
-       * See https://vuejs.org/guide/reusability/plugins.html
-       *
-       * @default []
-       * @deprecated Use {@link onCreateApp} instead
-       */
+      /** @deprecated Use `onCreateApp()` instead. */
       vuePlugins?: VuePluginWithOptions[]
 
       /** The page's root Vue component */
       Page?: Component
 
       /**
-       * Hook that is invoked after the app has been created.
+       * Hook called right after creating Vue's `app` instance.
+       *
+       * Typically used for registering Vue plugins.
+       *
+       * See also:
+       *  - https://vuejs.org/guide/reusability/plugins.html
+       *  - https://vuejs.org/api/application.html#createapp
        */
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync
     }

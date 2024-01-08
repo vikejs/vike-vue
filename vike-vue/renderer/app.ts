@@ -73,20 +73,18 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
   // We therefore use a reactive pageContext.
   const pageContextReactive = reactive(pageContext)
 
+  objectAssign(pageContext, { app })
+  pageContext.config.onCreateApp?.(pageContext)
+
   // Make `pageContext` accessible from any Vue component
   setPageContext(app, pageContextReactive)
 
   if (pageContext.config.vuePlugins) {
-    console.warn('[Warning] +vuePlugins.js is deprecated, use +onCreateApp() instead')
+    console.warn('[vike-vue][warning] +vuePlugins.js is deprecated, use onCreateApp() instead')
     pageContext.config.vuePlugins.forEach(({ plugin, options }) => {
       app.use(plugin, options)
     })
   }
-
-  // avoid copying here
-  const ctxWithApp = Object.assign(pageContext, { app })
-
-  pageContext.config.onCreateApp?.(ctxWithApp)
 
   return app
 }
