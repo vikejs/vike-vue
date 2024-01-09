@@ -2,17 +2,40 @@
   "name": "vike-pinia",
   "version": "0.0.1",
   "description": "",
-  "main": "./dist/renderer/+config.js",
-  "types": "./dist/renderer/+config.d.ts",
+  "main": "./dist/+config.js",
+  "types": "./dist/+config.d.ts",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -rf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "exports": {
+    ".": "./dist/+config.js",
+    "./renderer/installPinia": "./dist/installPinia.js",
+    "./renderer/dehydratePinia": "./dist/dehydratePinia.js",
+    "./renderer/hydratePinia": "./dist/hydratePinia.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/+config.d.ts"
+      ],
+      "renderer/installPinia": [
+        "./dist/installPinia.d.ts"
+      ],
+      "renderer/dehydratePinia": [
+        "./dist/dehydratePinia.d.ts"
+      ],
+      "renderer/hydratePinia": [
+        "./dist/hydratePinia.d.ts"
+      ]
+    }
+  },
   "peerDependencies": {
     "vike": "^0.4.152",
     "pinia": "^2.0.0",
+    "vike-vue": "^0.5.3",
     "vue": "^3.0.0"
   },
   "devDependencies": {
@@ -21,11 +44,11 @@
     "pinia": "^2.1.7",
     "typescript": "^5.3.3",
     "vike": "0.4.156",
+    "vike-vue": "0.5.3",
     "vue": "^3.4.7"
   },
   "files": [
     "dist"
   ],
-  "author": "",
   "license": "MIT"
 }
