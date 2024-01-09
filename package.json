@@ -11,7 +11,8 @@
   },
   "pnpm": {
     "overrides": {
-      "vike-vue": "link:./vike-vue/"
+      "vike-vue": "link:./vike-vue/",
+      "vike-pinia": "link:./packages/vike-pinia/"
     }
   },
   "packageManager": "pnpm@8.6.12"
