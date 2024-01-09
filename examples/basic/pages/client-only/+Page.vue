@@ -8,7 +8,7 @@
 </ClientOnly>
 ` }}</code></pre>
   <p>Time until load: {{ timeLeft / 1000 }}s</p>
-  <h2>ClientOnly that succeeds</h2>
+  <h2>Demo</h2>
   <ClientOnly :load="load">
     <template #fallback>
       <p>Loading...</p>
