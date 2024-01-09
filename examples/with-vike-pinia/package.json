@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^5.0.2",
+    "pinia": "^2.1.7",
+    "typescript": "^5.3.3",
+    "vike": "0.4.156",
+    "vike-pinia": "0.0.1",
+    "vike-vue": "0.5.3",
+    "vite": "^5.0.11",
+    "vue": "^3.4.7"
+  },
+  "type": "module"
+}
