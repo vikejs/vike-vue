@@ -14,6 +14,7 @@ checkVikeVersion()
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const { stream } = pageContext.config
   let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
+  let storeState: string | undefined = undefined
 
   if (!!pageContext.Page) {
     // SSR is enabled
@@ -21,6 +22,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     pageView = !stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
+
+    storeState = pageContext.config.dehydrateStore?.({ ...pageContext, app })
   }
 
   const title = getTitle(pageContext)
@@ -58,7 +61,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   return {
     documentHtml,
     pageContext: {
-      enableEagerStreaming: true
+      enableEagerStreaming: true,
+      initialStoreState: storeState
     }
   }
 }

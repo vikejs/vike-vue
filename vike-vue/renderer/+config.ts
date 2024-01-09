@@ -1,10 +1,13 @@
 export type { OnCreateAppSync }
 export type { OnCreateAppAsync }
+export type { DehydrateStore, HydrateStore }
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
 import type { Component } from './types'
 import type { App, Plugin } from 'vue'
 
+type PageContextWithApp = PageContext & { app: App }
+
 /**
  * Hook called right after creating Vue's `app` instance.
  *
@@ -14,7 +17,7 @@ import type { App, Plugin } from 'vue'
  *  - https://vuejs.org/guide/reusability/plugins.html
  *  - https://vuejs.org/api/application.html#createapp
  */
-type OnCreateAppSync = (pageContext: PageContext & { app: App }) => void
+type OnCreateAppSync = (pageContext: PageContextWithApp) => void
 /**
  * Hook called right after creating Vue's `app` instance.
  *
@@ -24,7 +27,11 @@ type OnCreateAppSync = (pageContext: PageContext & { app: App }) => void
  *  - https://vuejs.org/guide/reusability/plugins.html
  *  - https://vuejs.org/api/application.html#createapp
  */
-type OnCreateAppAsync = (pageContext: PageContext & { app: App }) => Promise<void>
+type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
+
+type DehydrateStore = (pageContext: PageContextWithApp) => any
+
+type HydrateStore = (pageContext: PageContextWithApp) => void
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -60,7 +67,7 @@ export default {
   // be used by the renderers.
   // It is a cumulative config option, so a web app using vike-vue can extend
   // this list.
-  passToClient: ['pageProps', 'title', 'lang'],
+  passToClient: ['pageProps', 'title', 'lang', 'initialStoreState'],
 
   clientRouting: true,
   hydrationCanBeAborted: true,
@@ -99,7 +106,13 @@ export default {
     },
     onCreateApp: {
       env: { server: true, client: true }
-    }
+    },
+    dehydrateStore: {
+      env: { server: true }
+    },
+    hydrateStore: {
+      env: { server: false, client: true }
+    },
   }
 } satisfies Config
 
@@ -169,6 +182,10 @@ declare global {
        *  - https://vuejs.org/api/application.html#createapp
        */
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync
+
+      dehydrateStore?: DehydrateStore
+
+      hydrateStore?: HydrateStore
     }
   }
 }

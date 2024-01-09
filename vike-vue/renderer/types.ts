@@ -25,6 +25,8 @@ declare global {
 
       lang?: string
 
+      initialStoreState?: any
+
       // Needed by getTitle()
       data?: {
         /** &lt;title>${title}&lt;/title> - set by data() hook, has precedence over the onBeforeRender() hook */
