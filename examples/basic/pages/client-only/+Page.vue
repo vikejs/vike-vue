@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue';
-import ClientOnly from '../../../../vike-vue/components/ClientOnly.vue'
+import ClientOnly from 'vike-vue/ClientOnly'
 
 const delay = 3000;
 
