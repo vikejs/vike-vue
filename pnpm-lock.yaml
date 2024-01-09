@@ -20,8 +20,8 @@ importers:
         specifier: ^2.6.10
         version: 2.6.10
       '@vitejs/plugin-vue':
-        specifier: ^4.6.2
-        version: 4.6.2(vite@5.0.11)(vue@3.4.7)
+        specifier: ^5.0.2
+        version: 5.0.2(vite@5.0.11)(vue@3.4.7)
       cross-fetch:
         specifier: ^4.0.0
         version: 4.0.0
@@ -56,8 +56,8 @@ importers:
         specifier: ^2.6.10
         version: 2.6.10
       '@vitejs/plugin-vue':
-        specifier: ^4.6.2
-        version: 4.6.2(vite@5.0.11)(vue@3.4.7)
+        specifier: ^5.0.2
+        version: 5.0.2(vite@5.0.11)(vue@3.4.7)
       cross-fetch:
         specifier: ^4.0.0
         version: 4.0.0
@@ -86,8 +86,8 @@ importers:
   examples/ssr-spa:
     dependencies:
       '@vitejs/plugin-vue':
-        specifier: ^4.6.2
-        version: 4.6.2(vite@5.0.11)(vue@3.4.7)
+        specifier: ^5.0.2
+        version: 5.0.2(vite@5.0.11)(vue@3.4.7)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -107,8 +107,8 @@ importers:
   examples/with-vue-plugin:
     dependencies:
       '@vitejs/plugin-vue':
-        specifier: ^4.6.2
-        version: 4.6.2(vite@5.0.11)(vue@3.4.7)
+        specifier: ^5.0.2
+        version: 5.0.2(vite@5.0.11)(vue@3.4.7)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -693,17 +693,6 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@vitejs/plugin-vue@4.6.2(vite@5.0.11)(vue@3.4.7):
-    resolution: {integrity: sha512-kqf7SGFoG+80aZG6Pf+gsZIVvGSCKE98JbiWqcCV9cThtg91Jav0yvYFC9Zb+jKetNGF6ZKeoaxgZfND21fWKw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.0.0 || ^5.0.0
-      vue: ^3.2.25
-    dependencies:
-      vite: 5.0.11(@types/node@20.10.7)
-      vue: 3.4.7(typescript@5.3.3)
-    dev: false
-
   /@vitejs/plugin-vue@5.0.2(vite@5.0.11)(vue@3.4.7):
     resolution: {integrity: sha512-kEjJHrLb5ePBvjD0SPZwJlw1QTRcjjCA9sB5VyfonoXVBxTS7TMnqL6EkLt1Eu61RDeiuZ/WN9Hf6PxXhPI2uA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -713,7 +702,6 @@ packages:
     dependencies:
       vite: 5.0.11(@types/node@20.10.7)
       vue: 3.4.7(typescript@5.3.3)
-    dev: true
 
   /@volar/language-core@1.11.1:
     resolution: {integrity: sha512-dOcNn3i9GgZAcJt43wuaEykSluAuOkQgzni1cuxLxTV0nJKanQztp7FxyswdRILaKH+P2XZMPRp2S4MV/pElCw==}
