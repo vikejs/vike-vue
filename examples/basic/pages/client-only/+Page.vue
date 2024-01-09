@@ -14,15 +14,6 @@
       <p>Loading...</p>
     </template>
   </ClientOnly>
-  <h2>ClientOnly that fails to load</h2>
-  <ClientOnly :load="fail">
-    <template #fallback>
-      <p>Loading...</p>
-    </template>
-    <template #error>
-      <p>Custom error message when component fails to load</p>
-    </template>
-  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
@@ -46,10 +37,6 @@ watchEffect(() => {
 const load = () => new Promise((resolve) => setTimeout(async () => {
   const Counter = await import('../../components/Counter.vue')
   resolve(Counter)
-}, delay))
-
-const fail = () => new Promise((resolve, reject) => setTimeout(() => {
-  reject('Component did not laod')
 }, delay))
 </script>
 
