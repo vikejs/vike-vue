@@ -14,7 +14,8 @@ export default defineConfig({
         ['renderer/onRenderClient']: resolve(__dirname, './renderer/onRenderClient.ts'),
         ['renderer/onRenderHtml']: resolve(__dirname, './renderer/onRenderHtml.ts'),
         ['components/usePageContext']: resolve(__dirname, './components/usePageContext.ts'),
-        ['components/useData']: resolve(__dirname, './components/useData.ts')
+        ['components/useData']: resolve(__dirname, './components/useData.ts'),
+        ['components/ClientOnly']: resolve(__dirname, './components/ClientOnly.vue'),
       },
       formats: ['es']
     },
