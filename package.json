@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "cd vike-vue/ && pnpm run dev",
-    "build": "cd vike-vue/ && pnpm run build",
+    "build": "cd vike-vue/ && pnpm run build && cd ../packages/vike-pinia/ && pnpm run build",
     "release": "cd vike-vue/ && pnpm run release",
     "========= Clean": "",
     "clean": "git clean -Xdf",
