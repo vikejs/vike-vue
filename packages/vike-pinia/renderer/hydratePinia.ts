@@ -1,8 +1,8 @@
-import type { HydrateStore } from 'vike-vue'
+import type { OnBeforeMountApp } from 'vike-vue'
 
 export { hydratePinia }
 
-const hydratePinia: HydrateStore = ({ pinia, initialStoreState }): ReturnType<HydrateStore> => {
+const hydratePinia: OnBeforeMountApp = ({ pinia, initialStoreState }): ReturnType<OnBeforeMountApp> => {
   if (!pinia) {
     console.warn("[vike-pinia] Missing pinia from pageContext. Did you forget to use `installPinia()` in `+onCreateApp()`?")
     return

@@ -1,8 +1,8 @@
-import type { DehydrateStore } from 'vike-vue';
+import type { OnAfterRenderSSRApp } from 'vike-vue';
 
 export { dehydratePinia }
 
-const dehydratePinia: DehydrateStore = ({ pinia }): ReturnType<DehydrateStore> => {
+const dehydratePinia: OnAfterRenderSSRApp = ({ pinia }): ReturnType<OnAfterRenderSSRApp> => {
   if (!pinia) {
     console.warn("[vike-pinia] Missing pinia from pageContext. Did you forget to use `installPinia()` in `+onCreateApp()`?")
     return
