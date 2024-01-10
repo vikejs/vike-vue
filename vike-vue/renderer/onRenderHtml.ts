@@ -24,7 +24,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    storeState = pageContext.config.dehydrateStore?.(ctxWithApp)
+    storeState = pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
   }
 
   const title = getTitle(pageContext)

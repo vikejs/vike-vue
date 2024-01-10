@@ -1,6 +1,6 @@
 export type { OnCreateAppSync }
 export type { OnCreateAppAsync }
-export type { DehydrateStore, HydrateStore }
+export type { OnAfterRenderSSRApp, OnBeforeMountApp }
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
 import type { Component, PageContextWithApp } from './types'
@@ -28,9 +28,9 @@ type OnCreateAppSync = (pageContext: PageContextWithApp) => void
  */
 type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
 
-type DehydrateStore = (pageContext: PageContextWithApp) => any
+type OnAfterRenderSSRApp = (pageContext: PageContextWithApp) => any
 
-type HydrateStore = (pageContext: PageContextWithApp) => void
+type OnBeforeMountApp = (pageContext: PageContextWithApp) => void
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -106,10 +106,10 @@ export default {
     onCreateApp: {
       env: { server: true, client: true }
     },
-    dehydrateStore: {
+    onAfterRenderSSRApp: {
       env: { server: true }
     },
-    hydrateStore: {
+    onBeforeMountApp: {
       env: { server: false, client: true }
     },
   }
@@ -182,9 +182,9 @@ declare global {
        */
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync
 
-      dehydrateStore?: DehydrateStore
+      onAfterRenderSSRApp?: OnAfterRenderSSRApp
 
-      hydrateStore?: HydrateStore
+      onBeforeMountApp?: OnBeforeMountApp
     }
   }
 }

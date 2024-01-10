@@ -17,7 +17,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     const ctxWithApp = createVueApp(pageContext, ssr)
     app = ctxWithApp.app
 
-    pageContext.config.hydrateStore?.(ctxWithApp)
+    pageContext.config.onBeforeMountApp?.(ctxWithApp)
 
     app.mount(container)
   } else {
