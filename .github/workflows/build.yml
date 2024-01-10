@@ -23,7 +23,7 @@ jobs:
       - uses: pnpm/action-setup@v2
       - run: pnpm install
 
-      - name: Build vike-vue
+      - name: Build packages
         run: pnpm run build
 
       - name: Test building example

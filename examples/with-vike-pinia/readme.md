@@ -1,4 +1,4 @@
-Example of installing and using an additional [Vue plugin](https://vuejs.org/guide/reusability/plugins.html).
+Example of using [Pinia](https://pinia.vuejs.org/) with the `vike-pinia` extension.
 
 ```bash
 git clone git@github.com:vikejs/vike-vue
