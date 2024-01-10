@@ -3,10 +3,10 @@ export type { OnCreateAppAsync }
 export type { DehydrateStore, HydrateStore }
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
-import type { Component } from './types'
-import type { App, Plugin } from 'vue'
+import type { Component, VikeVueApp } from './types'
+import type { Plugin } from 'vue'
 
-type PageContextWithApp = PageContext & { app: App }
+type PageContextWithApp = PageContext & { app: VikeVueApp }
 
 /**
  * Hook called right after creating Vue's `app` instance.
