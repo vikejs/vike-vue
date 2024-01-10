@@ -1,12 +1,18 @@
 export type { PageProps }
 export type { Component }
+export type { VikeVueApp }
 
-import type { defineComponent } from 'vue'
+import type { PageContext } from 'vike/types'
+import type { App, defineComponent } from 'vue'
 
 // See https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
 type Component = ReturnType<typeof defineComponent>
 
 type PageProps = Record<string, unknown>
+
+type VikeVueApp = App<Element> & {
+  changePage: (pageContext: PageContext) => Promise<void>
+}
 
 declare global {
   namespace Vike {
@@ -32,6 +38,8 @@ declare global {
         /** &lt;title>${title}&lt;/title> - set by data() hook, has precedence over the onBeforeRender() hook */
         title?: string
       }
+
+      app?: VikeVueApp
     }
   }
 }

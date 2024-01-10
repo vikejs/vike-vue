@@ -71,7 +71,7 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
 
   // When doing Client Routing, we mutate pageContext (see usage of `app.changePage()` in `onRenderClient.ts`).
   // We therefore use a reactive pageContext.
-  const pageContextReactive = reactive(pageContext)
+  const pageContextReactive = reactive(pageContext as PageContext & { app: undefined })
 
   objectAssign(pageContext, { app })
   pageContext.config.onCreateApp?.(pageContext)

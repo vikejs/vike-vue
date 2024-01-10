@@ -3,7 +3,8 @@ import type { OnCreateAppSync } from 'vike-vue';
 
 export { installPinia }
 
-const installPinia: OnCreateAppSync = ({ app }): ReturnType<OnCreateAppSync> => {
+const installPinia: OnCreateAppSync = (pageContext): ReturnType<OnCreateAppSync> => {
   const pinia = createPinia()
-  app.use(pinia)
+  pageContext.app.use(pinia)
+  Object.assign(pageContext, { pinia })
 }
