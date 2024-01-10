@@ -1,5 +1,5 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive } from 'vue'
-import type { Component, PageProps } from './types'
+import type { Component, PageContextWithApp, PageProps } from './types'
 import type { Config, PageContext } from 'vike/types'
 import { setPageContext } from '../components/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
@@ -14,7 +14,7 @@ export { createVueApp }
  * @param ssrApp Whether to use `createSSRApp()` or `createApp()`. See https://vuejs.org/api/application.html
  * @param renderHead If true, `pageContext.config.Head` will be rendered instead of `pageContext.Page`.
  */
-function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = false) {
+function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = false): PageContextWithApp {
   const { Page } = pageContext
   const Head = renderHead ? (pageContext.config.Head as Component) : undefined
 
@@ -86,5 +86,5 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
     })
   }
 
-  return app
+  return pageContext
 }
