@@ -5,7 +5,7 @@ import { renderToNodeStream, renderToString } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getTitle } from './getTitle.js'
 import { getLang } from './getLang.js'
-import type { OnRenderHtmlAsync } from 'vike/types'
+import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
 import { createVueApp } from './app.js'
 import { App } from 'vue'
 
@@ -14,16 +14,17 @@ checkVikeVersion()
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const { stream } = pageContext.config
   let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
-  let storeState: string | undefined = undefined
+  let storeState: PageContext["initialStoreState"] = undefined
 
   if (!!pageContext.Page) {
     // SSR is enabled
-    const app = createVueApp(pageContext)
+    const ctxWithApp = createVueApp(pageContext)
+    const { app } = ctxWithApp
     pageView = !stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    storeState = pageContext.config.dehydrateStore?.({ ...pageContext, app })
+    storeState = pageContext.config.dehydrateStore?.(ctxWithApp)
   }
 
   const title = getTitle(pageContext)
@@ -37,7 +38,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   if (!!pageContext.config.Head) {
-    const app = createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
+    const { app } = createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 

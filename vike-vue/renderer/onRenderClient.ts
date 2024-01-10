@@ -5,17 +5,19 @@ import { createVueApp } from './app.js'
 import { getLang } from './getLang.js'
 import { getTitle } from './getTitle.js'
 import type { OnRenderClientAsync } from 'vike/types'
+import type { VikeVueApp } from './types.js'
 
-let app: ReturnType<typeof createVueApp>
+let app: VikeVueApp | undefined = undefined
 const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
   if (!app) {
     // First rendering/hydration
 
     const container = document.getElementById('page-view')!
     const ssr = container.innerHTML !== ''
-    app = createVueApp(pageContext, ssr)
+    const ctxWithApp = createVueApp(pageContext, ssr)
+    app = ctxWithApp.app
 
-    pageContext.config.hydrateStore?.({ ...pageContext, app })
+    pageContext.config.hydrateStore?.(ctxWithApp)
 
     app.mount(container)
   } else {
