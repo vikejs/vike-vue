@@ -3,9 +3,8 @@ export type { OnCreateAppAsync }
 export type { OnAfterRenderSSRApp, OnBeforeMountApp }
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
-import type { Component, PageContextWithApp } from './types'
+import type { Component, PageContextWithApp, FromHtmlRenderer } from './types'
 import type { Plugin } from 'vue'
-
 
 /**
  * Hook called right after creating Vue's `app` instance.
@@ -28,9 +27,9 @@ type OnCreateAppSync = (pageContext: PageContextWithApp) => void
  */
 type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
 
-type OnAfterRenderSSRApp = (pageContext: PageContextWithApp) => any
+type OnAfterRenderSSRApp<T extends FromHtmlRenderer = FromHtmlRenderer> = (pageContext: PageContextWithApp) => T | undefined
 
-type OnBeforeMountApp = (pageContext: PageContextWithApp) => void
+type OnBeforeMountApp<T extends FromHtmlRenderer = FromHtmlRenderer> = (pageContext: PageContextWithApp<T>) => void
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -66,7 +65,7 @@ export default {
   // be used by the renderers.
   // It is a cumulative config option, so a web app using vike-vue can extend
   // this list.
-  passToClient: ['pageProps', 'title', 'lang', 'initialStoreState'],
+  passToClient: ['pageProps', 'title', 'lang', 'fromHtmlRenderer'],
 
   clientRouting: true,
   hydrationCanBeAborted: true,
