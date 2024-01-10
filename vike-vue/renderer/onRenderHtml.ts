@@ -5,7 +5,7 @@ import { renderToNodeStream, renderToString } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getTitle } from './getTitle.js'
 import { getLang } from './getLang.js'
-import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
+import type { OnRenderHtmlAsync } from 'vike/types'
 import { createVueApp } from './app.js'
 import { App } from 'vue'
 
@@ -14,7 +14,7 @@ checkVikeVersion()
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const { stream } = pageContext.config
   let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
-  let storeState: PageContext["initialStoreState"] = undefined
+  let fromHtmlRenderer: Record<string, unknown> | undefined = undefined
 
   if (!!pageContext.Page) {
     // SSR is enabled
@@ -24,7 +24,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    storeState = pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
+    fromHtmlRenderer = pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
   }
 
   const title = getTitle(pageContext)
@@ -63,7 +63,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     documentHtml,
     pageContext: {
       enableEagerStreaming: true,
-      initialStoreState: storeState
+      fromHtmlRenderer,
     }
   }
 }
