@@ -75,6 +75,7 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
 
   objectAssign(pageContext, { app })
   pageContext.config.onCreateApp?.(pageContext)
+  pageContext.config.onCreateAppPinia?.(pageContext)
 
   // Make `pageContext` accessible from any Vue component
   setPageContext(app, pageContextReactive)

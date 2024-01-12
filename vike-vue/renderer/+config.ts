@@ -105,6 +105,9 @@ export default {
     onCreateApp: {
       env: { server: true, client: true }
     },
+    onCreateAppPinia: {
+      env: { server: true, client: true }
+    },
     onAfterRenderSSRApp: {
       env: { server: true }
     },
@@ -181,8 +184,26 @@ declare global {
        */
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync
 
+      /**
+       * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
+       * 
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onCreateAppPinia?: OnCreateAppSync | OnCreateAppAsync
+
+      /**
+       * Hook called right after rendering the page's root Vue component.
+       * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
+       * 
+       * Typically used for dehydrating state management libraries.
+       */
       onAfterRenderSSRApp?: OnAfterRenderSSRApp
 
+      /**
+       * Hook called right before mounting the page's root Vue component.
+       * 
+       * Typically used for hydrating state management libraries.
+       */
       onBeforeMountApp?: OnBeforeMountApp
     }
   }
