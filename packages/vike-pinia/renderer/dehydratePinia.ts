@@ -6,5 +6,5 @@ export { dehydratePinia }
 type PiniaOnAfterRenderSSRApp = OnAfterRenderSSRApp<PiniaAdditionalSSRContext>
 
 const dehydratePinia: PiniaOnAfterRenderSSRApp = ({ pinia }): ReturnType<PiniaOnAfterRenderSSRApp> => {
-  return { piniaInitialState: pinia.state.value }
+  return { piniaInitialState: pinia!.state.value }
 }
