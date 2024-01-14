@@ -14,17 +14,17 @@ checkVikeVersion()
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const { stream } = pageContext.config
   let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
-  let fromHtmlRenderer: Record<string, unknown> | undefined = undefined
+  let fromHtmlRenderer = undefined
 
   if (!!pageContext.Page) {
     // SSR is enabled
-    const ctxWithApp = createVueApp(pageContext)
+    const ctxWithApp = await createVueApp(pageContext)
     const { app } = ctxWithApp
     pageView = !stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    fromHtmlRenderer = pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
+    fromHtmlRenderer = await pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
   }
 
   const title = getTitle(pageContext)
@@ -38,7 +38,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   if (!!pageContext.config.Head) {
-    const { app } = createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
+    const { app } = await createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
@@ -63,7 +63,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     documentHtml,
     pageContext: {
       enableEagerStreaming: true,
-      fromHtmlRenderer,
+      fromHtmlRenderer
     }
   }
 }

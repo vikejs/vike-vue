@@ -11,24 +11,24 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {
-    ".": "./dist/+config.js",
-    "./renderer/installPinia": "./dist/installPinia.js",
-    "./renderer/dehydratePinia": "./dist/dehydratePinia.js",
-    "./renderer/hydratePinia": "./dist/hydratePinia.js"
+    ".": "./dist/renderer/+config.js",
+    "./renderer/installPinia": "./dist/renderer/installPinia.js",
+    "./renderer/dehydratePinia": "./dist/renderer/dehydratePinia.js",
+    "./renderer/hydratePinia": "./dist/renderer/hydratePinia.js"
   },
   "typesVersions": {
     "*": {
       ".": [
-        "./dist/+config.d.ts"
+        "./dist/renderer/+config.d.ts"
       ],
       "renderer/installPinia": [
-        "./dist/installPinia.d.ts"
+        "./dist/renderer/installPinia.d.ts"
       ],
       "renderer/dehydratePinia": [
-        "./dist/dehydratePinia.d.ts"
+        "./dist/renderer/dehydratePinia.d.ts"
       ],
       "renderer/hydratePinia": [
-        "./dist/hydratePinia.d.ts"
+        "./dist/renderer/hydratePinia.d.ts"
       ]
     }
   },

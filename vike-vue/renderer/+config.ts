@@ -1,11 +1,17 @@
-export type { OnCreateAppSync }
-export type { OnCreateAppAsync }
-export type { OnAfterRenderSSRApp, OnBeforeMountApp }
+export type {
+  OnCreateAppSync,
+  OnCreateAppAsync,
+  OnAfterRenderSSRAppSync,
+  OnAfterRenderSSRAppAsync,
+  OnBeforeMountAppSync,
+  OnBeforeMountAppAsync
+}
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
-import type { Component, PageContextWithApp, FromHtmlRenderer } from './types'
+import type { Component } from './types'
 import type { Plugin } from 'vue'
 
+// Purposeful code duplication for improving QuickInfo IntelliSense
 /**
  * Hook called right after creating Vue's `app` instance.
  *
@@ -15,7 +21,7 @@ import type { Plugin } from 'vue'
  *  - https://vuejs.org/guide/reusability/plugins.html
  *  - https://vuejs.org/api/application.html#createapp
  */
-type OnCreateAppSync = (pageContext: PageContextWithApp) => void
+type OnCreateAppSync = (pageContext: PageContext) => void
 /**
  * Hook called right after creating Vue's `app` instance.
  *
@@ -25,11 +31,35 @@ type OnCreateAppSync = (pageContext: PageContextWithApp) => void
  *  - https://vuejs.org/guide/reusability/plugins.html
  *  - https://vuejs.org/api/application.html#createapp
  */
-type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
+type OnCreateAppAsync = (pageContext: PageContext) => Promise<void>
 
-type OnAfterRenderSSRApp<T extends FromHtmlRenderer = FromHtmlRenderer> = (pageContext: PageContextWithApp) => T | undefined
+/**
+ * Hook called right after rendering the page's root Vue component.
+ * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
+ *
+ * Typically used for dehydrating state management libraries.
+ */
+type OnAfterRenderSSRAppSync = (pageContext: PageContext) => PageContext['fromHtmlRenderer']
+/**
+ * Hook called right after rendering the page's root Vue component.
+ * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
+ *
+ * Typically used for dehydrating state management libraries.
+ */
+type OnAfterRenderSSRAppAsync = (pageContext: PageContext) => Promise<PageContext['fromHtmlRenderer']>
 
-type OnBeforeMountApp<T extends FromHtmlRenderer = FromHtmlRenderer> = (pageContext: PageContextWithApp<T>) => void
+/**
+ * Hook called right before mounting the page's root Vue component.
+ *
+ * Typically used for hydrating state management libraries.
+ */
+type OnBeforeMountAppSync = (pageContext: PageContext) => void
+/**
+ * Hook called right before mounting the page's root Vue component.
+ *
+ * Typically used for hydrating state management libraries.
+ */
+type OnBeforeMountAppAsync = (pageContext: PageContext) => Promise<void>
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -113,7 +143,7 @@ export default {
     },
     onBeforeMountApp: {
       env: { server: false, client: true }
-    },
+    }
   }
 } satisfies Config
 
@@ -186,7 +216,7 @@ declare global {
 
       /**
        * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
-       * 
+       *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
       onCreateAppPinia?: OnCreateAppSync | OnCreateAppAsync
@@ -194,17 +224,17 @@ declare global {
       /**
        * Hook called right after rendering the page's root Vue component.
        * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
-       * 
+       *
        * Typically used for dehydrating state management libraries.
        */
-      onAfterRenderSSRApp?: OnAfterRenderSSRApp
+      onAfterRenderSSRApp?: OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync
 
       /**
        * Hook called right before mounting the page's root Vue component.
-       * 
+       *
        * Typically used for hydrating state management libraries.
        */
-      onBeforeMountApp?: OnBeforeMountApp
+      onBeforeMountApp?: OnBeforeMountAppSync | OnBeforeMountAppAsync
     }
   }
 }

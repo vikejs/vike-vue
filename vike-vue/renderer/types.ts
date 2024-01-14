@@ -1,8 +1,6 @@
 export type { PageProps }
 export type { Component }
 export type { VikeVueApp }
-export type { PageContextWithApp }
-export type { FromHtmlRenderer }
 
 import type { PageContext } from 'vike/types'
 import type { App, defineComponent } from 'vue'
@@ -15,10 +13,6 @@ type PageProps = Record<string, unknown>
 type VikeVueApp = App<Element> & {
   changePage: (pageContext: PageContext) => Promise<void>
 }
-
-type PageContextWithApp<T extends FromHtmlRenderer = FromHtmlRenderer> = PageContext & { app: VikeVueApp } & { fromHtmlRenderer: T }
-
-type FromHtmlRenderer = Record<string, unknown> | undefined
 
 declare global {
   namespace Vike {
@@ -43,9 +37,11 @@ declare global {
         title?: string
       }
 
+      // Set by createVueApp()
       app?: VikeVueApp
 
-      fromHtmlRenderer: FromHtmlRenderer
+      // Set by onRenderHtml()
+      fromHtmlRenderer: unknown
     }
   }
 }

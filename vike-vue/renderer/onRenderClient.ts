@@ -14,10 +14,10 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
 
     const container = document.getElementById('page-view')!
     const ssr = container.innerHTML !== ''
-    const ctxWithApp = createVueApp(pageContext, ssr)
+    const ctxWithApp = await createVueApp(pageContext, ssr)
     app = ctxWithApp.app
 
-    pageContext.config.onBeforeMountApp?.(ctxWithApp)
+    await pageContext.config.onBeforeMountApp?.(ctxWithApp)
 
     app.mount(container)
   } else {
