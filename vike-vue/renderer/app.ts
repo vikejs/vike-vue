@@ -1,10 +1,13 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive } from 'vue'
-import type { Component, PageContextWithApp, PageProps } from './types'
+import type { Component, PageProps, VikeVueApp } from './types'
 import type { Config, PageContext } from 'vike/types'
 import { setPageContext } from '../components/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 
 export { createVueApp }
+
+type PageContextWithoutApp = PageContext & { app: undefined }
+type PageContextWithApp = PageContext & { app: VikeVueApp }
 
 /**
  * Isomorphic function to create a Vue app.
@@ -13,8 +16,9 @@ export { createVueApp }
  *                    config and data.
  * @param ssrApp Whether to use `createSSRApp()` or `createApp()`. See https://vuejs.org/api/application.html
  * @param renderHead If true, `pageContext.config.Head` will be rendered instead of `pageContext.Page`.
+ * @returns The `pageContext` object with the `app` property set.
  */
-function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = false): PageContextWithApp {
+async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = false): Promise<PageContextWithApp> {
   const { Page } = pageContext
   const Head = renderHead ? (pageContext.config.Head as Component) : undefined
 
@@ -71,21 +75,23 @@ function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = fals
 
   // When doing Client Routing, we mutate pageContext (see usage of `app.changePage()` in `onRenderClient.ts`).
   // We therefore use a reactive pageContext.
-  const pageContextReactive = reactive(pageContext as PageContext & { app: undefined })
+  const pageContextReactive = reactive(pageContext as PageContextWithoutApp)
 
   objectAssign(pageContext, { app })
-  pageContext.config.onCreateApp?.(pageContext)
-  pageContext.config.onCreateAppPinia?.(pageContext)
+  const pageContextWithApp = pageContext as PageContextWithApp
+
+  await pageContextWithApp.config.onCreateApp?.(pageContext)
+  await pageContextWithApp.config.onCreateAppPinia?.(pageContext)
 
   // Make `pageContext` accessible from any Vue component
   setPageContext(app, pageContextReactive)
 
-  if (pageContext.config.vuePlugins) {
+  if (pageContextWithApp.config.vuePlugins) {
     console.warn('[vike-vue][warning] +vuePlugins.js is deprecated, use onCreateApp() instead')
-    pageContext.config.vuePlugins.forEach(({ plugin, options }) => {
+    pageContextWithApp.config.vuePlugins.forEach(({ plugin, options }) => {
       app.use(plugin, options)
     })
   }
 
-  return pageContext
+  return pageContextWithApp
 }

@@ -1,11 +1,8 @@
-import type { OnBeforeMountApp } from 'vike-vue'
-import type { PiniaAdditionalSSRContext } from "./types"
+import type { OnBeforeMountAppSync } from 'vike-vue'
 
 export { hydratePinia }
 
-type PiniaOnBeforeMountApp = OnBeforeMountApp<PiniaAdditionalSSRContext>
-
-const hydratePinia: PiniaOnBeforeMountApp = ({ pinia, fromHtmlRenderer }): ReturnType<PiniaOnBeforeMountApp> => {
+const hydratePinia: OnBeforeMountAppSync = ({ pinia, fromHtmlRenderer }): ReturnType<OnBeforeMountAppSync> => {
   const { piniaInitialState } = fromHtmlRenderer
 
   if (!pinia || !piniaInitialState) {
