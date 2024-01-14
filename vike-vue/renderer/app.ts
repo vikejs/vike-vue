@@ -1,13 +1,10 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive } from 'vue'
-import type { Component, PageProps, VikeVueApp } from './types'
+import type { Component, PageContextWithApp, PageContextWithoutApp, PageProps } from './types'
 import type { Config, PageContext } from 'vike/types'
 import { setPageContext } from '../components/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 
 export { createVueApp }
-
-type PageContextWithoutApp = PageContext & { app: undefined }
-type PageContextWithApp = PageContext & { app: VikeVueApp }
 
 /**
  * Isomorphic function to create a Vue app.
