@@ -8,7 +8,7 @@ export type {
 }
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
-import type { Component } from './types'
+import type { Component, PageContextWithApp } from './types'
 import type { Plugin } from 'vue'
 
 // Purposeful code duplication for improving QuickInfo IntelliSense
@@ -21,7 +21,7 @@ import type { Plugin } from 'vue'
  *  - https://vuejs.org/guide/reusability/plugins.html
  *  - https://vuejs.org/api/application.html#createapp
  */
-type OnCreateAppSync = (pageContext: PageContext) => void
+type OnCreateAppSync = (pageContext: PageContextWithApp) => void
 /**
  * Hook called right after creating Vue's `app` instance.
  *
@@ -31,7 +31,7 @@ type OnCreateAppSync = (pageContext: PageContext) => void
  *  - https://vuejs.org/guide/reusability/plugins.html
  *  - https://vuejs.org/api/application.html#createapp
  */
-type OnCreateAppAsync = (pageContext: PageContext) => Promise<void>
+type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
 
 /**
  * Hook called right after rendering the page's root Vue component.

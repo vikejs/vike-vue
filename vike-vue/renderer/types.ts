@@ -1,5 +1,6 @@
 export type { PageProps }
 export type { Component }
+export type { PageContextWithApp, PageContextWithoutApp }
 export type { VikeVueApp }
 
 import type { PageContext } from 'vike/types'
@@ -13,6 +14,9 @@ type PageProps = Record<string, unknown>
 type VikeVueApp = App<Element> & {
   changePage: (pageContext: PageContext) => Promise<void>
 }
+
+type PageContextWithoutApp = PageContext & { app: undefined }
+type PageContextWithApp = PageContext & { app: VikeVueApp }
 
 declare global {
   namespace Vike {
