@@ -51,7 +51,7 @@
         "./dist/renderer/onRenderClient.d.ts"
       ],
       "ClientOnly": [
-        "./dist/components/ClientOnly.d.ts"
+        "./dist/components/ClientOnly.vue.d.ts"
       ]
     }
   },
