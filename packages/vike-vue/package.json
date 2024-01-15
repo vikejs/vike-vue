@@ -49,6 +49,9 @@
       ],
       "renderer/onRenderClient": [
         "./dist/renderer/onRenderClient.d.ts"
+      ],
+      "ClientOnly": [
+        "./dist/components/ClientOnly.d.ts"
       ]
     }
   },
