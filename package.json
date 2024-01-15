@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "dev": "cd vike-vue/ && pnpm run dev",
-    "build": "cd vike-vue/ && pnpm run build && cd ../packages/vike-pinia/ && pnpm run build",
-    "release": "cd vike-vue/ && pnpm run release",
+    "========= Basics": "",
+    "dev": "cd ./packages/vike-vue/ && pnpm run dev",
+    "build": "pnpm --recursive --filter {packages/*} run build",
+    "========= Release": "",
+    "release": "cd ./packages/vike-vue/ && pnpm run release",
+    "release:commit": "cd ./packages/vike-vue/ && pnpm run release:commit",
     "========= Clean": "",
     "clean": "git clean -Xdf",
     "reset": "pnpm run clean && pnpm install && pnpm run build",
