@@ -5,12 +5,13 @@
 
 * improve error message ([233070a](https://github.com/vikejs/vike-vue/commit/233070a37d37e970ec6ef85d5386003717566550))
 * properly handle render error upon client-side navigation ([e784c36](https://github.com/vikejs/vike-vue/commit/e784c36b76d29792a8eb00ab900dc95d8fe4728e))
+* Update `lang` on client-side navigation ([#58](https://github.com/vikejs/vike-vue/pull/58))
 
 
 ### Features
 
-* `onCreateApp()` hook for registering Vue plugins // [#63](https://github.com/vikejs/vike-vue/pull/63)
-* `onAfterRenderSSR()` and `onBeforeMountApp()` hooks for integrating stores and data-fetching tools // [#65](https://github.com/vikejs/vike-vue/pull/65)
+* `onCreateApp()` hook for registering Vue plugins ([#63](https://github.com/vikejs/vike-vue/pull/63))
+* `onAfterRenderSSR()` and `onBeforeMountApp()` hooks for integrating stores and data-fetching tools ([#65](https://github.com/vikejs/vike-vue/pull/65))
 * [`<ClientOnly>`](https://vike.dev/ClientOnly) component
 
 
