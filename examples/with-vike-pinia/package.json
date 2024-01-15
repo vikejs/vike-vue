@@ -10,7 +10,7 @@
     "pinia": "^2.1.7",
     "typescript": "^5.3.3",
     "vike": "0.4.156",
-    "vike-pinia": "0.0.0",
+    "vike-pinia": "0.0.1",
     "vike-vue": "0.5.4",
     "vite": "^5.0.11",
     "vue": "^3.4.13"
