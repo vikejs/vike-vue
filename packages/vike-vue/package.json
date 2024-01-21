@@ -20,7 +20,7 @@
     "release:commit": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ commit"
   },
   "peerDependencies": {
-    "vike": "^0.4.152",
+    "vike": "^0.4.159",
     "vue": "^3.0.0"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "@types/node": "^20.11.1",
     "@vitejs/plugin-vue": "^5.0.3",
     "typescript": "^5.3.3",
-    "vike": "0.4.156",
+    "vike": "0.4.159",
     "vite": "^5.0.11",
     "vite-plugin-dts": "^3.7.1",
     "vue": "^3.4.13"

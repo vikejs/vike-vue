@@ -3,8 +3,7 @@ export { onRenderHtml }
 
 import { renderToNodeStream, renderToString } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
-import { getTitle } from './getTitle.js'
-import { getLang } from './getLang.js'
+import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderHtmlAsync } from 'vike/types'
 import { createVueApp } from './app.js'
 import { App } from 'vue'
@@ -12,7 +11,13 @@ import { App } from 'vue'
 checkVikeVersion()
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
-  const { stream } = pageContext.config
+  const title = getHeadSetting('title', pageContext)
+  const favicon = getHeadSetting('favicon', pageContext)
+  const lang = getHeadSetting('lang', pageContext) || 'en'
+
+  const titleTag = !title ? '' : escapeInject`<title>${title}</title>`
+  const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
+
   let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
   let fromHtmlRenderer = undefined
 
@@ -20,21 +25,12 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     // SSR is enabled
     const ctxWithApp = await createVueApp(pageContext)
     const { app } = ctxWithApp
-    pageView = !stream
+    pageView = !pageContext.config.stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
     fromHtmlRenderer = await pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
   }
-
-  const title = getTitle(pageContext)
-  const titleTag = !title ? '' : escapeInject`<title>${title}</title>`
-
-  const { description } = pageContext.config
-  const descriptionTag = !description ? '' : escapeInject`<meta name="description" content="${description}" />`
-
-  const { favicon } = pageContext.config
-  const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   if (!!pageContext.config.Head) {
@@ -42,16 +38,13 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
-  const lang = getLang(pageContext) || 'en'
-
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang='${lang}'>
       <head>
         <meta charset="UTF-8" />
-        ${faviconTag}
         ${titleTag}
-        ${descriptionTag}
         ${headHtml}
+        ${faviconTag}
       </head>
       <body>
         <div id="page-view">${pageView}</div>
@@ -108,5 +101,5 @@ function checkVikeVersion() {
     if (versionParts[1] > 4) return
     if (versionParts[2] >= 147) return
   }
-  throw new Error('Update Vike to its latest version (or vike@0.4.147 and any version above)')
+  throw new Error('Update Vike to 0.4.147 or above')
 }
