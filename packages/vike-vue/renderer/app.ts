@@ -1,5 +1,5 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive } from 'vue'
-import type { Component, PageContextWithApp, PageContextWithoutApp, PageProps } from './types'
+import type { Component, PageContextWithApp, PageContextWithoutApp } from './types'
 import type { Config, PageContext } from 'vike/types'
 import { setPageContext } from '../components/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
@@ -9,8 +9,7 @@ export { createVueApp }
 /**
  * Isomorphic function to create a Vue app.
  *
- * @param pageContext Object providing the Vue component to be rendered, the props for that component, and additional
- *                    config and data.
+ * @param pageContext Object providing the Vue component to be rendered and additional config and data.
  * @param ssrApp Whether to use `createSSRApp()` or `createApp()`. See https://vuejs.org/api/application.html
  * @param renderHead If true, `pageContext.config.Head` will be rendered instead of `pageContext.Page`.
  * @returns The `pageContext` object with the `app` property set.
@@ -19,12 +18,10 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
   const { Page } = pageContext
   const Head = renderHead ? (pageContext.config.Head as Component) : undefined
 
-  // TODO/next-major-release: remove pageProps (i.e. tell users to use data() instead of onBeforeRender() to fetch data)
-  let rootComponent: Component & { Page: Component; pageProps: PageProps; config: Config }
+  let rootComponent: Component & { Page: Component; config: Config }
   const PageWithLayout = defineComponent({
     data: () => ({
       Page: markRaw(Head ? Head : Page),
-      pageProps: markRaw(pageContext.pageProps || {}),
       config: markRaw(pageContext.config)
     }),
     created() {
@@ -37,12 +34,12 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
           {},
           {
             default: () => {
-              return h(this.Page, this.pageProps)
+              return h(this.Page)
             }
           }
         )
       }
-      return h(this.Page, this.pageProps)
+      return h(this.Page)
     }
   })
 
@@ -62,7 +59,6 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
       }
       Object.assign(pageContextReactive, pageContext)
       rootComponent.Page = markRaw(pageContext.Page)
-      rootComponent.pageProps = markRaw(pageContext.pageProps || {})
       rootComponent.config = markRaw(pageContext.config)
       await nextTick()
       returned = true

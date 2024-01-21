@@ -23,9 +23,6 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.0.3
         version: 5.0.3(vite@5.0.11)(vue@3.4.13)
-      cross-fetch:
-        specifier: ^4.0.0
-        version: 4.0.0
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -36,44 +33,8 @@ importers:
         specifier: ^0.25.2
         version: 0.25.2(vite@5.0.11)
       vike:
-        specifier: 0.4.156
-        version: 0.4.156(vite@5.0.11)
-      vike-vue:
-        specifier: link:../../packages/vike-vue
-        version: link:../../packages/vike-vue
-      vite:
-        specifier: ^5.0.11
-        version: 5.0.11(@types/node@20.11.1)
-      vue:
-        specifier: ^3.4.13
-        version: 3.4.13(typescript@5.3.3)
-
-  examples/onBeforeRender:
-    dependencies:
-      '@types/node':
-        specifier: ^20.11.1
-        version: 20.11.1
-      '@types/node-fetch':
-        specifier: ^2.6.10
-        version: 2.6.10
-      '@vitejs/plugin-vue':
-        specifier: ^5.0.3
-        version: 5.0.3(vite@5.0.11)(vue@3.4.13)
-      cross-fetch:
-        specifier: ^4.0.0
-        version: 4.0.0
-      node-fetch:
-        specifier: ^3.3.2
-        version: 3.3.2
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-      unplugin-vue-markdown:
-        specifier: ^0.25.2
-        version: 0.25.2(vite@5.0.11)
-      vike:
-        specifier: 0.4.156
-        version: 0.4.156(vite@5.0.11)
+        specifier: 0.4.159
+        version: 0.4.159(vite@5.0.11)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -93,8 +54,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
-        specifier: 0.4.156
-        version: 0.4.156(vite@5.0.11)
+        specifier: 0.4.159
+        version: 0.4.159(vite@5.0.11)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -117,8 +78,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
-        specifier: 0.4.156
-        version: 0.4.156(vite@5.0.11)
+        specifier: 0.4.159
+        version: 0.4.159(vite@5.0.11)
       vike-pinia:
         specifier: link:../../packages/vike-pinia
         version: link:../../packages/vike-pinia
@@ -141,8 +102,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
-        specifier: 0.4.156
-        version: 0.4.156(vite@5.0.11)
+        specifier: 0.4.159
+        version: 0.4.159(vite@5.0.11)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -171,8 +132,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
-        specifier: 0.4.156
-        version: 0.4.156(vite@5.0.11)
+        specifier: 0.4.159
+        version: 0.4.159(vite@5.0.11)
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -195,8 +156,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
-        specifier: 0.4.156
-        version: 0.4.156(vite@5.0.11)
+        specifier: 0.4.159
+        version: 0.4.159(vite@5.0.11)
       vite:
         specifier: ^5.0.11
         version: 5.0.11(@types/node@20.11.1)
@@ -1154,14 +1115,6 @@ packages:
       split2: 4.2.0
     dev: true
 
-  /cross-fetch@4.0.0:
-    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -1718,18 +1671,6 @@ packages:
     engines: {node: '>=10.5.0'}
     dev: false
 
-  /node-fetch@2.7.0:
-    resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
-    dev: false
-
   /node-fetch@3.3.2:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -2061,10 +2002,6 @@ packages:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
     engines: {node: '>=6'}
 
-  /tr46@0.0.3:
-    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
-    dev: false
-
   /type-fest@3.13.1:
     resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
@@ -2144,8 +2081,8 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /vike@0.4.156(vite@5.0.11):
-    resolution: {integrity: sha512-CaeG+clu+oLDKSv4B+6aOYoWNUb/URF6dK3/AeC9NJD0XvsfW8at1yQO5hA3M1SVWpe7c/tUGw1uYVgceT4JMw==}
+  /vike@0.4.159(vite@5.0.11):
+    resolution: {integrity: sha512-XdoRZThBcPPxl48RXtsMTJCUobN/40/PLiKdA0Plb0dMMKpqSRifD8EHpW+ExAoI+s3aCHuOIGyIX702/M0xaA==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
@@ -2290,10 +2227,6 @@ packages:
     engines: {node: '>= 8'}
     dev: false
 
-  /webidl-conversions@3.0.1:
-    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
-    dev: false
-
   /webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
@@ -2301,13 +2234,6 @@ packages:
 
   /webpack-virtual-modules@0.5.0:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
-    dev: false
-
-  /whatwg-url@5.0.0:
-    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
-    dependencies:
-      tr46: 0.0.3
-      webidl-conversions: 3.0.1
     dev: false
 
   /which@2.0.2:

@@ -1,14 +1,14 @@
 <template>
-  <h1>{{ data.movie.title }}</h1>
-  Release Date: {{ data.movie.release_date }}
+  <h1>{{ movie.title }}</h1>
+  Release Date: {{ movie.release_date }}
   <br />
-  Director: {{ data.movie.director }}
+  Director: {{ movie.director }}
   <br />
-  Producer: {{ data.movie.producer }}
+  Producer: {{ movie.producer }}
 </template>
 
 <script lang="ts" setup>
 import type { Data } from './+data'
 import { useData } from 'vike-vue/useData'
-const data = useData<Data>()
+const movie = useData<Data>()
 </script>

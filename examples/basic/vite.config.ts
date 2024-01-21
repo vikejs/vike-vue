@@ -5,13 +5,12 @@ import { UserConfig } from 'vite'
 
 const config: UserConfig = {
   plugins: [
-    vike({ prerender: true }),
+    vike(),
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
     md({})
-  ],
-  optimizeDeps: { include: ['cross-fetch'] }
+  ]
 }
 
 export default config

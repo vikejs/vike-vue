@@ -63,7 +63,7 @@ type OnBeforeMountAppAsync = (pageContext: PageContext) => Promise<void>
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
-// See https://vike.dev/meta#modify-existing-configurations
+// See https://vike.dev/meta#:~:text=Modifying%20the%20environment%20of%20existing%20hooks
 const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) => {
   if (typeof configValue !== 'boolean') {
     throw new Error(`${configDefinedAt} should be a boolean`)
@@ -84,21 +84,20 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 }
 
 export default {
+  // https://vike.dev/onRenderHtml
   onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
+  // https://vike.dev/onRenderClient
   onRenderClient: 'import:vike-vue/renderer/onRenderClient:onRenderClient',
 
-  // TODO/next-major-release: remove pageProps (i.e. tell users to use data() instead of onBeforeRender() to fetch data)
-  // TODO/next-major-release: remove support for setting title over onBeforeRender()
-  // A page can define an onBeforeRender() hook to be run on the server, which
-  // can fetch data and return it as additional page context. Typically it will
-  // return the page's root Vue component's props and additional data that can
-  // be used by the renderers.
+  // https://vike.dev/passToClient
   // It is a cumulative config option, so a web app using vike-vue can extend
   // this list.
-  passToClient: ['pageProps', 'title', 'lang', 'fromHtmlRenderer'],
+  passToClient: ['fromHtmlRenderer'],
 
+  // https://vike.dev/clientRouting
   clientRouting: true,
   hydrationCanBeAborted: true,
+  // https://vike.dev/meta
   meta: {
     Head: {
       env: { server: true }
@@ -109,11 +108,8 @@ export default {
     title: {
       env: { server: true, client: true }
     },
-    description: {
-      env: { server: true }
-    },
     favicon: {
-      env: { server: true }
+      env: { server: true, client: true }
     },
     lang: {
       env: { server: true, client: true }
@@ -153,6 +149,7 @@ type VuePluginWithOptions = {
 }
 
 // We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue'`
+// https://vike.dev/pageContext#typescript
 declare global {
   namespace VikePackages {
     interface ConfigVikeVue {
@@ -163,9 +160,6 @@ declare global {
 
       /** &lt;title>${title}&lt;/title> */
       title?: string | ((pageContext: PageContext) => string)
-
-      /** &lt;meta name="description" content="${description}" /> */
-      description?: string
 
       /** &lt;link rel="icon" href="${favicon}" /> */
       favicon?: string

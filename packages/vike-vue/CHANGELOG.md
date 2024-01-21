@@ -1,51 +1,34 @@
 ## [0.5.4](https://github.com/vikejs/vike-vue/compare/v0.5.3...vike-vue@0.5.4) (2024-01-15)
 
-
 ### Bug Fixes
 
-* improve error message ([233070a](https://github.com/vikejs/vike-vue/commit/233070a37d37e970ec6ef85d5386003717566550))
-* properly handle render error upon client-side navigation ([e784c36](https://github.com/vikejs/vike-vue/commit/e784c36b76d29792a8eb00ab900dc95d8fe4728e))
-* Update `lang` on client-side navigation ([#58](https://github.com/vikejs/vike-vue/pull/58))
-
+- improve error message ([233070a](https://github.com/vikejs/vike-vue/commit/233070a37d37e970ec6ef85d5386003717566550))
+- properly handle render error upon client-side navigation ([e784c36](https://github.com/vikejs/vike-vue/commit/e784c36b76d29792a8eb00ab900dc95d8fe4728e))
+- Update `lang` on client-side navigation ([#58](https://github.com/vikejs/vike-vue/pull/58))
 
 ### Features
 
-* `onCreateApp()` hook for registering Vue plugins ([#63](https://github.com/vikejs/vike-vue/pull/63))
-* `onAfterRenderSSR()` and `onBeforeMountApp()` hooks for integrating stores and data-fetching tools ([#65](https://github.com/vikejs/vike-vue/pull/65))
-* [`<ClientOnly>`](https://vike.dev/ClientOnly) component
-
-
+- `onCreateApp()` hook for registering Vue plugins ([#63](https://github.com/vikejs/vike-vue/pull/63))
+- `onAfterRenderSSR()` and `onBeforeMountApp()` hooks for integrating stores and data-fetching tools ([#65](https://github.com/vikejs/vike-vue/pull/65))
+- [`<ClientOnly>`](https://vike.dev/ClientOnly) component
 
 ## [0.5.3](https://github.com/vikejs/vike-vue/compare/v0.5.2...v0.5.3) (2023-12-28)
 
-> [!WARNING]
-> [`pageContext.pageProps` and `pageContext.title`](https://github.com/vikejs/vike-vue/blob/cc929d396a/examples/onBeforeRender/pages/star-wars/index/%2BonBeforeRender.ts)
-> are deprecated. Set `pageContext.data` instead. See
-> [example](https://github.com/vikejs/vike-vue/blob/cc929d396a/examples/basic/pages/star-wars/index/%2Bdata.ts#L11).
-
-
 ### Features
 
-* useData() ([7409c4e](https://github.com/vikejs/vike-vue/commit/7409c4ead9f185c5c95bb871375683a7d4fe1a45))
-
-
+- useData() ([7409c4e](https://github.com/vikejs/vike-vue/commit/7409c4ead9f185c5c95bb871375683a7d4fe1a45))
 
 ## [0.5.2](https://github.com/vikejs/vike-vue/compare/v0.5.1...v0.5.2) (2023-12-25)
 
-
 ### Bug Fixes
 
-* further ensure Vue doesn't swallow errors ([1a0acc0](https://github.com/vikejs/vike-vue/commit/1a0acc03de36e32ee137c480e9e761726001ddaf))
-
-
+- further ensure Vue doesn't swallow errors ([1a0acc0](https://github.com/vikejs/vike-vue/commit/1a0acc03de36e32ee137c480e9e761726001ddaf))
 
 ## [0.5.1](https://github.com/vikejs/vike-vue/compare/v0.5.0...v0.5.1) (2023-12-07)
 
 ### Features
 
-* add `stream` setting ([#30](https://github.com/vikejs/vike-vue/pull/30))
-
-
+- add `stream` setting ([#30](https://github.com/vikejs/vike-vue/pull/30))
 
 # [0.5.0](https://github.com/vikejs/vike-vue/compare/v0.4.0...v0.5.0) (2023-11-17)
 
