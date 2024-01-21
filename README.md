@@ -5,6 +5,8 @@
 Vue-related integrations for [Vike](https://vike.dev):
 
 - [`vike-vue`](packages/vike-vue/)
+  - [Changelog](packages/vike-vue/CHANGELOG.md)
 - [`vike-pinia`](packages/vike-pinia/)
+  - [Changelog](packages/vike-pinia/CHANGELOG.md)
 
 > See also other [Vike extensions](https://vike.dev/vike-packages).

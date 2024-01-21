@@ -10,4 +10,5 @@ Vue integration for [Vike](https://vike.dev/).
 > For integrations with React and Solid, see
 > [`vike-*` packages](https://vike.dev/vike-packages).
 
-See [examples/](https://github.com/vikejs/vike-vue/tree/main/examples).
+- [Examples](https://github.com/vikejs/vike-vue/tree/main/examples)
+- [Changelog](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue/CHANGELOG.md)

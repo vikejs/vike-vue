@@ -7,4 +7,5 @@
 
 [Pinia](https://pinia.vuejs.org/) integration for [Vike](https://vike.dev/).
 
-See [example](https://github.com/vikejs/vike-vue/tree/main/examples/with-vike-pinia).
+- [Example](https://github.com/vikejs/vike-vue/tree/main/examples/with-vike-pinia)
+- [Changelog](https://github.com/vikejs/vike-vue/blob/main/packages/vike-pinia/CHANGELOG.md)
