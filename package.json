@@ -5,6 +5,7 @@
     "build": "pnpm --recursive --filter {packages/*} run build",
     "========= Release": "",
     "release": "cd ./packages/vike-vue/ && pnpm run release",
+    "release:minor": "cd ./packages/vike-vue/ && pnpm run release:minor",
     "release:commit": "cd ./packages/vike-vue/ && pnpm run release:commit",
     "========= Clean": "",
     "clean": "git clean -Xdf",
