@@ -1,3 +1,23 @@
+# [0.6.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.5.4...vike-vue@0.6.0) (2024-01-22)
+
+
+### Bug Fixes
+
+* simplify `<head>` management ([39aa1a9](https://github.com/vikejs/vike-vue/commit/39aa1a9c66d49fb0d0fcc529ebb5f7cc679f2e28))
+
+
+### BREAKING CHANGES
+
+* Fetching data using `pageContext.pageProps` is
+deprecated, use `data()` and `useData()` instead,
+see https://vike.dev/data-fetching
+* Setting the page's title using `pageContext.title`
+is deprecated (`pageContext.description` and `pageContext.lang` are
+also deprecated), use the settings `title` and `Head` instead,
+see https://vike.dev/head
+
+
+
 ## [0.5.4](https://github.com/vikejs/vike-vue/compare/v0.5.3...vike-vue@0.5.4) (2024-01-15)
 
 
