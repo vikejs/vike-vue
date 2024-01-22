@@ -22,7 +22,7 @@ importers:
         version: 2.6.10
       '@vitejs/plugin-vue':
         specifier: ^5.0.3
-        version: 5.0.3(vite@5.0.11)(vue@3.4.13)
+        version: 5.0.3(vite@5.0.12)(vue@3.4.13)
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -31,16 +31,16 @@ importers:
         version: 5.3.3
       unplugin-vue-markdown:
         specifier: ^0.25.2
-        version: 0.25.2(vite@5.0.11)
+        version: 0.25.2(vite@5.0.12)
       vike:
         specifier: 0.4.159
-        version: 0.4.159(vite@5.0.11)
+        version: 0.4.159(vite@5.0.12)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
       vite:
-        specifier: ^5.0.11
-        version: 5.0.11(@types/node@20.11.1)
+        specifier: ^5.0.12
+        version: 5.0.12(@types/node@20.11.1)
       vue:
         specifier: ^3.4.13
         version: 3.4.13(typescript@5.3.3)
@@ -49,19 +49,19 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.3
-        version: 5.0.3(vite@5.0.11)(vue@3.4.13)
+        version: 5.0.3(vite@5.0.12)(vue@3.4.13)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
         specifier: 0.4.159
-        version: 0.4.159(vite@5.0.11)
+        version: 0.4.159(vite@5.0.12)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
       vite:
-        specifier: ^5.0.11
-        version: 5.0.11(@types/node@20.11.1)
+        specifier: ^5.0.12
+        version: 5.0.12(@types/node@20.11.1)
       vue:
         specifier: ^3.4.13
         version: 3.4.13(typescript@5.3.3)
@@ -70,7 +70,7 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.3
-        version: 5.0.3(vite@5.0.11)(vue@3.4.13)
+        version: 5.0.3(vite@5.0.12)(vue@3.4.13)
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.3.3)(vue@3.4.13)
@@ -79,7 +79,7 @@ importers:
         version: 5.3.3
       vike:
         specifier: 0.4.159
-        version: 0.4.159(vite@5.0.11)
+        version: 0.4.159(vite@5.0.12)
       vike-pinia:
         specifier: link:../../packages/vike-pinia
         version: link:../../packages/vike-pinia
@@ -87,8 +87,8 @@ importers:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
       vite:
-        specifier: ^5.0.11
-        version: 5.0.11(@types/node@20.11.1)
+        specifier: ^5.0.12
+        version: 5.0.12(@types/node@20.11.1)
       vue:
         specifier: ^3.4.13
         version: 3.4.13(typescript@5.3.3)
@@ -97,19 +97,19 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.3
-        version: 5.0.3(vite@5.0.11)(vue@3.4.13)
+        version: 5.0.3(vite@5.0.12)(vue@3.4.13)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
         specifier: 0.4.159
-        version: 0.4.159(vite@5.0.11)
+        version: 0.4.159(vite@5.0.12)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
       vite:
-        specifier: ^5.0.11
-        version: 5.0.11(@types/node@20.11.1)
+        specifier: ^5.0.12
+        version: 5.0.12(@types/node@20.11.1)
       vue:
         specifier: ^3.4.13
         version: 3.4.13(typescript@5.3.3)
@@ -133,7 +133,7 @@ importers:
         version: 5.3.3
       vike:
         specifier: 0.4.159
-        version: 0.4.159(vite@5.0.11)
+        version: 0.4.159(vite@5.0.12)
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -151,19 +151,19 @@ importers:
         version: 20.11.1
       '@vitejs/plugin-vue':
         specifier: ^5.0.3
-        version: 5.0.3(vite@5.0.11)(vue@3.4.13)
+        version: 5.0.3(vite@5.0.12)(vue@3.4.13)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
       vike:
         specifier: 0.4.159
-        version: 0.4.159(vite@5.0.11)
+        version: 0.4.159(vite@5.0.12)
       vite:
-        specifier: ^5.0.11
-        version: 5.0.11(@types/node@20.11.1)
+        specifier: ^5.0.12
+        version: 5.0.12(@types/node@20.11.1)
       vite-plugin-dts:
         specifier: ^3.7.1
-        version: 3.7.1(@types/node@20.11.1)(typescript@5.3.3)(vite@5.0.11)
+        version: 3.7.1(@types/node@20.11.1)(typescript@5.3.3)(vite@5.0.12)
       vue:
         specifier: ^3.4.13
         version: 3.4.13(typescript@5.3.3)
@@ -706,14 +706,14 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@vitejs/plugin-vue@5.0.3(vite@5.0.11)(vue@3.4.13):
+  /@vitejs/plugin-vue@5.0.3(vite@5.0.12)(vue@3.4.13):
     resolution: {integrity: sha512-b8S5dVS40rgHdDrw+DQi/xOM9ed+kSRZzfm1T74bMmBDCd8XO87NKlFYInzCtwvtWwXZvo1QxE2OSspTATWrbA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.11(@types/node@20.11.1)
+      vite: 5.0.12(@types/node@20.11.1)
       vue: 3.4.13(typescript@5.3.3)
 
   /@volar/language-core@1.11.1:
@@ -2037,7 +2037,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /unplugin-vue-markdown@0.25.2(vite@5.0.11):
+  /unplugin-vue-markdown@0.25.2(vite@5.0.12):
     resolution: {integrity: sha512-bDDWqtK1PUkWK/+kczOk33hqO5WulOUx5ZxfbCZuVArcUSwY7aB2vf4e2K+qdrlxalxkpjIA64z/liOrC/cjiQ==}
     peerDependencies:
       vite: ^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0
@@ -2049,7 +2049,7 @@ packages:
       '@types/markdown-it': 13.0.6
       markdown-it: 13.0.2
       unplugin: 1.5.0
-      vite: 5.0.11(@types/node@20.11.1)
+      vite: 5.0.12(@types/node@20.11.1)
     transitivePeerDependencies:
       - rollup
     dev: false
@@ -2081,7 +2081,7 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /vike@0.4.159(vite@5.0.11):
+  /vike@0.4.159(vite@5.0.12):
     resolution: {integrity: sha512-XdoRZThBcPPxl48RXtsMTJCUobN/40/PLiKdA0Plb0dMMKpqSRifD8EHpW+ExAoI+s3aCHuOIGyIX702/M0xaA==}
     engines: {node: '>=16.0.0'}
     hasBin: true
@@ -2104,9 +2104,9 @@ packages:
       fast-glob: 3.3.1
       sirv: 2.0.3
       source-map-support: 0.5.21
-      vite: 5.0.11(@types/node@20.11.1)
+      vite: 5.0.12(@types/node@20.11.1)
 
-  /vite-plugin-dts@3.7.1(@types/node@20.11.1)(typescript@5.3.3)(vite@5.0.11):
+  /vite-plugin-dts@3.7.1(@types/node@20.11.1)(typescript@5.3.3)(vite@5.0.12):
     resolution: {integrity: sha512-VZJckNFpVfRAkmOxhGT5OgTUVWVXxkNQqLpBUuiNGAr9HbtvmvsPLo2JB3Xhn+o/Z9+CT6YZfYa4bX9SGR5hNw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2122,7 +2122,7 @@ packages:
       debug: 4.3.4
       kolorist: 1.8.0
       typescript: 5.3.3
-      vite: 5.0.11(@types/node@20.11.1)
+      vite: 5.0.12(@types/node@20.11.1)
       vue-tsc: 1.8.27(typescript@5.3.3)
     transitivePeerDependencies:
       - '@types/node'
@@ -2130,8 +2130,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite@5.0.11(@types/node@20.11.1):
-    resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
+  /vite@5.0.12(@types/node@20.11.1):
+    resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
