@@ -42,12 +42,12 @@
   },
   "devDependencies": {
     "@brillout/release-me": "^0.1.14",
-    "@types/node": "^20.11.1",
+    "@types/node": "^20.11.5",
     "pinia": "^2.1.7",
     "typescript": "^5.3.3",
     "vike": "0.4.159",
     "vike-vue": "0.5.4",
-    "vue": "^3.4.13"
+    "vue": "^3.4.15"
   },
   "files": [
     "dist"
