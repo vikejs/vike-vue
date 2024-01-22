@@ -17,6 +17,7 @@
     "dev": "vite build --watch",
     "build": "rm -rf dist/ && vite build",
     "release": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ patch",
+    "release:minor": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ minor",
     "release:commit": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ commit"
   },
   "peerDependencies": {
