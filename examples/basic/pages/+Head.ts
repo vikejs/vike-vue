@@ -1,1 +1,1 @@
-export { default as Head } from '../layouts/HeadDefault.vue'
+export { default } from '../layouts/HeadDefault.vue'
