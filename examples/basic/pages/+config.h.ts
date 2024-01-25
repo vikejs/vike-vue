@@ -5,5 +5,11 @@ import vikeVue from 'vike-vue'
 export default {
   // <title>
   title: 'My Vike + Vue App',
-  extends: vikeVue
+  baseUrl: 'https://example.com',
+  extends: vikeVue,
+  meta: {
+    baseUrl: {
+      env: { server: true, client: true }
+    }
+  }
 } satisfies Config
