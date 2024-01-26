@@ -22,7 +22,7 @@ function getCanonicalUrl(pageContext: PageContext): null | string {
   if (pageContext.is404 || pageContext.abortStatusCode || pageContext.abortReason) {
     return null
   }
-  return new URL(pageContext.urlPathname, pageContext.config.baseUrl).toString()
+  return new URL(pageContext.urlPathname, pageContext.config.baseCanonicalUrl).toString()
 }
 
 const canonicalUrl = getCanonicalUrl(pageContext)
