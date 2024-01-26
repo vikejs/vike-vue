@@ -5,5 +5,25 @@ import vikeVue from 'vike-vue'
 export default {
   // <title>
   title: 'My Vike + Vue App',
-  extends: vikeVue
+  // <link rel="canonical" />
+  baseCanonicalUrl: 'https://example.com',
+  extends: vikeVue,
+  meta: {
+    baseCanonicalUrl: {
+      env: { server: true, client: true }
+    }
+  }
 } satisfies Config
+
+declare global {
+  namespace Vike {
+    interface Config {
+      baseCanonicalUrl?: string
+    }
+    interface PageContext {
+      config: {
+        baseCanonicalUrl?: string
+      }
+    }
+  }
+}
