@@ -5,7 +5,8 @@
 
 # `vike-pinia`
 
-[Pinia](https://pinia.vuejs.org/) integration for [Vike](https://vike.dev/).
+Pinia integration for Vike, see [vike.dev/pinia](https://vike.dev/pinia).
 
+- [Documentation](https://vike.dev)
 - [Example](https://github.com/vikejs/vike-vue/tree/main/examples/with-vike-pinia)
 - [Changelog](https://github.com/vikejs/vike-vue/blob/main/packages/vike-pinia/CHANGELOG.md)
