@@ -1,5 +1,5 @@
 import type { Config } from 'vike/types'
-import vikeVue from 'vike-vue'
+import vikeVue from 'vike-vue/config'
 
 // Default configs (can be overridden by pages)
 export default {

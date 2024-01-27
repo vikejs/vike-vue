@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "noUncheckedIndexedAccess": true,
     "strict": true,
+    "rootDir": "./src/",
     "outDir": "./dist/"
   }
 }

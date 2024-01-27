@@ -1,7 +1,7 @@
 import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive } from 'vue'
-import type { Component, PageContextWithApp, PageContextWithoutApp } from './types'
+import type { Component, PageContextWithApp, PageContextWithoutApp } from '../types/PageContext'
 import type { Config, PageContext } from 'vike/types'
-import { setPageContext } from '../components/usePageContext.js'
+import { setPageContext } from '../hooks/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 
 export { createVueApp }

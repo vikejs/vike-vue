@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia'
-import type { OnCreateAppSync } from 'vike-vue'
+import type { OnCreateAppSync } from 'vike-vue/types'
 
 export { installPinia }
 

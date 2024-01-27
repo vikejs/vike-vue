@@ -4,7 +4,7 @@ export { onRenderClient }
 import { createVueApp } from './app.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderClientAsync } from 'vike/types'
-import type { VikeVueApp } from './types.js'
+import type { VikeVueApp } from '../types/PageContext'
 
 let app: VikeVueApp | undefined = undefined
 const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
