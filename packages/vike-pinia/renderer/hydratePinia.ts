@@ -1,4 +1,4 @@
-import type { OnBeforeMountAppSync } from 'vike-vue'
+import type { OnBeforeMountAppSync } from 'vike-vue/types'
 
 export { hydratePinia }
 

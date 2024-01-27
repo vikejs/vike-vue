@@ -10,12 +10,14 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: {
-        ['renderer/+config']: resolve(__dirname, './renderer/+config.ts'),
-        ['renderer/onRenderClient']: resolve(__dirname, './renderer/onRenderClient.ts'),
-        ['renderer/onRenderHtml']: resolve(__dirname, './renderer/onRenderHtml.ts'),
-        ['components/usePageContext']: resolve(__dirname, './components/usePageContext.ts'),
-        ['components/useData']: resolve(__dirname, './components/useData.ts'),
-        ['components/ClientOnly']: resolve(__dirname, './components/ClientOnly.vue'),
+        ['index']: resolve(__dirname, './src/index.ts'),
+        ['+config']: resolve(__dirname, './src/+config.ts'),
+        ['renderer/onRenderClient']: resolve(__dirname, './src/renderer/onRenderClient.ts'),
+        ['renderer/onRenderHtml']: resolve(__dirname, './src/renderer/onRenderHtml.ts'),
+        ['types/index']: resolve(__dirname, './src/types/index.ts'),
+        ['hooks/usePageContext']: resolve(__dirname, './src/hooks/usePageContext.ts'),
+        ['hooks/useData']: resolve(__dirname, './src/hooks/useData.ts'),
+        ['components/ClientOnly']: resolve(__dirname, './src/components/ClientOnly.vue')
       },
       formats: ['es']
     },

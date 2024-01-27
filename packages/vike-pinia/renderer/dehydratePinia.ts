@@ -1,4 +1,4 @@
-import type { OnAfterRenderSSRAppSync } from 'vike-vue'
+import type { OnAfterRenderSSRAppSync } from 'vike-vue/types'
 
 export { dehydratePinia }
 

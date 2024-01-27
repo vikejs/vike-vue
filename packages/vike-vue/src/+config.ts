@@ -1,65 +1,17 @@
-export type {
+export { config }
+
+import type {
   OnCreateAppSync,
   OnCreateAppAsync,
   OnAfterRenderSSRAppSync,
   OnAfterRenderSSRAppAsync,
   OnBeforeMountAppSync,
   OnBeforeMountAppAsync
-}
+} from './hooks/types'
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
-import type { Component, PageContextWithApp } from './types'
+import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
-
-// Purposeful code duplication for improving QuickInfo IntelliSense
-/**
- * Hook called right after creating Vue's `app` instance.
- *
- * Typically used for registering Vue plugins.
- *
- * See also:
- *  - https://vuejs.org/guide/reusability/plugins.html
- *  - https://vuejs.org/api/application.html#createapp
- */
-type OnCreateAppSync = (pageContext: PageContextWithApp) => void
-/**
- * Hook called right after creating Vue's `app` instance.
- *
- * Typically used for registering Vue plugins.
- *
- * See also:
- *  - https://vuejs.org/guide/reusability/plugins.html
- *  - https://vuejs.org/api/application.html#createapp
- */
-type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
-
-/**
- * Hook called right after rendering the page's root Vue component.
- * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
- *
- * Typically used for dehydrating state management libraries.
- */
-type OnAfterRenderSSRAppSync = (pageContext: PageContext) => PageContext['fromHtmlRenderer']
-/**
- * Hook called right after rendering the page's root Vue component.
- * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
- *
- * Typically used for dehydrating state management libraries.
- */
-type OnAfterRenderSSRAppAsync = (pageContext: PageContext) => Promise<PageContext['fromHtmlRenderer']>
-
-/**
- * Hook called right before mounting the page's root Vue component.
- *
- * Typically used for hydrating state management libraries.
- */
-type OnBeforeMountAppSync = (pageContext: PageContext) => void
-/**
- * Hook called right before mounting the page's root Vue component.
- *
- * Typically used for hydrating state management libraries.
- */
-type OnBeforeMountAppAsync = (pageContext: PageContext) => Promise<void>
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -83,7 +35,7 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
   }
 }
 
-export default {
+const config = {
   // https://vike.dev/onRenderHtml
   onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
   // https://vike.dev/onRenderClient
@@ -148,7 +100,7 @@ type VuePluginWithOptions = {
   options?: any
 }
 
-// We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue'`
+// We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue/config'`
 // https://vike.dev/pageContext#typescript
 declare global {
   namespace VikePackages {
