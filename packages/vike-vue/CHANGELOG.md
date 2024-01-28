@@ -1,3 +1,24 @@
+## [0.6.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.0...vike-vue@0.6.1) (2024-01-28)
+
+
+### Bug Fixes
+
+* export config at `/config` instead of `/` ([82a535f](https://github.com/vikejs/vike-vue/commit/82a535fa848df7d7d99df0bab60a647309666aa9))
+
+
+### BREAKING CHANGES
+
+* Update Vike to `0.4.160` or above.
+* Replace `import vikeVue from 'vike-vue'`
+with `import vikeVue from 'vike-vue/config'`. (Typically
+in your `/pages/+config.h.js`.)
+* Replace
+`import type { OnCreateAppSync } from 'vike-vue'` (or
+another available hook type) with
+`import type { OnCreateAppSync } from 'vike-vue/types'`
+
+
+
 # [0.6.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.5.4...vike-vue@0.6.0) (2024-01-22)
 
 
