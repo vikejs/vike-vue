@@ -10,7 +10,8 @@ Basic example of using `vike-vue`, showcasing:
 
 ```bash
 git clone git@github.com:vikejs/vike-vue
-cd vike-vue/examples/basic/
-npm install
-npm run dev
+cd vike-vue/
+pnpm install
+cd examples/basic/
+pnpm run dev
 ```

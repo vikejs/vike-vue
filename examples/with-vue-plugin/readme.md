@@ -2,7 +2,8 @@ Example of installing and using an additional [Vue plugin](https://vuejs.org/gui
 
 ```bash
 git clone git@github.com:vikejs/vike-vue
-cd vike-vue/examples/with-vue-plugin/
-npm install
-npm run dev
+cd vike-vue/
+pnpm install
+cd examples/with-vue-plugin/
+pnpm run dev
 ```

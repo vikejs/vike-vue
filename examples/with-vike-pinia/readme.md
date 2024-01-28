@@ -2,7 +2,8 @@ Example of using [Pinia](https://pinia.vuejs.org/) with the `vike-pinia` extensi
 
 ```bash
 git clone git@github.com:vikejs/vike-vue
-cd vike-vue/examples/with-vue-plugin/
-npm install
-npm run dev
+cd vike-vue/
+pnpm install
+cd examples/with-vike-pinia/
+pnpm run dev
 ```

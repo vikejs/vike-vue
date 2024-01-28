@@ -3,7 +3,8 @@ Example of selecting SPA or SSR on a per-page basis. See
 
 ```bash
 git clone git@github.com:vikejs/vike-vue
-cd vike-vue/examples/ssr-spa/
-npm install
-npm run dev
+cd vike-vue/
+pnpm install
+cd examples/ssr-spa/
+pnpm run dev
 ```
