@@ -13,10 +13,9 @@
     "./useData": "./dist/hooks/useData.js",
     "./ClientOnly": "./dist/components/ClientOnly.js"
   },
-  "dependencies": {},
   "scripts": {
     "dev": "vite build --watch",
-    "build": "rm -rf dist/ && vite build",
+    "build": "rm -rf dist/ && vue-tsc --noEmit && vite build",
     "release": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ patch",
     "release:minor": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ minor",
     "release:commit": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ commit"
@@ -29,11 +28,11 @@
     "@brillout/release-me": "^0.1.14",
     "@types/node": "^20.11.5",
     "@vitejs/plugin-vue": "^5.0.3",
-    "typescript": "^5.3.3",
     "vike": "^0.4.160",
     "vite": "^5.0.12",
     "vite-plugin-dts": "^3.7.1",
-    "vue": "^3.4.15"
+    "vue": "^3.4.15",
+    "vue-tsc": "^1.8.27"
   },
   "typesVersions": {
     "*": {
