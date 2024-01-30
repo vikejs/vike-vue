@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup generic="T extends AsyncComponentLoader">
-import { h, ref, onMounted, defineAsyncComponent, useSlots, type AsyncComponentLoader } from 'vue';
-import type { Component } from "../renderer/types"
+import { h, ref, onMounted, defineAsyncComponent, useSlots, type AsyncComponentLoader } from 'vue'
+import type { Component } from '../types/PageContext'
 
 type Props = {
   load: T
@@ -23,10 +23,10 @@ const ClientComponent = defineAsyncComponent({
   loader: props.load,
   loadingComponent: slots.fallback,
   onError: (e) => {
-    console.error("Component loading failed:", e)
+    console.error('Component loading failed:', e)
     throw e
   },
-  suspensible: false,
+  suspensible: false
 })
 
 const client = ref(false)
