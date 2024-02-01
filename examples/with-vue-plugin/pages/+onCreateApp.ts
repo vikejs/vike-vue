@@ -1,3 +1,4 @@
+// https://vike.dev/onCreateApp
 export { onCreateApp }
 
 import type { OnCreateAppSync } from 'vike-vue'

@@ -154,9 +154,7 @@ declare global {
        *
        * Typically used for registering Vue plugins.
        *
-       * See also:
-       *  - https://vuejs.org/guide/reusability/plugins.html
-       *  - https://vuejs.org/api/application.html#createapp
+       * See https://vike.dev/onCreateApp
        */
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync
 

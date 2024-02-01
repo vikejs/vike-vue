@@ -59,6 +59,10 @@ npm install vike-vue
 [`onRenderClient()`](https://vike.dev/onRenderClient) hooks on your behalf, which are essentially the glue code between
 Vike and Vue.
 
+`vike-vue` introduces the following new hooks:
+* [`onCreateApp()`](https://vike.dev/onCreateApp): Allows you to extend the Vue app, typically for registering a Vue
+  plugin.
+
 ## Settings
 
 `vike-vue` sets the following Vike Core settings on your behalf:

@@ -16,9 +16,7 @@ import type { PageContextWithApp } from '../types/PageContext'
  *
  * Typically used for registering Vue plugins.
  *
- * See also:
- *  - https://vuejs.org/guide/reusability/plugins.html
- *  - https://vuejs.org/api/application.html#createapp
+ * See https://vike.dev/onCreateApp
  */
 type OnCreateAppSync = (pageContext: PageContextWithApp) => void
 /**
@@ -26,9 +24,7 @@ type OnCreateAppSync = (pageContext: PageContextWithApp) => void
  *
  * Typically used for registering Vue plugins.
  *
- * See also:
- *  - https://vuejs.org/guide/reusability/plugins.html
- *  - https://vuejs.org/api/application.html#createapp
+ * See https://vike.dev/onCreateApp
  */
 type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
 
