@@ -10,7 +10,7 @@
     "node-fetch": "^3.3.2",
     "unplugin-vue-markdown": "^0.26.0",
     "vike": "^0.4.161",
-    "vike-vue": "0.6.1",
+    "vike-vue": "0.6.2",
     "vite": "^5.1.1",
     "vue": "^3.4.18"
   },

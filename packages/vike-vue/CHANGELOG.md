@@ -1,3 +1,13 @@
+## [0.6.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.1...vike-vue@0.6.2) (2024-02-14)
+
+
+### Bug Fixes
+
+* fix broken `import type` in `ClientOnly` ([bae3e79](https://github.com/vikejs/vike-vue/commit/bae3e79f46d9018de04d7f8edf0ad7b0af2f1fc0))
+* set Vike extension name ([61ff29b](https://github.com/vikejs/vike-vue/commit/61ff29be2d3209a11324b2755f3857ece6aec9d1))
+
+
+
 ## [0.6.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.0...vike-vue@0.6.1) (2024-01-28)
 
 
