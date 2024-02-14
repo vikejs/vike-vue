@@ -36,6 +36,9 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 }
 
 const config = {
+  // @ts-ignore Remove this ts-ignore once Vike's new version is released.
+  name: 'vike-vue',
+
   // https://vike.dev/onRenderHtml
   onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
   // https://vike.dev/onRenderClient
@@ -91,6 +94,10 @@ const config = {
     },
     onBeforeMountApp: {
       env: { server: false, client: true }
+    },
+    // Vike already defines the setting 'name', but we redundantly define it here for older Vike versions (otherwise older Vike versions will complain that 'name` is an unknown config).
+    name: {
+      env: { config: true }
     }
   }
 } satisfies Config
