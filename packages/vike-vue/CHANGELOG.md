@@ -1,3 +1,12 @@
+## [0.6.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.2...vike-vue@0.6.3) (2024-02-20)
+
+
+### Bug Fixes
+
+* respect Vue's inject rule (fix [#79](https://github.com/vikejs/vike-vue/issues/79)) ([a5f189a](https://github.com/vikejs/vike-vue/commit/a5f189a984ff72422b818e468601ff990463c210))
+
+
+
 ## [0.6.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.1...vike-vue@0.6.2) (2024-02-14)
 
 
