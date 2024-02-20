@@ -7,7 +7,7 @@ export { useData }
 import { type ComputedRef, computed } from 'vue'
 import { usePageContext } from './usePageContext'
 
-function useData<Data>(): ComputedRef<Data> {
+function useData<Data>(): Data {
   const { data } = usePageContext()
-  return data
+  return data as any
 }
