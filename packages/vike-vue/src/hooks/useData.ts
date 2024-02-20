@@ -8,6 +8,6 @@ import { type ComputedRef, computed } from 'vue'
 import { usePageContext } from './usePageContext'
 
 function useData<Data>(): ComputedRef<Data> {
-  const data = computed(() => (usePageContext() as any).data)
+  const { data } = usePageContext()
   return data
 }
