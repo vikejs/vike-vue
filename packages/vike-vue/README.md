@@ -38,7 +38,7 @@ npm install vike-vue
 2. Extend your existing Vike config files with `vike-vue`:
 
 ```diff
- // /pages/+config.h.js
+ // /pages/+config.js
 
 +import vikeVue from 'vike-vue/config'
 +

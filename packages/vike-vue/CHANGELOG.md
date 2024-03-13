@@ -30,7 +30,7 @@
 * Update Vike to `0.4.160` or above.
 * Replace `import vikeVue from 'vike-vue'`
 with `import vikeVue from 'vike-vue/config'`. (Typically
-in your `/pages/+config.h.js`.)
+in your `/pages/+config.js`.)
 * Replace
 `import type { OnCreateAppSync } from 'vike-vue'` (or
 another available hook type) with
