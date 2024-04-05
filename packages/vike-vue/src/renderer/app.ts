@@ -1,6 +1,6 @@
-import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive } from 'vue'
+import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive, ref } from 'vue'
 import type { Component, PageContextWithApp, PageContextWithoutApp } from '../types/PageContext'
-import type { Config, PageContext } from 'vike/types'
+import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 
@@ -18,28 +18,23 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
   const { Page } = pageContext
   const Head = renderHead ? (pageContext.config.Head as Component) : undefined
 
-  let rootComponent: Component & { Page: Component; config: Config }
+  const pageRef = ref(markRaw(Head ? Head : Page))
+  const configRef = ref(markRaw(pageContext.config))
+
   const PageWithLayout = defineComponent({
-    data: () => ({
-      Page: markRaw(Head ? Head : Page),
-      config: markRaw(pageContext.config)
-    }),
-    created() {
-      rootComponent = this
-    },
     render() {
-      if (!!this.config.Layout && !renderHead) {
+      if (!!configRef.value.Layout && !renderHead) {
         return h(
-          this.config.Layout,
+          configRef.value.Layout,
           {},
           {
             default: () => {
-              return h(this.Page)
+              return h(pageRef.value)
             }
           }
         )
       }
-      return h(this.Page)
+      return h(pageRef.value)
     }
   })
 
@@ -58,8 +53,8 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
         }
       }
       Object.assign(pageContextReactive, pageContext)
-      rootComponent.Page = markRaw(pageContext.Page)
-      rootComponent.config = markRaw(pageContext.config)
+      pageRef.value = markRaw(pageContext.Page)
+      configRef.value = markRaw(pageContext.config)
       await nextTick()
       returned = true
       if (err) throw err
