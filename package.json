@@ -1,8 +1,18 @@
 {
   "scripts": {
-    "========= Basics": "",
-    "dev": "cd ./packages/vike-vue/ && pnpm run dev",
+    "========= Build": "",
     "build": "pnpm --recursive --filter {packages/*} run build",
+    "========= Dev": "",
+    "dev": "cd ./packages/vike-vue/ && pnpm run dev",
+    "========= Test": "",
+    "test": "pnpm run test:e2e && pnpm run test:types",
+    "test:e2e": "test-e2e",
+    "test:types": "test-types",
+    "========= Formatting": "",
+    "format": "pnpm run format:biome",
+    "format:prettier": "git ls-files | egrep '\\.(json|js|jsx|css|ts|tsx|vue|mjs|cjs)$' | grep --invert-match package.json | xargs pnpm exec prettier --write",
+    "format:biome": "biome format --write .",
+    "format:check": "biome format . || (echo 'Fix formatting by running `$ pnpm run -w format`.' && exit 1)",
     "========= Release": "",
     "release": "cd ./packages/vike-vue/ && pnpm run release",
     "release:minor": "cd ./packages/vike-vue/ && pnpm run release:minor",
@@ -19,5 +29,12 @@
       "vike-pinia": "link:./packages/vike-pinia/"
     }
   },
-  "packageManager": "pnpm@8.6.12"
+  "packageManager": "pnpm@8.6.12",
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@brillout/test-e2e": "^0.5.29",
+    "@brillout/test-types": "^0.1.10",
+    "playwright": "^1.42.1",
+    "prettier": "^3.2.5"
+  }
 }
