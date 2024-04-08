@@ -21,7 +21,7 @@ onMounted(() => {
   const useToast = toastPlugin.useToast()
   useToast.success('I am a Vue plugin!', {
     position: 'bottom',
-    duration: 0 // infinite
+    duration: 0, // infinite
   })
 })
 

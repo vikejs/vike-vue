@@ -7,7 +7,7 @@
   </ul>
   <h2>Counters synced via shared store</h2>
   <Counter />
-  <hr>
+  <hr />
   <Counter />
 </template>
 
