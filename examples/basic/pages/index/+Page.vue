@@ -19,7 +19,7 @@ import { onBeforeUnmount, onMounted } from 'vue'
 
 onMounted(() => {
   const useToast = toastPlugin.useToast()
-  useToast.success('I am a Vue plugin!', {
+  useToast.success('I am a Vue plugin.', {
     position: 'bottom',
     duration: 0, // infinite
   })
