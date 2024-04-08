@@ -5,7 +5,6 @@
         <img src="../assets/logo.svg" height="64" width="64" />
       </a>
       <Link href="/">Welcome</Link>
-      <Link href="/about">About</Link>
       <Link href="/markdown">Markdown</Link>
       <Link href="/star-wars">Data Fetching</Link>
       <Link href="/without-ssr">Without SSR</Link>
