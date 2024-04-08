@@ -56,8 +56,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     documentHtml,
     pageContext: {
       enableEagerStreaming: true,
-      fromHtmlRenderer,
-    },
+      fromHtmlRenderer
+    }
   }
 }
 

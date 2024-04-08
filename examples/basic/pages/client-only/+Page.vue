@@ -39,7 +39,7 @@ const load = () =>
     setTimeout(async () => {
       const Counter = await import('../../components/Counter.vue')
       resolve(Counter)
-    }, delay),
+    }, delay)
   )
 </script>
 

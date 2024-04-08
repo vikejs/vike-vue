@@ -4,7 +4,7 @@ export type {
   OnAfterRenderSSRAppSync,
   OnAfterRenderSSRAppAsync,
   OnBeforeMountAppSync,
-  OnBeforeMountAppAsync,
+  OnBeforeMountAppAsync
 }
 
 import type { PageContext } from 'vike/types'

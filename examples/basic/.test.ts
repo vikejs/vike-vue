@@ -9,19 +9,19 @@ function runTest() {
     url: '/',
     title: 'My Vike + Vue App',
     text: 'My Vike + Vue app',
-    counter: true,
+    counter: true
   })
 
   testUrl({
     url: '/star-wars',
     title: '6 Star Wars Movies',
-    text: 'A New Hope',
+    text: 'A New Hope'
   })
 
   testUrl({
     url: '/star-wars/3',
     title: 'Return of the Jedi',
-    text: '1983-05-25',
+    text: '1983-05-25'
   })
 }
 

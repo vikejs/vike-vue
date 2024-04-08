@@ -5,7 +5,7 @@ import { isCallable } from '../utils/isCallable.js'
 
 function getHeadSetting(
   headSetting: 'title' | 'favicon' | 'lang',
-  pageContext: PageContext,
+  pageContext: PageContext
 ): undefined | null | string {
   const config = pageContext.configEntries[headSetting]?.[0]
   if (!config) return undefined

@@ -22,7 +22,7 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
   const PageWithLayout = defineComponent({
     data: () => ({
       Page: markRaw(Head ? Head : Page),
-      config: markRaw(pageContext.config),
+      config: markRaw(pageContext.config)
     }),
     created() {
       rootComponent = this
@@ -35,12 +35,12 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
           {
             default: () => {
               return h(this.Page)
-            },
-          },
+            }
+          }
         )
       }
       return h(this.Page)
-    },
+    }
   })
 
   const app = ssrApp ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
@@ -63,7 +63,7 @@ async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead 
       await nextTick()
       returned = true
       if (err) throw err
-    },
+    }
   })
 
   // When doing Client Routing, we mutate pageContext (see usage of `app.changePage()` in `onRenderClient.ts`).

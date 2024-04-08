@@ -26,7 +26,7 @@ const ClientComponent = defineAsyncComponent({
     console.error('Component loading failed:', e)
     throw e
   },
-  suspensible: false,
+  suspensible: false
 })
 
 const client = ref(false)
