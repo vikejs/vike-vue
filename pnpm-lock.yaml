@@ -60,6 +60,9 @@ importers:
       vue:
         specifier: ^3.4.18
         version: 3.4.18(typescript@5.3.3)
+      vue-toast-notification:
+        specifier: ^3.1.2
+        version: 3.1.2(vue@3.4.18)
       vue-tsc:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.3.3)
@@ -87,34 +90,6 @@ importers:
       vue:
         specifier: ^3.4.18
         version: 3.4.18(typescript@5.3.3)
-    devDependencies:
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-      vue-tsc:
-        specifier: ^1.8.27
-        version: 1.8.27(typescript@5.3.3)
-
-  examples/with-vue-plugin:
-    dependencies:
-      '@vitejs/plugin-vue':
-        specifier: ^5.0.4
-        version: 5.0.4(vite@5.1.1)(vue@3.4.18)
-      vike:
-        specifier: ^0.4.165
-        version: 0.4.165(vite@5.1.1)
-      vike-vue:
-        specifier: link:../../packages/vike-vue
-        version: link:../../packages/vike-vue
-      vite:
-        specifier: ^5.1.1
-        version: 5.1.1(@types/node@20.11.17)
-      vue:
-        specifier: ^3.4.18
-        version: 3.4.18(typescript@5.3.3)
-      vue-toast-notification:
-        specifier: ^3.1.2
-        version: 3.1.2(vue@3.4.18)
     devDependencies:
       typescript:
         specifier: ^5.3.3

@@ -7,6 +7,7 @@ Basic example of using `vike-vue`, showcasing:
 - [markdown pages](https://vike.dev/markdown)
 - [configs](https://vike.dev/config)
 - [error pages](https://vike.dev/error-page)
+- Installing additional [Vue plugin](https://vuejs.org/guide/reusability/plugins.html)
 
 ```bash
 git clone git@github.com:vikejs/vike-vue
