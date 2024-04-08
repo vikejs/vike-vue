@@ -3,17 +3,13 @@
     "module": "ES2020",
     "moduleResolution": "Node",
     "target": "ES2019",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "noUncheckedIndexedAccess": true,
     "strict": true,
     "outDir": "./dist/",
-    "declaration": true,
+    "declaration": true
   }
 }
