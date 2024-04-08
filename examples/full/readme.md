@@ -13,6 +13,6 @@ Basic example of using `vike-vue`, showcasing:
 git clone git@github.com:vikejs/vike-vue
 cd vike-vue/
 pnpm install
-cd examples/basic/
+cd examples/full/
 pnpm run dev
 ```
