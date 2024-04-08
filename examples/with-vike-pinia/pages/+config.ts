@@ -10,5 +10,5 @@ export default {
   Head,
   // <title>
   title: 'My Vike + Vue + Pinia App',
-  extends: [vikeVue, vikePinia]
+  extends: [vikeVue, vikePinia],
 } satisfies Config

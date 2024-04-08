@@ -10,5 +10,5 @@ export default {
   // <title>
   title: 'My Vike + Vue App',
   ssr: true, // can be removed since `true` is the default
-  extends: vikeVue
+  extends: vikeVue,
 } satisfies Config

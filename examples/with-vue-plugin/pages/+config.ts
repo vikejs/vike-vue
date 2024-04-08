@@ -9,5 +9,5 @@ export default {
   Head,
   // <title>
   title: 'My Vike + Vue App',
-  extends: vikeVue
+  extends: vikeVue,
 } satisfies Config

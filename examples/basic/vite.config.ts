@@ -7,10 +7,10 @@ const config: UserConfig = {
   plugins: [
     vike(),
     vue({
-      include: [/\.vue$/, /\.md$/]
+      include: [/\.vue$/, /\.md$/],
     }),
-    md({})
-  ]
+    md({}),
+  ],
 }
 
 export default config
