@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onServerPrefetch } from 'vue';
+import { onServerPrefetch } from 'vue'
 import Counter from '../../components/Counter.vue'
 import { useCounterStore } from '../../stores/useCounterStore'
 

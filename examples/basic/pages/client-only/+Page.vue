@@ -17,15 +17,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue'
 import ClientOnly from 'vike-vue/ClientOnly'
 
-const delay = 3000;
+const delay = 3000
 
-const timeLeft = ref(delay);
+const timeLeft = ref(delay)
 
 const interval = setInterval(() => {
-  timeLeft.value -= 100;
+  timeLeft.value -= 100
 }, 100)
 
 watchEffect(() => {
@@ -34,10 +34,13 @@ watchEffect(() => {
   }
 })
 
-const load = () => new Promise((resolve) => setTimeout(async () => {
-  const Counter = await import('../../components/Counter.vue')
-  resolve(Counter)
-}, delay))
+const load = () =>
+  new Promise((resolve) =>
+    setTimeout(async () => {
+      const Counter = await import('../../components/Counter.vue')
+      resolve(Counter)
+    }, delay)
+  )
 </script>
 
 <style scoped>
