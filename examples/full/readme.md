@@ -1,18 +1,16 @@
-Basic example of using `vike-vue`, showcasing:
+Full-fledged example of using `vike-vue`, showcasing:
 
-- [layouts](https://vike.dev/layouts)
-- rendering to `<head>`
-- fetching data with [`data()`](https://vike.dev/data) hooks
-- `<ClientOnly>` components
-- [markdown pages](https://vike.dev/markdown)
-- [configs](https://vike.dev/config)
-- [error pages](https://vike.dev/error-page)
-- Installing additional [Vue plugin](https://vuejs.org/guide/reusability/plugins.html)
+- [Layout](https://vike.dev/Layout)
+- Fetching data with [`data()`](https://vike.dev/data)
+- [`<ClientOnly>`](https://vike.dev/ClientOnly)
+- [Toggling SSR](https://vike.dev/ssr) on a per-page basis.
+- [Markdown](https://vike.dev/markdown)
+- [Error page](https://vike.dev/error-page)
+- Installing [Vue plugin](https://vuejs.org/guide/reusability/plugins.html)
 
 ```bash
 git clone git@github.com:vikejs/vike-vue
-cd vike-vue/
-pnpm install
-cd examples/full/
-pnpm run dev
+cd vike-vue/examples/full/
+npm install
+npm run dev
 ```
