@@ -20,9 +20,10 @@ jobs:
         cmd:
           - pnpm run test:e2e
           - pnpm run test:types
-        # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategymatrixexclude
-        # https://stackoverflow.com/questions/68994484/how-to-skip-a-configuration-of-a-matrix-with-github-actions/68994907#68994907
-        # https://stackoverflow.com/questions/66025220/paired-values-in-github-actions-matrix/68940067#68940067
+        # `exclude` docs & alternatives:
+        # - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategymatrixexclude
+        # - https://stackoverflow.com/questions/68994484/how-to-skip-a-configuration-of-a-matrix-with-github-actions/68994907#68994907
+        # - https://stackoverflow.com/questions/66025220/paired-values-in-github-actions-matrix/68940067#68940067
         exclude:
           - os: windows-latest
             cmd: pnpm run test:types
