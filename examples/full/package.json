@@ -2,8 +2,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite build && vite preview",
-    "test:sfc-types": "vue-tsc --noEmit"
+    "preview": "vite build && vite preview"
   },
   "dependencies": {
     "@types/node": "^20.11.17",

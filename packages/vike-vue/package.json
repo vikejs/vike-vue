@@ -11,7 +11,10 @@
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
     "./usePageContext": "./dist/hooks/usePageContext.js",
     "./useData": "./dist/hooks/useData.js",
-    "./ClientOnly": "./dist/components/ClientOnly.js"
+    "./ClientOnly": {
+      "default": "./dist/components/ClientOnly.js",
+      "types": "./dist/components/ClientOnly.vue.d.ts"
+    }
   },
   "scripts": {
     "dev": "vite build --watch",

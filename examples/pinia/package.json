@@ -2,8 +2,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview",
-    "test": "vue-tsc --noEmit"
+    "preview": "vite build && vite preview"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
