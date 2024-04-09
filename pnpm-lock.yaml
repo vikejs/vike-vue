@@ -19,8 +19,8 @@ importers:
         specifier: ^0.5.29
         version: 0.5.29
       '@brillout/test-types':
-        specifier: ^0.1.10
-        version: 0.1.10(typescript@4.9.5)
+        specifier: ^0.1.11
+        version: 0.1.11(typescript@4.9.5)
       playwright:
         specifier: ^1.42.1
         version: 1.43.0
@@ -351,9 +351,10 @@ packages:
       - encoding
     dev: true
 
-  /@brillout/test-types@0.1.10(typescript@4.9.5):
-    resolution: {integrity: sha512-/cZb3xirQiDiPKrbE9hm8NHPRtvH+HifxVT7Z/QbdopwvYW7LS+6VloGqhWKHvFb/UWRfe+G3vg7xq191PyqmA==}
+  /@brillout/test-types@0.1.11(typescript@4.9.5):
+    resolution: {integrity: sha512-dSI2cX7nS6bpIf3RuSwyOTl3oC43CL3EM7XsGCbuf0jYTE8HXqp5jGHTpWK2Ef+tRssLRNaxsdfP9BTZurm3HQ==}
     hasBin: true
+    requiresBuild: true
     peerDependencies:
       typescript: ^4.0.0
     dependencies:
