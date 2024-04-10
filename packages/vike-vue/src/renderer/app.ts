@@ -7,7 +7,7 @@ import { setPageContext } from '../hooks/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 
 async function createVueApp(pageContext: PageContext, ssr: boolean, renderHead = false): Promise<PageContextWithApp> {
-  const { Page } = pageContext
+  const { Page } = pageContext.config
   const Head = renderHead ? pageContext.config.Head : undefined
 
   const pageRef = ref(markRaw(Head ? Head : Page))
