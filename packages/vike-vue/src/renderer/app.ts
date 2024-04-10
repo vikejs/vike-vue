@@ -1,19 +1,11 @@
+export { createVueApp }
+
 import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive, ref } from 'vue'
 import type { Component, PageContextWithApp, PageContextWithoutApp } from '../types/PageContext'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 
-export { createVueApp }
-
-/**
- * Isomorphic function to create a Vue app.
- *
- * @param pageContext Object providing the Vue component to be rendered and additional config and data.
- * @param ssrApp Whether to use `createSSRApp()` or `createApp()`. See https://vuejs.org/api/application.html
- * @param renderHead If true, `pageContext.config.Head` will be rendered instead of `pageContext.Page`.
- * @returns The `pageContext` object with the `app` property set.
- */
 async function createVueApp(pageContext: PageContext, ssrApp = true, renderHead = false): Promise<PageContextWithApp> {
   const { Page } = pageContext
   const Head = renderHead ? (pageContext.config.Head as Component) : undefined

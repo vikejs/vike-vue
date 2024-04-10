@@ -34,7 +34,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   if (!!pageContext.config.Head) {
-    const { app } = await createVueApp(pageContext, /*ssrApp*/ true, /*renderHead*/ true)
+    const { app } = await createVueApp(pageContext, true, true)
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
