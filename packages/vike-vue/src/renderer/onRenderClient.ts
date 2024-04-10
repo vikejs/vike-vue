@@ -1,7 +1,7 @@
 // https://vike.dev/onRenderClient
 export { onRenderClient }
 
-import { createVueApp } from './app.js'
+import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderClientAsync } from 'vike/types'
 import type { VikeVueApp } from '../types/PageContext'

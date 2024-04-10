@@ -5,7 +5,7 @@ import { renderToNodeStream, renderToString } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderHtmlAsync } from 'vike/types'
-import { createVueApp } from './app.js'
+import { createVueApp } from './createVueApp.js'
 import { App } from 'vue'
 
 checkVikeVersion()
