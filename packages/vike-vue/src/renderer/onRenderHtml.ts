@@ -23,7 +23,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   if (!!pageContext.Page) {
     // SSR is enabled
-    const ctxWithApp = await createVueApp(pageContext)
+    const ctxWithApp = await createVueApp(pageContext, true)
     const { app } = ctxWithApp
     pageView = !pageContext.config.stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
@@ -33,7 +33,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   }
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
-  if (!!pageContext.config.Head) {
+  if (pageContext.config.Head) {
     const { app } = await createVueApp(pageContext, true, true)
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
