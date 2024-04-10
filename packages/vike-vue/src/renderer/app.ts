@@ -35,7 +35,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, renderHead =
         }
       }
       Object.assign(pageContextReactive, pageContext)
-      rootComponentRef.value = markRaw(pageContext.Page)
+      rootComponentRef.value = markRaw(pageContext.config[renderHead ? 'Head' : 'Page'])
       layoutRef.value = markRaw(pageContext.config.Layout)
       await nextTick()
       returned = true
