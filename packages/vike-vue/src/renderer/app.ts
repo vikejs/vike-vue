@@ -10,23 +10,16 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, renderHead =
   const { Page } = pageContext.config
   const Head = renderHead ? pageContext.config.Head : undefined
 
-  const pageRef = ref(markRaw(Head ? Head : Page))
+  const rootComponentRef = ref(markRaw(Head ? Head : Page))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
 
   const PageWithLayout = defineComponent({
     render() {
       if (!!layoutRef.value && !renderHead) {
-        return h(
-          layoutRef.value,
-          {},
-          {
-            default: () => {
-              return h(pageRef.value)
-            }
-          }
-        )
+        return h(layoutRef.value, {}, { default: () => h(rootComponentRef.value) })
+      } else {
+        return h(rootComponentRef.value)
       }
-      return h(pageRef.value)
     }
   })
 
@@ -45,7 +38,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, renderHead =
         }
       }
       Object.assign(pageContextReactive, pageContext)
-      pageRef.value = markRaw(pageContext.Page)
+      rootComponentRef.value = markRaw(pageContext.Page)
       layoutRef.value = markRaw(pageContext.config.Layout)
       await nextTick()
       returned = true
