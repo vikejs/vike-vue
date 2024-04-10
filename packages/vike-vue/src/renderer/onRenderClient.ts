@@ -13,7 +13,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
 
     const container = document.getElementById('page-view')!
     const ssr = container.innerHTML !== ''
-    const ctxWithApp = await createVueApp(pageContext, ssr)
+    const ctxWithApp = await createVueApp(pageContext, ssr, 'Page')
     app = ctxWithApp.app
 
     await pageContext.config.onBeforeMountApp?.(ctxWithApp)

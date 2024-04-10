@@ -6,13 +6,18 @@ import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 
-async function createVueApp(pageContext: PageContext, ssr: boolean, renderHead = false): Promise<PageContextWithApp> {
-  const rootComponentRef = ref(markRaw(pageContext.config[renderHead ? 'Head' : 'Page']))
+async function createVueApp(
+  pageContext: PageContext,
+  ssr: boolean,
+  rootComponentName: 'Head' | 'Page'
+): Promise<PageContextWithApp> {
+  const rootComponentRef = ref(markRaw(pageContext.config[rootComponentName]))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
 
   const PageWithLayout = defineComponent({
     render() {
-      if (!!layoutRef.value && !renderHead) {
+      if (!!layoutRef.value && rootComponentName === 'Page') {
+        // Wrap <Page> with <Layout>
         return h(layoutRef.value, {}, { default: () => h(rootComponentRef.value) })
       } else {
         return h(rootComponentRef.value)
@@ -35,7 +40,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, renderHead =
         }
       }
       Object.assign(pageContextReactive, pageContext)
-      rootComponentRef.value = markRaw(pageContext.config[renderHead ? 'Head' : 'Page'])
+      rootComponentRef.value = markRaw(pageContext.config[rootComponentName])
       layoutRef.value = markRaw(pageContext.config.Layout)
       await nextTick()
       returned = true
