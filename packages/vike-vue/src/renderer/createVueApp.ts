@@ -55,8 +55,8 @@ async function createVueApp(
   objectAssign(pageContext, { app })
   const pageContextWithApp = pageContext as PageContextWithApp
 
-  pageContextWithApp.config.onCreateAppPinia?.(pageContext);
-  pageContextWithApp.config.onCreateAppVueQuery?.(pageContext);
+  pageContextWithApp.config.onCreateAppPinia?.(pageContext)
+  pageContextWithApp.config.onCreateAppVueQuery?.(pageContext)
 
   await pageContextWithApp.config.onCreateApp?.(pageContext)
 
