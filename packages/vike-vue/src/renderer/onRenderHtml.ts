@@ -4,7 +4,7 @@ export { onRenderHtml }
 import { renderToNodeStream, renderToString } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getHeadSetting } from './getHeadSetting.js'
-import type { OnRenderHtmlAsync } from 'vike/types'
+import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
 import { createVueApp } from './createVueApp.js'
 import { App } from 'vue'
 
@@ -19,7 +19,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
 
   let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
-  let fromHtmlRenderer = undefined
+  const fromHtmlRenderer: PageContext['fromHtmlRenderer'] = {}
 
   if (!!pageContext.Page) {
     // SSR is enabled
@@ -29,7 +29,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    fromHtmlRenderer = await pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
+    const piniaCtx = await pageContext.config.onAfterRenderSSRAppPinia?.(ctxWithApp)
+    const userFromHtmlRenderer = await pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
+    Object.assign(fromHtmlRenderer, piniaCtx, userFromHtmlRenderer)
   }
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''

@@ -89,8 +89,14 @@ const config = {
     onCreateAppPinia: {
       env: { server: true, client: true }
     },
+    onAfterRenderSSRAppPinia: {
+      env: { server: true }
+    },
     onAfterRenderSSRApp: {
       env: { server: true }
+    },
+    onBeforeMountAppPinia: {
+      env: { server: false, client: true }
     },
     onBeforeMountApp: {
       env: { server: false, client: true }
@@ -171,6 +177,20 @@ declare global {
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
       onCreateAppPinia?: OnCreateAppSync | OnCreateAppAsync
+
+      /**
+       * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
+       *
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onAfterRenderSSRAppPinia?: OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync
+
+      /**
+       * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
+       *
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onBeforeMountAppPinia?: OnBeforeMountAppSync | OnBeforeMountAppAsync
 
       /**
        * Hook called right after rendering the page's root Vue component.

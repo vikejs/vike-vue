@@ -16,6 +16,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     const ctxWithApp = await createVueApp(pageContext, ssr, 'Page')
     app = ctxWithApp.app
 
+    await pageContext.config.onBeforeMountAppPinia?.(ctxWithApp)
     await pageContext.config.onBeforeMountApp?.(ctxWithApp)
 
     app.mount(container)
