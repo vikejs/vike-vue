@@ -4,5 +4,5 @@ import type { OnAfterRenderSSRAppSync } from 'vike-vue/types'
 export { dehydrateVueQuery }
 
 const dehydrateVueQuery: OnAfterRenderSSRAppSync = ({ queryClient }): ReturnType<OnAfterRenderSSRAppSync> => {
-  return { vueQueryInitialState: dehydrate(queryClient) }
+  return { vueQueryInitialState: dehydrate(queryClient!) }
 }

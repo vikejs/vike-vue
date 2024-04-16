@@ -1,4 +1,4 @@
-import type { DehydratedState, QueryClientConfig } from "@tanstack/vue-query"
+import type { DehydratedState, QueryClient, QueryClientConfig } from "@tanstack/vue-query"
 
 export default {
   // @ts-ignore Remove this ts-ignore once Vike's new version is released.
@@ -19,11 +19,13 @@ export default {
 declare global {
   namespace Vike {
     interface PageContext {
-      queryClient?: QueryClientConfig
+      queryClient?: QueryClient
       fromHtmlRenderer: {
         vueQueryInitialState?: DehydratedState
       }
     }
+  }
+  namespace VikePackages {
     interface ConfigVikeVue {
       queryClientConfig: QueryClientConfig
     }
