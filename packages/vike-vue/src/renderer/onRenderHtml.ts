@@ -29,9 +29,15 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    const piniaCtx = await pageContext.config.onAfterRenderSSRAppPinia?.(ctxWithApp)
+    const pluginContexts = await Promise.all([
+      pageContext.config.onAfterRenderSSRAppPinia?.(ctxWithApp),
+      pageContext.config.onAfterRenderSSRAppVueQuery?.(ctxWithApp)
+    ])
+    Object.assign(fromHtmlRenderer, ...pluginContexts)
+
+    // make sure user can override the context by assigning this last
     const userFromHtmlRenderer = await pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
-    Object.assign(fromHtmlRenderer, piniaCtx, userFromHtmlRenderer)
+    Object.assign(fromHtmlRenderer, userFromHtmlRenderer)
   }
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''

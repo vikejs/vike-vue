@@ -7,6 +7,7 @@ settings:
 overrides:
   vike-vue: link:./packages/vike-vue/
   vike-pinia: link:./packages/vike-pinia/
+  vike-vue-query: link:./packages/vike-vue-query/
 
 importers:
 
@@ -169,6 +170,33 @@ importers:
       vite-plugin-dts:
         specifier: ^3.7.2
         version: 3.7.2(@types/node@20.11.17)(typescript@5.3.3)(vite@5.1.1)
+      vue:
+        specifier: ^3.4.18
+        version: 3.4.18(typescript@5.3.3)
+      vue-tsc:
+        specifier: ^1.8.27
+        version: 1.8.27(typescript@5.3.3)
+
+  packages/vike-vue-query:
+    devDependencies:
+      '@brillout/release-me':
+        specifier: ^0.1.14
+        version: 0.1.14
+      '@tanstack/vue-query':
+        specifier: ^5.29.0
+        version: 5.29.0(vue@3.4.18)
+      '@types/node':
+        specifier: ^20.11.17
+        version: 20.11.17
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      vike:
+        specifier: ^0.4.165
+        version: 0.4.165(vite@5.1.1)
+      vike-vue:
+        specifier: link:../vike-vue
+        version: link:../vike-vue
       vue:
         specifier: ^3.4.18
         version: 3.4.18(typescript@5.3.3)
@@ -982,6 +1010,33 @@ packages:
       argparse: 1.0.10
       colors: 1.2.5
       string-argv: 0.3.2
+    dev: true
+
+  /@tanstack/match-sorter-utils@8.15.1:
+    resolution: {integrity: sha512-PnVV3d2poenUM31ZbZi/yXkBu3J7kd5k2u51CGwwNojag451AjTH9N6n41yjXz2fpLeewleyLBmNS6+HcGDlXw==}
+    engines: {node: '>=12'}
+    dependencies:
+      remove-accents: 0.5.0
+    dev: true
+
+  /@tanstack/query-core@5.29.0:
+    resolution: {integrity: sha512-WgPTRs58hm9CMzEr5jpISe8HXa3qKQ8CxewdYZeVnA54JrPY9B1CZiwsCoLpLkf0dGRZq+LcX5OiJb0bEsOFww==}
+    dev: true
+
+  /@tanstack/vue-query@5.29.0(vue@3.4.18):
+    resolution: {integrity: sha512-EYayEeVA4JwJrs3vPuDOd+4jVxvUJV1vAxsv7aflvBml6qR7EB9EkN8hW6MI7ciIJZORPiBye5VyveHR5SOlKg==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.2
+      vue: ^2.6.0 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@tanstack/match-sorter-utils': 8.15.1
+      '@tanstack/query-core': 5.29.0
+      '@vue/devtools-api': 6.5.1
+      vue: 3.4.18(typescript@5.3.3)
+      vue-demi: 0.14.6(vue@3.4.18)
     dev: true
 
   /@types/argparse@1.0.38:
@@ -2256,6 +2311,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: false
+
+  /remove-accents@0.5.0:
+    resolution: {integrity: sha512-8g3/Otx1eJaVD12e31UbJj1YzdtVvzH85HV7t+9MJYk/u3XmkOUJ5Ys9wQrf9PCPK8+xn4ymzqYCiZl6QWKn+A==}
+    dev: true
 
   /resolve@1.19.0:
     resolution: {integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==}
