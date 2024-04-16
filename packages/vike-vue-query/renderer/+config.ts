@@ -1,4 +1,4 @@
-import type { DehydratedState, QueryClient, QueryClientConfig } from "@tanstack/vue-query"
+import type { DehydratedState, QueryClient, QueryClientConfig } from '@tanstack/vue-query'
 
 export default {
   // @ts-ignore Remove this ts-ignore once Vike's new version is released.

@@ -19,7 +19,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     // Do this in two steps to allow users to access plugins in their onBeforeMountApp hook
     await Promise.all([
       pageContext.config.onBeforeMountAppPinia?.(ctxWithApp),
-      pageContext.config.onBeforeMountAppVueQuery?.(ctxWithApp),
+      pageContext.config.onBeforeMountAppVueQuery?.(ctxWithApp)
     ])
 
     await pageContext.config.onBeforeMountApp?.(ctxWithApp)

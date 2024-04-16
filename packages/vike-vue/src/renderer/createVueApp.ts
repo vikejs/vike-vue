@@ -58,7 +58,7 @@ async function createVueApp(
   await Promise.all([
     pageContextWithApp.config.onCreateAppPinia?.(pageContext),
     pageContextWithApp.config.onCreateAppVueQuery?.(pageContext)
-  ]);
+  ])
 
   await pageContextWithApp.config.onCreateApp?.(pageContext)
 
