@@ -39,8 +39,8 @@ onServerPrefetch(suspense)
 async function fetchMovies() {
   const response = await fetch('https://brillout.github.io/star-wars/api/films.json')
   const moviesData = (await response.json()) as MovieDetails[]
-  // simulate slow network
-  await new Promise((resolve) => setTimeout(resolve, 3000))
+  // simulate slow network on client
+  await new Promise((resolve) => setTimeout(resolve, import.meta.env.SSR ? 0 : 3000))
   return moviesData
 }
 
