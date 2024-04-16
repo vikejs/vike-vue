@@ -185,14 +185,14 @@ declare global {
        *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
-      onCreateAppPinia?: OnCreateAppSync | OnCreateAppAsync
+      onCreateAppPinia?: OnCreateAppSync 
 
       /**
        * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
        *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
-      onCreateAppVueQuery?: OnCreateAppSync | OnCreateAppAsync
+      onCreateAppVueQuery?: OnCreateAppSync 
 
       /**
        * Hook called right after rendering the page's root Vue component.
@@ -207,7 +207,7 @@ declare global {
        *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
-      onAfterRenderSSRAppPinia?: OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync
+      onAfterRenderSSRAppPinia?: OnAfterRenderSSRAppSync 
 
       /**
        * Hook called right after rendering the page's root Vue component.
@@ -215,7 +215,7 @@ declare global {
        *
        * Typically used for dehydrating state management libraries.
        */
-      onAfterRenderSSRAppVueQuery?: OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync
+      onAfterRenderSSRAppVueQuery?: OnAfterRenderSSRAppSync 
 
       /**
        * Hook called right before mounting the page's root Vue component.
@@ -229,14 +229,14 @@ declare global {
        *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
-      onBeforeMountAppPinia?: OnBeforeMountAppSync | OnBeforeMountAppAsync
+      onBeforeMountAppPinia?: OnBeforeMountAppSync 
 
       /**
        * Hook called right before mounting the page's root Vue component.
        *
        * Typically used for hydrating state management libraries.
        */
-      onBeforeMountAppVueQuery?: OnBeforeMountAppSync | OnBeforeMountAppAsync
+      onBeforeMountAppVueQuery?: OnBeforeMountAppSync 
     }
   }
 }

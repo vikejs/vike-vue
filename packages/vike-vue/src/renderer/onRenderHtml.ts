@@ -29,10 +29,10 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    const pluginContexts = await Promise.all([
+    const pluginContexts = [
       pageContext.config.onAfterRenderSSRAppPinia?.(ctxWithApp),
       pageContext.config.onAfterRenderSSRAppVueQuery?.(ctxWithApp)
-    ])
+    ]
     Object.assign(fromHtmlRenderer, ...pluginContexts)
 
     // make sure user can override the context by assigning this last
