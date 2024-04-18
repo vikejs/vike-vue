@@ -9,8 +9,9 @@
     "dev": "tsc --watch",
     "build": "rm -rf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "release-me --git-prefix vike-vue-query --changelog-dir packages/vike-vue-query/ patch",
-    "release:commit": "release-me --git-prefix vike-vue-query --changelog-dir packages/vike-vue-query/ commit"
+    "release": "release-me patch --git-tag-prefix vike-vue-query",
+    "release:minor": "release-me minor --git-tag-prefix vike-vue-query",
+    "release:commit": "release-me commit --git-tag-prefix vike-vue-query"
   },
   "exports": {
     ".": "./dist/+config.js",
@@ -41,7 +42,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.1.14",
+    "@brillout/release-me": "^0.2.2",
     "@tanstack/vue-query": "^5.29.0",
     "@types/node": "^20.11.17",
     "typescript": "^5.3.3",
