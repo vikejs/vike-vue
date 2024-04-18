@@ -1,6 +1,6 @@
 {
   "name": "vike-vue",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,29 +14,33 @@
     "./ClientOnly": {
       "default": "./dist/components/ClientOnly.js",
       "types": "./dist/components/ClientOnly.vue.d.ts"
+    },
+    "./types": {
+      "default": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
     }
   },
   "scripts": {
     "dev": "vite build --watch",
     "build": "rm -rf dist/ && vue-tsc --noEmit && vite build",
-    "release": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ patch",
-    "release:minor": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ minor",
-    "release:commit": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ commit"
+    "release": "release-me patch --git-tag-prefix vike-vue",
+    "release:minor": "release-me minor --git-tag-prefix vike-vue",
+    "release:commit": "release-me commit --git-tag-prefix vike-vue"
   },
   "peerDependencies": {
     "vike": "^0.4.160",
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.1.14",
-    "@types/node": "^20.11.17",
+    "@brillout/release-me": "^0.2.2",
+    "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
-    "typescript": "^5.3.3",
-    "vike": "^0.4.165",
-    "vite": "^5.1.1",
-    "vite-plugin-dts": "^3.7.2",
-    "vue": "^3.4.18",
-    "vue-tsc": "^1.8.27"
+    "typescript": "^5.4.5",
+    "vike": "^0.4.168",
+    "vite": "^5.2.9",
+    "vite-plugin-dts": "^3.8.3",
+    "vue": "^3.4.23",
+    "vue-tsc": "^2.0.13"
   },
   "typesVersions": {
     "*": {

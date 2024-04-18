@@ -1,3 +1,21 @@
+## [0.6.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.3...vike-vue@0.6.4) (2024-04-17)
+
+
+### Bug Fixes
+
+* add type export for NodeNext module resolution ([4a12e4c](https://github.com/vikejs/vike-vue/commit/4a12e4c517b9a34225d1d95aeb9c944fca557d36))
+* fix ClientOnly d.ts export ([8e57590](https://github.com/vikejs/vike-vue/commit/8e575902ecad01e63e14df2e5917898a334b91ff))
+* improve JSDoc ([71c985f](https://github.com/vikejs/vike-vue/commit/71c985f1f52f96df7c657ec16f4cbb8c5363c46a))
+* make <Head> reactive ([240fb58](https://github.com/vikejs/vike-vue/commit/240fb58cf5a22722ecfad11ffc22f43fdb59e38e))
+* narrow ref from pageContext.config to pageContext.config.Layout ([b3dc940](https://github.com/vikejs/vike-vue/commit/b3dc9408f191f0d05167d697099c76acd250ccf3))
+
+
+### Features
+
+* rewrite root comp to use composition api ([4ba8e19](https://github.com/vikejs/vike-vue/commit/4ba8e19bbf519c8b1d746b49a44f201f2cee8af8))
+
+
+
 ## [0.6.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.2...vike-vue@0.6.3) (2024-02-20)
 
 
