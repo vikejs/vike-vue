@@ -122,8 +122,8 @@ importers:
   packages/vike-pinia:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.1.14
-        version: 0.1.14
+        specifier: ^0.2.2
+        version: 0.2.2
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.7
@@ -149,8 +149,8 @@ importers:
   packages/vike-vue:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.1.14
-        version: 0.1.14
+        specifier: ^0.2.2
+        version: 0.2.2
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.7
@@ -319,8 +319,8 @@ packages:
   /@brillout/picocolors@1.0.10:
     resolution: {integrity: sha512-dh+JJlsBf3QYX+91Ezma8RLKNOjGDoBBmORv/NzRpQuasdyzwQCMXGGjsDu12ZhGz92TqQbL9pv79rvbheI21A==}
 
-  /@brillout/release-me@0.1.14:
-    resolution: {integrity: sha512-9EmAC+Oe7799CFu01OXHS/vTIpGQ1hfIDr/f8WbvOVnJ3XMmyqcP1u8aGxVrKjgbu69u+16vlx8KT9TUsvm6zw==}
+  /@brillout/release-me@0.2.2:
+    resolution: {integrity: sha512-x6ZQPhAyOdtiF2Pfl4vixrU/C6VlmC4GYzoBcGg/9RCJ2mCY80SMLlNk3l3X/B0lDGnnaJ8+zCY4AiDopD9B1w==}
     hasBin: true
     dependencies:
       commander: 11.1.0

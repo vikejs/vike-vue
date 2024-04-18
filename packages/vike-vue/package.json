@@ -23,16 +23,16 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "rm -rf dist/ && vue-tsc --noEmit && vite build",
-    "release": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ patch",
-    "release:minor": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ minor",
-    "release:commit": "release-me --git-prefix vike-vue --changelog-dir packages/vike-vue/ commit"
+    "release": "release-me patch --git-tag-prefix vike-vue",
+    "release:minor": "release-me minor --git-tag-prefix vike-vue",
+    "release:commit": "release-me commit --git-tag-prefix vike-vue"
   },
   "peerDependencies": {
     "vike": "^0.4.160",
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.1.14",
+    "@brillout/release-me": "^0.2.2",
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.4.5",

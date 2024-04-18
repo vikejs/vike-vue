@@ -9,8 +9,8 @@
     "dev": "tsc --watch",
     "build": "rm -rf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "release-me --git-prefix vike-pinia --changelog-dir packages/vike-pinia/ patch",
-    "release:commit": "release-me --git-prefix vike-pinia --changelog-dir packages/vike-pinia/ commit"
+    "release": "release-me patch --git-tag-prefix vike-pinia",
+    "release:commit": "release-me commit --git-tag-prefix vike-pinia"
   },
   "exports": {
     ".": "./dist/+config.js",
@@ -41,7 +41,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.1.14",
+    "@brillout/release-me": "^0.2.2",
     "@types/node": "^20.12.7",
     "pinia": "^2.1.7",
     "typescript": "^5.4.5",
