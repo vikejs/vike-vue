@@ -10,3 +10,7 @@ TanStack Query integration for Vike, see [vike.dev/vue-query](https://vike.dev/v
 - [Documentation](https://vike.dev)
 - [Example](https://github.com/vikejs/vike-vue/tree/main/examples/vue-query)
 - [Changelog](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue-query/CHANGELOG.md)
+
+## Query Client Configuration
+
+The query client can receive custom options either by adding `queryClientConfig` to your `+config.ts` or adding a separate `+queryClientConfig.ts` file in your `pages` directory.
