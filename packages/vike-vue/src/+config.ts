@@ -36,7 +36,6 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 }
 
 const config = {
-  // @ts-ignore Remove this ts-ignore once Vike's new version is released.
   name: 'vike-vue',
 
   // https://vike.dev/onRenderHtml
