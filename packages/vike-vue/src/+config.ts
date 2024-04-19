@@ -203,17 +203,16 @@ declare global {
       onAfterRenderSSRApp?: OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync
 
       /**
-       * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
+       * Temporary workaround until `cumulative` is implemented for `onAfterRenderSSRApp`.
        *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
       onAfterRenderSSRAppPinia?: OnAfterRenderSSRAppSync
 
       /**
-       * Hook called right after rendering the page's root Vue component.
-       * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
+       * Temporary workaround until `cumulative` is implemented for `onAfterRenderSSRApp`.
        *
-       * Typically used for dehydrating state management libraries.
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
       onAfterRenderSSRAppVueQuery?: OnAfterRenderSSRAppSync
 
@@ -225,16 +224,16 @@ declare global {
       onBeforeMountApp?: OnBeforeMountAppSync | OnBeforeMountAppAsync
 
       /**
-       * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
+       * Temporary workaround until `cumulative` is implemented for `onBeforeMountApp`.
        *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
       onBeforeMountAppPinia?: OnBeforeMountAppSync
 
       /**
-       * Hook called right before mounting the page's root Vue component.
+       * Temporary workaround until `cumulative` is implemented for `onBeforeMountApp`.
        *
-       * Typically used for hydrating state management libraries.
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
       onBeforeMountAppVueQuery?: OnBeforeMountAppSync
     }
