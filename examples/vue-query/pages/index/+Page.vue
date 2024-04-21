@@ -9,7 +9,7 @@
     </template>
     <template v-else>
       <li v-for="item in data!" :key="item.id">
-        <a :href="'/star-wars/' + item.id">{{ item.title }}</a> ({{ item.release_date }})
+        {{ item.title }} ({{ item.release_date }})
       </li>
     </template>
   </ol>
