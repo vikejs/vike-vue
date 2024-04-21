@@ -36,7 +36,6 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 }
 
 const config = {
-  // @ts-ignore Remove this ts-ignore once Vike's new version is released.
   name: 'vike-vue',
 
   // https://vike.dev/onRenderHtml
@@ -89,10 +88,25 @@ const config = {
     onCreateAppPinia: {
       env: { server: true, client: true }
     },
+    onCreateAppVueQuery: {
+      env: { server: true, client: true }
+    },
     onAfterRenderSSRApp: {
       env: { server: true }
     },
+    onAfterRenderSSRAppPinia: {
+      env: { server: true }
+    },
+    onAfterRenderSSRAppVueQuery: {
+      env: { server: true }
+    },
     onBeforeMountApp: {
+      env: { server: false, client: true }
+    },
+    onBeforeMountAppPinia: {
+      env: { server: false, client: true }
+    },
+    onBeforeMountAppVueQuery: {
       env: { server: false, client: true }
     },
     // Vike already defines the setting 'name', but we redundantly define it here for older Vike versions (otherwise older Vike versions will complain that 'name` is an unknown config).
@@ -170,7 +184,14 @@ declare global {
        *
        * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
        */
-      onCreateAppPinia?: OnCreateAppSync | OnCreateAppAsync
+      onCreateAppPinia?: OnCreateAppSync
+
+      /**
+       * Temporary workaround until `cumulative` is implemented for `onCreateApp`.
+       *
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onCreateAppVueQuery?: OnCreateAppSync
 
       /**
        * Hook called right after rendering the page's root Vue component.
@@ -181,11 +202,39 @@ declare global {
       onAfterRenderSSRApp?: OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync
 
       /**
+       * Temporary workaround until `cumulative` is implemented for `onAfterRenderSSRApp`.
+       *
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onAfterRenderSSRAppPinia?: OnAfterRenderSSRAppSync
+
+      /**
+       * Temporary workaround until `cumulative` is implemented for `onAfterRenderSSRApp`.
+       *
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onAfterRenderSSRAppVueQuery?: OnAfterRenderSSRAppSync
+
+      /**
        * Hook called right before mounting the page's root Vue component.
        *
        * Typically used for hydrating state management libraries.
        */
       onBeforeMountApp?: OnBeforeMountAppSync | OnBeforeMountAppAsync
+
+      /**
+       * Temporary workaround until `cumulative` is implemented for `onBeforeMountApp`.
+       *
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onBeforeMountAppPinia?: OnBeforeMountAppSync
+
+      /**
+       * Temporary workaround until `cumulative` is implemented for `onBeforeMountApp`.
+       *
+       * See https://github.com/vikejs/vike-vue/pull/65#discussion_r1449227587
+       */
+      onBeforeMountAppVueQuery?: OnBeforeMountAppSync
     }
   }
 }

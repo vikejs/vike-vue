@@ -55,8 +55,10 @@ async function createVueApp(
   objectAssign(pageContext, { app })
   const pageContextWithApp = pageContext as PageContextWithApp
 
+  pageContextWithApp.config.onCreateAppPinia?.(pageContext)
+  pageContextWithApp.config.onCreateAppVueQuery?.(pageContext)
+
   await pageContextWithApp.config.onCreateApp?.(pageContext)
-  await pageContextWithApp.config.onCreateAppPinia?.(pageContext)
 
   // Make `pageContext` accessible from any Vue component
   setPageContext(app, pageContextReactive)

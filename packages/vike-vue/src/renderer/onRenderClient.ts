@@ -16,6 +16,10 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     const ctxWithApp = await createVueApp(pageContext, ssr, 'Page')
     app = ctxWithApp.app
 
+    // Do this in two steps to allow users to access plugins in their onBeforeMountApp hook
+    pageContext.config.onBeforeMountAppPinia?.(ctxWithApp)
+    pageContext.config.onBeforeMountAppVueQuery?.(ctxWithApp)
+
     await pageContext.config.onBeforeMountApp?.(ctxWithApp)
 
     app.mount(container)

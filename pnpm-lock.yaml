@@ -7,6 +7,7 @@ settings:
 overrides:
   vike-vue: link:./packages/vike-vue/
   vike-pinia: link:./packages/vike-pinia/
+  vike-vue-query: link:./packages/vike-vue-query/
 
 importers:
 
@@ -119,6 +120,43 @@ importers:
         specifier: ^2.0.13
         version: 2.0.13(typescript@5.4.5)
 
+  examples/vue-query:
+    dependencies:
+      '@tanstack/vue-query':
+        specifier: ^5.0.0
+        version: 5.29.0(vue@3.4.23)
+      '@types/node-fetch':
+        specifier: ^2.6.11
+        version: 2.6.11
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.0.4(vite@5.2.9)(vue@3.4.23)
+      node-fetch:
+        specifier: ^3.3.2
+        version: 3.3.2
+      vike:
+        specifier: ^0.4.165
+        version: 0.4.168(vite@5.2.9)
+      vike-vue:
+        specifier: link:../../packages/vike-vue
+        version: link:../../packages/vike-vue
+      vike-vue-query:
+        specifier: link:../../packages/vike-vue-query
+        version: link:../../packages/vike-vue-query
+      vite:
+        specifier: ^5.1.1
+        version: 5.2.9(@types/node@20.12.7)
+      vue:
+        specifier: ^3.4.18
+        version: 3.4.23(typescript@5.4.5)
+    devDependencies:
+      typescript:
+        specifier: ^5.3.3
+        version: 5.4.5
+      vue-tsc:
+        specifier: ^1.8.27
+        version: 1.8.27(typescript@5.4.5)
+
   packages/vike-pinia:
     devDependencies:
       '@brillout/release-me':
@@ -169,6 +207,33 @@ importers:
       vite-plugin-dts:
         specifier: ^3.8.3
         version: 3.8.3(@types/node@20.12.7)(typescript@5.4.5)(vite@5.2.9)
+      vue:
+        specifier: ^3.4.23
+        version: 3.4.23(typescript@5.4.5)
+      vue-tsc:
+        specifier: ^2.0.13
+        version: 2.0.13(typescript@5.4.5)
+
+  packages/vike-vue-query:
+    devDependencies:
+      '@brillout/release-me':
+        specifier: ^0.2.2
+        version: 0.2.2
+      '@tanstack/vue-query':
+        specifier: ^5.29.0
+        version: 5.29.0(vue@3.4.23)
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.12.7
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+      vike:
+        specifier: ^0.4.168
+        version: 0.4.168(vite@5.2.9)
+      vike-vue:
+        specifier: link:../vike-vue
+        version: link:../vike-vue
       vue:
         specifier: ^3.4.23
         version: 3.4.23(typescript@5.4.5)
@@ -1203,6 +1268,30 @@ packages:
     transitivePeerDependencies:
       - '@types/node'
     dev: true
+
+  /@tanstack/match-sorter-utils@8.15.1:
+    resolution: {integrity: sha512-PnVV3d2poenUM31ZbZi/yXkBu3J7kd5k2u51CGwwNojag451AjTH9N6n41yjXz2fpLeewleyLBmNS6+HcGDlXw==}
+    engines: {node: '>=12'}
+    dependencies:
+      remove-accents: 0.5.0
+
+  /@tanstack/query-core@5.29.0:
+    resolution: {integrity: sha512-WgPTRs58hm9CMzEr5jpISe8HXa3qKQ8CxewdYZeVnA54JrPY9B1CZiwsCoLpLkf0dGRZq+LcX5OiJb0bEsOFww==}
+
+  /@tanstack/vue-query@5.29.0(vue@3.4.23):
+    resolution: {integrity: sha512-EYayEeVA4JwJrs3vPuDOd+4jVxvUJV1vAxsv7aflvBml6qR7EB9EkN8hW6MI7ciIJZORPiBye5VyveHR5SOlKg==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.2
+      vue: ^2.6.0 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@tanstack/match-sorter-utils': 8.15.1
+      '@tanstack/query-core': 5.29.0
+      '@vue/devtools-api': 6.5.1
+      vue: 3.4.23(typescript@5.4.5)
+      vue-demi: 0.14.6(vue@3.4.23)
 
   /@types/argparse@1.0.38:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -2570,6 +2659,9 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: false
+
+  /remove-accents@0.5.0:
+    resolution: {integrity: sha512-8g3/Otx1eJaVD12e31UbJj1YzdtVvzH85HV7t+9MJYk/u3XmkOUJ5Ys9wQrf9PCPK8+xn4ymzqYCiZl6QWKn+A==}
 
   /resolve@1.19.0:
     resolution: {integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==}

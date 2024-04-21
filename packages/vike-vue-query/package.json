@@ -1,0 +1,58 @@
+{
+  "name": "vike-vue-query",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/+config.js",
+  "types": "./dist/+config.d.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rm -rf dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "release-me patch --git-tag-prefix vike-vue-query",
+    "release:minor": "release-me minor --git-tag-prefix vike-vue-query",
+    "release:commit": "release-me commit --git-tag-prefix vike-vue-query"
+  },
+  "exports": {
+    ".": "./dist/+config.js",
+    "./renderer/installVueQuery": "./dist/installVueQuery.js",
+    "./renderer/dehydrateVueQuery": "./dist/dehydrateVueQuery.js",
+    "./renderer/hydrateVueQuery": "./dist/hydrateVueQuery.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/+config.d.ts"
+      ],
+      "renderer/installVueQuery": [
+        "./dist/installVueQuery.d.ts"
+      ],
+      "renderer/dehydrateVueQuery": [
+        "./dist/dehydrateVueQuery.d.ts"
+      ],
+      "renderer/hydrateVueQuery": [
+        "./dist/hydrateVueQuery.d.ts"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@tanstack/vue-query": "^5.0.0",
+    "vike": "^0.4.160",
+    "vike-vue": "^0.5.3",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@brillout/release-me": "^0.2.2",
+    "@tanstack/vue-query": "^5.29.0",
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5",
+    "vike": "^0.4.168",
+    "vike-vue": "0.6.4",
+    "vue": "^3.4.23",
+    "vue-tsc": "^2.0.13"
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT"
+}

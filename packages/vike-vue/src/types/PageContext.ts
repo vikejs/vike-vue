@@ -25,7 +25,7 @@ declare global {
       app?: VikeVueApp
 
       // Set by onRenderHtml()
-      fromHtmlRenderer: unknown
+      fromHtmlRenderer: Record<string, unknown>
     }
   }
 }
