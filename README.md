@@ -1,6 +1,6 @@
 [<img src="https://vike.dev/vike-readme.svg" align="right" height="90">](https://vike.dev)
 
-# `vike-{vue,pinia}`
+# `vike-{vue,pinia,vue-query}`
 
 [Vike extensions](https://vike.dev/extensions) for Vue:
 - [`vike-vue`](packages/vike-vue/)
