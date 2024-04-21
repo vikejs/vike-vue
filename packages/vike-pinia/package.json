@@ -37,7 +37,7 @@
   "peerDependencies": {
     "pinia": "^2.0.0",
     "vike": "^0.4.160",
-    "vike-vue": "^0.6.3",
+    "vike-vue": "^0.6.4",
     "vue": "^3.0.0"
   },
   "devDependencies": {
