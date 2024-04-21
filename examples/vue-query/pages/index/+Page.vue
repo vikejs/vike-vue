@@ -30,7 +30,7 @@ import { useQuery } from '@tanstack/vue-query'
 const { isError, isPending, isFetching, data, error, suspense } = useQuery({
   queryKey: ['movies'],
   queryFn: fetchMovies,
-  select: (data) => minimize(data)
+  select: (data) => minimize(data),
 })
 
 // this will be called on the server to prefetch the data

@@ -31,7 +31,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
     const pluginContexts = [
       pageContext.config.onAfterRenderSSRAppPinia?.(ctxWithApp),
-      pageContext.config.onAfterRenderSSRAppVueQuery?.(ctxWithApp)
+      pageContext.config.onAfterRenderSSRAppVueQuery?.(ctxWithApp),
     ]
     Object.assign(fromHtmlRenderer, ...pluginContexts)
 
@@ -64,8 +64,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     documentHtml,
     pageContext: {
       enableEagerStreaming: true,
-      fromHtmlRenderer
-    }
+      fromHtmlRenderer,
+    },
   }
 }
 

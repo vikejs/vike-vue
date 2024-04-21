@@ -4,7 +4,7 @@ export default {
   name: 'vike-pinia',
   onCreateAppPinia: 'import:vike-pinia/renderer/installPinia:installPinia',
   onAfterRenderSSRAppPinia: 'import:vike-pinia/renderer/dehydratePinia:dehydratePinia',
-  onBeforeMountAppPinia: 'import:vike-pinia/renderer/hydratePinia:hydratePinia'
+  onBeforeMountAppPinia: 'import:vike-pinia/renderer/hydratePinia:hydratePinia',
 }
 
 declare global {

@@ -6,9 +6,9 @@ const config = defineConfig({
   plugins: [
     vike({ prerender: true }),
     vue({
-      include: [/\.vue$/, /\.md$/]
-    })
-  ]
+      include: [/\.vue$/, /\.md$/],
+    }),
+  ],
 })
 
 export default config

@@ -10,7 +10,7 @@ function runTest() {
   testUrl({
     url: '/',
     title,
-    text: textLandingPage
+    text: textLandingPage,
   })
 }
 

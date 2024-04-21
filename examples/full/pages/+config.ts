@@ -17,9 +17,9 @@ export default {
   extends: vikeVue,
   meta: {
     baseCanonicalUrl: {
-      env: { server: true, client: true }
-    }
-  }
+      env: { server: true, client: true },
+    },
+  },
 } satisfies Config
 
 declare global {

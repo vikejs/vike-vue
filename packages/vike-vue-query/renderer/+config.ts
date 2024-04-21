@@ -9,10 +9,10 @@ export default {
     queryClientConfig: {
       env: {
         server: true,
-        client: true
-      }
-    }
-  }
+        client: true,
+      },
+    },
+  },
 }
 
 declare global {

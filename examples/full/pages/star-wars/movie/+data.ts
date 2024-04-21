@@ -8,7 +8,7 @@ import type { MovieDetails } from '../types'
 
 const data = async (pageContext: PageContextServer) => {
   const response = await fetch(
-    `https://brillout.github.io/star-wars/api/films/${pageContext.routeParams?.movieId}.json`
+    `https://brillout.github.io/star-wars/api/films/${pageContext.routeParams?.movieId}.json`,
   )
   let movie = (await response.json()) as MovieDetails
   // We remove data we don't need because the data is passed to the client; we should

@@ -6,7 +6,7 @@ import type {
   OnAfterRenderSSRAppSync,
   OnAfterRenderSSRAppAsync,
   OnBeforeMountAppSync,
-  OnBeforeMountAppAsync
+  OnBeforeMountAppAsync,
 } from './hooks/types'
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
@@ -29,9 +29,9 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
       Page: {
         env: configValue
           ? { server: true, client: true } // default
-          : { client: true }
-      }
-    }
+          : { client: true },
+      },
+    },
   }
 }
 
@@ -54,66 +54,66 @@ const config = {
   // https://vike.dev/meta
   meta: {
     Head: {
-      env: { server: true }
+      env: { server: true },
     },
     Layout: {
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     title: {
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     favicon: {
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     lang: {
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     ssr: {
       env: { config: true },
-      effect: toggleSsrRelatedConfig
+      effect: toggleSsrRelatedConfig,
     },
     stream: {
-      env: { server: true }
+      env: { server: true },
     },
     vuePlugins: {
       // List of vue plugins to be installed with app.vue() in onRenderHtml and
       // onRenderClient. We make this config available both on the server and
       // the client always, but if SSR is disabled, onRenderHtml won't make use
       // of it.
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     onCreateApp: {
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     onCreateAppPinia: {
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     onCreateAppVueQuery: {
-      env: { server: true, client: true }
+      env: { server: true, client: true },
     },
     onAfterRenderSSRApp: {
-      env: { server: true }
+      env: { server: true },
     },
     onAfterRenderSSRAppPinia: {
-      env: { server: true }
+      env: { server: true },
     },
     onAfterRenderSSRAppVueQuery: {
-      env: { server: true }
+      env: { server: true },
     },
     onBeforeMountApp: {
-      env: { server: false, client: true }
+      env: { server: false, client: true },
     },
     onBeforeMountAppPinia: {
-      env: { server: false, client: true }
+      env: { server: false, client: true },
     },
     onBeforeMountAppVueQuery: {
-      env: { server: false, client: true }
+      env: { server: false, client: true },
     },
     // Vike already defines the setting 'name', but we redundantly define it here for older Vike versions (otherwise older Vike versions will complain that 'name` is an unknown config).
     name: {
-      env: { config: true }
-    }
-  }
+      env: { config: true },
+    },
+  },
 } satisfies Config
 
 type VuePluginWithOptions = {
@@ -254,7 +254,7 @@ declare global {
 const globalName = (target: Object, value: string) =>
   Object.defineProperty(target, 'name', {
     value,
-    configurable: true
+    configurable: true,
   })
 declare global {
   var __name: typeof globalName

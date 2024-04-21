@@ -11,19 +11,19 @@ function runTest() {
     url: '/',
     title,
     text: textLandingPage,
-    counter: true
+    counter: true,
   })
 
   testUrl({
     url: '/star-wars',
     title: '6 Star Wars Movies',
-    text: 'A New Hope'
+    text: 'A New Hope',
   })
 
   testUrl({
     url: '/star-wars/3',
     title: 'Return of the Jedi',
-    text: '1983-05-25'
+    text: '1983-05-25',
   })
 
   const textNoSSR = 'This page is rendered only in the browser'
@@ -99,7 +99,7 @@ async function testCounter() {
       await page.click('button')
       expect(await page.textContent('button')).toContain('Counter 1')
     },
-    { timeout: 5 * 1000 }
+    { timeout: 5 * 1000 },
   )
 }
 

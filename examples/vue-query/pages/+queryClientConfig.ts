@@ -4,9 +4,9 @@ import type { QueryClientConfig } from '@tanstack/vue-query'
 const queryClientConfig: QueryClientConfig = {
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: import.meta.env.PROD
-    }
-  }
+      refetchOnWindowFocus: import.meta.env.PROD,
+    },
+  },
 }
 
 export default queryClientConfig

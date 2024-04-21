@@ -9,7 +9,7 @@ import { objectAssign } from '../utils/objectAssign'
 async function createVueApp(
   pageContext: PageContext,
   ssr: boolean,
-  rootComponentName: 'Head' | 'Page'
+  rootComponentName: 'Head' | 'Page',
 ): Promise<PageContextWithApp> {
   const rootComponentRef = ref(markRaw(pageContext.config[rootComponentName]))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
@@ -22,7 +22,7 @@ async function createVueApp(
       } else {
         return h(rootComponentRef.value)
       }
-    }
+    },
   })
 
   const app = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
@@ -45,7 +45,7 @@ async function createVueApp(
       await nextTick()
       returned = true
       if (err) throw err
-    }
+    },
   })
 
   // When doing Client Routing, we mutate pageContext (see usage of `app.changePage()` in `onRenderClient.ts`).

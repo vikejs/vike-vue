@@ -11,5 +11,5 @@ export default {
   // <title>
   title: 'My Vike + Vue + TanStack Query App',
 
-  extends: [vikeVue, vikeVueQuery]
+  extends: [vikeVue, vikeVueQuery],
 } satisfies Config
