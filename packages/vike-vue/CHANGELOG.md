@@ -1,3 +1,10 @@
+## [0.6.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.4...vike-vue@0.6.5) (2024-04-21)
+
+### Features
+
+* add `vike-vue-query`[#83](https://github.com/vikejs/vike-vue/pull/83)
+
+
 ## [0.6.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.3...vike-vue@0.6.4) (2024-04-17)
 
 
