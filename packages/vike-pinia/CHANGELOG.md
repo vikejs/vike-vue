@@ -1,9 +1,20 @@
-## [0.0.2](vikejs/vike-vue/compare/vike-pinia@0.0.1...vike-pinia@0.0.2) (2024-02-14)
+## [0.0.3](https://github.com/vikejs/vike-vue/compare/vike-pinia@0.0.2...vike-pinia@0.0.3) (2024-04-21)
+
+### Bug Fixes
+
+* Fix links in `CHANGELOG.md` by using absolute URLs
+
+### Features
+
+* make vike-pinia work with other vike plugins by not overwriting `onCreateApp` ([607feac](https://github.com/vikejs/vike-vue/commit/607feac13997685e1ae20d067643ec2815ffab00))
+
+
+## [0.0.2](https://github.com/vikejs/vike-vue/compare/vike-pinia@0.0.1...vike-pinia@0.0.2) (2024-02-14)
 
 
 ### Bug Fixes
 
-* set Vike extension name ([61ff29b](vikejs/vike-vue/commits/61ff29be2d3209a11324b2755f3857ece6aec9d1))
+* set Vike extension name ([61ff29b](https://github.com/vikejs/vike-vue/commits/61ff29be2d3209a11324b2755f3857ece6aec9d1))
 
 
 
