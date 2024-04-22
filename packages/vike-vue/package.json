@@ -23,9 +23,9 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "rm -rf dist/ && vue-tsc --noEmit && vite build",
-    "release": "release-me patch --git-tag-prefix vike-vue",
-    "release:minor": "release-me minor --git-tag-prefix vike-vue",
-    "release:commit": "release-me commit --git-tag-prefix vike-vue"
+    "release": "release-me patch",
+    "release:minor": "release-me minor",
+    "release:commit": "release-me commit"
   },
   "peerDependencies": {
     "vike": "^0.4.160",
