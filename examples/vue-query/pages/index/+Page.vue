@@ -20,12 +20,22 @@
       Refreshing: {{ isFetching ? 'Yes' : 'No' }}
     </code>
   </p>
+  <p>
+  This page is:
+  </p>
+  <ul>
+    <li>Rendered to HTML.</li>
+    <li>Interactive. <Counter /></li>
+  </ul>
 </template>
 
 <script lang="ts" setup>
 import { onServerPrefetch } from 'vue'
 import type { Movie, MovieDetails } from './types'
 import { useQuery } from '@tanstack/vue-query'
+import Counter from '../../components/Counter.vue'
+
+const components = { Counter }
 
 const { isError, isPending, isFetching, data, error, suspense } = useQuery({
   queryKey: ['movies'],
