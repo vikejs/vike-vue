@@ -1,3 +1,10 @@
+## [0.0.4](https://github.com/vikejs/vike-vue/compare/vike-pinia@0.0.3...vike-pinia@0.0.4) (2024-04-23)
+
+### Bug Fixes
+
+* Fix peer dependencies ([dcfc981](https://github.com/vikejs/vike-vue/commit/dcfc981a43c2c2a98d3dc13fb4f10354245fcd17))
+
+
 ## [0.0.3](https://github.com/vikejs/vike-vue/compare/vike-pinia@0.0.2...vike-pinia@0.0.3) (2024-04-21)
 
 ### Bug Fixes
