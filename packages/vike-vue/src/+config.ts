@@ -10,6 +10,7 @@ import type {
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
 import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
+import type { SSRContext } from 'vue/server-renderer'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -97,6 +98,12 @@ export default {
     name: {
       env: { config: true },
     },
+    bodyHtmlStart: {
+      env: { server: true, client: true },
+    },
+    bodyHtmlEnd: {
+      env: { server: true, client: true },
+    },
   },
 } satisfies Config
 
@@ -153,6 +160,17 @@ declare global {
 
       /** The page's root Vue component */
       Page?: Component
+
+      /**
+       * The result of this is injected at the start of `<body>`
+       */
+      bodyHtmlStart?: (ctx: SSRContext) => string
+
+      /**
+       * The result of this is injected at the end of `<body>`
+       * It defaults to `<div id="teleported"></div>`
+       */
+      bodyHtmlEnd?: (ctx: SSRContext) => string
 
       /**
        * Hook called right after creating Vue's `app` instance.

@@ -5,6 +5,9 @@
     <li>Rendered to HTML.</li>
     <li>Interactive. <Counter /></li>
   </ul>
+  <Teleport to="#teleported">
+    <p class="teleport">Teleported to the end of the body.</p>
+  </Teleport>
 </template>
 
 <script lang="ts">
@@ -17,19 +20,28 @@ export default { components }
 import * as toastPlugin from 'vue-toast-notification'
 import { onBeforeUnmount, onMounted } from 'vue'
 
+const toast = toastPlugin.useToast()
+
 onMounted(() => {
-  const useToast = toastPlugin.useToast()
-  useToast.success('I am a Vue plugin.', {
+  toast.success('I am a Vue plugin.', {
     position: 'bottom',
     duration: 0, // infinite
   })
 })
 
 onBeforeUnmount(() => {
-  const useToast = toastPlugin.useToast()
-  useToast.clear()
+  toast.clear()
 })
 </script>
+
+<style scoped>
+/* show teleport in top left corner */
+.teleport {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+</style>
 
 <style>
 /* see https://stackoverflow.com/questions/55206901/how-to-import-css-files-in-vue-3-child-components */

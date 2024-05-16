@@ -9,6 +9,7 @@ import type {
   OnCreateAppAsync,
   OnCreateAppSync,
 } from '../hooks/types'
+import { SSRContext } from 'vue/server-renderer'
 
 // See https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
 type Component = ReturnType<typeof defineComponent>
@@ -24,6 +25,8 @@ declare global {
 
       // Set by onRenderHtml()
       fromHtmlRenderer: Record<string, unknown>
+
+      ssrContext?: SSRContext
     }
     interface ConfigResolved {
       onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>

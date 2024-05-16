@@ -1,7 +1,7 @@
 // https://vike.dev/onRenderHtml
 export { onRenderHtml }
 
-import { renderToNodeStream, renderToString } from 'vue/server-renderer'
+import { renderToNodeStream, renderToString, type SSRContext } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
 import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
@@ -21,6 +21,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
 
   let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
+  const ssrContext: SSRContext = {}
   const fromHtmlRenderer: PageContext['fromHtmlRenderer'] = {}
 
   if (!!pageContext.Page) {
@@ -28,8 +29,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     const { app } = await createVueApp(pageContext, true, 'Page')
     objectAssign(pageContext, { app })
     pageView = !pageContext.config.stream
-      ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
-      : renderToNodeStreamWithErrorHandling(app)
+      ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app, ssrContext))
+      : renderToNodeStreamWithErrorHandling(app, ssrContext)
 
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
 
@@ -42,6 +43,15 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
+  let bodyHtmlStart = ''
+  if (pageContext.config.bodyHtmlStart) {
+    bodyHtmlStart = pageContext.config.bodyHtmlStart(ssrContext)
+  }
+
+  const bodyHtmlEnd = pageContext.config.bodyHtmlEnd
+    ? pageContext.config.bodyHtmlEnd(ssrContext)
+    : `<div id="teleported">${dangerouslySkipEscape(ssrContext.teleports?.['#teleported'] ?? '')}</div>`
+
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang='${lang}'>
       <head>
@@ -51,7 +61,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         ${faviconTag}
       </head>
       <body>
+        ${bodyHtmlStart}
         <div id="app">${pageView}</div>
+        ${bodyHtmlEnd}
       </body>
       <!-- built with https://github.com/vikejs/vike-vue -->
     </html>`
@@ -65,7 +77,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   }
 }
 
-async function renderToStringWithErrorHandling(app: App) {
+async function renderToStringWithErrorHandling(app: App, ctx?: SSRContext) {
   let returned = false
   let err: unknown
   // Workaround: renderToString_() swallows errors in production, see https://github.com/vuejs/core/issues/7876
@@ -76,13 +88,13 @@ async function renderToStringWithErrorHandling(app: App) {
       err = err_
     }
   }
-  const appHtml = await renderToString(app)
+  const appHtml = await renderToString(app, ctx)
   returned = true
   if (err) throw err
   return appHtml
 }
 
-function renderToNodeStreamWithErrorHandling(app: App) {
+function renderToNodeStreamWithErrorHandling(app: App, ctx?: SSRContext) {
   let returned = false
   let err: unknown
   app.config.errorHandler = (err_) => {
@@ -92,7 +104,7 @@ function renderToNodeStreamWithErrorHandling(app: App) {
       err = err_
     }
   }
-  const appHtml = renderToNodeStream(app)
+  const appHtml = renderToNodeStream(app, ctx)
   returned = true
   if (err) throw err
   return appHtml
