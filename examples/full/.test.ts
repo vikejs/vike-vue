@@ -33,7 +33,7 @@ function runTest() {
     test(url + ' (HTML)', async () => {
       const html = await fetchHtml(url)
       // Isn't rendered to HTML
-      expect(html).toContain('<div id="vue-root"></div>')
+      expect(html).toContain('<div id="app"></div>')
       expect(html).not.toContain(text)
       expect(getTitle(html)).toBe(title)
     })

@@ -11,7 +11,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
   if (!app) {
     // First rendering/hydration
 
-    const container = document.getElementById('vue-root')!
+    const container = document.getElementById('app')!
     const ssr = container.innerHTML !== ''
     const ctxWithApp = await createVueApp(pageContext, ssr, 'Page')
     app = ctxWithApp.app
