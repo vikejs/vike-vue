@@ -75,6 +75,7 @@ const config = {
     stream: {
       env: { server: true },
     },
+    // Deprecated (in favor of `onCreateApp()`). TODO/next-major-release: remove it.
     vuePlugins: {
       // List of vue plugins to be installed with app.vue() in onRenderHtml and
       // onRenderClient. We make this config available both on the server and
