@@ -1,3 +1,12 @@
+## [0.6.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.5...vike-vue@0.6.6) (2024-05-17)
+
+
+### Bug Fixes
+
+* rename root ID `#vue-root` => `#app` ([3f30f69](https://github.com/vikejs/vike-vue/commit/3f30f6922daa91f14dd457dbbd7f8ab70953ff67))
+
+
+
 ## [0.6.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.4...vike-vue@0.6.5) (2024-04-21)
 
 ### Features
