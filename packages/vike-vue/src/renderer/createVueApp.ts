@@ -1,6 +1,6 @@
 export { createVueApp }
 
-import { createApp, createSSRApp, defineComponent, h, markRaw, nextTick, reactive, ref } from 'vue'
+import { createApp, createSSRApp, h, markRaw, nextTick, reactive, ref } from 'vue'
 import type { PageContextWithApp, PageContextWithoutApp } from '../types/PageContext'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext.js'
@@ -14,7 +14,7 @@ async function createVueApp(
   const rootComponentRef = ref(markRaw(pageContext.config[rootComponentName]))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
 
-  const PageWithLayout = defineComponent({
+  const PageWithLayout = {
     render() {
       if (!!layoutRef.value && rootComponentName === 'Page') {
         // Wrap <Page> with <Layout>
@@ -23,7 +23,7 @@ async function createVueApp(
         return h(rootComponentRef.value)
       }
     },
-  })
+  }
 
   const app = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
 
