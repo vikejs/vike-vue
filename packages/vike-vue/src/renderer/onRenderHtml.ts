@@ -33,6 +33,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       : renderToNodeStreamWithErrorHandling(app, ssrContext)
 
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
+    Object.assign(pageContext, { ssrContext })
 
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
@@ -43,14 +44,13 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
-  let bodyHtmlStart = ''
-  if (pageContext.config.bodyHtmlStart) {
-    bodyHtmlStart = pageContext.config.bodyHtmlStart(ssrContext)
-  }
+  const bodyHtmlStart = dangerouslySkipEscape(pageContext.config.bodyHtmlStart?.(pageContext) ?? '')
 
-  const bodyHtmlEnd = pageContext.config.bodyHtmlEnd
-    ? pageContext.config.bodyHtmlEnd(ssrContext)
-    : `<div id="teleported">${dangerouslySkipEscape(ssrContext.teleports?.['#teleported'] ?? '')}</div>`
+  const bodyHtmlEnd = dangerouslySkipEscape(
+    pageContext.config.bodyHtmlEnd
+      ? pageContext.config.bodyHtmlEnd(pageContext)
+      : `<div id="teleported">${ssrContext.teleports?.['#teleported'] ?? ''}</div>`,
+  )
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang='${lang}'>

@@ -5,12 +5,12 @@ import type {
   OnAfterRenderHtmlAsync,
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
+  BodyInjectHtml,
 } from './hooks/types'
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
 import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
-import type { SSRContext } from 'vue/server-renderer'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -164,13 +164,13 @@ declare global {
       /**
        * The result of this is injected at the start of `<body>`
        */
-      bodyHtmlStart?: (ctx: SSRContext) => string
+      bodyHtmlStart?: BodyInjectHtml
 
       /**
        * The result of this is injected at the end of `<body>`
        * It defaults to `<div id="teleported"></div>`
        */
-      bodyHtmlEnd?: (ctx: SSRContext) => string
+      bodyHtmlEnd?: BodyInjectHtml
 
       /**
        * Hook called right after creating Vue's `app` instance.

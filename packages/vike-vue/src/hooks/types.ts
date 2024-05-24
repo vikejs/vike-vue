@@ -5,6 +5,7 @@ export type {
   OnAfterRenderHtmlAsync,
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
+  BodyInjectHtml,
 }
 
 import type { PageContext, PageContextClient, PageContextServer } from 'vike/types'
@@ -57,3 +58,8 @@ type OnBeforeRenderClientSync = (pageContext: PageContextClient) => void
  * Typically used for hydrating state management libraries.
  */
 type OnBeforeRenderClientAsync = (pageContext: PageContextClient) => Promise<void>
+
+/**
+ * Injected HTML at the start / end of the body.
+ */
+type BodyInjectHtml = (pageContext: PageContext) => string
