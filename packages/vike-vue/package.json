@@ -32,7 +32,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.3.4",
+    "@brillout/release-me": "^0.3.8",
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.4.5",
