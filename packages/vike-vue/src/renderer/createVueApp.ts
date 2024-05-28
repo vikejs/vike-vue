@@ -5,6 +5,7 @@ import type { PageContextWithApp, PageContextWithoutApp } from '../types/PageCon
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
+import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 
 async function createVueApp(
   pageContext: PageContext,
@@ -55,10 +56,7 @@ async function createVueApp(
   objectAssign(pageContext, { app })
   const pageContextWithApp = pageContext as PageContextWithApp
 
-  pageContextWithApp.config.onCreateAppPinia?.(pageContext)
-  pageContextWithApp.config.onCreateAppVueQuery?.(pageContext)
-
-  await pageContextWithApp.config.onCreateApp?.(pageContext)
+  await callCumulativeHooks(pageContextWithApp.config.onCreateApp, pageContext)
 
   // Make `pageContext` accessible from any Vue component
   setPageContext(app, pageContextReactive)
@@ -70,5 +68,5 @@ async function createVueApp(
     })
   }
 
-  return pageContextWithApp
+  return pageContext as PageContextWithApp
 }

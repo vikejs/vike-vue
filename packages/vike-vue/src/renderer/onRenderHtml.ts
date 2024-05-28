@@ -7,6 +7,7 @@ import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
 import { createVueApp } from './createVueApp.js'
 import { App } from 'vue'
+import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 
 checkVikeVersion()
 
@@ -29,15 +30,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    const pluginContexts = [
-      pageContext.config.onAfterRenderSSRAppPinia?.(ctxWithApp),
-      pageContext.config.onAfterRenderSSRAppVueQuery?.(ctxWithApp),
-    ]
-    Object.assign(fromHtmlRenderer, ...pluginContexts)
+    const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderSSRApp, ctxWithApp)
 
-    // make sure user can override the context by assigning this last
-    const userFromHtmlRenderer = await pageContext.config.onAfterRenderSSRApp?.(ctxWithApp)
-    Object.assign(fromHtmlRenderer, userFromHtmlRenderer)
+    Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''

@@ -9,7 +9,7 @@
     "@types/node-fetch": "^2.6.11",
     "@tanstack/vue-query": "^5.0.0",
     "node-fetch": "^3.3.2",
-    "vike": "^0.4.165",
+    "vike": "^0.4.172",
     "vike-vue-query": "0.0.2",
     "vike-vue": "0.6.6",
     "vite": "^5.1.1",
