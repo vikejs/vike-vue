@@ -4,6 +4,5 @@ export function callCumulativeHooks<T extends (pageContext: C) => unknown, C ext
   hooks: T[] | undefined,
   pageContext: C,
 ) {
-  console.log('callCumulativeHooks')
   return Promise.all(hooks?.map((hook) => hook(pageContext)) ?? [])
 }
