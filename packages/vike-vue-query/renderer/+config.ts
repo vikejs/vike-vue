@@ -2,9 +2,9 @@ import type { DehydratedState, QueryClient, QueryClientConfig } from '@tanstack/
 
 export default {
   name: 'vike-vue-query',
-  onCreateAppVueQuery: 'import:vike-vue-query/renderer/installVueQuery:installVueQuery',
-  onAfterRenderSSRAppVueQuery: 'import:vike-vue-query/renderer/dehydrateVueQuery:dehydrateVueQuery',
-  onBeforeMountAppVueQuery: 'import:vike-vue-query/renderer/hydrateVueQuery:hydrateVueQuery',
+  onCreateApp: 'import:vike-vue-query/renderer/installVueQuery:installVueQuery',
+  onAfterRenderSSRApp: 'import:vike-vue-query/renderer/dehydrateVueQuery:dehydrateVueQuery',
+  onBeforeMountApp: 'import:vike-vue-query/renderer/hydrateVueQuery:hydrateVueQuery',
   meta: {
     queryClientConfig: {
       env: {

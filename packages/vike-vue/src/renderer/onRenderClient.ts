@@ -5,6 +5,7 @@ import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderClientAsync } from 'vike/types'
 import type { VikeVueApp } from '../types/PageContext'
+import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 
 let app: VikeVueApp | undefined = undefined
 const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
@@ -16,11 +17,8 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     const ctxWithApp = await createVueApp(pageContext, ssr, 'Page')
     app = ctxWithApp.app
 
-    // Do this in two steps to allow users to access plugins in their onBeforeMountApp hook
-    pageContext.config.onBeforeMountAppPinia?.(ctxWithApp)
-    pageContext.config.onBeforeMountAppVueQuery?.(ctxWithApp)
 
-    await pageContext.config.onBeforeMountApp?.(ctxWithApp)
+    await callCumulativeHooks(pageContext.config.onBeforeMountApp, ctxWithApp)
 
     app.mount(container)
   } else {
