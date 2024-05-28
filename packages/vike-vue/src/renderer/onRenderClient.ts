@@ -17,7 +17,6 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     const ctxWithApp = await createVueApp(pageContext, ssr, 'Page')
     app = ctxWithApp.app
 
-
     await callCumulativeHooks(pageContext.config.onBeforeMountApp, ctxWithApp)
 
     app.mount(container)
