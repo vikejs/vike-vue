@@ -4,7 +4,6 @@
 
 export { useData }
 
-import { type ComputedRef, computed } from 'vue'
 import { usePageContext } from './usePageContext'
 
 function useData<Data>(): Data {
