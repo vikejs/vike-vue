@@ -7,7 +7,7 @@
 
 Vue integration for Vike, see [vike.dev/vue](https://vike.dev/vue).
 
-- [Documentation](https://vike.dev)
+- [Documentation](https://vike.dev/vike-vue)
 - [Examples](https://github.com/vikejs/vike-vue/tree/main/examples)
 - [Changelog](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue/CHANGELOG.md)
 
