@@ -6,6 +6,8 @@ import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext.js'
 import { objectAssign } from '../utils/objectAssign'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
+import { isObject } from '../utils/isObject'
+import { setData } from '../hooks/useData'
 
 async function createVueApp(
   pageContext: PageContext,
@@ -28,7 +30,7 @@ async function createVueApp(
 
   const app = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
 
-  // We use `app.changePage()` to do Client Routing, see `onRenderClient.ts`
+  // app.changePage() is called upon navigation, see +onRenderClient.ts
   objectAssign(app, {
     changePage: async (pageContext: PageContext) => {
       let returned = false
@@ -40,6 +42,9 @@ async function createVueApp(
           err = err_
         }
       }
+      const data = pageContext.data ?? {}
+      assertDataIsObject(data)
+      Object.assign(dataReactive, data)
       Object.assign(pageContextReactive, pageContext)
       rootComponentRef.value = markRaw(pageContext.config[rootComponentName])
       layoutRef.value = markRaw(pageContext.config.Layout)
@@ -49,17 +54,17 @@ async function createVueApp(
     },
   })
 
-  // When doing Client Routing, we mutate pageContext (see usage of `app.changePage()` in `onRenderClient.ts`).
-  // We therefore use a reactive pageContext.
+  const data = pageContext.data ?? {}
+  assertDataIsObject(data)
+  const dataReactive = reactive(data)
   const pageContextReactive = reactive(pageContext as PageContextWithoutApp)
+  setPageContext(app, pageContextReactive)
+  setData(app, dataReactive)
 
   objectAssign(pageContext, { app })
   const pageContextWithApp = pageContext as PageContextWithApp
 
   await callCumulativeHooks(pageContextWithApp.config.onCreateApp, pageContext)
-
-  // Make `pageContext` accessible from any Vue component
-  setPageContext(app, pageContextReactive)
 
   if (pageContextWithApp.config.vuePlugins) {
     console.warn('[vike-vue][warning] +vuePlugins.js is deprecated, use onCreateApp() instead')
@@ -69,4 +74,8 @@ async function createVueApp(
   }
 
   return pageContext as PageContextWithApp
+}
+
+function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {
+  if (!isObject(data)) throw new Error('Return value of data() should be an object, undefined, or null')
 }
