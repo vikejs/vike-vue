@@ -1,3 +1,18 @@
+## [0.6.7](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.6...vike-vue@0.6.7) (2024-06-02)
+
+
+### Bug Fixes
+
+* remove counterproductive assert() (vikejs/vike-react[#115](https://github.com/vikejs/vike-vue/issues/115)) ([daccd7e](https://github.com/vikejs/vike-vue/commit/daccd7e191a7d705380066eac5763a72d4c6e690))
+* simpler and more robust `useData()` implementation ([a29d481](https://github.com/vikejs/vike-vue/commit/a29d481dd81a8095ccb0dd5432e31a1844e35037))
+
+
+### BREAKING CHANGES
+
+* Return value of `data()` should be an object, `undefined`, or `null`.
+
+
+
 ## [0.6.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.5...vike-vue@0.6.6) (2024-05-17)
 
 
