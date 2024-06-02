@@ -1,3 +1,17 @@
+## [0.6.8](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.7...vike-vue@0.6.8) (2024-06-02)
+
+
+### Bug Fixes
+
+* hard require vike@0.4.172 or above ([ee6157a](https://github.com/vikejs/vike-vue/commit/ee6157a9210ef3e867857050caac010756d9cca7))
+
+
+### BREAKING CHANGES
+
+* update to `vike@0.4.172` or above
+
+
+
 ## [0.6.7](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.6...vike-vue@0.6.7) (2024-06-02)
 
 
