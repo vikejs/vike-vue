@@ -3,7 +3,7 @@ export { createVueApp }
 import { createApp, createSSRApp, h, markRaw, nextTick, reactive, ref } from 'vue'
 import type { PageContextWithApp, PageContextWithoutApp } from '../types/PageContext'
 import type { PageContext } from 'vike/types'
-import { setPageContext } from '../hooks/usePageContext.js'
+import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isObject } from '../utils/isObject'
