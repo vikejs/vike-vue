@@ -9,7 +9,7 @@ import type { PageContext } from 'vike/types'
 export { usePageContext }
 export { setPageContext }
 
-const key = '__vike-vue__bcc79e46-5797-40d8-9cec-e9daf9c62ce8'
+const key = 'vike-vue:usePageContext'
 
 function usePageContext() {
   const pageContext = inject(key)
