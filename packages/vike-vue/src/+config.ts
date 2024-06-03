@@ -73,14 +73,6 @@ export default {
     stream: {
       env: { server: true },
     },
-    // Deprecated (in favor of `onCreateApp()`). TODO/next-major-release: remove it.
-    vuePlugins: {
-      // List of vue plugins to be installed with app.vue() in onRenderHtml and
-      // onRenderClient. We make this config available both on the server and
-      // the client always, but if SSR is disabled, onRenderHtml won't make use
-      // of it.
-      env: { server: true, client: true },
-    },
     onCreateApp: {
       env: { server: true, client: true },
       cumulative: true,
@@ -99,11 +91,6 @@ export default {
     },
   },
 } satisfies Config
-
-type VuePluginWithOptions = {
-  plugin: Plugin
-  options?: any
-}
 
 // We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue/config'`
 // https://vike.dev/pageContext#typescript
@@ -147,9 +134,6 @@ declare global {
        *
        */
       stream?: boolean
-
-      /** @deprecated Use `onCreateApp()` instead. */
-      vuePlugins?: VuePluginWithOptions[]
 
       /** The page's root Vue component */
       Page?: Component

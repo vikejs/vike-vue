@@ -58,16 +58,8 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
   setData(app, dataReactive)
 
   const { onCreateApp } = pageContext.config
-  const pageContextWithApp = pageContext
 
   await callCumulativeHooks(onCreateApp, pageContext)
-
-  if (pageContextWithApp.config.vuePlugins) {
-    console.warn('[vike-vue][warning] +vuePlugins.js is deprecated, use onCreateApp() instead')
-    pageContextWithApp.config.vuePlugins.forEach(({ plugin, options }) => {
-      app.use(plugin, options)
-    })
-  }
 
   return { app, changePage }
 }
