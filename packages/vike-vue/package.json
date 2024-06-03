@@ -22,6 +22,7 @@
   },
   "scripts": {
     "dev": "vite build --watch",
+    "dev:check-types": "tsc --noEmit --watch",
     "build": "rm -rf dist/ && vue-tsc --noEmit && vite build",
     "release": "release-me patch",
     "release:minor": "release-me minor",
