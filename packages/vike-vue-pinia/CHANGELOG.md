@@ -1,15 +1,17 @@
-## 0.0.5 (2024-06-03)
+## [0.0.5](https://github.com/vikejs/vike-vue/compare/vike-pinia@0.0.4...vike-vue-pinia@0.0.5) (2024-06-03)
 
 
 ### Bug Fixes
 
 * rename `vike-pinia` to `vike-vue-pinia` ([222b1fd](https://github.com/vikejs/vike-vue/commit/222b1fd5f7530837755ab0798becfea9ba0261bd))
+* export Vike configuration at /config for vike-pinia ([c2baf03](https://github.com/vikejs/vike-vue/commit/c2baf039279f73bdfecb9d1227ce6703ec3b75d4))
 
 
 ### BREAKING CHANGES
 
 * all references to `vike-pinia` should be replaced with `vike-vue-pinia`
 b3c0c
+* use `import vikePinia from 'vike-pinia/config'` in `+config` files
 
 
 
