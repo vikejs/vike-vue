@@ -6,7 +6,7 @@ settings:
 
 overrides:
   vike-vue: link:./packages/vike-vue/
-  vike-pinia: link:./packages/vike-pinia/
+  vike-vue-pinia: link:./packages/vike-vue-pinia/
   vike-vue-query: link:./packages/vike-vue-query/
 
 importers:
@@ -89,7 +89,7 @@ importers:
         specifier: ^3.4.23
         version: 3.4.23(typescript@5.4.5)
 
-  examples/pinia:
+  examples/vue-pinia:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
@@ -100,12 +100,12 @@ importers:
       vike:
         specifier: ^0.4.172
         version: 0.4.172(vite@5.2.9(@types/node@20.12.7))
-      vike-pinia:
-        specifier: link:../../packages/vike-pinia
-        version: link:../../packages/vike-pinia
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
+      vike-vue-pinia:
+        specifier: link:../../packages/vike-vue-pinia
+        version: link:../../packages/vike-vue-pinia
       vite:
         specifier: ^5.2.9
         version: 5.2.9(@types/node@20.12.7)
@@ -157,33 +157,6 @@ importers:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.4.5)
 
-  packages/vike-pinia:
-    devDependencies:
-      '@brillout/release-me':
-        specifier: ^0.3.8
-        version: 0.3.8
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.12.7
-      pinia:
-        specifier: ^2.1.7
-        version: 2.1.7(typescript@5.4.5)(vue@3.4.23(typescript@5.4.5))
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-      vike:
-        specifier: ^0.4.172
-        version: 0.4.172(vite@5.2.9(@types/node@20.12.7))
-      vike-vue:
-        specifier: link:../vike-vue
-        version: link:../vike-vue
-      vue:
-        specifier: ^3.4.23
-        version: 3.4.23(typescript@5.4.5)
-      vue-tsc:
-        specifier: ^2.0.13
-        version: 2.0.13(typescript@5.4.5)
-
   packages/vike-vue:
     devDependencies:
       '@brillout/release-me':
@@ -207,6 +180,33 @@ importers:
       vite-plugin-dts:
         specifier: ^3.8.3
         version: 3.8.3(@types/node@20.12.7)(rollup@4.14.3)(typescript@5.4.5)(vite@5.2.9(@types/node@20.12.7))
+      vue:
+        specifier: ^3.4.23
+        version: 3.4.23(typescript@5.4.5)
+      vue-tsc:
+        specifier: ^2.0.13
+        version: 2.0.13(typescript@5.4.5)
+
+  packages/vike-vue-pinia:
+    devDependencies:
+      '@brillout/release-me':
+        specifier: ^0.3.8
+        version: 0.3.8
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.12.7
+      pinia:
+        specifier: ^2.1.7
+        version: 2.1.7(typescript@5.4.5)(vue@3.4.23(typescript@5.4.5))
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+      vike:
+        specifier: ^0.4.172
+        version: 0.4.172(vite@5.2.9(@types/node@20.12.7))
+      vike-vue:
+        specifier: link:../vike-vue
+        version: link:../vike-vue
       vue:
         specifier: ^3.4.23
         version: 3.4.23(typescript@5.4.5)
