@@ -44,11 +44,13 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
-  const bodyHtmlStart = dangerouslySkipEscape(pageContext.config.bodyHtmlStart?.(pageContext) ?? '')
+  const bodyHtmlStart = dangerouslySkipEscape(
+    (await callCumulativeHooks(pageContext.config.bodyHtmlStart, pageContext)).join(''),
+  )
 
   const bodyHtmlEnd = dangerouslySkipEscape(
-    pageContext.config.bodyHtmlEnd
-      ? pageContext.config.bodyHtmlEnd(pageContext)
+    pageContext.config.bodyHtmlEnd?.length
+      ? (await callCumulativeHooks(pageContext.config.bodyHtmlEnd, pageContext)).join('')
       : `<div id="teleported">${ssrContext.teleports?.['#teleported'] ?? ''}</div>`,
   )
 

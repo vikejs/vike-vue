@@ -100,9 +100,11 @@ export default {
     },
     bodyHtmlStart: {
       env: { server: true, client: true },
+      cumulative: true,
     },
     bodyHtmlEnd: {
       env: { server: true, client: true },
+      cumulative: true,
     },
   },
 } satisfies Config
@@ -168,7 +170,7 @@ declare global {
 
       /**
        * The result of this is injected at the end of `<body>`
-       * It defaults to `<div id="teleported"></div>`
+       * @default `<div id="teleported"></div>`
        */
       bodyHtmlEnd?: BodyInjectHtml
 

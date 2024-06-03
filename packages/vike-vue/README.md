@@ -58,6 +58,7 @@ npm install vike-vue
 `vike-vue` implements the [`onRenderHtml()`](https://vike.dev/onRenderHtml) and
 [`onRenderClient()`](https://vike.dev/onRenderClient) hooks on your behalf, which are essentially the glue code between
 Vike and Vue.
+All hooks are [cumulative](https://vike.dev/meta#api), so you can add your own hooks without overriding the default ones.
 
 `vike-vue` introduces the following new hooks:
 
@@ -104,4 +105,4 @@ Vike and Vue.
 
 ## Teleports
 
-Teleports work out of the box with `vike-vue` when using `<Teleport to="teleported">` as we inject an empty div with `id="teleported"` by default. You can override this by setting a custom `bodyHtmlEnd` hook.
+Teleports work out of the box with `vike-vue` when using `<Teleport to="teleported">` as we inject an empty div with `id="teleported"` by default. You can add more targets by using a custom `bodyHtmlEnd()` hook.

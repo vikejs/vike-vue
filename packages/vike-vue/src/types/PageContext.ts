@@ -2,6 +2,7 @@ export type { Component }
 
 import type { App, defineComponent } from 'vue'
 import type {
+  BodyInjectHtml,
   OnAfterRenderHtmlAsync,
   OnAfterRenderHtmlSync,
   OnBeforeRenderClientAsync,
@@ -32,6 +33,8 @@ declare global {
       onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
       onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
+      bodyHtmlStart?: BodyInjectHtml[]
+      bodyHtmlEnd?: BodyInjectHtml[]
     }
   }
 }

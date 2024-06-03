@@ -62,4 +62,4 @@ type OnBeforeRenderClientAsync = (pageContext: PageContextClient) => Promise<voi
 /**
  * Injected HTML at the start / end of the body.
  */
-type BodyInjectHtml = (pageContext: PageContext) => string
+type BodyInjectHtml = string | ((pageContext: PageContext) => string)

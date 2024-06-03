@@ -62,11 +62,11 @@ function setFavicon(faviconUrl: string | null) {
   link.href = faviconUrl
 }
 
-function replaceAdjacentBodyHtml(pageContext: PageContextClient, method: 'bodyHtmlStart' | 'bodyHtmlEnd') {
-  const hook = pageContext.config[method]
-  if (!hook) return
+async function replaceAdjacentBodyHtml(pageContext: PageContextClient, method: 'bodyHtmlStart' | 'bodyHtmlEnd') {
+  const hooks = pageContext.config[method]
+  if (!hooks) return
 
-  const hookHtml = hook(pageContext)
+  const hookHtml = (await callCumulativeHooks(hooks, pageContext)).join('')
   // replace everything between existing comments <!-- bodyHtmlStart begin --> and <!-- bodyHtmlStart finish -->
   const startComment = `<!-- vike-vue:${method} begin -->`
   const endComment = `<!-- vike-vue:${method} finish -->`
