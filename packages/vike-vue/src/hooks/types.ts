@@ -8,7 +8,7 @@ export type {
 }
 
 import type { PageContext } from 'vike/types'
-import type { PageContextWithApp } from '../types/PageContext'
+type PageContextWithApp = PageContext & { app: NonNullable<PageContext['app']> }
 
 // Purposeful code duplication for improving QuickInfo IntelliSense
 /**

@@ -1,7 +1,5 @@
 export type { Component }
-export type { PageContextWithApp, PageContextWithoutApp }
 
-import type { PageContext } from 'vike/types'
 import type { App, defineComponent } from 'vue'
 import type {
   OnAfterRenderSSRAppAsync,
@@ -14,9 +12,6 @@ import type {
 
 // See https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
 type Component = ReturnType<typeof defineComponent>
-
-type PageContextWithoutApp = PageContext & { app: undefined }
-type PageContextWithApp = PageContext & { app: App }
 
 declare global {
   namespace Vike {

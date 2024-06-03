@@ -1,8 +1,7 @@
 export { createVueApp }
 export type { ChangePage }
 
-import { createApp, createSSRApp, h, markRaw, nextTick, reactive, ref } from 'vue'
-import type { PageContextWithApp, PageContextWithoutApp } from '../types/PageContext'
+import { type App, createApp, createSSRApp, h, markRaw, nextTick, reactive, ref } from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
@@ -26,7 +25,8 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
     },
   }
 
-  const app = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
+  const app: App = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
+  objectAssign(pageContext, { app })
 
   // changePage() is called upon navigation, see +onRenderClient.ts
   const changePage: ChangePage = async (pageContext: PageContext) => {
@@ -53,14 +53,14 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
   const data = pageContext.data ?? {}
   assertDataIsObject(data)
   const dataReactive = reactive(data)
-  const pageContextReactive = reactive(pageContext as PageContextWithoutApp)
-  setPageContext(app, pageContextReactive)
+  const pageContextReactive = reactive(pageContext)
+  setPageContext(app, pageContextReactive as typeof pageContext)
   setData(app, dataReactive)
 
-  objectAssign(pageContext, { app })
-  const pageContextWithApp = pageContext as PageContextWithApp
+  const { onCreateApp } = pageContext.config
+  const pageContextWithApp = pageContext
 
-  await callCumulativeHooks(pageContextWithApp.config.onCreateApp, pageContext)
+  await callCumulativeHooks(onCreateApp, pageContext)
 
   if (pageContextWithApp.config.vuePlugins) {
     console.warn('[vike-vue][warning] +vuePlugins.js is deprecated, use onCreateApp() instead')
