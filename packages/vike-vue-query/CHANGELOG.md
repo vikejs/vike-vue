@@ -1,3 +1,17 @@
+## [0.0.3](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.0.2...vike-vue-query@0.0.3) (2024-06-03)
+
+
+### Bug Fixes
+
+* export Vike configuration at /config for vike-vue-query ([1d091d9](https://github.com/vikejs/vike-vue/commit/1d091d9d3e8aaa0feca8405a43f396e3a5df5db7))
+
+
+### BREAKING CHANGES
+
+* use `import vikeVueQuery from 'vike-vue-query/config'` in `+config.`
+
+
+
 ## [0.0.2](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.0.1...vike-vue-query@0.0.2) (2024-04-23)
 
 ### Bug Fixes
