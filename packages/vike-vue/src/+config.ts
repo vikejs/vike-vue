@@ -1,5 +1,3 @@
-export { config }
-
 import type {
   OnCreateAppSync,
   OnCreateAppAsync,
@@ -35,7 +33,7 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
   }
 }
 
-const config = {
+export default {
   name: 'vike-vue',
 
   // https://vike.dev/onRenderHtml

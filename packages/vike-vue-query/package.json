@@ -14,14 +14,14 @@
     "release:commit": "release-me commit"
   },
   "exports": {
-    ".": "./dist/+config.js",
+    "./config": "./dist/+config.js",
     "./renderer/installVueQuery": "./dist/installVueQuery.js",
     "./renderer/dehydrateVueQuery": "./dist/dehydrateVueQuery.js",
     "./renderer/hydrateVueQuery": "./dist/hydrateVueQuery.js"
   },
   "typesVersions": {
     "*": {
-      ".": [
+      "config": [
         "./dist/+config.d.ts"
       ],
       "renderer/installVueQuery": [

@@ -14,14 +14,14 @@
     "release:commit": "release-me commit"
   },
   "exports": {
-    ".": "./dist/+config.js",
+    "./config": "./dist/+config.js",
     "./renderer/installPinia": "./dist/installPinia.js",
     "./renderer/dehydratePinia": "./dist/dehydratePinia.js",
     "./renderer/hydratePinia": "./dist/hydratePinia.js"
   },
   "typesVersions": {
     "*": {
-      ".": [
+      "config": [
         "./dist/+config.d.ts"
       ],
       "renderer/installPinia": [
