@@ -48,11 +48,11 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     (await callCumulativeHooks(pageContext.config.bodyHtmlStart, pageContext)).join(''),
   )
 
-  const bodyHtmlEnd = dangerouslySkipEscape(
-    pageContext.config.bodyHtmlEnd?.length
-      ? (await callCumulativeHooks(pageContext.config.bodyHtmlEnd, pageContext)).join('')
-      : `<div id="teleported">${ssrContext.teleports?.['#teleported'] ?? ''}</div>`,
-  )
+  // we define this hook here so that it doesn't need to be exported by vike-vue
+  const defaultTeleport = `<div id="teleported">${ssrContext.teleports?.['#teleported'] ?? ''}</div>`
+
+  const bodyHtmlEndHooks = [defaultTeleport, ...(pageContext.config.bodyHtmlEnd ?? [])]
+  const bodyHtmlEnd = dangerouslySkipEscape((await callCumulativeHooks(bodyHtmlEndHooks, pageContext)).join(''))
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang='${lang}'>
