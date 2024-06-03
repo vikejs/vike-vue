@@ -1,3 +1,18 @@
+## 0.0.5 (2024-06-03)
+
+
+### Bug Fixes
+
+* rename `vike-pinia` to `vike-vue-pinia` ([222b1fd](https://github.com/vikejs/vike-vue/commit/222b1fd5f7530837755ab0798becfea9ba0261bd))
+
+
+### BREAKING CHANGES
+
+* all references to `vike-pinia` should be replaced with `vike-vue-pinia`
+b3c0c
+
+
+
 ## [0.0.4](https://github.com/vikejs/vike-vue/compare/vike-pinia@0.0.3...vike-pinia@0.0.4) (2024-04-23)
 
 ### Bug Fixes
