@@ -1,20 +1,23 @@
 // https://vike.dev/onRenderClient
 export { onRenderClient }
 
-import { createVueApp } from './createVueApp.js'
+import { createVueApp, type ChangePage } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderClientAsync } from 'vike/types'
-import type { VikeVueApp } from '../types/PageContext'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
+import type { App } from 'vue'
 
-let app: VikeVueApp | undefined = undefined
+let app: App | undefined
+let changePage: ChangePage | undefined
 const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
   if (!app) {
     // First rendering/hydration
 
     const container = document.getElementById('app')!
     const ssr = container.innerHTML !== ''
-    const ctxWithApp = await createVueApp(pageContext, ssr, 'Page')
+    const res = await createVueApp(pageContext, ssr, 'Page')
+    const ctxWithApp = res.pageContext
+    changePage = res.changePage
     app = ctxWithApp.app
 
     await callCumulativeHooks(pageContext.config.onBeforeMountApp, ctxWithApp)
@@ -23,7 +26,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
   } else {
     // Client-side navigation
 
-    await app.changePage(pageContext)
+    await changePage!(pageContext)
 
     const title = getHeadSetting('title', pageContext) || ''
     const lang = getHeadSetting('lang', pageContext) || 'en'

@@ -1,4 +1,5 @@
 export { createVueApp }
+export type { ChangePage }
 
 import { createApp, createSSRApp, h, markRaw, nextTick, reactive, ref } from 'vue'
 import type { PageContextWithApp, PageContextWithoutApp } from '../types/PageContext'
@@ -9,11 +10,12 @@ import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isObject } from '../utils/isObject'
 import { setData } from '../hooks/useData'
 
+type ChangePage = (pageContext: PageContext) => Promise<void>
 async function createVueApp(
   pageContext: PageContext,
   ssr: boolean,
   rootComponentName: 'Head' | 'Page',
-): Promise<PageContextWithApp> {
+): Promise<{ pageContext: PageContextWithApp; changePage: ChangePage }> {
   const rootComponentRef = ref(markRaw(pageContext.config[rootComponentName]))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
 
@@ -30,9 +32,8 @@ async function createVueApp(
 
   const app = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
 
-  // app.changePage() is called upon navigation, see +onRenderClient.ts
-  objectAssign(app, {
-    changePage: async (pageContext: PageContext) => {
+  // changePage() is called upon navigation, see +onRenderClient.ts
+  const changePage: ChangePage = async (pageContext: PageContext) => {
       let returned = false
       let err: unknown
       app.config.errorHandler = (err_) => {
@@ -51,8 +52,7 @@ async function createVueApp(
       await nextTick()
       returned = true
       if (err) throw err
-    },
-  })
+    }
 
   const data = pageContext.data ?? {}
   assertDataIsObject(data)
@@ -73,7 +73,7 @@ async function createVueApp(
     })
   }
 
-  return pageContext as PageContextWithApp
+  return { pageContext, changePage }
 }
 
 function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {
