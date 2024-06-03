@@ -6,6 +6,7 @@ import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderClientAsync } from 'vike/types'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 import type { App } from 'vue'
+import { objectAssign } from '../utils/objectAssign.js'
 
 let app: App | undefined
 let changePage: ChangePage | undefined
@@ -16,11 +17,11 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     const container = document.getElementById('app')!
     const ssr = container.innerHTML !== ''
     const res = await createVueApp(pageContext, ssr, 'Page')
-    const ctxWithApp = res.pageContext
     changePage = res.changePage
-    app = ctxWithApp.app
+    app = res.app
+    objectAssign(pageContext, { app })
 
-    await callCumulativeHooks(pageContext.config.onBeforeMountApp, ctxWithApp)
+    await callCumulativeHooks(pageContext.config.onBeforeMountApp, pageContext)
 
     app.mount(container)
   } else {

@@ -11,11 +11,7 @@ import { isObject } from '../utils/isObject'
 import { setData } from '../hooks/useData'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
-async function createVueApp(
-  pageContext: PageContext,
-  ssr: boolean,
-  rootComponentName: 'Head' | 'Page',
-): Promise<{ pageContext: PageContextWithApp; changePage: ChangePage }> {
+async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponentName: 'Head' | 'Page') {
   const rootComponentRef = ref(markRaw(pageContext.config[rootComponentName]))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
 
@@ -73,7 +69,7 @@ async function createVueApp(
     })
   }
 
-  return { pageContext, changePage }
+  return { app, changePage }
 }
 
 function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {

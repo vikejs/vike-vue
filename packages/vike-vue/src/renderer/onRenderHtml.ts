@@ -8,6 +8,7 @@ import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
 import { createVueApp } from './createVueApp.js'
 import { App } from 'vue'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
+import { objectAssign } from '../utils/objectAssign.js'
 
 checkVikeVersion()
 
@@ -24,22 +25,20 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   if (!!pageContext.Page) {
     // SSR is enabled
-    const { pageContext: ctxWithApp } = await createVueApp(pageContext, true, 'Page')
-    const { app } = ctxWithApp
+    const { app } = await createVueApp(pageContext, true, 'Page')
+    objectAssign(pageContext, { app })
     pageView = !pageContext.config.stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderSSRApp, ctxWithApp)
+    const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderSSRApp, pageContext)
 
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   if (pageContext.config.Head) {
-    const {
-      pageContext: { app },
-    } = await createVueApp(pageContext, true, 'Head')
+    const { app } = await createVueApp(pageContext, true, 'Head')
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
