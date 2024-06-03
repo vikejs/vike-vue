@@ -62,8 +62,8 @@ Vike and Vue.
 `vike-vue` introduces the following new hooks:
 * [`onCreateApp()`](https://vike.dev/onCreateApp): Allows you to extend the Vue app, typically for registering a Vue
   plugin.
-* `onAfterRenderSSRApp()`: Called right after rendering the app on the server. Usually used for dehydration of state management libraries.
-* `onBeforeMountApp()`: Called before mounting the app on the client. Usually used for hydration of state management libraries.
+* `onAfterRenderHtml()`: Called right after rendering the app on the server. Usually used for dehydration of state management libraries.
+* `onBeforeRenderClient()`: Called before mounting the app on the client. Usually used for hydration of state management libraries.
 
 ## Settings
 

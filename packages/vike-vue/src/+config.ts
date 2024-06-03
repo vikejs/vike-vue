@@ -1,10 +1,10 @@
 import type {
   OnCreateAppSync,
   OnCreateAppAsync,
-  OnAfterRenderSSRAppSync,
-  OnAfterRenderSSRAppAsync,
-  OnBeforeMountAppSync,
-  OnBeforeMountAppAsync,
+  OnAfterRenderHtmlSync,
+  OnAfterRenderHtmlAsync,
+  OnBeforeRenderClientSync,
+  OnBeforeRenderClientAsync,
 } from './hooks/types'
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
@@ -85,11 +85,11 @@ export default {
       env: { server: true, client: true },
       cumulative: true,
     },
-    onAfterRenderSSRApp: {
+    onAfterRenderHtml: {
       env: { server: true },
       cumulative: true,
     },
-    onBeforeMountApp: {
+    onBeforeRenderClient: {
       env: { server: false, client: true },
       cumulative: true,
     },
@@ -169,14 +169,14 @@ declare global {
        *
        * Typically used for dehydrating state management libraries.
        */
-      onAfterRenderSSRApp?: OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync
+      onAfterRenderHtml?: OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync
 
       /**
        * Hook called right before mounting the page's root Vue component.
        *
        * Typically used for hydrating state management libraries.
        */
-      onBeforeMountApp?: OnBeforeMountAppSync | OnBeforeMountAppAsync
+      onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync
     }
   }
 }

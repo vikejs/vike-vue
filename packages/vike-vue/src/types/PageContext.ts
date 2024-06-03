@@ -2,10 +2,10 @@ export type { Component }
 
 import type { App, defineComponent } from 'vue'
 import type {
-  OnAfterRenderSSRAppAsync,
-  OnAfterRenderSSRAppSync,
-  OnBeforeMountAppAsync,
-  OnBeforeMountAppSync,
+  OnAfterRenderHtmlAsync,
+  OnAfterRenderHtmlSync,
+  OnBeforeRenderClientAsync,
+  OnBeforeRenderClientSync,
   OnCreateAppAsync,
   OnCreateAppSync,
 } from '../hooks/types'
@@ -27,8 +27,8 @@ declare global {
     }
     interface ConfigResolved {
       onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
-      onAfterRenderSSRApp?: Array<OnAfterRenderSSRAppSync | OnAfterRenderSSRAppAsync>
-      onBeforeMountApp?: Array<OnBeforeMountAppSync | OnBeforeMountAppAsync>
+      onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
+      onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
     }
   }
 }

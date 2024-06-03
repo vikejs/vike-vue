@@ -1,13 +1,13 @@
 export type {
   OnCreateAppSync,
   OnCreateAppAsync,
-  OnAfterRenderSSRAppSync,
-  OnAfterRenderSSRAppAsync,
-  OnBeforeMountAppSync,
-  OnBeforeMountAppAsync,
+  OnAfterRenderHtmlSync,
+  OnAfterRenderHtmlAsync,
+  OnBeforeRenderClientSync,
+  OnBeforeRenderClientAsync,
 }
 
-import type { PageContext } from 'vike/types'
+import type { PageContext, PageContextClient, PageContextServer } from 'vike/types'
 type PageContextWithApp = PageContext & { app: NonNullable<PageContext['app']> }
 
 // Purposeful code duplication for improving QuickInfo IntelliSense
@@ -34,24 +34,26 @@ type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
  *
  * Typically used for dehydrating state management libraries.
  */
-type OnAfterRenderSSRAppSync = (pageContext: PageContext) => PageContext['fromHtmlRenderer']
+type OnAfterRenderHtmlSync = (pageContext: PageContextServer) => PageContextServer['fromHtmlRenderer']
 /**
  * Hook called right after rendering the page's root Vue component.
  * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
  *
  * Typically used for dehydrating state management libraries.
  */
-type OnAfterRenderSSRAppAsync = (pageContext: PageContext) => Promise<PageContext['fromHtmlRenderer']>
+type OnAfterRenderHtmlAsync = (pageContext: PageContextServer) => Promise<PageContextServer['fromHtmlRenderer']>
 
 /**
- * Hook called right before mounting the page's root Vue component.
+ * Hook called right before mounting the page's root Vue component or when navigating on the client.
+ * When mounting pageContext.isHydration is true, otherwise false.
  *
  * Typically used for hydrating state management libraries.
  */
-type OnBeforeMountAppSync = (pageContext: PageContext) => void
+type OnBeforeRenderClientSync = (pageContext: PageContextClient) => void
 /**
- * Hook called right before mounting the page's root Vue component.
+ * Hook called right before mounting the page's root Vue component or when navigating on the client.
+ * When mounting pageContext.isHydration is true, otherwise false.
  *
  * Typically used for hydrating state management libraries.
  */
-type OnBeforeMountAppAsync = (pageContext: PageContext) => Promise<void>
+type OnBeforeRenderClientAsync = (pageContext: PageContextClient) => Promise<void>
