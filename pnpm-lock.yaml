@@ -39,7 +39,7 @@ importers:
         version: 2.6.11
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
-        version: 5.0.4(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
+        version: 5.0.5(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -75,7 +75,7 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
-        version: 5.0.4(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
+        version: 5.0.5(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
       vike:
         specifier: ^0.4.172
         version: 0.4.172(vite@5.2.9(@types/node@20.12.7))
@@ -93,7 +93,7 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
-        version: 5.0.4(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
+        version: 5.0.5(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.23(typescript@5.4.5))
@@ -130,7 +130,7 @@ importers:
         version: 2.6.11
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
-        version: 5.0.4(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
+        version: 5.0.5(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -167,7 +167,7 @@ importers:
         version: 20.12.7
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
-        version: 5.0.4(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
+        version: 5.0.5(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -963,8 +963,8 @@ packages:
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
-  '@vitejs/plugin-vue@5.0.4':
-    resolution: {integrity: sha512-WS3hevEszI6CEVEx28F8RjTX97k3KsrcY6kvTg7+Whm5y3oYvcqzVeGCU3hxSAn4uY2CLCkeokkGKpoctccilQ==}
+  '@vitejs/plugin-vue@5.0.5':
+    resolution: {integrity: sha512-LOjm7XeIimLBZyzinBQ6OSm3UBCNVCpLkxGC0oWmm2YPzVZoxMsdvNVimLTBzpAnR9hl/yn1SHGuRfe6/Td9rQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       vite: ^5.0.0
@@ -2562,7 +2562,7 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@vitejs/plugin-vue@5.0.4(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))':
+  '@vitejs/plugin-vue@5.0.5(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))':
     dependencies:
       vite: 5.2.9(@types/node@20.12.7)
       vue: 3.4.23(typescript@5.4.5)
