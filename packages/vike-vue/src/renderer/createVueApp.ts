@@ -34,25 +34,25 @@ async function createVueApp(
 
   // changePage() is called upon navigation, see +onRenderClient.ts
   const changePage: ChangePage = async (pageContext: PageContext) => {
-      let returned = false
-      let err: unknown
-      app.config.errorHandler = (err_) => {
-        if (returned) {
-          console.error(err_)
-        } else {
-          err = err_
-        }
+    let returned = false
+    let err: unknown
+    app.config.errorHandler = (err_) => {
+      if (returned) {
+        console.error(err_)
+      } else {
+        err = err_
       }
-      const data = pageContext.data ?? {}
-      assertDataIsObject(data)
-      Object.assign(dataReactive, data)
-      Object.assign(pageContextReactive, pageContext)
-      rootComponentRef.value = markRaw(pageContext.config[rootComponentName])
-      layoutRef.value = markRaw(pageContext.config.Layout)
-      await nextTick()
-      returned = true
-      if (err) throw err
     }
+    const data = pageContext.data ?? {}
+    assertDataIsObject(data)
+    Object.assign(dataReactive, data)
+    Object.assign(pageContextReactive, pageContext)
+    rootComponentRef.value = markRaw(pageContext.config[rootComponentName])
+    layoutRef.value = markRaw(pageContext.config.Layout)
+    await nextTick()
+    returned = true
+    if (err) throw err
+  }
 
   const data = pageContext.data ?? {}
   assertDataIsObject(data)
