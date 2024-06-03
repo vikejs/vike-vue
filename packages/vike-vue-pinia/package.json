@@ -1,5 +1,5 @@
 {
-  "name": "vike-pinia",
+  "name": "vike-vue-pinia",
   "version": "0.0.4",
   "description": "",
   "main": "./dist/+config.js",
