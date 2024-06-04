@@ -1,3 +1,18 @@
+# [0.7.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.8...vike-vue@0.7.0) (2024-06-04)
+
+
+### Bug Fixes
+
+* Improve Hooks ([#96](https://github.com/vikejs/vike-vue/issues/96)) ([32f06aa](https://github.com/vikejs/vike-vue/commit/32f06aa1d2ca72e0c935c05bee814f031f41554a))
+
+
+### BREAKING CHANGES
+
+* All vike-vue packages need to be updated simultaneously.
+rename `onBeforeMountApp` to `onBeforeRenderClient` and `onAfterRenderSSRApp` to `onAfterRenderHtml`
+
+
+
 ## [0.6.8](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.7...vike-vue@0.6.8) (2024-06-02)
 
 
