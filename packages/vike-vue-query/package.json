@@ -38,7 +38,7 @@
   "peerDependencies": {
     "@tanstack/vue-query": "^5.0.0",
     "vike": "^0.4.172",
-    "vike-vue": "^0.6.5",
+    "vike-vue": "^0.7.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
