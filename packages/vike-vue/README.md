@@ -58,12 +58,16 @@ npm install vike-vue
 `vike-vue` implements the [`onRenderHtml()`](https://vike.dev/onRenderHtml) and
 [`onRenderClient()`](https://vike.dev/onRenderClient) hooks on your behalf, which are essentially the glue code between
 Vike and Vue.
+All hooks are [cumulative](https://vike.dev/meta#api), so you can add your own hooks without overriding the default ones.
 
 `vike-vue` introduces the following new hooks:
+
 * [`onCreateApp()`](https://vike.dev/onCreateApp): Allows you to extend the Vue app, typically for registering a Vue
   plugin.
 * `onAfterRenderHtml()`: Called right after rendering the app on the server. Usually used for dehydration of state management libraries.
 * `onBeforeRenderClient()`: Called before mounting the app on the client. Usually used for hydration of state management libraries.
+* `bodyHtmlStart()`: Called on the server and client. Allows you to add content at the start of the `<body>` tag.
+* `bodyHtmlEnd()`: Called on the server and client. Defaults to `<div id="teleported"></div>`. Allows you to add content at the end of the `<body>` tag.
 
 ## Settings
 
@@ -98,3 +102,7 @@ Vike and Vue.
 `vike-vue` introduces the following new components:
 
 * [`ClientOnly`](https://vike.dev/ClientOnly): Wrapper to render and load a component only on the client-side.
+
+## Teleports
+
+Teleports work out of the box with `vike-vue` when using `<Teleport to="teleported">` as we inject an empty div with `id="teleported"` by default. You can add more targets by using a custom `bodyHtmlEnd()` hook.

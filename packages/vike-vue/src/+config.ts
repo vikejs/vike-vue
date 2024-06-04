@@ -5,6 +5,7 @@ import type {
   OnAfterRenderHtmlAsync,
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
+  BodyInjectHtml,
 } from './hooks/types'
 
 import type { Config, ConfigEffect, PageContext } from 'vike/types'
@@ -97,6 +98,14 @@ export default {
     name: {
       env: { config: true },
     },
+    bodyHtmlStart: {
+      env: { server: true, client: true },
+      cumulative: true,
+    },
+    bodyHtmlEnd: {
+      env: { server: true, client: true },
+      cumulative: true,
+    },
   },
 } satisfies Config
 
@@ -153,6 +162,17 @@ declare global {
 
       /** The page's root Vue component */
       Page?: Component
+
+      /**
+       * The result of this is injected at the start of `<body>`
+       */
+      bodyHtmlStart?: BodyInjectHtml
+
+      /**
+       * The result of this is injected at the end of `<body>`
+       * @default `<div id="teleported"></div>`
+       */
+      bodyHtmlEnd?: BodyInjectHtml
 
       /**
        * Hook called right after creating Vue's `app` instance.
