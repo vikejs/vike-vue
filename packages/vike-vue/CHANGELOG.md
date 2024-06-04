@@ -1,3 +1,12 @@
+## [0.7.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.0...vike-vue@0.7.1) (2024-06-04)
+
+
+### Features
+
+* support teleports, add bodyHtml{Start,End} hooks ([#88](https://github.com/vikejs/vike-vue/issues/88), fix [#87](https://github.com/vikejs/vike-vue/issues/87))) ([71d33a4](https://github.com/vikejs/vike-vue/commit/71d33a4a3cb69f813c33e984c28b03d17e8af6c5))
+
+
+
 # [0.7.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.6.8...vike-vue@0.7.0) (2024-06-04)
 
 
