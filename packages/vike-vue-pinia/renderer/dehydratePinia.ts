@@ -1,7 +1,7 @@
-import type { OnAfterRenderSSRAppSync } from 'vike-vue/types'
+import type { OnAfterRenderHtmlSync } from 'vike-vue/types'
 
 export { dehydratePinia }
 
-const dehydratePinia: OnAfterRenderSSRAppSync = ({ pinia }): ReturnType<OnAfterRenderSSRAppSync> => {
+const dehydratePinia: OnAfterRenderHtmlSync = ({ pinia }): ReturnType<OnAfterRenderHtmlSync> => {
   return { piniaInitialState: pinia!.state.value }
 }

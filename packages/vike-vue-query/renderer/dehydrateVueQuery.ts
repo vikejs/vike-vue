@@ -1,8 +1,8 @@
 import { dehydrate } from '@tanstack/vue-query'
-import type { OnAfterRenderSSRAppSync } from 'vike-vue/types'
+import type { OnAfterRenderHtmlSync } from 'vike-vue/types'
 
 export { dehydrateVueQuery }
 
-const dehydrateVueQuery: OnAfterRenderSSRAppSync = ({ queryClient }): ReturnType<OnAfterRenderSSRAppSync> => {
+const dehydrateVueQuery: OnAfterRenderHtmlSync = ({ queryClient }): ReturnType<OnAfterRenderHtmlSync> => {
   return { vueQueryInitialState: dehydrate(queryClient!) }
 }

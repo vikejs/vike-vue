@@ -31,7 +31,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
       : renderToNodeStreamWithErrorHandling(app)
 
-    const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderSSRApp, pageContext)
+    const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
 
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }

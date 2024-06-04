@@ -1,9 +1,16 @@
 import { hydrate } from '@tanstack/vue-query'
-import type { OnBeforeMountAppSync } from 'vike-vue/types'
+import type { OnBeforeRenderClientSync } from 'vike-vue/types'
 
 export { hydrateVueQuery }
 
-const hydrateVueQuery: OnBeforeMountAppSync = ({ queryClient, fromHtmlRenderer }): ReturnType<OnBeforeMountAppSync> => {
+const hydrateVueQuery: OnBeforeRenderClientSync = ({
+  queryClient,
+  fromHtmlRenderer,
+  isHydration,
+}): ReturnType<OnBeforeRenderClientSync> => {
+  if (!isHydration) {
+    return
+  }
   const { vueQueryInitialState } = fromHtmlRenderer
 
   if (!queryClient || !vueQueryInitialState) {

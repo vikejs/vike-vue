@@ -21,12 +21,12 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     app = res.app
     objectAssign(pageContext, { app })
 
-    await callCumulativeHooks(pageContext.config.onBeforeMountApp, pageContext)
+    await callCumulativeHooks(pageContext.config.onBeforeRenderClient, pageContext)
 
     app.mount(container)
   } else {
     // Client-side navigation
-
+    await callCumulativeHooks(pageContext.config.onBeforeRenderClient, pageContext)
     await changePage!(pageContext)
 
     const title = getHeadSetting('title', pageContext) || ''
