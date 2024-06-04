@@ -1,3 +1,12 @@
+## [0.1.1](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.1.0...vike-vue-pinia@0.1.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* update peerDependencies for packages ([5417fef](https://github.com/vikejs/vike-vue/commit/5417fefb1f4951da3b701164f8d2a51178c012e7))
+
+
+
 # [0.1.0](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.0.5...vike-vue-pinia@0.1.0) (2024-06-04)
 
 
