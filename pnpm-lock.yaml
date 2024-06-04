@@ -23,7 +23,7 @@ importers:
         specifier: ^0.1.14
         version: 0.1.14(typescript@5.4.5)
       playwright:
-        specifier: ^1.43.1
+        specifier: ^1.44.1
         version: 1.44.1
       prettier:
         specifier: ^3.2.5
