@@ -18,5 +18,6 @@ const hydratePinia: OnBeforeRenderClientSync = ({
     return
   }
 
+  // @ts-expect-error TODO: fix type mismatch between Config['fromHtmlRenderer'] set by vike-vue and vike-vue-pinia
   pinia.state.value = piniaInitialState
 }

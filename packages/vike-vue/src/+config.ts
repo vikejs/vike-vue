@@ -8,7 +8,7 @@ import type {
   BodyInjectHtml,
 } from './hooks/types'
 
-import type { Config, ConfigEffect, PageContext } from 'vike/types'
+import type { Config, ConfigEffect, ImportString, PageContext } from 'vike/types'
 import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
 
@@ -188,7 +188,7 @@ declare global {
        *
        * See https://vike.dev/onCreateApp
        */
-      onCreateApp?: OnCreateAppSync | OnCreateAppAsync
+      onCreateApp?: OnCreateAppSync | OnCreateAppAsync | ImportString
 
       /**
        * Hook called right after rendering the page's root Vue component.
@@ -196,14 +196,14 @@ declare global {
        *
        * Typically used for dehydrating state management libraries.
        */
-      onAfterRenderHtml?: OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync
+      onAfterRenderHtml?: OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync | ImportString
 
       /**
        * Hook called right before mounting the page's root Vue component.
        *
        * Typically used for hydrating state management libraries.
        */
-      onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync
+      onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
     }
   }
 }

@@ -1,4 +1,6 @@
 import type { DehydratedState, QueryClient, QueryClientConfig } from '@tanstack/vue-query'
+import type { Config } from 'vike/types'
+import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 
 export default {
   name: 'vike-vue-query',
@@ -16,12 +18,13 @@ export default {
       },
     },
   },
-}
+} satisfies Config
 
 declare global {
   namespace Vike {
     interface PageContext {
       queryClient?: QueryClient
+      // @ts-expect-error TODO: fix type mismatch
       fromHtmlRenderer: {
         vueQueryInitialState?: DehydratedState
       }
