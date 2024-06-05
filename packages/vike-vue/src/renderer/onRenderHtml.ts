@@ -116,6 +116,8 @@ function renderToNodeStreamWithErrorHandling(app: App, ctx?: SSRContext) {
   return appHtml
 }
 
+// We don't need this anymore starting from vike@0.4.173 which added the `require` setting.
+// TODO/eventually: remove this once <=0.4.172 versions become rare.
 function checkVikeVersion() {
   if (version) {
     const versionParts = version.split('.').map((s) => parseInt(s, 10)) as [number, number, number]
@@ -123,5 +125,6 @@ function checkVikeVersion() {
     if (versionParts[1] > 4) return
     if (versionParts[2] >= 172) return
   }
+  // We can leave it 0.4.172 until we entirely remove checkVikeVersion() (because starting vike@0.4.173 we use the new `require` setting).
   throw new Error('Update Vike to 0.4.172 or above')
 }

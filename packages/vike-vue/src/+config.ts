@@ -36,6 +36,9 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 
 export default {
   name: 'vike-vue',
+  require: {
+    vike: '>=0.4.172',
+  },
 
   // https://vike.dev/onRenderHtml
   onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
@@ -94,8 +97,12 @@ export default {
       env: { server: false, client: true },
       cumulative: true,
     },
-    // Vike already defines the setting 'name', but we redundantly define it here for older Vike versions (otherwise older Vike versions will complain that 'name` is an unknown config).
+    // Vike already defines the setting 'name', but we redundantly define it here for older Vike versions (otherwise older Vike versions will complain that 'name` is an unknown config). TODO/eventually: remove this once <=0.4.172 versions become rare (also because we use the `require` setting starting from `0.4.173`).
     name: {
+      env: { config: true },
+    },
+    // Vike already defines the setting 'require', but we redundantly define it here for older Vike versions (otherwise older Vike versions will complain that 'require` is an unknown config). TODO/eventually: remove this once <=0.4.172 versions become rare (also because we use the `require` setting starting from `0.4.173`).
+    require: {
       env: { config: true },
     },
     bodyHtmlStart: {
