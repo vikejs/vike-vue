@@ -21,7 +21,7 @@ importers:
         version: 0.5.33
       '@brillout/test-types':
         specifier: ^0.1.14
-        version: 0.1.14(typescript@5.4.5)
+        version: 0.1.15(typescript@5.4.5)
       playwright:
         specifier: ^1.44.1
         version: 1.44.1
@@ -336,6 +336,9 @@ packages:
   '@brillout/picocolors@1.0.12':
     resolution: {integrity: sha512-2gowgbpAqEQz4U1D/dh3tU2fKcRm+yt724d8YTbCsVHxnLTHWP2J5RMO1iTWcoViX7rTmLvPkHHlYtEiKP4gLA==}
 
+  '@brillout/picocolors@1.0.13':
+    resolution: {integrity: sha512-LblvMKItHbvkaIMI+Awsk1EEjmReE8E8Mgjtj3Pdn/qBvwQ6e+ts5uEqG6iTrK6JWndcxrQgSe664KfoteN6fA==}
+
   '@brillout/release-me@0.3.9':
     resolution: {integrity: sha512-7Q9YD+rnVF9hFmRFNSEePAejYSgZzWABJTA5sFrfD1utREt5K8aokoldvm/WES83SOMIkPO97c2kII9J4snc7Q==}
     hasBin: true
@@ -347,11 +350,11 @@ packages:
     resolution: {integrity: sha512-CAhZQSGYVeMelcxbjFHZwZDT1Jk2BnNVS8JYYKkizin3ZoxQDdMYWskjO7jU+XN9xrjkvEUMlnXGXSO4E8/WjA==}
     hasBin: true
 
-  '@brillout/test-types@0.1.14':
-    resolution: {integrity: sha512-hyTXqaM/7UDLpS5ta1mfkRhvBpO4zl9rI9odCr2STYJb/qmcnAUC207Psn9yu43VC/NMyBHNIWc1HsK3IIDNJA==}
+  '@brillout/test-types@0.1.15':
+    resolution: {integrity: sha512-3akYLhRnuZoK0GLoLzFG1CJb7PMixIgdXnYEABlsOMfQDPEOmXwI6FGoQ6PwgVWc/J9HS8iY7bhED53T26qplw==}
     hasBin: true
     peerDependencies:
-      typescript: ^4.0.0
+      typescript: '>=4.0.0'
 
   '@brillout/vite-plugin-server-entry@0.4.6':
     resolution: {integrity: sha512-VmnbkEVNY9pGnr2ICu+5lFnT3Zz4oblWxKZ1D4kutkzljxDOOBld8oWQI1RVup7c5OiG7XOHFJYYZS38BAXiLw==}
@@ -2131,6 +2134,8 @@ snapshots:
 
   '@brillout/picocolors@1.0.12': {}
 
+  '@brillout/picocolors@1.0.13': {}
+
   '@brillout/release-me@0.3.9':
     dependencies:
       '@brillout/picocolors': 1.0.12
@@ -2157,9 +2162,9 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@brillout/test-types@0.1.14(typescript@5.4.5)':
+  '@brillout/test-types@0.1.15(typescript@5.4.5)':
     dependencies:
-      '@brillout/picocolors': 1.0.10
+      '@brillout/picocolors': 1.0.13
       fast-glob: 3.3.2
       source-map-support: 0.5.21
       typescript: 5.4.5
