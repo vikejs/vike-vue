@@ -1,6 +1,6 @@
 export { clientOnly }
 
-import { h, shallowRef, defineComponent, onBeforeMount } from 'vue'
+import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
 function clientOnly<T extends Component>(loader: () => Promise<T | { default: T }>) {
@@ -9,30 +9,33 @@ function clientOnly<T extends Component>(loader: () => Promise<T | { default: T 
 
     setup(_, { attrs, slots }) {
       const resolvedComp = shallowRef<T | null>(null)
+      const error = shallowRef<unknown>(null)
 
-      onBeforeMount(() => {
-        Promise.resolve(loader())
-          .then((component) => {
-            resolvedComp.value = 'default' in component ? component.default : component
+      onBeforeMount(async () => {
+        try {
+          const component = await loader()
+          resolvedComp.value = 'default' in component ? component.default : component
+        } catch (e) {
+          console.error('Failed loading component:', e)
+          // wait for nextTick to avoid hydration errors
+          nextTick(() => {
+            error.value = e
           })
-          .catch((e) => {
-            console.error('Failed loading component:', e)
-            throw e
-          })
+        }
       })
 
       return () =>
         resolvedComp.value !== null
           ? h(resolvedComp.value, attrs, slots)
           : slots['client-only-fallback']
-            ? slots['client-only-fallback']()
+            ? slots['client-only-fallback']({ error: error.value })
             : // If the user doesn't want clientOnly() to use <template #fallback> then he should define a (empty) <template #client-only-fallback>
-              slots['fallback']?.()
+              slots['fallback']?.({ error: error.value })
     },
 
     slots: {} as SlotsType<{
-      fallback?: {}
-      'client-only-fallback'?: {}
+      fallback?: { error: unknown }
+      'client-only-fallback'?: { error: unknown }
     }>,
   })
 
