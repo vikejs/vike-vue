@@ -1,11 +1,10 @@
 <template>
   <button type="button" @click="state.status = state.status !== true">
-    <slot name="prefix">
-      State is
-    </slot>
-    <slot :status="state.status">
-      {{ state.status ? 'On' : 'Off' }}
-    </slot>
+    <template v-if="state.status !== null">
+      <slot name="prefix">State is </slot>
+      <slot :status="state.status">{{ state.status ? 'On' : 'Off' }}</slot>
+    </template>
+    <slot v-else name="fallback">No state</slot>
   </button>
 </template>
 
@@ -14,7 +13,7 @@ import { reactive, watch } from 'vue'
 
 const props = withDefaults(
   defineProps<{
-    status?: boolean
+    status?: boolean | null
   }>(),
   {
     status: false,
@@ -22,15 +21,16 @@ const props = withDefaults(
 )
 
 const emit = defineEmits<{
-  toggle: [value: boolean]
+  toggle: [value: boolean | null]
 }>()
 
 defineSlots<{
   default: { status: boolean }
   prefix: {}
+  fallback: {}
 }>()
 
-const state = reactive({ status: false })
+const state = reactive({ status: false as boolean | null })
 
 watch(
   () => props.status,
