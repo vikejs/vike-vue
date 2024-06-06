@@ -4,7 +4,7 @@ export type { ChangePage }
 import { type App, createApp, createSSRApp, h, markRaw, nextTick, ref, shallowReactive } from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
-import { objectAssign, objectCleanAssign } from '../utils/objectAssign'
+import { objectAssign } from '../utils/objectAssign'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isObject } from '../utils/isObject'
 import { setData } from '../hooks/useData'
@@ -75,4 +75,16 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
 function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {
   if (!isObject(data) || Array.isArray(data))
     throw new Error('Return value of data() should be an object, undefined, or null')
+}
+
+export function objectCleanAssign<Obj extends object, ObjAddendum>(obj: Obj, objAddendum: ObjAddendum) {
+  const objCleanup: any = {}
+  const keys = Object.keys(obj)
+  const cleanAllKeys = !isObject(objAddendum)
+  for (let i = keys.length; --i >= 0; ) {
+    if (cleanAllKeys || !objAddendum.hasOwnProperty(keys[i] as string)) {
+      objCleanup[keys[i] as string] = undefined
+    }
+  }
+  Object.assign(obj, objCleanup, objAddendum)
 }
