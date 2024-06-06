@@ -5,6 +5,7 @@ Full-fledged example of using `vike-vue`, showcasing:
 - [`<ClientOnly>`](https://vike.dev/ClientOnly)
 - [Toggling SSR](https://vike.dev/ssr) on a per-page basis.
 - [Markdown](https://vike.dev/markdown)
+- [Route Function](https://vike.dev/route-function)
 - [Error page](https://vike.dev/error-page)
 - Installing [Vue plugin](https://vuejs.org/guide/reusability/plugins.html)
 

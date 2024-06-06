@@ -68,6 +68,43 @@ function runTest() {
       ensureWasClientSideRouted('/pages/without-ssr')
     })
   }
+
+  test('Route Functions - HTML', async () => {
+    await page.goto(getServerUrl() + '/hello/alice')
+    await expectHelloPage('alice')
+
+    await page.goto(getServerUrl() + '/hello/evan')
+    await expectHelloPage('evan')
+
+    await page.goto(getServerUrl() + '/hello')
+    await expectHelloPage('anonymous')
+  })
+
+  test('Route Functions - DOM', async () => {
+    await page.goto(getServerUrl() + '/')
+    await testCounter()
+
+    await page.click('a[href="/hello"]')
+    await expectHelloPage('anonymous')
+
+    await page.click('a[href="/hello/eli"]')
+    await expectHelloPage('eli')
+
+    await page.click('a[href="/hello/jon"]')
+    await expectHelloPage('jon')
+
+    await page.goBack()
+    await expectHelloPage('eli')
+
+    await page.goBack()
+    await expectHelloPage('anonymous')
+
+    await page.goForward()
+    await expectHelloPage('eli')
+
+    await page.goForward()
+    await expectHelloPage('jon')
+  })
 }
 
 function testUrl({ url, title, text, counter }: { url: string; title: string; text: string; counter?: true }) {
@@ -126,4 +163,11 @@ function findFirstPageId(html: string) {
   const pageId = match![1]
   expect(pageId).toBeTruthy()
   return pageId
+}
+
+async function expectHelloPage(name: 'anonymous' | 'jon' | 'alice' | 'evan' | 'eli') {
+  await autoRetry(async () => {
+    expect(await page.textContent('h1')).toContain('Hello')
+    expect(await page.textContent('body')).toContain(`Hi ${name}`)
+  })
 }

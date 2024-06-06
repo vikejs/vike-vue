@@ -7,6 +7,7 @@
       <Link href="/">Welcome</Link>
       <Link href="/markdown">Markdown</Link>
       <Link href="/star-wars">Data Fetching</Link>
+      <Link href="/hello">Route Function</Link>
       <Link href="/without-ssr">Without SSR</Link>
       <Link href="/client-only">Client-only</Link>
     </div>
