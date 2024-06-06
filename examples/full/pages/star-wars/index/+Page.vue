@@ -12,5 +12,5 @@
 <script lang="ts" setup>
 import type { Data } from './+data'
 import { useData } from 'vike-vue/useData'
-const movies = useData<Data>()
+const { movies } = useData<Data>()
 </script>

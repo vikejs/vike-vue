@@ -1,12 +1,12 @@
 export { createVueApp }
 export type { ChangePage }
 
-import { type App, createApp, createSSRApp, h, markRaw, nextTick, reactive, ref } from 'vue'
+import { type App, createApp, createSSRApp, h, markRaw, nextTick, ref, shallowReactive } from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
-import { isObject } from '../utils/isObject'
+import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
@@ -41,8 +41,8 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
     }
     const data = pageContext.data ?? {}
     assertDataIsObject(data)
-    Object.assign(dataReactive, data)
-    Object.assign(pageContextReactive, pageContext)
+    objectReplace(dataReactive, data)
+    objectReplace(pageContextReactive, pageContext)
     rootComponentRef.value = markRaw(pageContext.config[rootComponentName])
     layoutRef.value = markRaw(pageContext.config.Layout)
     await nextTick()
@@ -52,9 +52,9 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
 
   const data = pageContext.data ?? {}
   assertDataIsObject(data)
-  const dataReactive = reactive(data)
-  const pageContextReactive = reactive(pageContext)
-  setPageContext(app, pageContextReactive as typeof pageContext)
+  const dataReactive = shallowReactive(data)
+  const pageContextReactive = shallowReactive(pageContext)
+  setPageContext(app, pageContextReactive)
   setData(app, dataReactive)
 
   const { onCreateApp } = pageContext.config
@@ -73,5 +73,11 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
 }
 
 function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {
-  if (!isObject(data)) throw new Error('Return value of data() should be an object, undefined, or null')
+  if (!isPlainObject(data)) throw new Error('Return value of data() should be a plain object, undefined, or null')
+}
+
+export function objectReplace(obj: object, objAddendum: object) {
+  // @ts-ignore
+  Object.keys(obj).forEach((key) => delete obj[key])
+  Object.assign(obj, objAddendum)
 }
