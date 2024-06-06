@@ -6,7 +6,7 @@ import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
-import { isObject } from '../utils/isObject'
+import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
@@ -73,8 +73,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
 }
 
 function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {
-  if (!isObject(data) || Array.isArray(data))
-    throw new Error('Return value of data() should be an object, undefined, or null')
+  if (!isPlainObject(data)) throw new Error('Return value of data() should be a plain object, undefined, or null')
 }
 
 export function objectReplace(obj: object, objAddendum: object) {
