@@ -34,7 +34,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm"
+          # The cache breaks playwright https://github.com/vikejs/vike-vue/pull/119
+          # cache: "pnpm"
 
       - run: pnpm install
       - run: pnpm exec playwright install chromium
