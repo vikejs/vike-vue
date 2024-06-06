@@ -1,3 +1,5 @@
+export { clientOnly }
+
 import { h, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
@@ -9,7 +11,7 @@ type ClientOnlySlots = {
   'client-only-fallback'?: {};
 }
 
-export function clientOnly<T extends Component>(
+function clientOnly<T extends Component>(
   source: ComponentResolved<T> | (() => ComponentResolved<T>),
 ) {
   const clientOnlyComponent = defineComponent({
@@ -25,7 +27,7 @@ export function clientOnly<T extends Component>(
             resolvedComp.value = 'default' in component ? component.default : component
           })
           .catch((e) => {
-            console.error('Component loading failed:', e)
+            console.error('Failed loading component:', e)
             throw e
           })
       })
