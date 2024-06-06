@@ -4,16 +4,14 @@ import { h, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
 type MaybePromise<T> = T | Promise<T>
-type ComponentResolved<T> = MaybePromise<T | { default: T; }>
+type ComponentResolved<T> = MaybePromise<T | { default: T }>
 
 type ClientOnlySlots = {
-  fallback?: {};
-  'client-only-fallback'?: {};
+  fallback?: {}
+  'client-only-fallback'?: {}
 }
 
-function clientOnly<T extends Component>(
-  source: ComponentResolved<T> | (() => ComponentResolved<T>),
-) {
+function clientOnly<T extends Component>(source: ComponentResolved<T> | (() => ComponentResolved<T>)) {
   const clientOnlyComponent = defineComponent({
     inheritAttrs: false,
 
@@ -32,20 +30,13 @@ function clientOnly<T extends Component>(
           })
       })
 
-      const cleanSlots = (slots: ClientOnlySlots) => {
-        const cleaned = { ...slots }
-        if (slots[ 'client-only-fallback' ]) {
-          delete cleaned['client-only-fallback']
-        } else {
-          delete cleaned.fallback
-        }
-        return cleaned
-      }
-
       return () =>
         resolvedComp.value !== null
-          ? h(resolvedComp.value, attrs, cleanSlots(slots as ClientOnlySlots))
-          : slots['client-only-fallback']?.()
+          ? h(resolvedComp.value, attrs, slots)
+          : slots['client-only-fallback']
+            ? slots['client-only-fallback']
+            : // If the user doesn't want clientOnly() to use <template #fallback> then he should define a (empty) <template #client-only-fallback>
+              slots['fallback']?.()
     },
 
     slots: Object as SlotsType<ClientOnlySlots>,
