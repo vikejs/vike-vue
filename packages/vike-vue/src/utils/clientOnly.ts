@@ -3,11 +3,6 @@ export { clientOnly }
 import { h, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
-type ClientOnlySlots = {
-  fallback?: {}
-  'client-only-fallback'?: {}
-}
-
 function clientOnly<T extends Component>(loader: () => Promise<T | { default: T }>) {
   const clientOnlyComponent = defineComponent({
     inheritAttrs: false,
@@ -35,7 +30,10 @@ function clientOnly<T extends Component>(loader: () => Promise<T | { default: T 
               slots['fallback']?.()
     },
 
-    slots: Object as SlotsType<ClientOnlySlots>,
+    slots: {} as SlotsType<{
+      fallback?: {}
+      'client-only-fallback'?: {}
+    }>,
   })
 
   return clientOnlyComponent as typeof clientOnlyComponent & T
