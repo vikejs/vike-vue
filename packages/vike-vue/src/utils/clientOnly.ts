@@ -3,15 +3,12 @@ export { clientOnly }
 import { h, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
-type MaybePromise<T> = T | Promise<T>
-type ComponentResolved<T> = MaybePromise<T | { default: T }>
-
 type ClientOnlySlots = {
   fallback?: {}
   'client-only-fallback'?: {}
 }
 
-function clientOnly<T extends Component>(source: ComponentResolved<T> | (() => ComponentResolved<T>)) {
+function clientOnly<T extends Component>(loader: () => Promise<T | { default: T }>) {
   const clientOnlyComponent = defineComponent({
     inheritAttrs: false,
 
@@ -19,7 +16,6 @@ function clientOnly<T extends Component>(source: ComponentResolved<T> | (() => C
       const resolvedComp = shallowRef<T | null>(null)
 
       onBeforeMount(() => {
-        const loader = source instanceof Function ? source : () => source
         Promise.resolve(loader())
           .then((component) => {
             resolvedComp.value = 'default' in component ? component.default : component
