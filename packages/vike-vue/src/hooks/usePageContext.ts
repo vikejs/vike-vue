@@ -8,7 +8,7 @@ import type { PageContext } from 'vike/types'
 
 const key = 'vike-vue:usePageContext'
 
-function usePageContext() {
+function usePageContext(): ShallowReactive<PageContext> {
   const pageContext = inject<ShallowReactive<PageContext>>(key)
   if (!pageContext) throw new Error('setPageContext() not called')
   return pageContext

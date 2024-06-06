@@ -8,7 +8,7 @@ import type { App, ShallowReactive } from 'vue'
 const key = 'vike-vue:useData'
 
 /** https://vike.dev/useData */
-function useData<Data>() {
+function useData<Data>(): ShallowReactive<Data> {
   const data = inject<ShallowReactive<Data>>(key)
   if (!data) throw new Error('setData() not called')
   return data
