@@ -1,7 +1,7 @@
 export { clientOnly }
 
 import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
-import type { Component, SlotsType } from 'vue'
+import type { Component, SlotsType, ExtractPropTypes } from 'vue'
 
 function clientOnly<T extends Component>(loader: () => Promise<T | { default: T }>) {
   const clientOnlyComponent = defineComponent({
@@ -28,14 +28,14 @@ function clientOnly<T extends Component>(loader: () => Promise<T | { default: T 
         resolvedComp.value !== null
           ? h(resolvedComp.value, attrs, slots)
           : slots['client-only-fallback']
-            ? slots['client-only-fallback']({ error: error.value })
+            ? slots['client-only-fallback']({ error: error.value, attrs })
             : // If the user doesn't want clientOnly() to use <template #fallback> then he should define a (empty) <template #client-only-fallback>
-              slots['fallback']?.({ error: error.value })
+              slots['fallback']?.({ error: error.value, attrs })
     },
 
     slots: {} as SlotsType<{
-      fallback: { error: unknown }
-      'client-only-fallback': { error: unknown }
+      fallback: { error: unknown; attrs: Record<string, any> }
+      'client-only-fallback': { error: unknown; attrs: Record<string, any> }
     }>,
   })
 

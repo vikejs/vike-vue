@@ -21,10 +21,10 @@
   </ClientOnlyCounter>
 
   <h3>Slow loading component</h3>
-  <SlowClientOnlyToggler :status="null" @toggle="onToggle">
+  <SlowClientOnlyToggler :status="null" @toggle="onToggle" style="color: green; min-height: 32px">
     <!-- if the component uses the #fallback slot you can use #client-only-fallback -->
-    <template #client-only-fallback>
-      <p style="min-height: 21px">Slow loading toggler...</p>
+    <template #client-only-fallback="{ attrs }">
+      <p :style="attrs.style">Slow loading toggler...</p>
     </template>
 
     <template #fallback>Buton is in limbo</template>
