@@ -34,8 +34,8 @@ function clientOnly<T extends Component>(loader: () => Promise<T | { default: T 
     },
 
     slots: {} as SlotsType<{
-      fallback?: { error: unknown }
-      'client-only-fallback'?: { error: unknown }
+      fallback: { error: unknown }
+      'client-only-fallback': { error: unknown }
     }>,
   })
 
