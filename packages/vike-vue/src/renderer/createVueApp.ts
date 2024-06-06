@@ -41,8 +41,8 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
     }
     const data = pageContext.data ?? {}
     assertDataIsObject(data)
-    objectCleanAssign(dataReactive, data)
-    objectCleanAssign(pageContextReactive, pageContext)
+    objectReplace(dataReactive, data)
+    objectReplace(pageContextReactive, pageContext)
     rootComponentRef.value = markRaw(pageContext.config[rootComponentName])
     layoutRef.value = markRaw(pageContext.config.Layout)
     await nextTick()
@@ -77,14 +77,8 @@ function assertDataIsObject(data: unknown): asserts data is Record<string, unkno
     throw new Error('Return value of data() should be an object, undefined, or null')
 }
 
-export function objectCleanAssign<Obj extends object, ObjAddendum>(obj: Obj, objAddendum: ObjAddendum) {
-  const objCleanup: any = {}
-  const keys = Object.keys(obj)
-  const cleanAllKeys = !isObject(objAddendum)
-  for (let i = keys.length; --i >= 0; ) {
-    if (cleanAllKeys || !objAddendum.hasOwnProperty(keys[i] as string)) {
-      objCleanup[keys[i] as string] = undefined
-    }
-  }
-  Object.assign(obj, objCleanup, objAddendum)
+export function objectReplace(obj: object, objAddendum: object) {
+  // @ts-ignore
+  Object.keys(obj).forEach((key) => delete obj[key])
+  Object.assign(obj, objAddendum)
 }
