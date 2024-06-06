@@ -1,3 +1,21 @@
+## [0.7.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.1...vike-vue@0.7.2) (2024-06-06)
+
+
+### Bug Fixes
+
+* cleanup old keys and use shallowReactive instead of reactive for dataReactive and pageContextReactive  ([#120](https://github.com/vikejs/vike-vue/issues/120), fix [#116](https://github.com/vikejs/vike-vue/issues/116), fix [#121](https://github.com/vikejs/vike-vue/issues/121)) ([421f927](https://github.com/vikejs/vike-vue/commit/421f927ed2f5caad6a86e4a031c2434cba473e3f))
+* enforce peer dependencies ([802f02e](https://github.com/vikejs/vike-vue/commit/802f02e32c2aa3e92f5816d121c4b28a243aede2))
+
+
+### BREAKING CHANGES
+
+* data from `+data` hook must be a non-array object (if you need to return a list wrap it in an object)
+* both `useData` and `usePageContext` return `shallowReactive` instead of `reactive`
+
+Co-authored-by: Romuald Brillout <git@brillout.com>
+
+
+
 ## [0.7.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.0...vike-vue@0.7.1) (2024-06-04)
 
 
