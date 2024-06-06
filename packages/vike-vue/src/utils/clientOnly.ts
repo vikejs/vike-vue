@@ -30,7 +30,7 @@ function clientOnly<T extends Component>(loader: () => Promise<T | { default: T 
         resolvedComp.value !== null
           ? h(resolvedComp.value, attrs, slots)
           : slots['client-only-fallback']
-            ? slots['client-only-fallback']
+            ? slots['client-only-fallback']()
             : // If the user doesn't want clientOnly() to use <template #fallback> then he should define a (empty) <template #client-only-fallback>
               slots['fallback']?.()
     },
