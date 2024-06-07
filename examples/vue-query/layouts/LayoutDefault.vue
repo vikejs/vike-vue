@@ -5,6 +5,8 @@
         <img src="../assets/logo.svg" height="64" width="64" />
       </a>
       <Link href="/">Welcome</Link>
+      <Link href="/?delay=100">Fast network</Link>
+      <Link href="/?delay=1000">Slow network</Link>
     </div>
     <div class="content"><slot /></div>
   </div>
