@@ -37,7 +37,6 @@
   },
   "peerDependencies": {
     "pinia": ">=2.0.0",
-    "vike": ">=0.4.172",
     "vike-vue": ">=0.7.0",
     "vue": ">=3.0.0"
   },
