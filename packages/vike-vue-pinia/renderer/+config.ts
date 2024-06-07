@@ -5,7 +5,7 @@ import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 export default {
   name: 'vike-vue-pinia',
   require: {
-    'vike-vue': '^0.7.0',
+    'vike-vue': '>=0.7.0',
   },
   onCreateApp: 'import:vike-vue-pinia/renderer/installPinia:installPinia',
   onAfterRenderHtml: 'import:vike-vue-pinia/renderer/dehydratePinia:dehydratePinia',
