@@ -2,7 +2,7 @@
   <h1>Star Wars Movies</h1>
   <!-- put the suspensible components in Suspense -->
   <Suspense>
-    <MoviesList />
+    <MoviesList :forced-delay="forcedDelay" />
   </Suspense>
   <p>
   This page is:
@@ -14,6 +14,10 @@
 </template>
 
 <script lang="ts" setup>
+import { usePageContext } from 'vike-vue/usePageContext'
 import Counter from '../../components/Counter.vue'
 import MoviesList from './MoviesList.vue'
+
+const pageContext = usePageContext()
+const forcedDelay = pageContext.urlParsed.search.delay
 </script>

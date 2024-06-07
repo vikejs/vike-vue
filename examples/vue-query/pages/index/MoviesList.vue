@@ -25,6 +25,10 @@ import { useQuery } from '@tanstack/vue-query'
 
 const ALLOWED_SSR_DELAY = 300
 
+const props = defineProps<{
+  forcedDelay?: number | string
+}>()
+
 const { isError, isPending, isFetching, data, error, suspense } = useQuery({
   queryKey: ['movies'],
   queryFn: fetchMovies,
@@ -42,7 +46,12 @@ await new Promise(async (resolve) => {
 })
 
 async function fetchMovies() {
-  const delay = Math.ceil(import.meta.env.SSR ? 2 * ALLOWED_SSR_DELAY * Math.random() : 500 + 3000 * Math.random())
+  const delay = parseInt(
+    String(
+      props.forcedDelay ?? (import.meta.env.SSR ? 2 * ALLOWED_SSR_DELAY * Math.random() : 500 + 3000 * Math.random()),
+    ),
+    10,
+  )
   console.log(
     `[${import.meta.env.SSR ? 'SERVER' : 'CLIENT'}] Fetch movies network delay: ${delay}${import.meta.env.SSR && delay < ALLOWED_SSR_DELAY ? ' - PREFETCH' : ''}`,
   )
