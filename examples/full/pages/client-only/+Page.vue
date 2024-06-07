@@ -9,7 +9,6 @@
   </template>
 </ClientOnlyCounter>
 ` }}</code></pre>
-  <p>Time until load: {{ timeLeft / 1000 }}s</p>
 
   <h2>Demo</h2>
 
@@ -24,7 +23,7 @@
   <SlowClientOnlyToggler :status="null" @toggle="onToggle" style="color: green; min-height: 32px">
     <!-- if the component uses the #fallback slot you can use #client-only-fallback -->
     <template #client-only-fallback="{ attrs }">
-      <p :style="attrs.style">Slow loading toggler...</p>
+      <p :style="attrs.style">Slow loading toggler...Time until load: {{ timeLeft / 1000 }}s</p>
     </template>
 
     <template #fallback>Buton is in limbo</template>
