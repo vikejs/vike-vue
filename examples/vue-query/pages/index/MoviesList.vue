@@ -29,7 +29,7 @@ const { isError, isPending, isFetching, data, error, suspense } = useQuery({
   queryKey: ['movies'],
   queryFn: fetchMovies,
   select: (data) => minimize(data),
-  staleTime: 3000
+  staleTime: 3000,
 })
 
 // await for `useQuery`'s `suspense` but only as much as you want to wait on SSR
@@ -43,7 +43,9 @@ await new Promise(async (resolve) => {
 
 async function fetchMovies() {
   const delay = Math.ceil(import.meta.env.SSR ? 2 * ALLOWED_SSR_DELAY * Math.random() : 500 + 3000 * Math.random())
-  console.log(`[${ import.meta.env.SSR ? 'SERVER' : 'CLIENT' }] Fetch movies network delay: ${ delay }${ import.meta.env.SSR && delay < ALLOWED_SSR_DELAY ? ' - PREFETCH' : ''}`)
+  console.log(
+    `[${import.meta.env.SSR ? 'SERVER' : 'CLIENT'}] Fetch movies network delay: ${delay}${import.meta.env.SSR && delay < ALLOWED_SSR_DELAY ? ' - PREFETCH' : ''}`,
+  )
   const tsStart = Date.now()
 
   const response = await fetch('https://brillout.github.io/star-wars/api/films.json')
@@ -52,7 +54,7 @@ async function fetchMovies() {
   // simulate slow network on client
   await new Promise((resolve) => setTimeout(resolve, Math.max(0, delay - Date.now() + tsStart)))
 
-  return moviesData;
+  return moviesData
 }
 
 function minimize(movies: MovieDetails[]): Movie[] {
