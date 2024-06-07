@@ -11,7 +11,7 @@
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
     "./usePageContext": "./dist/hooks/usePageContext.js",
     "./useData": "./dist/hooks/useData.js",
-    "./clientOnly": "./dist/utils/clientOnly.js",
+    "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
       "default": "./dist/types/index.js",
       "types": "./dist/types/index.d.ts"
@@ -58,7 +58,7 @@
         "./dist/hooks/useData.d.ts"
       ],
       "clientOnly": [
-        "./dist/utils/clientOnly.d.ts"
+        "./dist/helpers/clientOnly.d.ts"
       ],
       "renderer/onRenderHtml": [
         "./dist/renderer/onRenderHtml.d.ts"
