@@ -124,7 +124,7 @@ importers:
     dependencies:
       '@tanstack/vue-query':
         specifier: ^5.0.0
-        version: 5.40.1(vue@3.4.27(typescript@5.4.5))
+        version: 5.41.0(vue@3.4.27(typescript@5.4.5))
       '@types/node-fetch':
         specifier: ^2.6.11
         version: 2.6.11
@@ -221,7 +221,7 @@ importers:
         version: 0.3.9
       '@tanstack/vue-query':
         specifier: ^5.29.0
-        version: 5.40.1(vue@3.4.27(typescript@5.4.5))
+        version: 5.41.0(vue@3.4.27(typescript@5.4.5))
       '@types/node':
         specifier: ^20.12.7
         version: 20.14.2
@@ -929,8 +929,8 @@ packages:
   '@tanstack/query-core@5.40.0':
     resolution: {integrity: sha512-eD8K8jsOIq0Z5u/QbvOmfvKKE/XC39jA7yv4hgpl/1SRiU+J8QCIwgM/mEHuunQsL87dcvnHqSVLmf9pD4CiaA==}
 
-  '@tanstack/vue-query@5.40.1':
-    resolution: {integrity: sha512-S6zUwFPcLyfwpJO3llD2iTZtQp0Na8cTh+LggdRulIcHMxgjVAKRkjPETFE5fnQiVvtXDkz3pCmTl1Yf5/xxFQ==}
+  '@tanstack/vue-query@5.41.0':
+    resolution: {integrity: sha512-kpKyicifRROxdzkyk/CA1q6G9VSw+ZNVCIK3cmG+hcKnCrhc6OyMinEQ8drfMuyxahScBOR+DVkqu/0H+Y/f1Q==}
     peerDependencies:
       '@vue/composition-api': ^1.1.2
       vue: ^2.6.0 || ^3.3.0
@@ -2546,7 +2546,7 @@ snapshots:
 
   '@tanstack/query-core@5.40.0': {}
 
-  '@tanstack/vue-query@5.40.1(vue@3.4.27(typescript@5.4.5))':
+  '@tanstack/vue-query@5.41.0(vue@3.4.27(typescript@5.4.5))':
     dependencies:
       '@tanstack/match-sorter-utils': 8.15.1
       '@tanstack/query-core': 5.40.0
