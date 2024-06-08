@@ -57,11 +57,13 @@ async function fetchMovies() {
   )
   const tsStart = Date.now()
 
+  // simulate slow network on client
+  await new Promise((resolve) => setTimeout(resolve, 5 * 1000))
+  // await new Promise((resolve) => setTimeout(resolve, Math.max(0, delay - Date.now() + tsStart)))
+
+  console.log('fetching brillout.github.io')
   const response = await fetch('https://brillout.github.io/star-wars/api/films.json')
   const moviesData = (await response.json()) as MovieDetails[]
-
-  // simulate slow network on client
-  await new Promise((resolve) => setTimeout(resolve, Math.max(0, delay - Date.now() + tsStart)))
 
   return moviesData
 }
