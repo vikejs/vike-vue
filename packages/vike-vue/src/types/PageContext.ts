@@ -1,6 +1,6 @@
 export type { Component }
 
-import type { App, defineComponent } from 'vue'
+import type { App } from 'vue'
 import type {
   BodyInjectHtml,
   OnAfterRenderHtmlAsync,
@@ -12,8 +12,9 @@ import type {
 } from '../hooks/types'
 import type { SSRContext } from 'vue/server-renderer'
 
-// See https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
-type Component = ReturnType<typeof defineComponent>
+// https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
+// TODO: use ComponentPublicInstance
+type Component = any
 
 declare global {
   namespace Vike {
