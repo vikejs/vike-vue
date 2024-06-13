@@ -124,8 +124,8 @@ type VuePluginWithOptions = {
 // We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue/config'`
 // https://vike.dev/pageContext#typescript
 declare global {
-  namespace VikePackages {
-    interface ConfigVikeVue {
+  namespace Vike {
+    interface Config {
       /** Vue component rendered and appended into &lt;head>&lt;/head> */
       Head?: Component
 

@@ -30,9 +30,9 @@ declare global {
       }
     }
   }
-  namespace VikePackages {
-    interface ConfigVikeVue {
-      queryClientConfig: QueryClientConfig
+  namespace Vike {
+    interface Config {
+      queryClientConfig?: QueryClientConfig
     }
   }
 }
