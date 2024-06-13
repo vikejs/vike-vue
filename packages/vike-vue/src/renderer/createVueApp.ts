@@ -14,12 +14,16 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponen
   const mainComponentRef = ref(markRaw(pageContext.config[mainComponentName]))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
 
-  const RootComponent = () => {
-    if (layoutRef.value && mainComponentName === 'Page') {
-      // Wrap <Page> with <Layout>
-      return h(layoutRef.value, null, () => h(mainComponentRef.value))
-    } else {
-      return h(mainComponentRef.value)
+  const MainComponent = () => h(mainComponentRef.value)
+  let RootComponent = MainComponent
+  // Wrap <Page> with <Layout>
+  if (mainComponentName === 'Page') {
+    RootComponent = () => {
+      if (!layoutRef.value) {
+        return MainComponent()
+      } else {
+        return h(layoutRef.value, null, MainComponent)
+      }
     }
   }
 
