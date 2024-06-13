@@ -12,18 +12,19 @@ import { setData } from '../hooks/useData'
 type ChangePage = (pageContext: PageContext) => Promise<void>
 async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponentName: 'Head' | 'Page') {
   const mainComponentRef = ref(markRaw(pageContext.config[mainComponentName]))
-  const layoutRef = ref(markRaw(pageContext.config.Layout))
+  const layoutRef = ref(markRaw(pageContext.config.Layout || []))
 
   const MainComponent = () => h(mainComponentRef.value)
   let RootComponent = MainComponent
   // Wrap <Page> with <Layout>
   if (mainComponentName === 'Page') {
     RootComponent = () => {
-      if (!layoutRef.value) {
-        return MainComponent()
-      } else {
-        return h(layoutRef.value, null, MainComponent)
-      }
+      let RootComp = MainComponent
+      layoutRef.value.forEach((layout) => {
+        const Comp = RootComp
+        RootComp = () => h(layout, null, Comp)
+      })
+      return RootComp()
     }
   }
 
@@ -46,7 +47,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponen
     objectReplace(dataReactive, data)
     objectReplace(pageContextReactive, pageContext)
     mainComponentRef.value = markRaw(pageContext.config[mainComponentName])
-    layoutRef.value = markRaw(pageContext.config.Layout)
+    layoutRef.value = markRaw(pageContext.config.Layout || [])
     await nextTick()
     returned = true
     if (err) throw err
