@@ -14,15 +14,13 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
   const rootComponentRef = ref(markRaw(pageContext.config[rootComponentName]))
   const layoutRef = ref(markRaw(pageContext.config.Layout))
 
-  const PageWithLayout = {
-    render() {
-      if (!!layoutRef.value && rootComponentName === 'Page') {
-        // Wrap <Page> with <Layout>
-        return h(layoutRef.value, {}, { default: () => h(rootComponentRef.value) })
-      } else {
-        return h(rootComponentRef.value)
-      }
-    },
+  const PageWithLayout = () => {
+    if (layoutRef.value && rootComponentName === 'Page') {
+      // Wrap <Page> with <Layout>
+      return h(layoutRef.value, null, () => h(rootComponentRef.value))
+    } else {
+      return h(rootComponentRef.value)
+    }
   }
 
   const app: App = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
