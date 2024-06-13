@@ -1,12 +1,8 @@
 import type { Config } from 'vike/types'
-import LayoutDefault from '../layouts/LayoutDefault.vue'
-import HeadDefault from '../layouts/HeadDefault.vue'
 import vikeVue from 'vike-vue/config'
 
-// Default configs (can be overridden by pages)
+// https://vike.dev/config
 export default {
-  Layout: LayoutDefault,
-  Head: HeadDefault,
   // <title>
   title: 'My Vike + Vue App',
   // <link rel="canonical" />
