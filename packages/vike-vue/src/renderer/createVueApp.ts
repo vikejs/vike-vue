@@ -1,7 +1,7 @@
 export { createVueApp }
 export type { ChangePage }
 
-import { type App, createApp, createSSRApp, h, markRaw, nextTick, ref, shallowReactive } from 'vue'
+import { type App, createApp, createSSRApp, h, nextTick, shallowRef, shallowReactive } from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
@@ -11,8 +11,8 @@ import { setData } from '../hooks/useData'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
 async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponentName: 'Head' | 'Page') {
-  const mainComponentRef = ref(markRaw(pageContext.config[mainComponentName]))
-  const layoutRef = ref(markRaw(pageContext.config.Layout || []))
+  const mainComponentRef = shallowRef(pageContext.config[mainComponentName])
+  const layoutRef = shallowRef(pageContext.config.Layout || [])
 
   const MainComponent = () => h(mainComponentRef.value)
   let RootComponent = MainComponent
@@ -46,8 +46,8 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponen
     assertDataIsObject(data)
     objectReplace(dataReactive, data)
     objectReplace(pageContextReactive, pageContext)
-    mainComponentRef.value = markRaw(pageContext.config[mainComponentName])
-    layoutRef.value = markRaw(pageContext.config.Layout || [])
+    mainComponentRef.value = pageContext.config[mainComponentName]
+    layoutRef.value = pageContext.config.Layout || []
     await nextTick()
     returned = true
     if (err) throw err
