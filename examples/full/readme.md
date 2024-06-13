@@ -2,6 +2,7 @@ Full-fledged example of using `vike-vue`, showcasing:
 
 - [Layout](https://vike.dev/Layout)
 - Fetching data with [`data()`](https://vike.dev/data)
+- [Nested Layout](https://vike.dev/Layout#nested-layouts)
 - [`<ClientOnly>`](https://vike.dev/ClientOnly)
 - [Toggling SSR](https://vike.dev/ssr) on a per-page basis.
 - [Markdown](https://vike.dev/markdown)
