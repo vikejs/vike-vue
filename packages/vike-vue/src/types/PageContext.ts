@@ -36,6 +36,7 @@ declare global {
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
       bodyHtmlStart?: BodyInjectHtml[]
       bodyHtmlEnd?: BodyInjectHtml[]
+      Layout?: Component[]
     }
   }
 }

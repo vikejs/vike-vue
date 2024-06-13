@@ -10,22 +10,25 @@ import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
-async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponentName: 'Head' | 'Page') {
-  const rootComponentRef = ref(markRaw(pageContext.config[rootComponentName]))
-  const layoutRef = ref(markRaw(pageContext.config.Layout))
+async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponentName: 'Head' | 'Page') {
+  const mainComponentRef = ref(markRaw(pageContext.config[mainComponentName]))
+  const layoutRef = ref(markRaw(pageContext.config.Layout || []))
 
-  const PageWithLayout = {
-    render() {
-      if (!!layoutRef.value && rootComponentName === 'Page') {
-        // Wrap <Page> with <Layout>
-        return h(layoutRef.value, {}, { default: () => h(rootComponentRef.value) })
-      } else {
-        return h(rootComponentRef.value)
-      }
-    },
+  const MainComponent = () => h(mainComponentRef.value)
+  let RootComponent = MainComponent
+  // Wrap <Page> with <Layout>
+  if (mainComponentName === 'Page') {
+    RootComponent = () => {
+      let RootComp = MainComponent
+      layoutRef.value.forEach((layout) => {
+        const Comp = RootComp
+        RootComp = () => h(layout, null, Comp)
+      })
+      return RootComp()
+    }
   }
 
-  const app: App = ssr ? createSSRApp(PageWithLayout) : createApp(PageWithLayout)
+  const app: App = ssr ? createSSRApp(RootComponent) : createApp(RootComponent)
   objectAssign(pageContext, { app })
 
   // changePage() is called upon navigation, see +onRenderClient.ts
@@ -43,8 +46,8 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, rootComponen
     assertDataIsObject(data)
     objectReplace(dataReactive, data)
     objectReplace(pageContextReactive, pageContext)
-    rootComponentRef.value = markRaw(pageContext.config[rootComponentName])
-    layoutRef.value = markRaw(pageContext.config.Layout)
+    mainComponentRef.value = markRaw(pageContext.config[mainComponentName])
+    layoutRef.value = markRaw(pageContext.config.Layout || [])
     await nextTick()
     returned = true
     if (err) throw err
