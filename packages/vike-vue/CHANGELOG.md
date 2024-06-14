@@ -1,3 +1,17 @@
+## [0.7.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.2...vike-vue@0.7.3) (2024-06-14)
+
+
+### Bug Fixes
+
+* optimistic peerDependencies ([83dc44b](https://github.com/vikejs/vike-vue/commit/83dc44b30226fdd6b9fb344da11beb2f71cc3e11))
+
+
+### Features
+
+* make Layout setting cumulative ([#129](https://github.com/vikejs/vike-vue/issues/129)) ([d9f584b](https://github.com/vikejs/vike-vue/commit/d9f584b489c9b6279cf41b1f47ae157e4e3541f2))
+
+
+
 ## [0.7.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.1...vike-vue@0.7.2) (2024-06-06)
 
 
