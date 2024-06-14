@@ -1,24 +1,61 @@
 <template>
   <h1>ClientOnly</h1>
   <h2>Basic Usage</h2>
-  <pre><code>{{ `<ClientOnly :load="() => import('../../components/Counter.vue')">
+  <pre><code>{{ `const ClientOnlyCounter = clientOnly(() => import('../../components/Counter.vue'))
+
+<ClientOnlyCounter>
   <template #fallback>
     <p>Loading...</p>
   </template>
-</ClientOnly>
+</ClientOnlyCounter>
 ` }}</code></pre>
-  <p>Time until load: {{ timeLeft / 1000 }}s</p>
+
   <h2>Demo</h2>
-  <ClientOnly :load="load">
+
+  <h3>Basic example</h3>
+  <ClientOnlyCounter>
     <template #fallback>
-      <p>Loading...</p>
+      <p style="min-height: 21px">Fast loading counter...</p>
     </template>
-  </ClientOnly>
+  </ClientOnlyCounter>
+
+  <h3>Slow loading component</h3>
+  <SlowClientOnlyToggler :status="null" @toggle="onToggle" style="color: green; min-height: 32px">
+    <!-- if the component uses the #fallback slot you can use #client-only-fallback -->
+    <template #client-only-fallback="{ attrs }">
+      <p :style="attrs.style">Slow loading toggler...Time until load: {{ timeLeft / 1000 }}s</p>
+    </template>
+
+    <template #fallback>Buton is in limbo</template>
+
+    <template #prefix>Button is </template>
+
+    <template #="{ status }">{{ status ? 'pressed' : 'depressed :)' }}</template>
+  </SlowClientOnlyToggler>
+
+  <h3>Handling errors when loading</h3>
+  <ErrorClientOnlyToggler>
+    <!-- handling errors using the #fallback / #client-only-fallback slot -->
+    <template #client-only-fallback="{ error }">
+      <p v-if="!error">Trying to load toggler...</p>
+      <p v-else style="color: red">{{ error.message }}</p>
+    </template>
+  </ErrorClientOnlyToggler>
+
+  <h3>Nothing rendered on server</h3>
+  <ClientOnlyCounter />
+
+  <h3>Nothing rendered on server when component uses #fallback slot</h3>
+  <FastClientOnlyToggler :status="null">
+    <template #client-only-fallback></template>
+
+    <template #fallback>Buton is in limbo</template>
+  </FastClientOnlyToggler>
 </template>
 
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
-import ClientOnly from 'vike-vue/ClientOnly'
+import { clientOnly } from 'vike-vue/clientOnly'
 
 const delay = 3000
 
@@ -34,13 +71,24 @@ watchEffect(() => {
   }
 })
 
-const load = () =>
-  new Promise((resolve) =>
-    setTimeout(async () => {
-      const Counter = await import('../../components/Counter.vue')
-      resolve(Counter)
-    }, delay),
-  )
+const onToggle = <T>(val: T) => {
+  console.log('Toggled value:', val)
+}
+
+const ClientOnlyCounter = clientOnly(() => import('../../components/Counter.vue'))
+
+const SlowClientOnlyToggler = clientOnly(async () => {
+  await new Promise((resolve) => {
+    setTimeout(resolve, delay)
+  })
+  return import('../../components/Toggler.vue')
+})
+
+const FastClientOnlyToggler = clientOnly(() => import('../../components/Toggler.vue'))
+
+const ErrorClientOnlyToggler = clientOnly(() => {
+  throw new Error('The Toggler does not like to be loaded')
+})
 </script>
 
 <style scoped>

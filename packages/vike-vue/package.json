@@ -11,10 +11,7 @@
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
     "./usePageContext": "./dist/hooks/usePageContext.js",
     "./useData": "./dist/hooks/useData.js",
-    "./ClientOnly": {
-      "default": "./dist/components/ClientOnly.js",
-      "types": "./dist/components/ClientOnly.vue.d.ts"
-    },
+    "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
       "default": "./dist/types/index.js",
       "types": "./dist/types/index.d.ts"
@@ -60,14 +57,14 @@
       "useData": [
         "./dist/hooks/useData.d.ts"
       ],
+      "clientOnly": [
+        "./dist/helpers/clientOnly.d.ts"
+      ],
       "renderer/onRenderHtml": [
         "./dist/renderer/onRenderHtml.d.ts"
       ],
       "renderer/onRenderClient": [
         "./dist/renderer/onRenderClient.d.ts"
-      ],
-      "ClientOnly": [
-        "./dist/components/ClientOnly.vue.d.ts"
       ]
     }
   },
