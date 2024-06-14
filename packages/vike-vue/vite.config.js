@@ -14,6 +14,7 @@ export default defineConfig({
         ['+config']: resolve(__dirname, './src/+config.ts'),
         ['renderer/onRenderClient']: resolve(__dirname, './src/renderer/onRenderClient.ts'),
         ['renderer/onRenderHtml']: resolve(__dirname, './src/renderer/onRenderHtml.ts'),
+        ['helpers/clientOnly']: resolve(__dirname, './src/helpers/clientOnly.ts'),
         ['types/index']: resolve(__dirname, './src/types/index.ts'),
         ['hooks/usePageContext']: resolve(__dirname, './src/hooks/usePageContext.ts'),
         ['hooks/useData']: resolve(__dirname, './src/hooks/useData.ts'),
