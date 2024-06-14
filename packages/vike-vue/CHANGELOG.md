@@ -11,6 +11,13 @@
 * make Layout setting cumulative ([#129](https://github.com/vikejs/vike-vue/issues/129)) ([d9f584b](https://github.com/vikejs/vike-vue/commit/d9f584b489c9b6279cf41b1f47ae157e4e3541f2))
 
 
+### BREAKING CHANGES
+
+* The `Layout` setting cannot be overriden anymore because it's now cumulative, see:
+   - https://vike.dev/Layout#multiple-layouts
+   - https://vike.dev/Layout#nested-layouts
+
+
 
 ## [0.7.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.1...vike-vue@0.7.2) (2024-06-06)
 
