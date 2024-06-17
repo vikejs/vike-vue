@@ -1,3 +1,17 @@
+## [0.7.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.4...vike-vue@0.7.5) (2024-06-17)
+
+
+### Bug Fixes
+
+* rename bodyHtmlStart => bodyHtmlBegin ([#133](https://github.com/vikejs/vike-vue/issues/133)) ([71aaeed](https://github.com/vikejs/vike-vue/commit/71aaeedbe6402eada02a84362e158363eaf86cb4))
+
+
+### BREAKING CHANGES
+
+* Setting `bodyHtmlStart` renamed to `bodyHtmlBegin`.
+
+
+
 ## [0.7.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.3...vike-vue@0.7.4) (2024-06-17)
 
 
