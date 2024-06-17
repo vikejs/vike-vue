@@ -3,6 +3,11 @@ export { clientOnly }
 import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
+/**
+ * Load and render a component only on the client-side.
+ *
+ * https://vike.dev/ClientOnly
+ */
 function clientOnly<ComponentLoaded extends Component>(
   load: () => Promise<ComponentLoaded | { default: ComponentLoaded }>,
 ) {
