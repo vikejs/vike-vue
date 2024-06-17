@@ -6,6 +6,9 @@
 import { h, ref, onMounted, defineAsyncComponent, useSlots, type AsyncComponentLoader } from 'vue'
 import type { Component } from '../types/PageContext'
 
+// TODO/eventually: remove <ClientOnly> component
+console.warn('[vike-vue][warning] <ClientOnly> is deprecated, use clientOnly() instead')
+
 type Props = {
   load: T
 }
