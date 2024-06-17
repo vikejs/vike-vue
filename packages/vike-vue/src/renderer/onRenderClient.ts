@@ -67,8 +67,8 @@ async function replaceAdjacentBodyHtml(pageContext: PageContextClient, method: '
   if (!hooks) return
 
   const hookHtml = (await callCumulativeHooks(hooks, pageContext)).join('')
-  // replace everything between existing comments <!-- bodyHtmlBegin begin --> and <!-- bodyHtmlBegin finish -->
-  const startComment = `<!-- vike-vue:${method} begin -->`
+  // replace everything between existing comments <!-- bodyHtmlBegin start --> and <!-- bodyHtmlBegin finish -->
+  const startComment = `<!-- vike-vue:${method} start -->`
   const endComment = `<!-- vike-vue:${method} finish -->`
   const startIndex = document.body.innerHTML.indexOf(startComment) + startComment.length
   const endIndex = document.body.innerHTML.indexOf(endComment)
