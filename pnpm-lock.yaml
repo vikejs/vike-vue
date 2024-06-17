@@ -51,7 +51,7 @@ importers:
         version: 0.26.2(rollup@4.18.0)(vite@5.2.12(@types/node@20.14.2))
       vike:
         specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        version: 0.4.174(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -78,7 +78,7 @@ importers:
         version: 5.0.5(vite@5.2.12(@types/node@20.14.2))(vue@3.4.27(typescript@5.4.5))
       vike:
         specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        version: 0.4.174(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -99,7 +99,7 @@ importers:
         version: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
       vike:
         specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        version: 0.4.174(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -136,7 +136,7 @@ importers:
         version: 3.3.2
       vike:
         specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        version: 0.4.174(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -173,7 +173,7 @@ importers:
         version: 5.4.5
       vike:
         specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        version: 0.4.174(vite@5.2.12(@types/node@20.14.2))
       vite:
         specifier: ^5.2.9
         version: 5.2.12(@types/node@20.14.2)
@@ -203,7 +203,7 @@ importers:
         version: 5.4.5
       vike:
         specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        version: 0.4.174(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -230,7 +230,7 @@ importers:
         version: 5.4.5
       vike:
         specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        version: 0.4.174(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -1929,8 +1929,8 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vike@0.4.173:
-    resolution: {integrity: sha512-xUlP1pRqz83+vLUNE0f4N7/rCEkJ9C51To0sjaKPf7BoFtZOTz9L7FXyp3z/eRaCX07EK0h+24oFKBnl+B74pA==}
+  vike@0.4.174:
+    resolution: {integrity: sha512-RgicUKxcm6SsOoyJWx3W853qvS8vigZjdKc2OzrGMxSfmvwHAzWtYO69MELWB8jZRDmALwDOuzCpmHUV2n2fbw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -3577,7 +3577,7 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.173(vite@5.2.12(@types/node@20.14.2)):
+  vike@0.4.174(vite@5.2.12(@types/node@20.14.2)):
     dependencies:
       '@brillout/import': 0.2.3
       '@brillout/json-serializer': 0.5.10
@@ -3589,6 +3589,7 @@ snapshots:
       es-module-lexer: 1.5.3
       esbuild: 0.19.12
       fast-glob: 3.3.2
+      semver: 7.6.2
       sirv: 2.0.4
       source-map-support: 0.5.21
       vite: 5.2.12(@types/node@20.14.2)
