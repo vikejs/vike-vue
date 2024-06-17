@@ -106,7 +106,7 @@ export default {
     require: {
       env: { config: true },
     },
-    bodyHtmlStart: {
+    bodyHtmlBegin: {
       env: { server: true, client: true },
       cumulative: true,
     },
@@ -174,7 +174,7 @@ declare global {
       /**
        * The result of this is injected at the start of `<body>`
        */
-      bodyHtmlStart?: BodyInjectHtml
+      bodyHtmlBegin?: BodyInjectHtml
 
       /**
        * The result of this is injected at the end of `<body>`

@@ -42,7 +42,7 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
       document.title = title
     if (lang !== undefined) document.documentElement.lang = lang
     if (favicon !== undefined) setFavicon(favicon)
-    replaceAdjacentBodyHtml(pageContext, 'bodyHtmlStart')
+    replaceAdjacentBodyHtml(pageContext, 'bodyHtmlBegin')
     replaceAdjacentBodyHtml(pageContext, 'bodyHtmlEnd')
   }
 }
@@ -62,12 +62,12 @@ function setFavicon(faviconUrl: string | null) {
   link.href = faviconUrl
 }
 
-async function replaceAdjacentBodyHtml(pageContext: PageContextClient, method: 'bodyHtmlStart' | 'bodyHtmlEnd') {
+async function replaceAdjacentBodyHtml(pageContext: PageContextClient, method: 'bodyHtmlBegin' | 'bodyHtmlEnd') {
   const hooks = pageContext.config[method]
   if (!hooks) return
 
   const hookHtml = (await callCumulativeHooks(hooks, pageContext)).join('')
-  // replace everything between existing comments <!-- bodyHtmlStart begin --> and <!-- bodyHtmlStart finish -->
+  // replace everything between existing comments <!-- bodyHtmlBegin begin --> and <!-- bodyHtmlBegin finish -->
   const startComment = `<!-- vike-vue:${method} begin -->`
   const endComment = `<!-- vike-vue:${method} finish -->`
   const startIndex = document.body.innerHTML.indexOf(startComment) + startComment.length
