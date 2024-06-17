@@ -1,3 +1,12 @@
+## [0.7.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.3...vike-vue@0.7.4) (2024-06-17)
+
+
+### Features
+
+* `clientOnly()` helper ([#110](https://github.com/vikejs/vike-vue/issues/110), [#132](https://github.com/vikejs/vike-vue/issues/132), fix [#82](https://github.com/vikejs/vike-vue/issues/82)) ([c6bb074](https://github.com/vikejs/vike-vue/commit/c6bb074885a1e59630ed007b354f107ce814c68e))
+
+
+
 ## [0.7.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.2...vike-vue@0.7.3) (2024-06-14)
 
 
