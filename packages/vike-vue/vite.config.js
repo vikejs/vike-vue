@@ -18,6 +18,7 @@ export default defineConfig({
         ['types/index']: resolve(__dirname, './src/types/index.ts'),
         ['hooks/usePageContext']: resolve(__dirname, './src/hooks/usePageContext.ts'),
         ['hooks/useData']: resolve(__dirname, './src/hooks/useData.ts'),
+        ['components/ClientOnly']: resolve(__dirname, './src/components/ClientOnly.vue'),
       },
       formats: ['es'],
     },
