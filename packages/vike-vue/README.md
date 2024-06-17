@@ -97,11 +97,11 @@ All hooks are [cumulative](https://vike.dev/meta#api), so you can add your own h
 * [`usePageContext()`](https://vike.dev/usePageContext): Access the [`pageContext` object](https://vike.dev/pageContext)
   from any component.
 
-## Utilities
+## Helpers
 
-`vike-vue` introduces the following new utility functions:
+`vike-vue` introduces the following new helpers:
 
-* [`clientOnly`](https://vike.dev/ClientOnly): load and render a component only on the client-side.
+* [`clientOnly()`](https://vike.dev/ClientOnly): load and render a component only on the client-side.
 
 ## Teleports
 
