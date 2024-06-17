@@ -34,7 +34,7 @@ declare global {
       onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
       onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
-      bodyHtmlStart?: BodyInjectHtml[]
+      bodyHtmlBegin?: BodyInjectHtml[]
       bodyHtmlEnd?: BodyInjectHtml[]
       Layout?: Component[]
     }

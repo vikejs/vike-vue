@@ -44,8 +44,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
   }
 
-  const bodyHtmlStart = dangerouslySkipEscape(
-    (await callCumulativeHooks(pageContext.config.bodyHtmlStart, pageContext)).join(''),
+  const bodyHtmlBegin = dangerouslySkipEscape(
+    (await callCumulativeHooks(pageContext.config.bodyHtmlBegin, pageContext)).join(''),
   )
 
   // we define this hook here so that it doesn't need to be exported by vike-vue
@@ -63,11 +63,11 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         ${faviconTag}
       </head>
       <body>
-        <!-- vike-vue:bodyHtmlStart begin -->
-        ${bodyHtmlStart}
-        <!-- vike-vue:bodyHtmlStart finish -->
+        <!-- vike-vue:bodyHtmlBegin start -->
+        ${bodyHtmlBegin}
+        <!-- vike-vue:bodyHtmlBegin finish -->
         <div id="app">${pageView}</div>
-        <!-- vike-vue:bodyHtmlEnd begin -->
+        <!-- vike-vue:bodyHtmlEnd start -->
         ${bodyHtmlEnd}
         <!-- vike-vue:bodyHtmlEnd finish -->
       </body>

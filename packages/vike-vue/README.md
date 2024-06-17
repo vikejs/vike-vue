@@ -66,7 +66,7 @@ All hooks are [cumulative](https://vike.dev/meta#api), so you can add your own h
   plugin.
 * `onAfterRenderHtml()`: Called right after rendering the app on the server. Usually used for dehydration of state management libraries.
 * `onBeforeRenderClient()`: Called before mounting the app on the client. Usually used for hydration of state management libraries.
-* `bodyHtmlStart()`: Called on the server and client. Allows you to add content at the start of the `<body>` tag.
+* `bodyHtmlBegin()`: Called on the server and client. Allows you to add content at the start of the `<body>` tag.
 * `bodyHtmlEnd()`: Called on the server and client. Defaults to `<div id="teleported"></div>`. Allows you to add content at the end of the `<body>` tag.
 
 ## Settings
