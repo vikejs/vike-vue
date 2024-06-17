@@ -6,7 +6,7 @@ import type { Component, SlotsType } from 'vue'
 /**
  * Load and render a component only on the client-side.
  *
- * https://vike.dev/ClientOnly
+ * https://vike.dev/clientOnly
  */
 function clientOnly<ComponentLoaded extends Component>(
   load: () => Promise<ComponentLoaded | { default: ComponentLoaded }>,

@@ -101,7 +101,7 @@ All hooks are [cumulative](https://vike.dev/meta#api), so you can add your own h
 
 `vike-vue` introduces the following new helpers:
 
-* [`clientOnly()`](https://vike.dev/ClientOnly): load and render a component only on the client-side.
+* [`clientOnly()`](https://vike.dev/clientOnly): load and render a component only on the client-side.
 
 ## Teleports
 
