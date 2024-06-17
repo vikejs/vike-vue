@@ -1,11 +1,18 @@
-[<img src="https://vike.dev/vike-readme.svg" align="right" height="90">](https://vike.dev)
+[Vike extensions](https://vike.dev/extensions) for [Vue](https://vuejs.org).
 
-# `vike-{vue,vue-pinia,vue-query}`
-
-[Vike extensions](https://vike.dev/extensions) for Vue:
-- [`vike-vue`](packages/vike-vue/)
-  - [Changelog](packages/vike-vue/CHANGELOG.md)
+- `vike-vue`
+  - Docs: [vike.dev/vike-vue](https://vike.dev/vike-vue)
+  - Version history: [CHANGELOG.md](packages/vike-vue/CHANGELOG.md)
+  - Source code: [packages/vike-vue/](packages/vike-vue)
 - [`vike-vue-pinia`](packages/vike-vue-pinia/)
-  - [Changelog](packages/vike-vue-pinia/CHANGELOG.md)
+  - Docs: [README.md](packages/vike-vue-pinia#readme)
+  - Version history: [CHANGELOG.md](packages/vike-vue-pinia/CHANGELOG.md)
+  - Source code: [packages/vike-vue-pinia/](packages/vike-vue-pinia)
 - [`vike-vue-query`](packages/vike-vue-query/)
+  - Docs: [README.md](packages/vike-vue-query#readme)
+  - Version history: [CHANGELOG.md](packages/vike-vue-query/CHANGELOG.md)
+  - Source code: [packages/vike-vue-query/](packages/vike-vue-query)
   - [Changelog](packages/vike-vue-query/CHANGELOG.md)
+
+> [!NOTE]
+> The source code is [small, simple, and highly polished](https://vike.dev/vike-vue#under-the-hood). Contributing is easy and welcome, see [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
