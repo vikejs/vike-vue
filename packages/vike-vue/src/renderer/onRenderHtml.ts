@@ -1,14 +1,14 @@
 // https://vike.dev/onRenderHtml
 export { onRenderHtml }
 
-import { renderToNodeStream, renderToString, type SSRContext } from 'vue/server-renderer'
 import { dangerouslySkipEscape, escapeInject, version } from 'vike/server'
-import { getHeadSetting } from './getHeadSetting.js'
 import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
-import { createVueApp } from './createVueApp.js'
 import { App } from 'vue'
+import { type SSRContext, renderToNodeStream, renderToString, renderToWebStream } from 'vue/server-renderer'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 import { objectAssign } from '../utils/objectAssign.js'
+import { createVueApp } from './createVueApp.js'
+import { getHeadSetting } from './getHeadSetting.js'
 
 checkVikeVersion()
 
@@ -20,7 +20,11 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   const titleTag = !title ? '' : escapeInject`<title>${title}</title>`
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
 
-  let pageView: ReturnType<typeof dangerouslySkipEscape> | ReturnType<typeof renderToNodeStream> | string = ''
+  let pageView:
+    | ReturnType<typeof dangerouslySkipEscape>
+    | ReturnType<typeof renderToNodeStream>
+    | ReturnType<typeof renderToWebStream>
+    | string = ''
   const ssrContext: SSRContext = {}
   const fromHtmlRenderer: PageContext['fromHtmlRenderer'] = {}
 
@@ -30,7 +34,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     objectAssign(pageContext, { app })
     pageView = !pageContext.config.stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app, ssrContext))
-      : renderToNodeStreamWithErrorHandling(app, ssrContext)
+      : pageContext.config.stream === 'web'
+        ? renderToWebStreamWithErrorHandling(app, ssrContext)
+        : renderToNodeStreamWithErrorHandling(app, ssrContext)
 
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
     Object.assign(pageContext, { ssrContext })
@@ -111,6 +117,22 @@ function renderToNodeStreamWithErrorHandling(app: App, ctx?: SSRContext) {
     }
   }
   const appHtml = renderToNodeStream(app, ctx)
+  returned = true
+  if (err) throw err
+  return appHtml
+}
+
+function renderToWebStreamWithErrorHandling(app: App, ctx?: SSRContext) {
+  let returned = false
+  let err: unknown
+  app.config.errorHandler = (err_) => {
+    if (returned) {
+      console.error(err_)
+    } else {
+      err = err_
+    }
+  }
+  const appHtml = renderToWebStream(app, ctx)
   returned = true
   if (err) throw err
   return appHtml
