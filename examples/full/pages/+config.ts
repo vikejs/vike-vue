@@ -1,5 +1,5 @@
-import type { Config } from 'vike/types'
 import vikeVue from 'vike-vue/config'
+import type { Config } from 'vike/types'
 
 // https://vike.dev/config
 export default {
@@ -9,6 +9,8 @@ export default {
   baseCanonicalUrl: 'https://example.com',
   // https://vike.dev/ssr - this line can be removed since `true` is the default
   ssr: true,
+  // https://vike.dev/stream
+  stream: true,
   // https://vike.dev/extends
   extends: vikeVue,
   meta: {
