@@ -7,7 +7,7 @@
   "dependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "vike": "^0.4.173",
-    "vike-vue": "^0.7.5",
+    "vike-vue": "^0.7.6",
     "vite": "^5.2.9",
     "vue": "^3.4.23"
   },

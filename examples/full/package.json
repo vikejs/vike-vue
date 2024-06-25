@@ -12,7 +12,7 @@
     "typescript": "^5.4.5",
     "unplugin-vue-markdown": "^0.26.2",
     "vike": "^0.4.173",
-    "vike-vue": "^0.7.5",
+    "vike-vue": "^0.7.6",
     "vite": "^5.2.9",
     "vite-plugin-cjs-interop": "^2.1.0",
     "vue": "^3.4.23",

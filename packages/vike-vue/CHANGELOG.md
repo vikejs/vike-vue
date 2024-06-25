@@ -1,3 +1,12 @@
+## [0.7.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.5...vike-vue@0.7.6) (2024-06-25)
+
+
+### Features
+
+* Add streaming support for Web Stream ([e781aea](https://github.com/vikejs/vike-vue/commit/e781aeae9cb923eefdc003fc482052d301bf81e0))
+
+
+
 ## [0.7.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.4...vike-vue@0.7.5) (2024-06-17)
 
 
