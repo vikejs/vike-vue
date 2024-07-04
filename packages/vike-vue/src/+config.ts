@@ -6,9 +6,10 @@ import type {
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
   BodyInjectHtml,
+  TagAttribues,
 } from './hooks/types'
 
-import type { Config, ConfigEffect, ImportString, PageContext } from 'vike/types'
+import type { Config, ConfigEffect, ImportString } from 'vike/types'
 import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
 
@@ -114,6 +115,9 @@ export default {
       env: { server: true, client: true },
       cumulative: true,
     },
+    bodyTagAttributes: {
+      env: { server: true },
+    },
   },
 } satisfies Config
 
@@ -206,6 +210,8 @@ declare global {
        * Typically used for hydrating state management libraries.
        */
       onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
+
+      bodyTagAttributes?: TagAttribues
     }
   }
 }

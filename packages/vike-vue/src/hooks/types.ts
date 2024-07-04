@@ -6,6 +6,7 @@ export type {
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
   BodyInjectHtml,
+  TagAttribues,
 }
 
 import type { PageContext, PageContextClient, PageContextServer } from 'vike/types'
@@ -63,3 +64,5 @@ type OnBeforeRenderClientAsync = (pageContext: PageContextClient) => Promise<voi
  * Injected HTML at the start / end of the body.
  */
 type BodyInjectHtml = string | ((pageContext: PageContext) => string)
+
+type TagAttribues = Record<string, string | number | boolean | undefined>

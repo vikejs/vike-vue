@@ -18,6 +18,9 @@ export default {
       env: { server: true, client: true },
     },
   },
+  bodyTagAttributes: {
+    class: 'dark'
+  }
 } satisfies Config
 
 declare global {

@@ -9,6 +9,8 @@ import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 import { objectAssign } from '../utils/objectAssign.js'
 import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
+import { escapeHtml } from '../utils/escapeHtml.js'
+import { TagAttribues } from '../hooks/types.js'
 
 checkVikeVersion()
 
@@ -68,7 +70,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         ${headHtml}
         ${faviconTag}
       </head>
-      <body>
+      <body${dangerouslySkipEscape(stringifyAttributes(pageContext.config.bodyTagAttributes ?? {}))}>
         <!-- vike-vue:bodyHtmlBegin start -->
         ${bodyHtmlBegin}
         <!-- vike-vue:bodyHtmlBegin finish -->
@@ -149,4 +151,26 @@ function checkVikeVersion() {
   }
   // We can leave it 0.4.172 until we entirely remove checkVikeVersion() (because starting vike@0.4.173 we use the new `require` setting).
   throw new Error('Update Vike to 0.4.172 or above')
+}
+
+function stringifyAttributes(attributes: TagAttribues) {
+  let result = ''
+  for (const [key, value] of Object.entries(attributes)) {
+    if (
+      ['key', 'textContent', 'innerHTML', 'children', 'tagName'].includes(key) ||
+      value === false ||
+      value === undefined
+    ) {
+      continue
+    }
+
+    if (value === true) {
+      result += ` ${escapeHtml(key)}`
+      continue
+    }
+
+    result += ` ${escapeHtml(key)}="${escapeHtml(String(value))}"`
+  }
+
+  return result
 }
