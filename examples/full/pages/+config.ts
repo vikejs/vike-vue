@@ -19,8 +19,8 @@ export default {
     },
   },
   bodyTagAttributes: {
-    class: 'dark'
-  }
+    class: 'dark',
+  },
 } satisfies Config
 
 declare global {
