@@ -70,7 +70,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         ${headHtml}
         ${faviconTag}
       </head>
-      <body${dangerouslySkipEscape(stringifyAttributes(pageContext.config.bodyTagAttributes ?? {}))}>
+      <body${dangerouslySkipEscape(stringifyAttributes(pageContext.config.bodyAttributes ?? {}))}>
         <!-- vike-vue:bodyHtmlBegin start -->
         ${bodyHtmlBegin}
         <!-- vike-vue:bodyHtmlBegin finish -->

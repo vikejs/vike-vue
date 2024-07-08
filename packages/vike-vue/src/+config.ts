@@ -115,7 +115,7 @@ export default {
       env: { server: true, client: true },
       cumulative: true,
     },
-    bodyTagAttributes: {
+    bodyAttributes: {
       env: { server: true },
     },
   },
@@ -211,7 +211,7 @@ declare global {
        */
       onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
 
-      bodyTagAttributes?: TagAttribues
+      bodyAttributes?: TagAttribues
     }
   }
 }
