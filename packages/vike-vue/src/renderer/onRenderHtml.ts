@@ -92,7 +92,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 async function renderToStringWithErrorHandling(app: App, ctx?: SSRContext) {
   let returned = false
   let err: unknown
-  // Workaround: renderToString_() swallows errors in production, see https://github.com/vuejs/core/issues/7876
+  // Workaround: Vue's renderToString() swallows errors in production https://github.com/vuejs/core/issues/7876
+  // Let's eventually use app.config.throwUnhandledErrorInProduction instead (recently released in vue@3.5).
   app.config.errorHandler = (err_) => {
     if (returned) {
       console.error(err_)
