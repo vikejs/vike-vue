@@ -107,11 +107,11 @@ export default {
       env: { config: true },
     },
     bodyHtmlBegin: {
-      env: { server: true, client: true },
+      env: { server: true },
       cumulative: true,
     },
     bodyHtmlEnd: {
-      env: { server: true, client: true },
+      env: { server: true },
       cumulative: true,
     },
   },
