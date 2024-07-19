@@ -76,7 +76,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponen
 }
 
 function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {
-  if (!isPlainObject(data)) throw new Error('Return value of data() should be a plain object, undefined, or null')
+  if (!isPlainObject(data)) throw new Error('data() should return a plain object, undefined, or null')
 }
 
 export function objectReplace(obj: object, objAddendum: object) {
