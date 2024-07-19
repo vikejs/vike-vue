@@ -165,11 +165,6 @@ function findFirstPageId(html: string) {
   return pageId
 }
 
-function expectBodyHtmlEnd(html: string) {
-  expect(html).toContain('<div id="bodyHtmlEnd-test"></div>')
-  expect(html).toContain('<div id="teleported"></div>')
-}
-
 async function expectHelloPage(name: 'anonymous' | 'jon' | 'alice' | 'evan' | 'eli') {
   await autoRetry(async () => {
     expect(await page.textContent('h1')).toContain('Hello')
