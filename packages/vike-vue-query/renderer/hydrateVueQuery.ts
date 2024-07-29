@@ -3,20 +3,15 @@ import type { OnBeforeRenderClientSync } from 'vike-vue/types'
 
 export { hydrateVueQuery }
 
-const hydrateVueQuery: OnBeforeRenderClientSync = ({
-  queryClient,
-  fromHtmlRenderer,
-  isHydration,
-}): ReturnType<OnBeforeRenderClientSync> => {
-  if (!isHydration) {
+const hydrateVueQuery: OnBeforeRenderClientSync = (pageContext): ReturnType<OnBeforeRenderClientSync> => {
+  if (!pageContext.isHydration) {
     return
   }
-  const { vueQueryInitialState } = fromHtmlRenderer
-
+  const { vueQueryInitialState } = pageContext.fromHtmlRenderer
+  const queryClient = 'queryClient' in pageContext ? pageContext.queryClient : null
   if (!queryClient || !vueQueryInitialState) {
     // happens if SSR is off
     return
   }
-
   hydrate(queryClient, vueQueryInitialState)
 }
