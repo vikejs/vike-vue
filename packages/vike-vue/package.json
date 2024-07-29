@@ -30,7 +30,7 @@
     "release:commit": "release-me commit"
   },
   "peerDependencies": {
-    "vike": ">=0.4.172",
+    "vike": ">=0.4.182",
     "vue": ">=3.0.0"
   },
   "devDependencies": {
@@ -38,7 +38,7 @@
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.4.5",
-    "vike": "^0.4.173",
+    "vike": "^0.4.182",
     "vite": "^5.2.9",
     "vite-plugin-dts": "^3.8.3",
     "vue": "^3.4.23",
