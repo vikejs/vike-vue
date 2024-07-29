@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  vike: 0.4.181-commit-3fe2549
   vike-vue: link:./packages/vike-vue/
   vike-vue-pinia: link:./packages/vike-vue-pinia/
   vike-vue-query: link:./packages/vike-vue-query/
@@ -50,8 +51,8 @@ importers:
         specifier: ^0.26.2
         version: 0.26.2(rollup@4.18.0)(vite@5.2.12(@types/node@20.14.2))
       vike:
-        specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        specifier: 0.4.181-commit-3fe2549
+        version: 0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -77,8 +78,8 @@ importers:
         specifier: ^5.0.4
         version: 5.0.5(vite@5.2.12(@types/node@20.14.2))(vue@3.4.27(typescript@5.4.5))
       vike:
-        specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        specifier: 0.4.181-commit-3fe2549
+        version: 0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -98,8 +99,8 @@ importers:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
       vike:
-        specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        specifier: 0.4.181-commit-3fe2549
+        version: 0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -135,8 +136,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       vike:
-        specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        specifier: 0.4.181-commit-3fe2549
+        version: 0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -172,8 +173,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       vike:
-        specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        specifier: 0.4.181-commit-3fe2549
+        version: 0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2))
       vite:
         specifier: ^5.2.9
         version: 5.2.12(@types/node@20.14.2)
@@ -202,8 +203,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       vike:
-        specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        specifier: 0.4.181-commit-3fe2549
+        version: 0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -229,8 +230,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       vike:
-        specifier: ^0.4.173
-        version: 0.4.173(vite@5.2.12(@types/node@20.14.2))
+        specifier: 0.4.181-commit-3fe2549
+        version: 0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -324,8 +325,8 @@ packages:
   '@brillout/import@0.2.3':
     resolution: {integrity: sha512-1T8WlD75eeFSMrptGy8jiLHmfHgMmSjWvLOIUvHmSVZt+6k0eQqYUoK4KbmE4T9pVLIfxvZSOm2D68VEqKRHRw==}
 
-  '@brillout/json-serializer@0.5.10':
-    resolution: {integrity: sha512-3bh/MS5pudu3H9l3a0KAE1RBfy/L95JWAEo8b2mPBN3H98wzCHYzgjQb9xRl58y+Kc7FgkjApgCFJV+zR06P5Q==}
+  '@brillout/json-serializer@0.5.13':
+    resolution: {integrity: sha512-9FpmgpuoSISw6fAPVB2qwW1dGAADN28YbWpfwOErfcZxpBH4lsnejuY89qcivInnWXYJvyyPwghCuOTbtuaYFg==}
 
   '@brillout/part-regex@0.1.3':
     resolution: {integrity: sha512-ZyqtOYHvQs3Ca0xt9fb2OlGzCrKwXtMcAATDObkFmI4jKuObEORjWrqAslWTelquXlyEYLz7h1nt6jp50LDyJA==}
@@ -338,6 +339,9 @@ packages:
 
   '@brillout/picocolors@1.0.13':
     resolution: {integrity: sha512-LblvMKItHbvkaIMI+Awsk1EEjmReE8E8Mgjtj3Pdn/qBvwQ6e+ts5uEqG6iTrK6JWndcxrQgSe664KfoteN6fA==}
+
+  '@brillout/picocolors@1.0.14':
+    resolution: {integrity: sha512-XhyZY3/FUh56mDuLIjv5kN9qy+oQj7A/d2uQ6cJJ4uVv55+velua3abcrM5WIvs2RHZGA3EE7S9FWo+TjF10ew==}
 
   '@brillout/release-me@0.3.9':
     resolution: {integrity: sha512-7Q9YD+rnVF9hFmRFNSEePAejYSgZzWABJTA5sFrfD1utREt5K8aokoldvm/WES83SOMIkPO97c2kII9J4snc7Q==}
@@ -1929,12 +1933,12 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vike@0.4.173:
-    resolution: {integrity: sha512-xUlP1pRqz83+vLUNE0f4N7/rCEkJ9C51To0sjaKPf7BoFtZOTz9L7FXyp3z/eRaCX07EK0h+24oFKBnl+B74pA==}
+  vike@0.4.181-commit-3fe2549:
+    resolution: {integrity: sha512-0dxkY0q9EyOUVlTGR8+viyrvqdHWEJnLERB5fYmh6bJNZmh7DutOuLf/cuooRrK7ce+IDbd35JKO4OPmg+zALg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
-      react-streaming: '>=0.3.5'
+      react-streaming: '>=0.3.42'
       vite: '>=4.4.0'
     peerDependenciesMeta:
       react-streaming:
@@ -2134,7 +2138,7 @@ snapshots:
 
   '@brillout/import@0.2.3': {}
 
-  '@brillout/json-serializer@0.5.10': {}
+  '@brillout/json-serializer@0.5.13': {}
 
   '@brillout/part-regex@0.1.3': {}
 
@@ -2143,6 +2147,8 @@ snapshots:
   '@brillout/picocolors@1.0.12': {}
 
   '@brillout/picocolors@1.0.13': {}
+
+  '@brillout/picocolors@1.0.14': {}
 
   '@brillout/release-me@0.3.9':
     dependencies:
@@ -3577,11 +3583,11 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.173(vite@5.2.12(@types/node@20.14.2)):
+  vike@0.4.181-commit-3fe2549(vite@5.2.12(@types/node@20.14.2)):
     dependencies:
       '@brillout/import': 0.2.3
-      '@brillout/json-serializer': 0.5.10
-      '@brillout/picocolors': 1.0.13
+      '@brillout/json-serializer': 0.5.13
+      '@brillout/picocolors': 1.0.14
       '@brillout/require-shim': 0.1.2
       '@brillout/vite-plugin-server-entry': 0.4.6
       acorn: 8.11.3
@@ -3589,6 +3595,7 @@ snapshots:
       es-module-lexer: 1.5.3
       esbuild: 0.19.12
       fast-glob: 3.3.2
+      semver: 7.6.2
       sirv: 2.0.4
       source-map-support: 0.5.21
       vite: 5.2.12(@types/node@20.14.2)
