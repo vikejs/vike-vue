@@ -13,7 +13,6 @@ export default {
   stream: true,
   // https://vike.dev/extends
   extends: vikeVue,
-  bodyHtmlEnd: '<div id="bodyHtmlEnd-test"></div>',
   meta: {
     baseCanonicalUrl: {
       env: { server: true, client: true },
