@@ -109,10 +109,12 @@ export default {
     bodyHtmlBegin: {
       env: { server: true },
       cumulative: true,
+      global: true,
     },
     bodyHtmlEnd: {
       env: { server: true },
       cumulative: true,
+      global: true,
     },
   },
 } satisfies Config
