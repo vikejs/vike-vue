@@ -69,13 +69,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
         ${faviconTag}
       </head>
       <body>
-        <!-- vike-vue:bodyHtmlBegin start -->
         ${bodyHtmlBegin}
-        <!-- vike-vue:bodyHtmlBegin finish -->
         <div id="app">${pageView}</div>
-        <!-- vike-vue:bodyHtmlEnd start -->
         ${bodyHtmlEnd}
-        <!-- vike-vue:bodyHtmlEnd finish -->
       </body>
       <!-- built with https://github.com/vikejs/vike-vue -->
     </html>`

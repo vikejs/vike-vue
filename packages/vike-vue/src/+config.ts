@@ -37,7 +37,7 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 export default {
   name: 'vike-vue',
   require: {
-    vike: '>=0.4.172',
+    vike: '>=0.4.182',
   },
 
   // https://vike.dev/onRenderHtml
@@ -107,12 +107,14 @@ export default {
       env: { config: true },
     },
     bodyHtmlBegin: {
-      env: { server: true, client: true },
+      env: { server: true },
       cumulative: true,
+      global: true,
     },
     bodyHtmlEnd: {
-      env: { server: true, client: true },
+      env: { server: true },
       cumulative: true,
+      global: true,
     },
   },
 } satisfies Config
