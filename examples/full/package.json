@@ -15,6 +15,7 @@
     "vike-vue": "^0.7.6",
     "vite": "^5.2.9",
     "vite-plugin-cjs-interop": "^2.1.0",
+    "vite-plugin-vue-devtools": "^7.3.7",
     "vue": "^3.4.23",
     "vue-toast-notification": "^3.1.2",
     "vue-tsc": "^2.0.13"

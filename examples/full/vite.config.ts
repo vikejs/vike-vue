@@ -1,6 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import md from 'unplugin-vue-markdown/vite'
 import vike from 'vike/plugin'
+import vueDevTools from 'vite-plugin-vue-devtools'
 import { UserConfig } from 'vite'
 import { cjsInterop } from 'vite-plugin-cjs-interop'
 
@@ -14,6 +15,7 @@ const config: UserConfig = {
     cjsInterop({
       dependencies: ['vue-toast-notification'],
     }),
+    vueDevTools(),
   ],
 }
 
