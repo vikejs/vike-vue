@@ -153,12 +153,35 @@ type VuePluginWithOptions = {
 declare global {
   namespace Vike {
     interface Config {
-      /** Vue component rendered and appended into &lt;head>&lt;/head> */
+      /**
+       * Add arbitrary `<head>` tags.
+       *
+       * https://vike.dev/Head
+       */
       Head?: Component
 
+      /**
+       * A component that defines the visual layout common to several pages.
+       *
+       * Technically: the `<Layout>` component wraps the root component `<Page>`.
+       *
+       * https://vike.dev/Layout
+       */
       Layout?: Component
 
-      /** &lt;title>${title}&lt;/title> */
+      /**
+       * Set the page's tilte.
+       *
+       * Generates:
+       * ```jsx
+       * <head>
+       *   <title>{title}</title>
+       *   <meta property="og:title" content={title} />
+       * </head>
+       * ```
+       *
+       * https://vike.dev/title
+       */
       title?: string | ((pageContext: PageContext_) => string)
 
       /**
@@ -176,7 +199,18 @@ declare global {
        */
       description?: string | ((pageContext: PageContextServer) => string)
 
-      /** &lt;link rel="icon" href="${favicon}" /> */
+      /**
+       * Set the page's favicon.
+       *
+       * Generates:
+       * ```jsx
+       * <head>
+       *   <link rel="icon" href={favicon} />
+       * </head>
+       * ```
+       *
+       * https://vike.dev/favicon
+       */
       favicon?: string
 
       /**
@@ -207,10 +241,9 @@ declare global {
        *
        * If `false`, the page is rendered only once in the browser.
        *
-       * https://vike.dev/ssr
-       *
        * @default true
        *
+       * https://vike.dev/ssr
        */
       ssr?: boolean
 
@@ -220,23 +253,33 @@ declare global {
        *
        * @default false
        *
+       * https://vike.dev/stream
        */
       stream?: boolean | 'web'
 
       /** @deprecated Use `onCreateApp()` instead. */
       vuePlugins?: VuePluginWithOptions[]
 
-      /** The page's root Vue component */
+      /**
+       * The page's root Vue component.
+       *
+       * https://vike.dev/Page
+       */
       Page?: Component
 
       /**
-       * The result of this is injected at the start of `<body>`
+       * The result of this is injected at the start of `<body>`.
+       *
+       * https://vike.dev/bodyHtmlBegin
        */
       bodyHtmlBegin?: BodyInjectHtml
 
       /**
-       * The result of this is injected at the end of `<body>`
+       * The result of this is injected at the end of `<body>`.
+       *
        * @default `<div id="teleported"></div>`
+       *
+       * https://vike.dev/bodyHtmlEnd
        */
       bodyHtmlEnd?: BodyInjectHtml
 
@@ -245,7 +288,7 @@ declare global {
        *
        * Typically used for registering Vue plugins.
        *
-       * See https://vike.dev/onCreateApp
+       * https://vike.dev/onCreateApp
        */
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync | ImportString
 
@@ -254,6 +297,8 @@ declare global {
        * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
        *
        * Typically used for dehydrating state management libraries.
+       *
+       * https://vike.dev/onAfterRenderHtml
        */
       onAfterRenderHtml?: OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync | ImportString
 
@@ -261,6 +306,8 @@ declare global {
        * Hook called right before mounting the page's root Vue component.
        *
        * Typically used for hydrating state management libraries.
+       *
+       * https://vike.dev/onBeforeRenderClient
        */
       onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
     }
