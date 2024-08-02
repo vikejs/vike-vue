@@ -79,6 +79,9 @@ export default {
     description: {
       env: { server: true },
     },
+    image: {
+      env: { server: true },
+    },
     favicon: {
       env: { server: true, client: true },
     },
@@ -198,6 +201,21 @@ declare global {
        * https://vike.dev/description
        */
       description?: string | ((pageContext: PageContextServer) => string)
+
+      /**
+       * Set the page's preview image upon URL sharing.
+       *
+       * Generates:
+       * ```jsx
+       * <head>
+       *   <meta property="og:image" content={image}>
+       *   <meta name="twitter:card" content="summary_large_image">
+       * </head>
+       * ```
+       *
+       * https://vike.dev/image
+       */
+      image?: string | ((pageContext: PageContextServer) => string)
 
       /**
        * Set the page's favicon.
