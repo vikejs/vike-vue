@@ -9,15 +9,13 @@ import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 import { objectAssign } from '../utils/objectAssign.js'
 import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
-import { escapeHtml } from '../utils/escapeHtml.js'
-import { TagAttribues } from '../hooks/types.js'
+import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
 
 checkVikeVersion()
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const title = getHeadSetting('title', pageContext)
   const favicon = getHeadSetting('favicon', pageContext)
-  const lang = getHeadSetting('lang', pageContext) || 'en'
 
   const titleTag = !title ? '' : escapeInject`<title>${title}</title>`
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
@@ -62,15 +60,17 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   const bodyHtmlEndHooks = [defaultTeleport, ...(pageContext.config.bodyHtmlEnd ?? [])]
   const bodyHtmlEnd = dangerouslySkipEscape((await callCumulativeHooks(bodyHtmlEndHooks, pageContext)).join(''))
 
+  const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
+
   const documentHtml = escapeInject`<!DOCTYPE html>
-    <html lang='${lang}'>
+    <html${dangerouslySkipEscape(htmlAttributesString)}>
       <head>
         <meta charset="UTF-8" />
         ${titleTag}
         ${headHtml}
         ${faviconTag}
       </head>
-      <body${dangerouslySkipEscape(stringifyAttributes(pageContext.config.bodyAttributes ?? {}))}>
+      <body${dangerouslySkipEscape(bodyAttributesString)}>
         <!-- vike-vue:bodyHtmlBegin start -->
         ${bodyHtmlBegin}
         <!-- vike-vue:bodyHtmlBegin finish -->
@@ -89,6 +89,25 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       fromHtmlRenderer,
     },
   }
+}
+
+function getTagAttributes(pageContext: PageContext) {
+  let lang = getHeadSetting('lang', pageContext)
+  // Don't set `lang` to its default value if it's `null` (so that users can set it to `null` in order to remove the default value)
+  if (lang === undefined) lang = 'en'
+
+  const bodyAttributes = mergeTagAttributesList(pageContext.config.bodyAttributes)
+  const htmlAttributes = mergeTagAttributesList(pageContext.config.htmlAttributes)
+
+  const bodyAttributesString = getTagAttributesString(bodyAttributes)
+  const htmlAttributesString = getTagAttributesString({ ...htmlAttributes, lang: lang ?? htmlAttributes.lang })
+
+  return { htmlAttributesString, bodyAttributesString }
+}
+function mergeTagAttributesList(tagAttributesList: TagAttributes[] = []) {
+  const tagAttributes: TagAttributes = {}
+  tagAttributesList.forEach((tagAttrs) => Object.assign(tagAttributes, tagAttrs))
+  return tagAttributes
 }
 
 async function renderToStringWithErrorHandling(app: App, ctx?: SSRContext) {
@@ -151,26 +170,4 @@ function checkVikeVersion() {
   }
   // We can leave it 0.4.172 until we entirely remove checkVikeVersion() (because starting vike@0.4.173 we use the new `require` setting).
   throw new Error('Update Vike to 0.4.172 or above')
-}
-
-function stringifyAttributes(attributes: TagAttribues) {
-  let result = ''
-  for (const [key, value] of Object.entries(attributes)) {
-    if (
-      ['key', 'textContent', 'innerHTML', 'children', 'tagName'].includes(key) ||
-      value === false ||
-      value === undefined
-    ) {
-      continue
-    }
-
-    if (value === true) {
-      result += ` ${escapeHtml(key)}`
-      continue
-    }
-
-    result += ` ${escapeHtml(key)}="${escapeHtml(String(value))}"`
-  }
-
-  return result
 }
