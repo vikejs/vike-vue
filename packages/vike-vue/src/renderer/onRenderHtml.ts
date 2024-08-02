@@ -28,29 +28,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   const viewportTag = dangerouslySkipEscape(getViewportTag(pageContext.config.viewport))
 
-  let pageView:
-    | ReturnType<typeof dangerouslySkipEscape>
-    | ReturnType<typeof renderToNodeStream>
-    | ReturnType<typeof renderToWebStream>
-    | string = ''
-  const ssrContext: SSRContext = {}
-  const fromHtmlRenderer: PageContext['fromHtmlRenderer'] = {}
-
-  if (!!pageContext.Page) {
-    // SSR is enabled
-    const { app } = await createVueApp(pageContext, true, 'Page')
-    objectAssign(pageContext, { app })
-    pageView = !pageContext.config.stream
-      ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app, ssrContext))
-      : pageContext.config.stream === 'web'
-        ? renderToWebStreamWithErrorHandling(app, ssrContext)
-        : renderToNodeStreamWithErrorHandling(app, ssrContext)
-
-    const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
-    Object.assign(pageContext, { ssrContext })
-
-    Object.assign(fromHtmlRenderer, ...afterRenderResults)
-  }
+  const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
 
   let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   if (pageContext.config.Head) {
@@ -83,7 +61,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       </head>
       <body${dangerouslySkipEscape(bodyAttributesString)}>
         ${bodyHtmlBegin}
-        <div id="app">${pageView}</div>
+        <div id="app">${pageHtml}</div>
         ${bodyHtmlEnd}
       </body>
       <!-- built with https://github.com/vikejs/vike-vue -->
@@ -96,6 +74,33 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       fromHtmlRenderer,
     },
   }
+}
+
+async function getPageHtml(pageContext: PageContext) {
+  let pageHtml:
+    | ReturnType<typeof dangerouslySkipEscape>
+    | ReturnType<typeof renderToNodeStream>
+    | ReturnType<typeof renderToWebStream>
+    | string = ''
+  const ssrContext: SSRContext = {}
+  const fromHtmlRenderer: PageContext['fromHtmlRenderer'] = {}
+
+  if (!!pageContext.Page) {
+    // SSR is enabled
+    const { app } = await createVueApp(pageContext, true, 'Page')
+    objectAssign(pageContext, { app })
+    pageHtml = !pageContext.config.stream
+      ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app, ssrContext))
+      : pageContext.config.stream === 'web'
+        ? renderToWebStreamWithErrorHandling(app, ssrContext)
+        : renderToNodeStreamWithErrorHandling(app, ssrContext)
+
+    const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
+    Object.assign(pageContext, { ssrContext })
+
+    Object.assign(fromHtmlRenderer, ...afterRenderResults)
+  }
+  return { pageHtml, fromHtmlRenderer, ssrContext }
 }
 
 function getTagAttributes(pageContext: PageContext) {
