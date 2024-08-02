@@ -236,6 +236,10 @@ declare global {
        */
       onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
     }
+    interface ConfigResolved {
+      bodyAttributes?: TagAttributes[]
+      htmlAttributes?: TagAttributes[]
+    }
   }
 }
 
