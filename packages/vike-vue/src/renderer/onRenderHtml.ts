@@ -16,15 +16,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
 
   const headHtml = await getHeadHtml(pageContext)
 
-  const bodyHtmlBegin = dangerouslySkipEscape(
-    (await callCumulativeHooks(pageContext.config.bodyHtmlBegin, pageContext)).join(''),
-  )
-
-  // we define this hook here so that it doesn't need to be exported by vike-vue
-  const defaultTeleport = `<div id="teleported">${ssrContext.teleports?.['#teleported'] ?? ''}</div>`
-
-  const bodyHtmlEndHooks = [defaultTeleport, ...(pageContext.config.bodyHtmlEnd ?? [])]
-  const bodyHtmlEnd = dangerouslySkipEscape((await callCumulativeHooks(bodyHtmlEndHooks, pageContext)).join(''))
+  const { bodyHtmlBegin, bodyHtmlEnd } = await getBodyHtmlBeginEnd(pageContext, ssrContext)
 
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
 
@@ -92,7 +84,6 @@ async function getHeadHtml(pageContext: PageContextServer) {
   const imageTags = !image
     ? ''
     : escapeInject`<meta property="og:image" content="${image}"><meta name="twitter:card" content="summary_large_image">`
-
   const viewportTag = dangerouslySkipEscape(getViewportTag(pageContext.config.viewport))
 
   let headElementHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
@@ -110,6 +101,20 @@ async function getHeadHtml(pageContext: PageContextServer) {
     ${imageTags}
   `
   return headHtml
+}
+
+async function getBodyHtmlBeginEnd(pageContext: PageContextServer, ssrContext: SSRContext) {
+  const bodyHtmlBegin = dangerouslySkipEscape(
+    (await callCumulativeHooks(pageContext.config.bodyHtmlBegin, pageContext)).join(''),
+  )
+
+  // we define this hook here so that it doesn't need to be exported by vike-vue
+  const defaultTeleport = `<div id="teleported">${ssrContext.teleports?.['#teleported'] ?? ''}</div>`
+
+  const bodyHtmlEndHooks = [defaultTeleport, ...(pageContext.config.bodyHtmlEnd ?? [])]
+  const bodyHtmlEnd = dangerouslySkipEscape((await callCumulativeHooks(bodyHtmlEndHooks, pageContext)).join(''))
+
+  return { bodyHtmlBegin, bodyHtmlEnd }
 }
 
 function getTagAttributes(pageContext: PageContextServer) {
