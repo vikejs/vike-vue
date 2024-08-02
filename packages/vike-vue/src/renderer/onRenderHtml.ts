@@ -17,7 +17,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   const title = getHeadSetting('title', pageContext)
   const favicon = getHeadSetting('favicon', pageContext)
 
-  const titleTag = !title ? '' : escapeInject`<title>${title}</title>`
+  const titleTag = !title ? '' : escapeInject`<title>${title}</title><meta property="og:title" content="${title}">`
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
 
   let pageView:
