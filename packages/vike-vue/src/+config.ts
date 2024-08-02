@@ -22,6 +22,7 @@ import type {
 import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
 import type { TagAttributes } from './utils/getTagAttributesString'
+import type { Viewport } from './renderer/onRenderHtml'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -80,6 +81,9 @@ export default {
       env: { server: true },
     },
     image: {
+      env: { server: true },
+    },
+    viewport: {
       env: { server: true },
     },
     favicon: {
@@ -217,6 +221,15 @@ declare global {
        * https://vike.dev/image
        */
       image?: string | ((pageContext: PageContextServer) => string)
+
+      /**
+       * Set the page's width shown to the user on mobile/tablet devices.
+       *
+       * @default "responsive"
+       *
+       * https://vike.dev/viewport
+       */
+      viewport?: Viewport
 
       /**
        * Set the page's favicon.

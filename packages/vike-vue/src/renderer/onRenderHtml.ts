@@ -28,6 +28,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     ? ''
     : escapeInject`<meta property="og:image" content="${image}"><meta name="twitter:card" content="summary_large_image">`
 
+  const viewportTag = dangerouslySkipEscape(getViewportTag(pageContext.config.viewport))
+
   let pageView:
     | ReturnType<typeof dangerouslySkipEscape>
     | ReturnType<typeof renderToNodeStream>
@@ -75,6 +77,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       <head>
         <meta charset="UTF-8" />
         ${titleTag}
+        ${viewportTag}
         ${headHtml}
         ${faviconTag}
         ${descriptionTags}
@@ -164,6 +167,19 @@ function renderToWebStreamWithErrorHandling(app: App, ctx?: SSRContext) {
   returned = true
   if (err) throw err
   return appHtml
+}
+
+export type Viewport = 'responsive' | number | null
+function getViewportTag(viewport: Viewport | undefined): string {
+  if (viewport === 'responsive' || viewport === undefined) {
+    // `user-scalable=no` isn't recommended anymore:
+    //   - https://stackoverflow.com/questions/22354435/to-user-scalable-no-or-not-to-user-scalable-no/22544312#comment120949420_22544312
+    return '<meta name="viewport" content="width=device-width,initial-scale=1">'
+  }
+  if (typeof viewport === 'number') {
+    return `<meta name="viewport" content="width=${viewport}">`
+  }
+  return ''
 }
 
 // We don't need this anymore starting from vike@0.4.173 which added the `require` setting.
