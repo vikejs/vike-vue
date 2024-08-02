@@ -8,9 +8,19 @@ import type {
   BodyInjectHtml,
 } from './hooks/types'
 
-import type { Config, ConfigEffect, ImportString, PageContext } from 'vike/types'
+import type {
+  Config,
+  ConfigEffect,
+  ImportString,
+  // Rename it to `PageContext_` to be able to reference it from within `namespace Vike`
+  // - https://stackoverflow.com/questions/46559021/typescript-use-of-global-type-inside-namespace-with-same-type
+  // - https://github.com/Microsoft/TypeScript/issues/983
+  PageContext as PageContext_,
+} from 'vike/types'
+
 import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
+import type { TagAttributes } from './utils/getTagAttributesString'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -116,6 +126,16 @@ export default {
       cumulative: true,
       global: true,
     },
+    htmlAttributes: {
+      env: { server: true },
+      global: true,
+      cumulative: true, // for Vike extensions
+    },
+    bodyAttributes: {
+      env: { server: true },
+      global: true,
+      cumulative: true, // for Vike extensions
+    },
   },
 } satisfies Config
 
@@ -140,12 +160,28 @@ declare global {
       /** &lt;link rel="icon" href="${favicon}" /> */
       favicon?: string
 
-      /** &lt;html lang="${lang}">
+      /**
+       * Set the page's language (`<html lang>`).
        *
-       *  @default 'en'
+       * @default 'en'
        *
+       * https://vike.dev/lang
        */
-      lang?: string
+      lang?: string | ((pageContext: PageContext_) => string) | null
+
+      /**
+       * Add tag attributes such as `<html class="dark">`.
+       *
+       * https://vike.dev/htmlAttributes
+       */
+      htmlAttributes?: TagAttributes
+
+      /**
+       * Add tag attributes such as `<body class="dark">`.
+       *
+       * https://vike.dev/bodyAttributes
+       */
+      bodyAttributes?: TagAttributes
 
       /**
        * If `true`, the page is rendered twice: on the server-side (to HTML) and on the client-side (hydration).
@@ -208,6 +244,10 @@ declare global {
        * Typically used for hydrating state management libraries.
        */
       onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
+    }
+    interface ConfigResolved {
+      bodyAttributes?: TagAttributes[]
+      htmlAttributes?: TagAttributes[]
     }
   }
 }
