@@ -8,7 +8,16 @@ import type {
   BodyInjectHtml,
 } from './hooks/types'
 
-import type { Config, ConfigEffect, ImportString, PageContext } from 'vike/types'
+import type {
+  Config,
+  ConfigEffect,
+  ImportString,
+  // Rename it to `PageContext_` to be able to reference it from within `namespace Vike`
+  // - https://stackoverflow.com/questions/46559021/typescript-use-of-global-type-inside-namespace-with-same-type
+  // - https://github.com/Microsoft/TypeScript/issues/983
+  PageContext as PageContext_,
+} from 'vike/types'
+
 import type { Component } from './types/PageContext'
 import type { Plugin } from 'vue'
 import type { TagAttributes } from './utils/getTagAttributesString'
@@ -158,7 +167,7 @@ declare global {
        *
        * https://vike.dev/lang
        */
-      lang?: PlainOrGetter<string> | null
+      lang?: string | ((pageContext: PageContext_) => string) | null
 
       /**
        * Add tag attributes such as `<html class="dark">`.
@@ -242,8 +251,6 @@ declare global {
     }
   }
 }
-
-type PlainOrGetter<T> = T | ((pageContext: PageContext) => T)
 
 // This is a workaround for
 // * https://github.com/vuejs/core/issues/8303
