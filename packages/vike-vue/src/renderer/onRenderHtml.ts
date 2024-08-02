@@ -12,29 +12,9 @@ import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
-  const title = getHeadSetting('title', pageContext)
-  const favicon = getHeadSetting('favicon', pageContext)
-  const description = getHeadSetting('description', pageContext)
-  const image = getHeadSetting('image', pageContext)
-
-  const titleTag = !title ? '' : escapeInject`<title>${title}</title><meta property="og:title" content="${title}">`
-  const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
-  const descriptionTags = !description
-    ? ''
-    : escapeInject`<meta name="description" content="${description}"><meta property="og:description" content="${description}">`
-  const imageTags = !image
-    ? ''
-    : escapeInject`<meta property="og:image" content="${image}"><meta name="twitter:card" content="summary_large_image">`
-
-  const viewportTag = dangerouslySkipEscape(getViewportTag(pageContext.config.viewport))
-
   const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
 
-  let headHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
-  if (pageContext.config.Head) {
-    const { app } = await createVueApp(pageContext, true, 'Head')
-    headHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
-  }
+  const headHtml = await getHeadHtml(pageContext)
 
   const bodyHtmlBegin = dangerouslySkipEscape(
     (await callCumulativeHooks(pageContext.config.bodyHtmlBegin, pageContext)).join(''),
@@ -52,12 +32,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
     <html${dangerouslySkipEscape(htmlAttributesString)}>
       <head>
         <meta charset="UTF-8" />
-        ${titleTag}
-        ${viewportTag}
         ${headHtml}
-        ${faviconTag}
-        ${descriptionTags}
-        ${imageTags}
       </head>
       <body${dangerouslySkipEscape(bodyAttributesString)}>
         ${bodyHtmlBegin}
@@ -101,6 +76,40 @@ async function getPageHtml(pageContext: PageContextServer) {
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
   return { pageHtml, fromHtmlRenderer, ssrContext }
+}
+
+async function getHeadHtml(pageContext: PageContextServer) {
+  const title = getHeadSetting('title', pageContext)
+  const favicon = getHeadSetting('favicon', pageContext)
+  const description = getHeadSetting('description', pageContext)
+  const image = getHeadSetting('image', pageContext)
+
+  const titleTags = !title ? '' : escapeInject`<title>${title}</title><meta property="og:title" content="${title}">`
+  const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
+  const descriptionTags = !description
+    ? ''
+    : escapeInject`<meta name="description" content="${description}"><meta property="og:description" content="${description}">`
+  const imageTags = !image
+    ? ''
+    : escapeInject`<meta property="og:image" content="${image}"><meta name="twitter:card" content="summary_large_image">`
+
+  const viewportTag = dangerouslySkipEscape(getViewportTag(pageContext.config.viewport))
+
+  let headElementHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
+  if (pageContext.config.Head) {
+    const { app } = await createVueApp(pageContext, true, 'Head')
+    headElementHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
+  }
+
+  const headHtml = escapeInject`
+    ${titleTags}
+    ${viewportTag}
+    ${headElementHtml}
+    ${faviconTag}
+    ${descriptionTags}
+    ${imageTags}
+  `
+  return headHtml
 }
 
 function getTagAttributes(pageContext: PageContextServer) {
