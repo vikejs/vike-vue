@@ -12,6 +12,7 @@ import type {
   Config,
   ConfigEffect,
   ImportString,
+  PageContextServer,
   // Rename it to `PageContext_` to be able to reference it from within `namespace Vike`
   // - https://stackoverflow.com/questions/46559021/typescript-use-of-global-type-inside-namespace-with-same-type
   // - https://github.com/Microsoft/TypeScript/issues/983
@@ -74,6 +75,9 @@ export default {
     },
     title: {
       env: { server: true, client: true },
+    },
+    description: {
+      env: { server: true },
     },
     favicon: {
       env: { server: true, client: true },
@@ -156,6 +160,21 @@ declare global {
 
       /** &lt;title>${title}&lt;/title> */
       title?: string | ((pageContext: PageContext_) => string)
+
+      /**
+       * Set the page's description.
+       *
+       * Generates:
+       * ```jsx
+       * <head>
+       *   <meta name="description" content={description}>
+       *   <meta property="og:description" content={description}>
+       * </head>
+       * ```
+       *
+       * https://vike.dev/description
+       */
+      description?: string | ((pageContext: PageContextServer) => string)
 
       /** &lt;link rel="icon" href="${favicon}" /> */
       favicon?: string

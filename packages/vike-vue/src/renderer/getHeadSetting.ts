@@ -4,7 +4,7 @@ import type { PageContext } from 'vike/types'
 import { isCallable } from '../utils/isCallable.js'
 
 function getHeadSetting(
-  headSetting: 'title' | 'favicon' | 'lang',
+  headSetting: 'title' | 'description' | 'favicon' | 'lang',
   pageContext: PageContext,
 ): undefined | null | string {
   const config = pageContext.configEntries[headSetting]?.[0]
