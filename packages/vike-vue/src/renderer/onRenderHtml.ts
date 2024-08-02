@@ -2,7 +2,7 @@
 export { onRenderHtml }
 
 import { dangerouslySkipEscape, escapeInject } from 'vike/server'
-import type { OnRenderHtmlAsync, PageContext } from 'vike/types'
+import type { OnRenderHtmlAsync, PageContextServer } from 'vike/types'
 import { App } from 'vue'
 import { type SSRContext, renderToNodeStream, renderToString, renderToWebStream } from 'vue/server-renderer'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
@@ -76,14 +76,14 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
   }
 }
 
-async function getPageHtml(pageContext: PageContext) {
+async function getPageHtml(pageContext: PageContextServer) {
   let pageHtml:
     | ReturnType<typeof dangerouslySkipEscape>
     | ReturnType<typeof renderToNodeStream>
     | ReturnType<typeof renderToWebStream>
     | string = ''
   const ssrContext: SSRContext = {}
-  const fromHtmlRenderer: PageContext['fromHtmlRenderer'] = {}
+  const fromHtmlRenderer: PageContextServer['fromHtmlRenderer'] = {}
 
   if (!!pageContext.Page) {
     // SSR is enabled
@@ -103,7 +103,7 @@ async function getPageHtml(pageContext: PageContext) {
   return { pageHtml, fromHtmlRenderer, ssrContext }
 }
 
-function getTagAttributes(pageContext: PageContext) {
+function getTagAttributes(pageContext: PageContextServer) {
   let lang = getHeadSetting('lang', pageContext)
   // Don't set `lang` to its default value if it's `null` (so that users can set it to `null` in order to remove the default value)
   if (lang === undefined) lang = 'en'
