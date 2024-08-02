@@ -155,7 +155,7 @@ declare global {
       Layout?: Component
 
       /** &lt;title>${title}&lt;/title> */
-      title?: string | ((pageContext: PageContext) => string)
+      title?: string | ((pageContext: PageContext_) => string)
 
       /** &lt;link rel="icon" href="${favicon}" /> */
       favicon?: string
