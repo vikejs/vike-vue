@@ -1,11 +1,14 @@
-import { PageContext } from 'vike/types'
-
-type Hook = (pageContext: PageContext) => unknown
-type PlainHook = unknown
-
-export function callCumulativeHooks<T extends Hook | PlainHook, C extends PageContext>(
-  hooks: T[] | undefined,
-  pageContext: C,
-) {
-  return Promise.all(hooks?.map((hook) => (typeof hook === 'function' ? hook(pageContext) : hook)) ?? [])
+export async function callCumulativeHooks(values: undefined | unknown[], pageContext: unknown): Promise<unknown[]> {
+  if (!values) return []
+  const valuesPromises = values.map((val) => {
+    if (typeof val === 'function') {
+      // Hook
+      return val(pageContext)
+    } else {
+      // Plain value
+      return val
+    }
+  })
+  const valuesResolved = await Promise.all(valuesPromises)
+  return valuesResolved
 }
