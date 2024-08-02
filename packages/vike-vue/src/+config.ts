@@ -336,6 +336,12 @@ declare global {
       onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
     }
     interface ConfigResolved {
+      onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
+      onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
+      onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
+      bodyHtmlBegin?: BodyInjectHtml[]
+      bodyHtmlEnd?: BodyInjectHtml[]
+      Layout?: Component[]
       bodyAttributes?: TagAttributes[]
       htmlAttributes?: TagAttributes[]
     }
