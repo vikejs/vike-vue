@@ -17,6 +17,7 @@ import type {
   // - https://stackoverflow.com/questions/46559021/typescript-use-of-global-type-inside-namespace-with-same-type
   // - https://github.com/Microsoft/TypeScript/issues/983
   PageContext as PageContext_,
+  PageContextClient,
 } from 'vike/types'
 
 import type { Component } from './types/PageContext'
@@ -117,6 +118,10 @@ export default {
       cumulative: true,
     },
     onBeforeRenderClient: {
+      env: { server: false, client: true },
+      cumulative: true,
+    },
+    onAfterRenderClient: {
       env: { server: false, client: true },
       cumulative: true,
     },
@@ -334,11 +339,19 @@ declare global {
        * https://vike.dev/onBeforeRenderClient
        */
       onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
+
+      /**
+       * Client-side hook called after the page is rendered.
+       *
+       * https://vike.dev/onAfterRenderClient
+       */
+      onAfterRenderClient?: (pageContext: PageContextClient) => void
     }
     interface ConfigResolved {
       onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
       onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
+      onAfterRenderClient?: Function[]
       bodyHtmlBegin?: BodyInjectHtml[]
       bodyHtmlEnd?: BodyInjectHtml[]
       Layout?: Component[]

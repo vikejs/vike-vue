@@ -35,6 +35,11 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
     // E.g. document.title
     updateDocument(pageContext)
   }
+
+  // Use cases:
+  // - Custom user settings: https://vike.dev/head#custom-settings
+  // - Testing tools: https://github.com/vikejs/vike-react/issues/95
+  await callCumulativeHooks(pageContext.config.onAfterRenderClient, pageContext)
 }
 
 function updateDocument(pageContext: PageContextClient) {
