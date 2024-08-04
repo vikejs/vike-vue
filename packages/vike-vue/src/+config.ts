@@ -101,14 +101,6 @@ export default {
     stream: {
       env: { server: true },
     },
-    // Deprecated (in favor of `onCreateApp()`). TODO/next-major-release: remove it.
-    vuePlugins: {
-      // List of vue plugins to be installed with app.vue() in onRenderHtml and
-      // onRenderClient. We make this config available both on the server and
-      // the client always, but if SSR is disabled, onRenderHtml won't make use
-      // of it.
-      env: { server: true, client: true },
-    },
     onCreateApp: {
       env: { server: true, client: true },
       cumulative: true,
@@ -285,9 +277,6 @@ declare global {
        * https://vike.dev/stream
        */
       stream?: boolean | 'web'
-
-      /** @deprecated Use `onCreateApp()` instead. */
-      vuePlugins?: VuePluginWithOptions[]
 
       /**
        * The page's root Vue component.
