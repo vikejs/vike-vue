@@ -10,6 +10,7 @@ import { objectAssign } from '../utils/objectAssign.js'
 import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
+import type { PageContextInternal } from '../types/PageContext.js'
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
@@ -70,7 +71,9 @@ async function getPageHtml(pageContext: PageContextServer) {
   return { pageHtml, fromHtmlRenderer, ssrContext }
 }
 
-async function getHeadHtml(pageContext: PageContextServer) {
+async function getHeadHtml(pageContext: PageContextServer & PageContextInternal) {
+  pageContext._headAlreadySet = true
+
   const title = getHeadSetting('title', pageContext)
   const favicon = getHeadSetting('favicon', pageContext)
   const description = getHeadSetting('description', pageContext)

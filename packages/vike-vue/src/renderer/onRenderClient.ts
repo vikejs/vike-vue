@@ -7,6 +7,7 @@ import type { OnRenderClientAsync, PageContextClient } from 'vike/types'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 import type { App } from 'vue'
 import { objectAssign } from '../utils/objectAssign.js'
+import type { PageContextInternal } from '../types/PageContext.js'
 
 let app: App | undefined
 let changePage: ChangePage | undefined
@@ -42,7 +43,9 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
   await callCumulativeHooks(pageContext.config.onAfterRenderClient, pageContext)
 }
 
-function updateDocument(pageContext: PageContextClient) {
+function updateDocument(pageContext: PageContextClient & PageContextInternal) {
+  pageContext._headAlreadySet = true
+
   const title = getHeadSetting('title', pageContext)
   const lang = getHeadSetting('lang', pageContext)
 

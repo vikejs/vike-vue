@@ -18,9 +18,14 @@ import { objectAssign } from '../utils/objectAssign'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
+import type { PageContextInternal } from '../types/PageContext'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
-async function createVueApp(pageContext: PageContext, ssr: boolean, entryComponentName: 'Head' | 'Page') {
+async function createVueApp(
+  pageContext: PageContext & PageContextInternal,
+  ssr: boolean,
+  entryComponentName: 'Head' | 'Page',
+) {
   let onChangePage: undefined | ((pageContext: PageContext) => void)
   let RootComponent: Component | (() => ReturnType<typeof h>)
   // Wrap <Page> with <Layout>
@@ -42,7 +47,12 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, entryCompone
     }
   } else {
     RootComponent = () => {
-      const HeadElements = (pageContext.config[entryComponentName] ?? []).map((HeadComponent) => h(HeadComponent))
+      const HeadElements = [
+        // Added by +Head
+        ...(pageContext.config.Head ?? []),
+        // Added by useConfig()
+        ...(pageContext._configFromHook?.Head ?? []),
+      ].map((HeadComponent) => h(HeadComponent))
       return h(Fragment, null, HeadElements)
     }
   }

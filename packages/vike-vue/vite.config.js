@@ -17,13 +17,15 @@ export default defineConfig({
         ['types/index']: resolve(__dirname, './src/types/index.ts'),
         ['hooks/usePageContext']: resolve(__dirname, './src/hooks/usePageContext.ts'),
         ['hooks/useData']: resolve(__dirname, './src/hooks/useData.ts'),
+        ['hooks/useConfig/useConfig-client']: resolve(__dirname, './src/hooks/useConfig/useConfig-client.ts'),
+        ['hooks/useConfig/useConfig-server']: resolve(__dirname, './src/hooks/useConfig/useConfig-server.ts'),
       },
       formats: ['es'],
     },
     rollupOptions: {
       // There doesn't seem to be way to externalize all dependencies.
       // We use assertExternal() to make sure we didn't forget any import in this list.
-      external: ['vue', 'vue/server-renderer', 'vike/server'],
+      external: ['vue', 'vue/server-renderer', 'vike/server', 'vike/getPageContext'],
       output: {
         sanitizeFileName: false,
         globals: {

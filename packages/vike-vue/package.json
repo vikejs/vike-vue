@@ -8,6 +8,10 @@
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
     "./usePageContext": "./dist/hooks/usePageContext.js",
     "./useData": "./dist/hooks/useData.js",
+    "./useConfig": {
+      "browser": "./dist/hooks/useConfig/useConfig-client.js",
+      "default": "./dist/hooks/useConfig/useConfig-server.js"
+    },
     "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
       "default": "./dist/types/index.js",
@@ -50,6 +54,9 @@
       ],
       "useData": [
         "./dist/hooks/useData.d.ts"
+      ],
+      "useConfig": [
+        "./dist/hooks/useConfig/useConfig-server.d.ts"
       ],
       "clientOnly": [
         "./dist/helpers/clientOnly.d.ts"

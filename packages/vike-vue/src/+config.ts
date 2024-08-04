@@ -60,7 +60,7 @@ export default {
   // https://vike.dev/passToClient
   // It is a cumulative config option, so a web app using vike-vue can extend
   // this list.
-  passToClient: ['fromHtmlRenderer'],
+  passToClient: ['fromHtmlRenderer', '_configFromHook'],
 
   // https://vike.dev/clientRouting
   clientRouting: true,
@@ -344,6 +344,18 @@ declare global {
       htmlAttributes?: TagAttributes[]
     }
   }
+}
+
+// JSDocs are preserved
+type PickWithoutGetter<T, K extends keyof T> = {
+  [P in K]: Exclude<T[P], Function>
+}
+export type ConfigFromHook = PickWithoutGetter<Vike.Config, 'Head' | 'title' | 'description' | 'image'>
+export type ConfigFromHookResolved = {
+  Head?: Component[]
+  title?: string
+  description?: string
+  image?: string
 }
 
 // This is a workaround for
