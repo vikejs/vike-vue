@@ -1,7 +1,7 @@
 export { createVueApp }
 export type { ChangePage }
 
-import { type App, createApp, createSSRApp, h, nextTick, shallowRef, shallowReactive } from 'vue'
+import { type App, createApp, createSSRApp, h, nextTick, shallowRef, shallowReactive, type Component } from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
@@ -11,13 +11,17 @@ import { setData } from '../hooks/useData'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
 async function createVueApp(pageContext: PageContext, ssr: boolean, entryComponentName: 'Head' | 'Page') {
-  const entryComponentRef = shallowRef(pageContext.config[entryComponentName])
-  const layoutRef = shallowRef(pageContext.config.Layout || [])
-
-  const EntryComponent = () => h(entryComponentRef.value)
-  let RootComponent = EntryComponent
+  let onChangePage: undefined | ((pageContext: PageContext) => void)
+  let RootComponent: Component | (() => ReturnType<typeof h>)
   // Wrap <Page> with <Layout>
   if (entryComponentName === 'Page') {
+    const entryComponentRef = shallowRef(pageContext.config[entryComponentName])
+    const layoutRef = shallowRef(pageContext.config.Layout || [])
+    onChangePage = (pageContext: PageContext) => {
+      entryComponentRef.value = pageContext.config[entryComponentName]
+      layoutRef.value = pageContext.config.Layout || []
+    }
+    const EntryComponent = () => h(entryComponentRef.value)
     RootComponent = () => {
       let RootComp = EntryComponent
       layoutRef.value.forEach((layout) => {
@@ -26,6 +30,8 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, entryCompone
       })
       return RootComp()
     }
+  } else {
+    RootComponent = pageContext.config[entryComponentName]
   }
 
   const app: App = ssr ? createSSRApp(RootComponent) : createApp(RootComponent)
@@ -55,8 +61,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, entryCompone
     assertDataIsObject(data)
     objectReplace(dataReactive, data)
     objectReplace(pageContextReactive, pageContext)
-    entryComponentRef.value = pageContext.config[entryComponentName]
-    layoutRef.value = pageContext.config.Layout || []
+    onChangePage?.(pageContext)
     await nextTick()
     returned = true
     if (err) throw err
