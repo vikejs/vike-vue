@@ -2,10 +2,7 @@
   "name": "vike-vue",
   "version": "0.7.6",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
     "./config": "./dist/+config.js",
     "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
@@ -42,9 +39,6 @@
   },
   "typesVersions": {
     "*": {
-      ".": [
-        "./dist/index.d.ts"
-      ],
       "config": [
         "./dist/+config.d.ts"
       ],

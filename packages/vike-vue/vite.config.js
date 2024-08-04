@@ -10,7 +10,6 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: {
-        ['index']: resolve(__dirname, './src/index.ts'),
         ['+config']: resolve(__dirname, './src/+config.ts'),
         ['renderer/onRenderClient']: resolve(__dirname, './src/renderer/onRenderClient.ts'),
         ['renderer/onRenderHtml']: resolve(__dirname, './src/renderer/onRenderHtml.ts'),
