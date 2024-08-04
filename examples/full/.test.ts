@@ -112,6 +112,9 @@ function testUrl({ url, title, text, counter }: { url: string; title: string; te
     const html = await fetchHtml(url)
     expect(html).toContain(text)
     expect(getTitle(html)).toBe(title)
+    expect(html).toContain('<meta name="description" content="Demo showcasing Vike + Vue">')
+    expect(html).toContain('<link rel="icon" href="/assets/logo.svg">')
+    expect(html).toContain(`<link rel="canonical" href="https://example.com${url}">`)
   })
   test(url + ' (Hydration)', async () => {
     await page.goto(getServerUrl() + url)
