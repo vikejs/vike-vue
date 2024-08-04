@@ -69,6 +69,7 @@ export default {
   meta: {
     Head: {
       env: { server: true },
+      cumulative: true,
     },
     Layout: {
       env: { server: true, client: true },
@@ -338,6 +339,7 @@ declare global {
       bodyHtmlBegin?: BodyInjectHtml[]
       bodyHtmlEnd?: BodyInjectHtml[]
       Layout?: Component[]
+      Head?: Component[]
       bodyAttributes?: TagAttributes[]
       htmlAttributes?: TagAttributes[]
     }

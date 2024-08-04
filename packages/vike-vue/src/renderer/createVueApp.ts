@@ -1,7 +1,17 @@
 export { createVueApp }
 export type { ChangePage }
 
-import { type App, createApp, createSSRApp, h, nextTick, shallowRef, shallowReactive, type Component } from 'vue'
+import {
+  type App,
+  createApp,
+  createSSRApp,
+  h,
+  nextTick,
+  shallowRef,
+  shallowReactive,
+  type Component,
+  Fragment,
+} from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
@@ -31,7 +41,10 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, entryCompone
       return RootComp()
     }
   } else {
-    RootComponent = pageContext.config[entryComponentName]
+    RootComponent = () => {
+      const HeadElements = pageContext.config[entryComponentName]!.map((HeadComponent) => h(HeadComponent))
+      return h(Fragment, null, HeadElements)
+    }
   }
 
   const app: App = ssr ? createSSRApp(RootComponent) : createApp(RootComponent)
