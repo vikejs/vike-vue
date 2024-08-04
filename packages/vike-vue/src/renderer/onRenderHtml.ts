@@ -87,10 +87,8 @@ async function getHeadHtml(pageContext: PageContextServer) {
   const viewportTag = dangerouslySkipEscape(getViewportTag(pageContext.config.viewport))
 
   let headElementHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
-  if (pageContext.config.Head) {
-    const { app } = await createVueApp(pageContext, true, 'Head')
-    headElementHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
-  }
+  const { app } = await createVueApp(pageContext, true, 'Head')
+  headElementHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
 
   const headHtml = escapeInject`
     ${titleTags}

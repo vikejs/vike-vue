@@ -42,7 +42,7 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, entryCompone
     }
   } else {
     RootComponent = () => {
-      const HeadElements = pageContext.config[entryComponentName]!.map((HeadComponent) => h(HeadComponent))
+      const HeadElements = (pageContext.config[entryComponentName] ?? []).map((HeadComponent) => h(HeadComponent))
       return h(Fragment, null, HeadElements)
     }
   }
