@@ -21,7 +21,6 @@ import type {
 } from 'vike/types'
 
 import type { Component } from './types/PageContext'
-import type { Plugin } from 'vue'
 import type { TagAttributes } from './utils/getTagAttributesString'
 import type { Viewport } from './renderer/onRenderHtml'
 
@@ -139,11 +138,6 @@ export default {
     },
   },
 } satisfies Config
-
-type VuePluginWithOptions = {
-  plugin: Plugin
-  options?: any
-}
 
 // We purposely define the ConfigVikeVue interface in this file: that way we ensure it's always applied whenever the user `import vikeVue from 'vike-vue/config'`
 // https://vike.dev/pageContext#typescript

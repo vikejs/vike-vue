@@ -10,16 +10,16 @@ import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
-async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponentName: 'Head' | 'Page') {
-  const mainComponentRef = shallowRef(pageContext.config[mainComponentName])
+async function createVueApp(pageContext: PageContext, ssr: boolean, entryComponentName: 'Head' | 'Page') {
+  const entryComponentRef = shallowRef(pageContext.config[entryComponentName])
   const layoutRef = shallowRef(pageContext.config.Layout || [])
 
-  const MainComponent = () => h(mainComponentRef.value)
-  let RootComponent = MainComponent
+  const EntryComponent = () => h(entryComponentRef.value)
+  let RootComponent = EntryComponent
   // Wrap <Page> with <Layout>
-  if (mainComponentName === 'Page') {
+  if (entryComponentName === 'Page') {
     RootComponent = () => {
-      let RootComp = MainComponent
+      let RootComp = EntryComponent
       layoutRef.value.forEach((layout) => {
         const Comp = RootComp
         RootComp = () => h(layout, null, Comp)
@@ -30,6 +30,15 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponen
 
   const app: App = ssr ? createSSRApp(RootComponent) : createApp(RootComponent)
   objectAssign(pageContext, { app })
+  const { onCreateApp } = pageContext.config
+  await callCumulativeHooks(onCreateApp, pageContext)
+
+  const data = pageContext.data ?? {}
+  assertDataIsObject(data)
+  const dataReactive = shallowReactive(data)
+  const pageContextReactive = shallowReactive(pageContext)
+  setPageContext(app, pageContextReactive)
+  setData(app, dataReactive)
 
   // changePage() is called upon navigation, see +onRenderClient.ts
   const changePage: ChangePage = async (pageContext: PageContext) => {
@@ -46,24 +55,12 @@ async function createVueApp(pageContext: PageContext, ssr: boolean, mainComponen
     assertDataIsObject(data)
     objectReplace(dataReactive, data)
     objectReplace(pageContextReactive, pageContext)
-    mainComponentRef.value = pageContext.config[mainComponentName]
+    entryComponentRef.value = pageContext.config[entryComponentName]
     layoutRef.value = pageContext.config.Layout || []
     await nextTick()
     returned = true
     if (err) throw err
   }
-
-  const data = pageContext.data ?? {}
-  assertDataIsObject(data)
-  const dataReactive = shallowReactive(data)
-  const pageContextReactive = shallowReactive(pageContext)
-  setPageContext(app, pageContextReactive)
-  setData(app, dataReactive)
-
-  const { onCreateApp } = pageContext.config
-  const pageContextWithApp = pageContext
-
-  await callCumulativeHooks(onCreateApp, pageContext)
 
   return { app, changePage }
 }
