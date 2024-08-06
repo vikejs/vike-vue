@@ -1,5 +1,4 @@
 <template>
-  <meta name="description" content="Demo showcasing Vike + Vue" />
   <link rel="icon" :href="logoUrl" />
   <link v-if="canonicalUrl" rel="canonical" :href="canonicalUrl" />
 </template>

@@ -5,6 +5,8 @@ import type { Config } from 'vike/types'
 export default {
   // <title>
   title: 'My Vike + Vue App',
+  // <meta name="description">
+  description: 'Demo showcasing Vike + Vue',
   // <link rel="canonical" />
   baseCanonicalUrl: 'https://example.com',
   // https://vike.dev/ssr - this line can be removed since `true` is the default

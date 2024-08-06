@@ -1,4 +1,6 @@
 import { test, expect, run, fetchHtml, page, getServerUrl, autoRetry, partRegex } from '@brillout/test-e2e'
+import assert from 'node:assert'
+const isProd = false
 
 runTest()
 
@@ -17,12 +19,14 @@ function runTest() {
   testUrl({
     url: '/star-wars',
     title: '6 Star Wars Movies',
+    description: 'All the 6 movies from the Star Wars franchise',
     text: 'A New Hope',
   })
 
   testUrl({
     url: '/star-wars/3',
     title: 'Return of the Jedi',
+    description: 'Star Wars Movie Return of the Jedi from Richard Marquand',
     text: '1983-05-25',
   })
 
@@ -107,13 +111,22 @@ function runTest() {
   })
 }
 
-function testUrl({ url, title, text, counter }: { url: string; title: string; text: string; counter?: true }) {
+function testUrl({
+  url,
+  title,
+  description,
+  text,
+  counter,
+}: { url: string; title: string; description?: string; text: string; counter?: true }) {
   test(url + ' (HTML)', async () => {
     const html = await fetchHtml(url)
     expect(html).toContain(text)
     expect(getTitle(html)).toBe(title)
-    expect(html).toContain('<meta name="description" content="Demo showcasing Vike + Vue">')
-    expect(html).toContain('<link rel="icon" href="/assets/logo.svg">')
+
+    if (!description) description = 'Demo showcasing Vike + Vue'
+    expect(html).toMatch(partRegex`<meta name="description" content="${description}">`)
+
+    expect(html).toMatch(partRegex`<link rel="icon" href="${getAssetUrl('logo.svg')}">`)
     expect(html).toContain(`<link rel="canonical" href="https://example.com${url}">`)
   })
   test(url + ' (Hydration)', async () => {
@@ -173,4 +186,13 @@ async function expectHelloPage(name: 'anonymous' | 'jon' | 'alice' | 'evan' | 'e
     expect(await page.textContent('h1')).toContain('Hello')
     expect(await page.textContent('body')).toContain(`Hi ${name}`)
   })
+}
+
+function getAssetUrl(fileName: string) {
+  if (!isProd) {
+    return `/assets/${fileName}`
+  }
+  const [fileBaseName, fileExt, ...r] = fileName.split('.')
+  assert(r.length === 0)
+  return partRegex`/assets/static/${fileBaseName}.${/[a-zA-Z0-9_-]+/}.${fileExt}`
 }
