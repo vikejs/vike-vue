@@ -24,7 +24,7 @@ importers:
         version: 0.1.15(typescript@5.4.5)
       playwright:
         specifier: ^1.44.1
-        version: 1.44.1
+        version: 1.45.2
       prettier:
         specifier: ^3.2.5
         version: 3.3.3
@@ -1726,14 +1726,14 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  playwright-core@1.44.1:
-    resolution: {integrity: sha512-wh0JWtYTrhv1+OSsLPgFzGzt67Y7BE/ZS3jEqgGBlp2ppp1ZDj8c+9IARNW4dwf1poq5MgHreEM2KV/GuR4cFA==}
-    engines: {node: '>=16'}
+  playwright-core@1.45.2:
+    resolution: {integrity: sha512-ha175tAWb0dTK0X4orvBIqi3jGEt701SMxMhyujxNrgd8K0Uy5wMSwwcQHtyB4om7INUkfndx02XnQ2p6dvLDw==}
+    engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.44.1:
-    resolution: {integrity: sha512-qr/0UJ5CFAtloI3avF95Y0L1xQo6r3LQArLIg/z/PoGJ6xa+EwzrwO5lpNr/09STxdHuUoP2mvuELJS+hLdtgg==}
-    engines: {node: '>=16'}
+  playwright@1.45.2:
+    resolution: {integrity: sha512-ReywF2t/0teRvNBpfIgh5e4wnrI/8Su8ssdo5XsQKpjxJj+jspm00jSoz9BTg91TT0c9HRjXO7LBNVrgYj9X0g==}
+    engines: {node: '>=18'}
     hasBin: true
 
   pngjs@6.0.0:
@@ -3438,11 +3438,11 @@ snapshots:
 
   playwright-core@1.43.0: {}
 
-  playwright-core@1.44.1: {}
+  playwright-core@1.45.2: {}
 
-  playwright@1.44.1:
+  playwright@1.45.2:
     dependencies:
-      playwright-core: 1.44.1
+      playwright-core: 1.45.2
     optionalDependencies:
       fsevents: 2.3.2
 
