@@ -1,3 +1,52 @@
+# [0.8.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.6...vike-vue@0.8.0) (2024-08-06)
+
+
+### Bug Fixes
+
+* avoid the default of title/lang setting to override Head setting ([24fe7c5](https://github.com/vikejs/vike-vue/commit/24fe7c52d38c2b0f1c274f8fa22c167cc26d6053))
+* export Vike config only at /config ([39a4e71](https://github.com/vikejs/vike-vue/commit/39a4e711b3eced16391b3afdad316602c8167392))
+* fix type Config['title'] ([de30e67](https://github.com/vikejs/vike-vue/commit/de30e67837b51adb277a65c54472de6a28e62fdd))
+* improve JSDocs ([676c9ca](https://github.com/vikejs/vike-vue/commit/676c9ca9aeb38265053615a88cf1dc66cd0bd54a))
+* make bodyHtml{Start,End} a global setting (fix [#146](https://github.com/vikejs/vike-vue/issues/146)) ([#147](https://github.com/vikejs/vike-vue/issues/147)) ([ae9792e](https://github.com/vikejs/vike-vue/commit/ae9792e14e79cfd6b8643dd956d5541174da6c85))
+* make favicon setting global ([85d2656](https://github.com/vikejs/vike-vue/commit/85d2656253f01fd2f23653f8ef6d9378fb72eeca))
+* make Head setting cumulative ([2afa2d7](https://github.com/vikejs/vike-vue/commit/2afa2d769a990a476ca0d36fb73feb1bc6865ef4))
+* make title setting generate <meta property="og:title"> ([17a3325](https://github.com/vikejs/vike-vue/commit/17a33253a6afb58b51c145f70f71aa4981c9e19c))
+* remove <ClientOnly> component ([4059091](https://github.com/vikejs/vike-vue/commit/405909162103fccf44e6026b62857355acaf3735))
+* remove deprecated vuePlugins setting ([27041c8](https://github.com/vikejs/vike-vue/commit/27041c8009d12a8d65184a8bdfef6897a7f641d5))
+
+
+### Features
+
+* [useConfig()](https://vike.dev/useConfig) ([82bd56e](https://github.com/vikejs/vike-vue/commit/82bd56e153d5264859856c899eff296b9101aed1))
+* new hook [`onAfterRenderClient`](https://vike.dev/onAfterRenderClient) ([3a59de3](https://github.com/vikejs/vike-vue/commit/3a59de3f6f5f2bef923bc6272bdb8536dbd0f431))
+* new setting `viewport` ([6f30ccf](https://github.com/vikejs/vike-vue/commit/6f30ccf73e39662401cbf43c1fe25605bd17ff66))
+* new settings [`description`](https://vike.dev/description) ([c9b9be0](https://github.com/vikejs/vike-vue/commit/c9b9be0ccd73d0e94328c84111f05227e279d0c9))
+* new settings [`htmlAttributes`](https://vike.dev/htmlAttributes) and [`bodyAttributes`](https://vike.dev/bodyAttributes) ([#169](https://github.com/vikejs/vike-vue/issues/169)) ([efead0d](https://github.com/vikejs/vike-vue/commit/efead0d18748cca77403f239aadc331f3fb76f79))
+* new settings [`image`](https://vike.dev/image) ([5bf8ae6](https://github.com/vikejs/vike-vue/commit/5bf8ae67e784b7cb4241fe33be5e8b54fc27e525))
+
+
+### BREAKING CHANGES
+
+* The `Head` setting is now cumulative https://vike.dev/Head#cumulative
+* make sure you import types from vike/types (if you
+don't already). For example:
+
+```diff
+- import type { OnCreateAppSync } from 'vike-vue'
++ import type { OnCreateAppSync } from 'vike-vue/types'
+```
+* component `<ClientOnly>` removed: use `clientOnly()` helper instead https://vike.dev/clientOnly
+* +vuePlugins is removed: use +onCreateApp instead https://vike.dev/onCreateApp
+* The responsive viewport tag is now injected by default (`<meta name="viewport" content="width=device-width,initial-scale=1">`). If you already inject `<meta name="viewport">` then remove it or set the `viewport` setting to `null`, see https://vike.dev/viewport.
+* The setting `favicon` now only accepts one global
+value, see https://vike.dev/favicon#global
+* The [`title` setting](https://vike.dev/title) now also adds the `<meta property="og:title">` tag; if you generate it yourself then make sure to remove it.
+* the [bodyHtml{Start,End} settings](https://vike.dev/bodyHtmlEnd) are now global:
+you cannot use [config inheritance](https://vike.dev/config#inheritance) for them anymore,
+and make sure to define them at a global location such as `pages/+config.js`.
+
+
+
 ## [0.7.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.5...vike-vue@0.7.6) (2024-06-25)
 
 
