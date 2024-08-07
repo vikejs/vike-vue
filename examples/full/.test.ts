@@ -30,6 +30,8 @@ function runTest() {
     text: '1983-05-25',
   })
 
+  testUseConfig()
+
   const textNoSSR = 'This page is rendered only in the browser'
   {
     const url = '/without-ssr'
@@ -136,6 +138,30 @@ function testUrl({
     if (counter) {
       await testCounter()
     }
+  })
+}
+
+function testUseConfig() {
+  test('useConfig() HTML', async () => {
+    const html = await fetchHtml('/images')
+    expect(html).toMatch(
+      partRegex`<script type="application/ld+json">{"@context":"https://schema.org/","contentUrl":{"src":"${getAssetUrl(
+        'logo-new.svg',
+      )}"},"creator":{"@type":"Person","name":"brillout"}}</script>`,
+    )
+    expect(html).toMatch(
+      partRegex`<script type="application/ld+json">{"@context":"https://schema.org/","contentUrl":{"src":"${getAssetUrl(
+        'logo.svg',
+      )}"},"creator":{"@type":"Person","name":"Romuald Brillout"}}</script>`,
+    )
+  })
+  test('useConfig() hydration', async () => {
+    await page.goto(getServerUrl() + '/')
+    await testCounter()
+    ensureWasClientSideRouted('/pages/index')
+    await page.click('a:has-text("useConfig()")')
+    await testCounter()
+    ensureWasClientSideRouted('/pages/index')
   })
 }
 

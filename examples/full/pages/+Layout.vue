@@ -11,6 +11,7 @@
       <Link href="/hello">Route Function</Link>
       <Link href="/without-ssr">Without SSR</Link>
       <Link href="/client-only">Client-only</Link>
+      <Link href="/images">useConfig()</Link>
     </div>
     <div class="content"><slot /></div>
   </div>
