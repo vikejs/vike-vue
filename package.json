@@ -24,6 +24,7 @@
   },
   "pnpm": {
     "overrides": {
+      "vike": "0.4.182-commit-4405294",
       "vike-vue": "link:./packages/vike-vue/",
       "vike-vue-pinia": "link:./packages/vike-vue-pinia/",
       "vike-vue-query": "link:./packages/vike-vue-query/"
