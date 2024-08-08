@@ -160,8 +160,8 @@ importers:
   packages/vike-vue:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.3.8
-        version: 0.3.10
+        specifier: ^0.4.0
+        version: 0.4.0
       '@types/node':
         specifier: ^22.1.0
         version: 22.1.0
@@ -190,8 +190,8 @@ importers:
   packages/vike-vue-pinia:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.3.8
-        version: 0.3.10
+        specifier: ^0.4.0
+        version: 0.4.0
       '@types/node':
         specifier: ^22.1.0
         version: 22.1.0
@@ -217,8 +217,8 @@ importers:
   packages/vike-vue-query:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.3.8
-        version: 0.3.10
+        specifier: ^0.4.0
+        version: 0.4.0
       '@tanstack/vue-query':
         specifier: ^5.29.0
         version: 5.41.0(vue@3.4.36(typescript@5.4.5))
@@ -356,8 +356,8 @@ packages:
   '@brillout/picocolors@1.0.14':
     resolution: {integrity: sha512-XhyZY3/FUh56mDuLIjv5kN9qy+oQj7A/d2uQ6cJJ4uVv55+velua3abcrM5WIvs2RHZGA3EE7S9FWo+TjF10ew==}
 
-  '@brillout/release-me@0.3.10':
-    resolution: {integrity: sha512-Fi1HirObB31ZWTJKyb4TC4wYyP3FgWTuKuMvuCx2nodphQu0zGackTQrHWtH1suQxovjKTnyF+if0TKDYyy18A==}
+  '@brillout/release-me@0.4.0':
+    resolution: {integrity: sha512-V4YwITguHK3zOy9B4606lc9PQiFDp3p3Ifeq4KF7V8o9fs7OmcrfTWBE0EWFtiLhG2JeKb2RzM0t6Y4tLgXd6w==}
     hasBin: true
 
   '@brillout/require-shim@0.1.2':
@@ -2250,7 +2250,7 @@ snapshots:
 
   '@brillout/picocolors@1.0.14': {}
 
-  '@brillout/release-me@0.3.10':
+  '@brillout/release-me@0.4.0':
     dependencies:
       '@brillout/picocolors': 1.0.14
       commander: 11.1.0
