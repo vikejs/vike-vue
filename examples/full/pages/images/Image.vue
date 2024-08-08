@@ -1,33 +1,36 @@
 <template>
-  <img />
+  <img :src="props.src" :author="props.author" />
+  <Head>
+    <Script></Script>
+  </Head>
 </template>
 
 <style>
-  img {
-    height: 48px;
-    vertical-align: middle;
-    margin-left: 10px;
-  }
+img {
+  height: 48px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
 </style>
 
 <script lang="ts" setup>
-import { useAttrs, h } from 'vue'
-import { useConfig } from 'vike-vue/useConfig'
+import { h } from 'vue'
+import { Head } from 'vike-vue/Head'
 
-const { src, author } = useAttrs() as { src: string; author: string }
+const props = defineProps({
+  src: String,
+  author: String,
+})
 
-const config = useConfig()
-config({
-  Head: h('script', {
-    type: 'application/ld+json',
-    innerHTML: JSON.stringify({
-      '@context': 'https://schema.org/',
-      contentUrl: { src },
-      creator: {
-        '@type': 'Person',
-        name: author,
-      },
-    }),
+const Script = h('script', {
+  type: 'application/ld+json',
+  innerHTML: JSON.stringify({
+    '@context': 'https://schema.org/',
+    contentUrl: { src: props.src },
+    creator: {
+      '@type': 'Person',
+      name: props.author,
+    },
   }),
 })
 </script>
