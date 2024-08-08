@@ -6,15 +6,34 @@ function runTest() {
   run('pnpm run dev')
 
   const textLandingPage = 'A New Hope'
+  const textLoading = 'Loading...'
   const title = 'Star Wars Movies'
-  testUrl({
-    url: '/',
+  testUrlFast({
+    url: '/?delay=50',
     title,
     text: textLandingPage,
   })
+  testUrlSlow({
+    url: '/?delay=350',
+    title,
+    text: textLoading,
+  })
 }
 
-function testUrl({ url, title, text }: { url: string; title: string; text: string }) {
+function testUrlFast({ url, title, text }: { url: string; title: string; text: string }) {
+  test(url + ' (HTML)', async () => {
+    const html = await fetchHtml(url)
+    expect(html).toContain(text)
+    expect(getTitle(html)).toBe(title)
+  })
+  test(url + ' (Hydration)', async () => {
+    await page.goto(getServerUrl() + url)
+    const body = await page.textContent('body')
+    expect(body).toContain(text)
+  })
+}
+
+function testUrlSlow({ url, title, text }: { url: string; title: string; text: string }) {
   test(url + ' (HTML)', async () => {
     const html = await fetchHtml(url)
     expect(html).toContain(text)
