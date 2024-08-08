@@ -12,6 +12,10 @@
       "browser": "./dist/hooks/useConfig/useConfig-client.js",
       "default": "./dist/hooks/useConfig/useConfig-server.js"
     },
+    "./Head": {
+      "browser": "./dist/components/Head/Head-client.js",
+      "default": "./dist/components/Head/Head-server.js"
+    },
     "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
       "default": "./dist/types/index.js",
@@ -57,6 +61,9 @@
       ],
       "useConfig": [
         "./dist/hooks/useConfig/useConfig-server.d.ts"
+      ],
+      "Head": [
+        "./dist/components/Head/Head-server.d.ts"
       ],
       "clientOnly": [
         "./dist/helpers/clientOnly.d.ts"
