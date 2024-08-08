@@ -49,7 +49,7 @@ const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) 
 export default {
   name: 'vike-vue',
   require: {
-    vike: '>=0.4.182',
+    vike: '>=0.4.183',
   },
 
   // https://vike.dev/onRenderHtml
