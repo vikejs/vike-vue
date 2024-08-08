@@ -1,11 +1,13 @@
+export { testRun }
+
 import { test, expect, run, fetchHtml, page, getServerUrl, autoRetry, partRegex } from '@brillout/test-e2e'
 import assert from 'node:assert'
-const isProd = false
 
-runTest()
+let isProd: boolean
 
-function runTest() {
-  run('pnpm run dev')
+function testRun(cmd: `pnpm run ${'dev' | 'preview'}`) {
+  run(cmd)
+  isProd = cmd !== 'pnpm run dev'
 
   const textLandingPage = 'Rendered to HTML.'
   const title = 'My Vike + Vue App'
