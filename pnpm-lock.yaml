@@ -5,7 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  vike: 0.4.182-commit-4405294
   vike-vue: link:./packages/vike-vue/
   vike-vue-pinia: link:./packages/vike-vue-pinia/
   vike-vue-query: link:./packages/vike-vue-query/
@@ -51,8 +50,8 @@ importers:
         specifier: ^0.26.2
         version: 0.26.2(rollup@4.19.0)(vite@5.4.0(@types/node@22.1.0))
       vike:
-        specifier: 0.4.182-commit-4405294
-        version: 0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0))
+        specifier: ^0.4.182
+        version: 0.4.182(vite@5.4.0(@types/node@22.1.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -78,8 +77,8 @@ importers:
         specifier: ^5.0.4
         version: 5.1.0(vite@5.4.0(@types/node@22.1.0))(vue@3.4.36(typescript@5.5.4))
       vike:
-        specifier: 0.4.182-commit-4405294
-        version: 0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0))
+        specifier: ^0.4.182
+        version: 0.4.182(vite@5.4.0(@types/node@22.1.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -99,8 +98,8 @@ importers:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.36(typescript@5.4.5))
       vike:
-        specifier: 0.4.182-commit-4405294
-        version: 0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0))
+        specifier: ^0.4.182
+        version: 0.4.182(vite@5.4.0(@types/node@22.1.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -136,8 +135,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       vike:
-        specifier: 0.4.182-commit-4405294
-        version: 0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0))
+        specifier: ^0.4.182
+        version: 0.4.182(vite@5.4.0(@types/node@22.1.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -173,8 +172,8 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
       vike:
-        specifier: 0.4.182-commit-4405294
-        version: 0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0))
+        specifier: ^0.4.182
+        version: 0.4.182(vite@5.4.0(@types/node@22.1.0))
       vite:
         specifier: ^5.4.0
         version: 5.4.0(@types/node@22.1.0)
@@ -203,8 +202,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       vike:
-        specifier: 0.4.182-commit-4405294
-        version: 0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0))
+        specifier: ^0.4.182
+        version: 0.4.182(vite@5.4.0(@types/node@22.1.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -230,8 +229,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       vike:
-        specifier: 0.4.182-commit-4405294
-        version: 0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0))
+        specifier: ^0.4.182
+        version: 0.4.182(vite@5.4.0(@types/node@22.1.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -2010,8 +2009,8 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vike@0.4.182-commit-4405294:
-    resolution: {integrity: sha512-GPlsRZPz3ZGN10jyuxzZikaKhAN1VJV7F7oxzsdwKUSkkQYGQXnVfSAjDwphhrXTZCIFffLG2os4sUNHrM1zmA==}
+  vike@0.4.182:
+    resolution: {integrity: sha512-1qZzckh5tyvVbZ3cGptieOFcpyfd8avHINGk7R38uEohR/mnW4pRjv9ff6V0sskDu3V8k+ndREK+Hq0hxJPikg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -3795,7 +3794,7 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.182-commit-4405294(vite@5.4.0(@types/node@22.1.0)):
+  vike@0.4.182(vite@5.4.0(@types/node@22.1.0)):
     dependencies:
       '@brillout/import': 0.2.3
       '@brillout/json-serializer': 0.5.13
