@@ -1,5 +1,8 @@
 <template>
   <img />
+  <Head>
+    <meta name="description" content="testing Head component">
+  </Head>
 </template>
 
 <style>
@@ -13,6 +16,7 @@
 <script lang="ts" setup>
 import { useAttrs, h } from 'vue'
 import { useConfig } from 'vike-vue/useConfig'
+import { Head } from 'vike-vue/Head'
 
 const { src, author } = useAttrs() as { src: string; author: string }
 
