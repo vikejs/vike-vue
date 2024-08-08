@@ -18,6 +18,7 @@
 
 <script lang="ts" setup>
 import Link from '../components/Link.vue'
+import './global.css'
 </script>
 
 <style>
