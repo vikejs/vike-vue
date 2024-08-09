@@ -1,20 +1,15 @@
 export { Head }
 
-// Same as ./Head-server.ts but importing useConfig-client.js
-
-import { useConfig } from '../../hooks/useConfig/useConfig-client.js'
-
-// TODO: make this a Vue component
+import { defineComponent } from 'vue'
 
 /**
- * Add arbitrary `<head>` tags.
- *
- * (The children are teleported to `<head>`.)
+ * Does nothing on client side.
  *
  * https://vike.dev/Head
  */
-function Head({ children }: { children: React.ReactNode }): null {
-  const config = useConfig()
-  config({ Head: children })
-  return null
-}
+
+const Head = /* @__PURE__ */ defineComponent({
+  name: 'Head',
+  inheritAttrs: false,
+  render() {},
+})
