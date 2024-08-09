@@ -5,7 +5,7 @@
   </Head>
 </template>
 
-<style>
+<style scoped>
 img {
   height: 48px;
   vertical-align: middle;

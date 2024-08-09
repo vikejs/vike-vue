@@ -1,4 +1,5 @@
 <template>
+  <Config :head="Head" :image="image" />
   <h1>My Vike + Vue app</h1>
   This page is:
   <ul>
@@ -18,7 +19,14 @@ export default { components }
 
 <script lang="ts" setup>
 import * as toastPlugin from 'vue-toast-notification'
-import { onBeforeUnmount, onMounted } from 'vue'
+import { h, onBeforeUnmount, onMounted } from 'vue'
+import { Config } from 'vike-vue/Config'
+import image from '../../assets/logo-new.svg'
+
+const Head = h('meta', {
+  name: 'description',
+  content: 'test meta',
+})
 
 const toast = toastPlugin.useToast()
 
@@ -43,7 +51,7 @@ onBeforeUnmount(() => {
 }
 </style>
 
-<style>
+<style scoped>
 /* see https://stackoverflow.com/questions/55206901/how-to-import-css-files-in-vue-3-child-components */
 @import 'vue-toast-notification/dist/theme-sugar.css';
 </style>

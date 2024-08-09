@@ -19,6 +19,8 @@ export default defineConfig({
         ['hooks/useData']: resolve(__dirname, './src/hooks/useData.ts'),
         ['hooks/useConfig/useConfig-client']: resolve(__dirname, './src/hooks/useConfig/useConfig-client.ts'),
         ['hooks/useConfig/useConfig-server']: resolve(__dirname, './src/hooks/useConfig/useConfig-server.ts'),
+        ['components/Config/Config-client']: resolve(__dirname, './src/components/Config/Config-client.ts'),
+        ['components/Config/Config-server']: resolve(__dirname, './src/components/Config/Config-server.ts'),
         ['components/Head/Head-client']: resolve(__dirname, './src/components/Head/Head-client.ts'),
         ['components/Head/Head-server']: resolve(__dirname, './src/components/Head/Head-server.ts'),
       },
