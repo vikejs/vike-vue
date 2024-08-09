@@ -21,7 +21,12 @@ const Config = /* @__PURE__ */ defineComponent({
       let Head
       if (slots.default != null) {
         const els = slots.default()
-        Head = () => els
+        Head = () =>
+          els.map((el) => ({
+            ...el,
+            // remove CSS scope marker (data-v-...)
+            scopeId: undefined,
+          }))
       }
       config({
         ...attrs,

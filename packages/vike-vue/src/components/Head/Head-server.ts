@@ -18,7 +18,14 @@ const Head = /* @__PURE__ */ defineComponent({
     watchEffect(() => {
       if (slots.default != null) {
         const els = slots.default()
-        config({ Head: () => els })
+        config({
+          Head: () =>
+            els.map((el) => ({
+              ...el,
+              // remove CSS scope marker (data-v-...)
+              scopeId: undefined,
+            })),
+        })
       }
     })
     return () => undefined
