@@ -1,19 +1,27 @@
 export { Config }
 
 // Same as ./Config-server.ts but importing useConfig-client.js
-
+import { defineComponent, useAttrs, watchEffect } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-client.js'
 import type { ConfigFromHook } from '../../+config.js'
 
-// TODO: make this a Vue component
-
 /**
- * Set configurations inside React components.
+ * Set configurations inside Vue components.
  *
- * https://vike.dev/useConfig
+ * https://vike.dev/useConfig#config-head
  */
-function Config(props: ConfigFromHook): null {
-  const config = useConfig()
-  config(props)
-  return null
-}
+const Config = /* @__PURE__ */ defineComponent({
+  name: 'Config',
+  setup() {
+    const attrs: ConfigFromHook = useAttrs()
+    const config = useConfig()
+    watchEffect(() => {
+      config({
+        ...attrs,
+        // we ignore a Head attribute and the default slot on client side
+        Head: undefined,
+      })
+    })
+    return () => undefined
+  },
+})
