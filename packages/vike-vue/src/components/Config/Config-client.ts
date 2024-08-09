@@ -3,6 +3,7 @@ export { Config }
 // Same as ./Config-server.ts but importing useConfig-client.js
 import { defineComponent, useAttrs, watchEffect } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-client.js'
+import { noop } from '../../utils/noop.js'
 import type { ConfigFromHook } from '../../+config.js'
 
 /**
@@ -10,7 +11,7 @@ import type { ConfigFromHook } from '../../+config.js'
  *
  * https://vike.dev/useConfig#config-head
  */
-const Config = /* @__PURE__ */ defineComponent({
+const Config = defineComponent({
   name: 'Config',
   setup() {
     const attrs: ConfigFromHook = useAttrs()
@@ -22,6 +23,6 @@ const Config = /* @__PURE__ */ defineComponent({
         Head: undefined,
       })
     })
-    return () => undefined
+    return noop
   },
 })

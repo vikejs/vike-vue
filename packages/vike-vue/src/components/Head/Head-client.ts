@@ -1,15 +1,8 @@
-export { Head }
-
-import { defineComponent } from 'vue'
+import { noop } from '../../utils/noop.js'
 
 /**
  * Does nothing on client side.
  *
  * https://vike.dev/Head
  */
-
-const Head = /* @__PURE__ */ defineComponent({
-  name: 'Head',
-  inheritAttrs: false,
-  render() {},
-})
+export { noop as Head }

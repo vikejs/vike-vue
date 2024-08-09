@@ -2,6 +2,7 @@ export { Head }
 
 import { defineComponent, watchEffect } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
+import { noop } from '../../utils/noop.js'
 
 /**
  * Add arbitrary `<head>` tags.
@@ -10,7 +11,7 @@ import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
  *
  * https://vike.dev/Head
  */
-const Head = /* @__PURE__ */ defineComponent({
+const Head = defineComponent({
   name: 'Head',
   inheritAttrs: false,
   setup(_, { slots }) {
@@ -28,6 +29,6 @@ const Head = /* @__PURE__ */ defineComponent({
         })
       }
     })
-    return () => undefined
+    return noop
   },
 })
