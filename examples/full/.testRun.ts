@@ -34,6 +34,10 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview'}`) {
 
   testUseConfig()
 
+  testConfigComponent()
+
+  testHeadComponent()
+
   const textNoSSR = 'This page is rendered only in the browser'
   {
     const url = '/without-ssr'
@@ -166,6 +170,46 @@ function testUseConfig() {
     ensureWasClientSideRouted('/pages/index')
     await page.goto(getServerUrl() + '/images')
     await testCounter()
+  })
+}
+
+function testConfigComponent() {
+  test('Config Component HTML', async () => {
+    const html = await fetchHtml('/images')
+    expect(getTitle(html)).toBe('Image created by Romuald Brillout')
+    // check that description is rendered in <head>
+    expect(html).toMatch(
+      partRegex`<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">${/[^\x00]*/}</head>`,
+    )
+    // check that description is not rendered in <body>
+    expect(html).not.toMatch(
+      partRegex`<body>${/[^\x00]*/}<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">`,
+    )
+    // check that origin description is removed
+    expect(html).not.toMatch(partRegex`<meta name="description" content="Demo showcasing Vike + Vue">`)
+  })
+}
+
+function testHeadComponent() {
+  test('Head Component HTML', async () => {
+    const html = await fetchHtml('/images')
+    // check that all tags are rendered in <head>
+    expect(html).toMatch(
+      partRegex`<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">${/[^\x00]*/}</head>`,
+    )
+    expect(html).toMatch(partRegex`<meta property="og:image" content="${getAssetUrl('logo.svg')}">${/[^\x00]*/}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:author" content="brillout">${/[^\x00]*/}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:author" content="Romuald Brillout">${/[^\x00]*/}</head>`)
+
+    // check that none of the tags is rendered in <body>
+    expect(html).not.toMatch(
+      partRegex`<body>${/[^\x00]*/}<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">`,
+    )
+    expect(html).not.toMatch(
+      partRegex`<body>${/[^\x00]*/}<meta property="og:image" content="${getAssetUrl('logo.svg')}">`,
+    )
+    expect(html).not.toMatch(partRegex`<body>${/[^\x00]*/}<meta property="og:author" content="brillout">`)
+    expect(html).not.toMatch(partRegex`<body>${/[^\x00]*/}<meta property="og:author" content="Romuald Brillout">`)
   })
 }
 
