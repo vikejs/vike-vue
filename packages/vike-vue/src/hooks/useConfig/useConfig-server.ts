@@ -45,13 +45,7 @@ function setConfigOverPageContext(config: ConfigFromHook, pageContext: PageConte
     const configValue = config[configName]
     if (!configValue) return
     pageContext._configFromHook![configName] ??= []
-
-    // Slot of `<Head>` component is an Array
-    if (Array.isArray(configValue)) {
-      pageContext._configFromHook![configName].push(...configValue)
-    } else {
-      pageContext._configFromHook![configName].push(configValue)
-    }
+    pageContext._configFromHook![configName].push(configValue)
   })
 
   // Overridable values
