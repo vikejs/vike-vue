@@ -1,7 +1,7 @@
 <template>
-  <img :src="props.src" :author="props.author" />
+  <img :src="src" />
   <Head>
-    <Script></Script>
+    <CustomScript />
   </Head>
 </template>
 
@@ -17,19 +17,19 @@ img {
 import { h } from 'vue'
 import { Head } from 'vike-vue/Head'
 
-const props = defineProps<{
+const { src, author } = defineProps<{
   src?: string
   author?: string
 }>()
 
-const Script = h('script', {
+const CustomScript = h('script', {
   type: 'application/ld+json',
   innerHTML: JSON.stringify({
     '@context': 'https://schema.org/',
-    contentUrl: { src: props.src },
+    contentUrl: { src: src },
     creator: {
       '@type': 'Person',
-      name: props.author,
+      name: author,
     },
   }),
 })

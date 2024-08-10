@@ -15,12 +15,18 @@ import { defineComponent } from 'vue'
 const Head = defineComponent({
   name: 'Head',
   inheritAttrs: false,
-  setup:
-    (_props, { slots }) =>
-    () => {
-      if (!slots.default) return
-      const config = useConfig()
-      config({ Head: slots.default() })
-      return null
-    },
+  setup: (_props, { slots }) => {
+    if (!slots.default) return () => {}
+    const elements = slots.default()
+    const config = useConfig()
+    config({
+      Head: () =>
+        elements.map((el) => ({
+          ...el,
+          // remove CSS scope marker (data-v-...)
+          scopeId: undefined,
+        })),
+    })
+    return () => {}
+  },
 })

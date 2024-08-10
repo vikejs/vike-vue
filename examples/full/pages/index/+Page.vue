@@ -1,5 +1,5 @@
 <template>
-  <Config :head="Head" :image="image" />
+  <Config :Head="Head" :image="image" />
   <h1>My Vike + Vue app</h1>
   This page is:
   <ul>

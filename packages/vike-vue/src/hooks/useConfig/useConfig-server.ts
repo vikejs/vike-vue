@@ -1,4 +1,4 @@
-export { useConfig }
+export { useConfig, configsCumulative, configsOverridable }
 
 import type { PageContext } from 'vike/types'
 import type { PageContextInternal } from '../../types/PageContext.js'
