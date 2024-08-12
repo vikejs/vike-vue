@@ -174,7 +174,7 @@ declare global {
        *
        * https://vike.dev/title
        */
-      title?: string | ((pageContext: PageContext_) => string)
+      title?: string | null | ((pageContext: PageContext_) => string | null | undefined)
 
       /**
        * Set the page's description.
@@ -189,7 +189,7 @@ declare global {
        *
        * https://vike.dev/description
        */
-      description?: string | ((pageContext: PageContextServer) => string)
+      description?: string | null | ((pageContext: PageContextServer) => string | null | undefined)
 
       /**
        * Set the page's preview image upon URL sharing.
@@ -204,7 +204,7 @@ declare global {
        *
        * https://vike.dev/image
        */
-      image?: string | ((pageContext: PageContextServer) => string)
+      image?: string | null | ((pageContext: PageContextServer) => string | null | undefined)
 
       /**
        * Set the page's width shown to the user on mobile/tablet devices.
@@ -213,7 +213,7 @@ declare global {
        *
        * https://vike.dev/viewport
        */
-      viewport?: Viewport
+      viewport?: Viewport | ((pageContext: PageContextServer) => Viewport | undefined)
 
       /**
        * Set the page's favicon.
@@ -227,7 +227,7 @@ declare global {
        *
        * https://vike.dev/favicon
        */
-      favicon?: string
+      favicon?: string | null | ((pageContext: PageContextServer) => string | null | undefined)
 
       /**
        * Set the page's language (`<html lang>`).
@@ -236,7 +236,7 @@ declare global {
        *
        * https://vike.dev/lang
        */
-      lang?: string | ((pageContext: PageContext_) => string) | null
+      lang?: string | null | ((pageContext: PageContext_) => string | null | undefined)
 
       /**
        * Add tag attributes such as `<html class="dark">`.
