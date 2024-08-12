@@ -346,18 +346,6 @@ declare global {
   }
 }
 
-// JSDocs are preserved
-type PickWithoutGetter<T, K extends keyof T> = {
-  [P in K]: Exclude<T[P], Function>
-}
-export type ConfigFromHook = PickWithoutGetter<Vike.Config, 'Head' | 'title' | 'description' | 'image'>
-export type ConfigFromHookResolved = {
-  Head?: Component[]
-  title?: string
-  description?: string
-  image?: string
-}
-
 // This is a workaround for
 // * https://github.com/vuejs/core/issues/8303
 // * https://github.com/esbuild-kit/tsx/issues/113

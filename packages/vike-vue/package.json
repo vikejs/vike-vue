@@ -14,8 +14,8 @@
     },
     "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
-      "default": "./dist/types/index.js",
-      "types": "./dist/types/index.d.ts"
+      "default": "./dist/hooks/types.js",
+      "types": "./dist/hooks/types.d.ts"
     }
   },
   "scripts": {
@@ -47,7 +47,7 @@
         "./dist/+config.d.ts"
       ],
       "types": [
-        "./dist/types/index.d.ts"
+        "./dist/hooks/types.d.ts"
       ],
       "usePageContext": [
         "./dist/hooks/usePageContext.d.ts"
