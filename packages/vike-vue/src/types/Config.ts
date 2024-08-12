@@ -6,7 +6,7 @@ type PickWithoutGetter<T, K extends keyof T> = {
 }
 export type ConfigFromHook = PickWithoutGetter<
   Vike.Config,
-  'Head' | 'title' | 'description' | 'image' | 'favicon' | 'lang' | 'viewport'
+  'Head' | 'title' | 'description' | 'image' | 'favicon' | 'lang' | 'viewport' | 'bodyAttributes' | 'htmlAttributes'
 >
 export type ConfigFromHookResolved = Omit<ConfigFromHook, ConfigFromHookCumulative> &
   Pick<Vike.ConfigResolved, ConfigFromHookCumulative>
