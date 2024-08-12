@@ -1,3 +1,17 @@
+## [0.8.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.0...vike-vue@0.8.1) (2024-08-12)
+
+
+### Bug Fixes
+
+* don't unnecessarily pass useConfig() values to client-side ([1dc1f48](https://github.com/vikejs/vike-vue/commit/1dc1f48dd36c36799b4618f8c0b193e4b41a66a7))
+
+
+### Features
+
+* support setting `{body,html}Attributes` based on `pageContext` ([3bdcd98](https://github.com/vikejs/vike-vue/commit/3bdcd9891b7b27dfcfe10f61f110681e46ff2193))
+
+
+
 # [0.8.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.7.6...vike-vue@0.8.0) (2024-08-06)
 
 
