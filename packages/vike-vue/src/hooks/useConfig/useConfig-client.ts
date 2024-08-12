@@ -22,7 +22,8 @@ function useConfig(): (config: ConfigFromHook) => void {
     if (!('_headAlreadySet' in pageContext)) {
       setPageContextConfigFromHook(config, pageContext)
     } else {
-      apply(config)
+      // We need to use setTimeout() for this to work, even if the delay is 0ms.
+      setTimeout(() => apply(config), 0)
     }
   }
 }
