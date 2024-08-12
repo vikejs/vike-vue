@@ -20,7 +20,7 @@ import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
 import type { PageContextInternal } from '../types/PageContext'
 
-type ChangePage = (pageContext: PageContext) => Promise<void>
+type ChangePage = (pageContext: PageContext & PageContextInternal) => Promise<void>
 async function createVueApp(
   pageContext: PageContext & PageContextInternal,
   ssr: boolean,
@@ -70,7 +70,8 @@ async function createVueApp(
   setData(app, dataReactive)
 
   // changePage() is called upon navigation, see +onRenderClient.ts
-  const changePage: ChangePage = async (pageContext: PageContext) => {
+  const changePage: ChangePage = async (pageContext) => {
+    pageContext._headAlreadySet = true
     let returned = false
     let err: unknown
     app.config.errorHandler = (err_) => {

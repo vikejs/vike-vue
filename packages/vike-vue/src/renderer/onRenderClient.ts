@@ -44,8 +44,6 @@ const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRe
 }
 
 function updateDocument(pageContext: PageContextClient & PageContextInternal) {
-  pageContext._headAlreadySet = true
-
   const title = getHeadSetting<string | null>('title', pageContext)
   const lang = getHeadSetting<string | null>('lang', pageContext)
 
