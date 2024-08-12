@@ -63,6 +63,10 @@ async function getPageHtml(pageContext: PageContextServer) {
         ? renderToWebStreamWithErrorHandling(app, ssrContext)
         : renderToNodeStreamWithErrorHandling(app, ssrContext)
 
+    // TODO/breaking-change: always call onAfterRenderHtml()
+    //  - I.e. don't call it inside this `if (!!pageContext.Page)` block.
+    //  - Tell users to use `!!pageContext.Page` if they want to apply the hook only for SSR.
+    //    - Already done: https://vike.dev/onAfterRenderHtml
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
     Object.assign(pageContext, { ssrContext })
 
