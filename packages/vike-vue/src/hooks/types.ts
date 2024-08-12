@@ -1,6 +1,8 @@
 export type {
   OnCreateAppSync,
   OnCreateAppAsync,
+  OnBeforeRenderHtmlSync,
+  OnBeforeRenderHtmlAsync,
   OnAfterRenderHtmlSync,
   OnAfterRenderHtmlAsync,
   OnBeforeRenderClientSync,
@@ -30,17 +32,30 @@ type OnCreateAppSync = (pageContext: PageContextWithApp) => void
 type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
 
 /**
- * Hook called right after rendering the page's root Vue component.
+ * Hook called before rendering the page's HTML.
+ *
+ * https://vike.dev/onBeforeRenderHtml
+ */
+type OnBeforeRenderHtmlSync = (pageContext: PageContextServer) => void
+/**
+ * Hook called before rendering the page's HTML.
+ *
+ * https://vike.dev/onBeforeRenderHtml
+ */
+type OnBeforeRenderHtmlAsync = (pageContext: PageContextServer) => Promise<void>
+
+/**
+ * Hook called right after rendering the page's root Vue component to HTML.
  * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
  *
- * Typically used for dehydrating state management libraries.
+ * https://vike.dev/onAfterRenderHtml
  */
 type OnAfterRenderHtmlSync = (pageContext: PageContextServer) => PageContextServer['fromHtmlRenderer']
 /**
- * Hook called right after rendering the page's root Vue component.
+ * Hook called right after rendering the page's root Vue component to HTML.
  * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
  *
- * Typically used for dehydrating state management libraries.
+ * https://vike.dev/onAfterRenderHtml
  */
 type OnAfterRenderHtmlAsync = (pageContext: PageContextServer) => Promise<PageContextServer['fromHtmlRenderer']>
 

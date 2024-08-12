@@ -6,6 +6,8 @@ import type {
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
   BodyInjectHtml,
+  OnBeforeRenderHtmlSync,
+  OnBeforeRenderHtmlAsync,
 } from './hooks/types'
 
 import type {
@@ -103,6 +105,10 @@ export default {
     },
     onCreateApp: {
       env: { server: true, client: true },
+      cumulative: true,
+    },
+    onBeforeRenderHtml: {
+      env: { server: true },
       cumulative: true,
     },
     onAfterRenderHtml: {
@@ -306,10 +312,15 @@ declare global {
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync | ImportString
 
       /**
-       * Hook called right after rendering the page's root Vue component.
-       * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
+       * Hook called before rendering the page's HTML.
        *
-       * Typically used for dehydrating state management libraries.
+       * https://vike.dev/onBeforeRenderHtml
+       */
+      onBeforeRenderHtml?: OnBeforeRenderHtmlSync | OnBeforeRenderHtmlAsync | ImportString
+
+      /**
+       * Hook called right after rendering the page's root Vue component to HTML.
+       * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
        *
        * https://vike.dev/onAfterRenderHtml
        */
@@ -333,6 +344,7 @@ declare global {
     }
     interface ConfigResolved {
       onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
+      onBeforeRenderHtml?: Array<OnBeforeRenderHtmlSync | OnBeforeRenderHtmlAsync>
       onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
       onAfterRenderClient?: Function[]

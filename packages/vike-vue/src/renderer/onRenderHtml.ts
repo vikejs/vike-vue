@@ -13,6 +13,8 @@ import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttri
 import type { PageContextInternal } from '../types/PageContext.js'
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
+  await callCumulativeHooks(pageContext.config.onBeforeRenderHtml, pageContext)
+
   const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
 
   const headHtml = await getHeadHtml(pageContext)
