@@ -13,11 +13,11 @@
 </template>
 
 <style scoped>
-  img {
-    height: 48px;
-    vertical-align: middle;
-    margin-left: 10px;
-  }
+img {
+  height: 48px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
 </style>
 
 <script lang="ts" setup>
