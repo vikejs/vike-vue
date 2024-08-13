@@ -150,6 +150,7 @@ function testUrl({
 function testUseConfig() {
   test('useConfig() HTML', async () => {
     const html = await fetchHtml('/images')
+    expect(getTitle(html)).toBe('Image created by Romuald Brillout')
     expect(html).toMatch(
       partRegex`<script type="application/ld+json">{"@context":"https://schema.org/","contentUrl":{"src":"${getAssetUrl(
         'logo-new.svg',
@@ -163,13 +164,17 @@ function testUseConfig() {
   })
   test('useConfig() hydration', async () => {
     await page.goto(getServerUrl() + '/')
+    expect(await page.title()).toBe('My Vike + Vue App')
     await testCounter()
     ensureWasClientSideRouted('/pages/index')
     await page.click('a:has-text("useConfig()")')
     await testCounter()
     ensureWasClientSideRouted('/pages/index')
     await page.goto(getServerUrl() + '/images')
+    expect(await page.title()).toBe('Image created by Romuald Brillout')
     await testCounter()
+    await page.goto(getServerUrl() + '/')
+    expect(await page.title()).toBe('My Vike + Vue App')
   })
 }
 
