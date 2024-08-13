@@ -12,9 +12,11 @@ const Config = defineComponent<ConfigFromHook>(
     config(props)
     return () => {}
   },
-  // manual runtime props declaration is currently still needed.
-  // see https://vuejs.org/api/general.html#function-signature
+  // Manual runtime props declaration is currently still needed.
+  // See https://vuejs.org/api/general.html#function-signature
   {
+    name: 'Config',
+    inheritAttrs: false,
     props: ['title'],
   },
 )

@@ -1,5 +1,5 @@
 <template>
-  <Config :Head="Head" :image="image" />
+  <Config :Head="headTags" :image="image" />
   <h1>My Vike + Vue app</h1>
   This page is:
   <ul>
@@ -23,10 +23,10 @@ import { h, onBeforeUnmount, onMounted } from 'vue'
 import { Config } from 'vike-vue/Config'
 import image from '../../assets/logo-new.svg'
 
-const Head = h('meta', {
-  name: 'description',
-  content: 'test meta',
-})
+const headTags = [
+  h('meta', { name: 'description', content: 'test meta 1' }),
+  h('meta', { name: 'description', content: 'test meta 2' }),
+]
 
 const toast = toastPlugin.useToast()
 

@@ -4,6 +4,7 @@ export { Head }
 
 import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
 import { defineComponent } from 'vue'
+import { removeCssScopeId } from '../../utils/removeCssScopeId.js'
 
 /**
  * Add arbitrary `<head>` tags.
@@ -18,15 +19,9 @@ const Head = defineComponent({
   setup: (_props, { slots }) => {
     if (!slots.default) return () => {}
     const elements = slots.default()
+    const Head = removeCssScopeId(elements)
     const config = useConfig()
-    config({
-      Head: () =>
-        elements.map((el) => ({
-          ...el,
-          // remove CSS scope marker (data-v-...)
-          scopeId: undefined,
-        })),
-    })
+    config({ Head })
     return () => {}
   },
 })
