@@ -1,8 +1,9 @@
 export { Head }
 
-import { defineComponent, watchEffect } from 'vue'
+import { defineComponent } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
 import { noop } from '../../utils/noop.js'
+import { extractUnstyledChildren } from '../../utils/extractUnstyledChildren.js'
 
 /**
  * Add arbitrary `<head>` tags.
@@ -15,20 +16,11 @@ const Head = defineComponent({
   name: 'Head',
   inheritAttrs: false,
   setup(_, { slots }) {
-    const config = useConfig()
-    watchEffect(() => {
-      if (slots.default != null) {
-        const els = slots.default()
-        config({
-          Head: () =>
-            els.map((el) => ({
-              ...el,
-              // remove CSS scope marker (data-v-...)
-              scopeId: undefined,
-            })),
-        })
-      }
-    })
+    const Head = extractUnstyledChildren(slots.default)
+    if (Head) {
+      const config = useConfig()
+      config({ Head })
+    }
     return noop
   },
 })

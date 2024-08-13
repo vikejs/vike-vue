@@ -1,10 +1,9 @@
 export { Config }
 
 // Same as ./Config-server.ts but importing useConfig-client.js
-import { defineComponent, useAttrs, watchEffect } from 'vue'
+import { defineComponent, watchEffect } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-client.js'
 import { noop } from '../../utils/noop.js'
-import type { ConfigFromHook } from '../../types/Config.js'
 
 /**
  * Set configurations inside Vue components.
@@ -13,8 +12,8 @@ import type { ConfigFromHook } from '../../types/Config.js'
  */
 const Config = defineComponent({
   name: 'Config',
-  setup() {
-    const attrs: ConfigFromHook = useAttrs()
+  inheritAttrs: false,
+  setup(_, { attrs }) {
     const config = useConfig()
     watchEffect(() => {
       config({

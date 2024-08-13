@@ -1,10 +1,10 @@
 export { Config }
 
 // Same as ./Config-client.ts but importing useConfig-server.js
-import { defineComponent, useAttrs, watchEffect } from 'vue'
+import { defineComponent } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
 import { noop } from '../../utils/noop.js'
-import type { ConfigFromHook } from '../../types/Config.js'
+import { extractUnstyledChildren } from '../../utils/extractUnstyledChildren.js'
 
 /**
  * Set configurations inside Vue components.
@@ -15,26 +15,11 @@ import type { ConfigFromHook } from '../../types/Config.js'
  */
 const Config = defineComponent({
   name: 'Config',
-  setup(_, { slots }) {
-    const attrs: ConfigFromHook = useAttrs()
+  inheritAttrs: false,
+  setup(_, { attrs, slots }) {
+    const Head = extractUnstyledChildren(slots.default) || (() => attrs.Head)
     const config = useConfig()
-    watchEffect(() => {
-      let Head
-      if (slots.default != null) {
-        const els = slots.default()
-        Head = () =>
-          els.map((el) => ({
-            ...el,
-            // remove CSS scope marker (data-v-...)
-            scopeId: undefined,
-          }))
-      }
-      config({
-        ...attrs,
-        // we ignore a Head attribute
-        Head,
-      })
-    })
+    config({ ...attrs, Head })
     return noop
   },
 })
