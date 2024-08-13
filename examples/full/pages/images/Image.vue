@@ -3,12 +3,12 @@
 
   <Head>
     <meta property="og:image" :content="src" />
-    <meta property="og:author" :content="author" />
   </Head>
 
   <Config
     :title="`Image created by ${ author }`"
     :description="`Image at address ${ src } was created by ${ author }`"
+    :Head="headTag"
   />
 </template>
 
@@ -47,4 +47,6 @@ config({
     }),
   }),
 })
+
+const headTag = [h('meta', { property: 'og:author', content: author })]
 </script>
