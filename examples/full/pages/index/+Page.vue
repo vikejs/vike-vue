@@ -4,6 +4,7 @@
   <ul>
     <li>Rendered to HTML.</li>
     <li>Interactive. <Counter /></li>
+    <li>Change title: <input v-model="title" /></li>
   </ul>
   <Teleport to="#teleported">
     <p class="teleport">Teleported to the end of the body.</p>
@@ -18,7 +19,8 @@ export default { components }
 
 <script lang="ts" setup>
 import * as toastPlugin from 'vue-toast-notification'
-import { onBeforeUnmount, onMounted } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
+import { useConfig } from 'vike-vue/useConfig'
 
 const toast = toastPlugin.useToast()
 
@@ -31,6 +33,12 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   toast.clear()
+})
+
+const title = ref('My Vike + Vue app')
+const config = useConfig()
+watchEffect(() => {
+  config({ title: title.value })
 })
 </script>
 
