@@ -4,7 +4,7 @@ export { Config }
 import { defineComponent, useAttrs, watchEffect } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
 import { noop } from '../../utils/noop.js'
-import type { ConfigFromHook } from '../../+config.js'
+import type { ConfigFromHook } from '../../types/Config.js'
 
 /**
  * Set configurations inside Vue components.
