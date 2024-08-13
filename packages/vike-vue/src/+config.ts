@@ -6,6 +6,8 @@ import type {
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
   BodyInjectHtml,
+  OnBeforeRenderHtmlSync,
+  OnBeforeRenderHtmlAsync,
 } from './hooks/types'
 
 import type {
@@ -105,6 +107,10 @@ export default {
       env: { server: true, client: true },
       cumulative: true,
     },
+    onBeforeRenderHtml: {
+      env: { server: true },
+      cumulative: true,
+    },
     onAfterRenderHtml: {
       env: { server: true },
       cumulative: true,
@@ -174,7 +180,7 @@ declare global {
        *
        * https://vike.dev/title
        */
-      title?: string | ((pageContext: PageContext_) => string)
+      title?: string | null | ((pageContext: PageContext_) => string | null | undefined)
 
       /**
        * Set the page's description.
@@ -189,7 +195,7 @@ declare global {
        *
        * https://vike.dev/description
        */
-      description?: string | ((pageContext: PageContextServer) => string)
+      description?: string | null | ((pageContext: PageContextServer) => string | null | undefined)
 
       /**
        * Set the page's preview image upon URL sharing.
@@ -204,7 +210,7 @@ declare global {
        *
        * https://vike.dev/image
        */
-      image?: string | ((pageContext: PageContextServer) => string)
+      image?: string | null | ((pageContext: PageContextServer) => string | null | undefined)
 
       /**
        * Set the page's width shown to the user on mobile/tablet devices.
@@ -213,7 +219,7 @@ declare global {
        *
        * https://vike.dev/viewport
        */
-      viewport?: Viewport
+      viewport?: Viewport | ((pageContext: PageContextServer) => Viewport | undefined)
 
       /**
        * Set the page's favicon.
@@ -227,7 +233,7 @@ declare global {
        *
        * https://vike.dev/favicon
        */
-      favicon?: string
+      favicon?: string | null | ((pageContext: PageContextServer) => string | null | undefined)
 
       /**
        * Set the page's language (`<html lang>`).
@@ -236,21 +242,21 @@ declare global {
        *
        * https://vike.dev/lang
        */
-      lang?: string | ((pageContext: PageContext_) => string) | null
+      lang?: string | null | ((pageContext: PageContext_) => string | null | undefined)
 
       /**
        * Add tag attributes such as `<html class="dark">`.
        *
        * https://vike.dev/htmlAttributes
        */
-      htmlAttributes?: TagAttributes
+      htmlAttributes?: TagAttributes | ((pageContext: PageContextServer) => TagAttributes | undefined)
 
       /**
        * Add tag attributes such as `<body class="dark">`.
        *
        * https://vike.dev/bodyAttributes
        */
-      bodyAttributes?: TagAttributes
+      bodyAttributes?: TagAttributes | ((pageContext: PageContextServer) => TagAttributes | undefined)
 
       /**
        * If `true`, the page is rendered twice: on the server-side (to HTML) and on the client-side (hydration).
@@ -306,10 +312,15 @@ declare global {
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync | ImportString
 
       /**
-       * Hook called right after rendering the page's root Vue component.
-       * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
+       * Hook called before rendering the page's HTML.
        *
-       * Typically used for dehydrating state management libraries.
+       * https://vike.dev/onBeforeRenderHtml
+       */
+      onBeforeRenderHtml?: OnBeforeRenderHtmlSync | OnBeforeRenderHtmlAsync | ImportString
+
+      /**
+       * Hook called right after rendering the page's root Vue component to HTML.
+       * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
        *
        * https://vike.dev/onAfterRenderHtml
        */
@@ -333,6 +344,7 @@ declare global {
     }
     interface ConfigResolved {
       onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
+      onBeforeRenderHtml?: Array<OnBeforeRenderHtmlSync | OnBeforeRenderHtmlAsync>
       onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
       onAfterRenderClient?: Function[]
@@ -344,18 +356,6 @@ declare global {
       htmlAttributes?: TagAttributes[]
     }
   }
-}
-
-// JSDocs are preserved
-type PickWithoutGetter<T, K extends keyof T> = {
-  [P in K]: Exclude<T[P], Function>
-}
-export type ConfigFromHook = PickWithoutGetter<Vike.Config, 'Head' | 'title' | 'description' | 'image'>
-export type ConfigFromHookResolved = {
-  Head?: Component[]
-  title?: string
-  description?: string
-  image?: string
 }
 
 // This is a workaround for

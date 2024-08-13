@@ -13,6 +13,8 @@ import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttri
 import type { PageContextInternal } from '../types/PageContext.js'
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
+  await callCumulativeHooks(pageContext.config.onBeforeRenderHtml, pageContext)
+
   const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
 
   const headHtml = await getHeadHtml(pageContext)
@@ -63,6 +65,10 @@ async function getPageHtml(pageContext: PageContextServer) {
         ? renderToWebStreamWithErrorHandling(app, ssrContext)
         : renderToNodeStreamWithErrorHandling(app, ssrContext)
 
+    // TODO/breaking-change: always call onAfterRenderHtml()
+    //  - I.e. don't call it inside this `if (!!pageContext.Page)` block.
+    //  - Tell users to use `!!pageContext.Page` if they want to apply the hook only for SSR.
+    //    - Already done: https://vike.dev/onAfterRenderHtml
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
     Object.assign(pageContext, { ssrContext })
 
@@ -74,10 +80,10 @@ async function getPageHtml(pageContext: PageContextServer) {
 async function getHeadHtml(pageContext: PageContextServer & PageContextInternal) {
   pageContext._headAlreadySet = true
 
-  const title = getHeadSetting('title', pageContext)
-  const favicon = getHeadSetting('favicon', pageContext)
-  const description = getHeadSetting('description', pageContext)
-  const image = getHeadSetting('image', pageContext)
+  const title = getHeadSetting<string | null>('title', pageContext)
+  const favicon = getHeadSetting<string | null>('favicon', pageContext)
+  const description = getHeadSetting<string | null>('description', pageContext)
+  const image = getHeadSetting<string | null>('image', pageContext)
 
   const titleTags = !title ? '' : escapeInject`<title>${title}</title><meta property="og:title" content="${title}">`
   const faviconTag = !favicon ? '' : escapeInject`<link rel="icon" href="${favicon}" />`
@@ -87,7 +93,7 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
   const imageTags = !image
     ? ''
     : escapeInject`<meta property="og:image" content="${image}"><meta name="twitter:card" content="summary_large_image">`
-  const viewportTag = dangerouslySkipEscape(getViewportTag(pageContext.config.viewport))
+  const viewportTag = dangerouslySkipEscape(getViewportTag(getHeadSetting<Viewport>('viewport', pageContext)))
 
   let headElementHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   const { app } = await createVueApp(pageContext, true, 'Head')
@@ -122,12 +128,12 @@ async function getBodyHtmlBeginEnd(pageContext: PageContextServer, ssrContext: S
 }
 
 function getTagAttributes(pageContext: PageContextServer) {
-  let lang = getHeadSetting('lang', pageContext)
+  let lang = getHeadSetting<string | null>('lang', pageContext)
   // Don't set `lang` to its default value if it's `null` (so that users can set it to `null` in order to remove the default value)
   if (lang === undefined) lang = 'en'
 
-  const bodyAttributes = mergeTagAttributesList(pageContext.config.bodyAttributes)
-  const htmlAttributes = mergeTagAttributesList(pageContext.config.htmlAttributes)
+  const bodyAttributes = mergeTagAttributesList(getHeadSetting<TagAttributes[]>('bodyAttributes', pageContext))
+  const htmlAttributes = mergeTagAttributesList(getHeadSetting<TagAttributes[]>('htmlAttributes', pageContext))
 
   const bodyAttributesString = getTagAttributesString(bodyAttributes)
   const htmlAttributesString = getTagAttributesString({ ...htmlAttributes, lang: lang ?? htmlAttributes.lang })

@@ -1,6 +1,6 @@
 {
   "name": "vike-vue",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "type": "module",
   "exports": {
     "./config": "./dist/+config.js",
@@ -22,13 +22,13 @@
     },
     "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
-      "default": "./dist/types/index.js",
-      "types": "./dist/types/index.d.ts"
+      "default": "./dist/hooks/types.js",
+      "types": "./dist/hooks/types.d.ts"
     }
   },
   "scripts": {
     "dev": "vite build --watch",
-    "dev:check-types": "tsc --noEmit --watch",
+    "dev:typecheck": "tsc --noEmit --watch",
     "build": "rm -rf dist/ && vue-tsc --noEmit && vite build",
     "release": "release-me patch",
     "release:minor": "release-me minor",
@@ -55,7 +55,7 @@
         "./dist/+config.d.ts"
       ],
       "types": [
-        "./dist/types/index.d.ts"
+        "./dist/hooks/types.d.ts"
       ],
       "usePageContext": [
         "./dist/hooks/usePageContext.d.ts"
