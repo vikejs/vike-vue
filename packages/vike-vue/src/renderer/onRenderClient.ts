@@ -11,7 +11,12 @@ import type { PageContextInternal } from '../types/PageContext.js'
 
 let app: App | undefined
 let changePage: ChangePage | undefined
-const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
+const onRenderClient: OnRenderClientAsync = async (
+  pageContext: PageContextClient & PageContextInternal,
+): ReturnType<OnRenderClientAsync> => {
+  // Workaround for https://github.com/vikejs/vike-vue/pull/178#issuecomment-2285852251b
+  pageContext._configFromHook ??= {}
+
   if (!app) {
     // First rendering/hydration
 
