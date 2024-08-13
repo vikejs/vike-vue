@@ -19,10 +19,6 @@ export default { components }
 <script lang="ts" setup>
 import * as toastPlugin from 'vue-toast-notification'
 import { onBeforeUnmount, onMounted } from 'vue'
-import { useConfig } from 'vike-vue/useConfig'
-const config = useConfig()
-
-config({ title: 'custom' })
 
 const toast = toastPlugin.useToast()
 
