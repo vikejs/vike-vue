@@ -12,7 +12,9 @@ import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
 import type { PageContextInternal } from '../types/PageContext.js'
 
-const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
+const onRenderHtml: OnRenderHtmlAsync = async (
+  pageContext: PageContextServer & PageContextInternal,
+): ReturnType<OnRenderHtmlAsync> => {
   await callCumulativeHooks(pageContext.config.onBeforeRenderHtml, pageContext)
 
   const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
@@ -36,6 +38,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRender
       </body>
       <!-- built with https://github.com/vikejs/vike-vue -->
     </html>`
+
+  // Not needed on the client-side, thus we remove it to save KBs sent to the client
+  delete pageContext._configFromHook
 
   return {
     documentHtml,
@@ -98,9 +103,6 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
   let headElementHtml: ReturnType<typeof dangerouslySkipEscape> | string = ''
   const { app } = await createVueApp(pageContext, true, 'Head')
   headElementHtml = dangerouslySkipEscape(await renderToStringWithErrorHandling(app))
-
-  // Not needed on the client-side, thus we remove it to save KBs sent to the client
-  delete pageContext._configFromHook
 
   const headHtml = escapeInject`
     ${titleTags}
