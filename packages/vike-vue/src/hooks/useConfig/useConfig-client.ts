@@ -5,6 +5,7 @@ import type { PageContextInternal } from '../../types/PageContext.js'
 import type { ConfigFromHook } from '../../types/Config.js'
 import { usePageContext } from '../usePageContext.js'
 import { getPageContext } from 'vike/getPageContext'
+import { watchEffect } from 'vue'
 
 function useConfig(): (config: ConfigFromHook) => void {
   console.log('useConfig()')
@@ -15,12 +16,14 @@ function useConfig(): (config: ConfigFromHook) => void {
   // Component
   pageContext = usePageContext()
   return (config: ConfigFromHook) => {
-    console.log('config()')
-    if (!pageContext._headAlreadySet) {
-      setPageContextConfigFromHook(config, pageContext)
-    } else {
-      apply(config)
-    }
+    watchEffect(() => {
+      console.log('config()')
+      if (!pageContext._headAlreadySet) {
+        setPageContextConfigFromHook(config, pageContext)
+      } else {
+        apply(config)
+      }
+    })
   }
 }
 
