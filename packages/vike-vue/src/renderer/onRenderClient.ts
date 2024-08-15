@@ -17,7 +17,7 @@ const onRenderClient: OnRenderClientAsync = async (
   // Workaround for https://github.com/vikejs/vike-vue/pull/178#issuecomment-2285852251b
   pageContext._configFromHook ??= {}
   // Workaround for https://github.com/vikejs/vike-vue/issues/181
-  pageContext._headAlreadySetWrapper = { val: false }
+  pageContext._headAlreadySetWrapper = { val: pageContext.isHydration }
 
   if (!app) {
     // First rendering/hydration
