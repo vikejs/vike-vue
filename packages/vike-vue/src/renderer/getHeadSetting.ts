@@ -7,19 +7,19 @@ import type { ConfigFromHookResolved } from '../types/Config.js'
 import { configsCumulative } from '../hooks/useConfig/configsCumulative.js'
 import { includes } from '../utils/includes.js'
 
-// We use `any` instead of doing proper validation in order to save KBs sent to the client-side
+// We use `any` instead of doing proper validation in order to save KBs sent to the client-side.
 
 function getHeadSetting<T>(
-  headSetting: keyof ConfigFromHookResolved,
+  configName: keyof ConfigFromHookResolved,
   pageContext: PageContext & PageContextInternal,
 ): undefined | T {
   // Set by useConfig()
-  const valFromUseConfig = pageContext._configFromHook?.[headSetting]
+  const valFromUseConfig = pageContext._configFromHook?.[configName]
   // Set by +configName.js
-  const valFromConfig = pageContext.config[headSetting]
+  const valFromConfig = pageContext.config[configName]
 
   const getCallable = (val: unknown) => (isCallable(val) ? val(pageContext) : val)
-  if (!includes(configsCumulative, headSetting)) {
+  if (!includes(configsCumulative, configName)) {
     if (valFromUseConfig !== undefined) return valFromUseConfig as any
     return getCallable(valFromConfig) as any
   } else {
