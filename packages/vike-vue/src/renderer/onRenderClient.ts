@@ -16,6 +16,8 @@ const onRenderClient: OnRenderClientAsync = async (
 ): ReturnType<OnRenderClientAsync> => {
   // Workaround for https://github.com/vikejs/vike-vue/pull/178#issuecomment-2285852251b
   pageContext._configFromHook ??= {}
+  // Workaround for https://github.com/vikejs/vike-vue/issues/181
+  pageContext._headAlreadySetWrapper = { val: false }
 
   if (!app) {
     // First rendering/hydration
@@ -49,7 +51,7 @@ const onRenderClient: OnRenderClientAsync = async (
 }
 
 function updateDocument(pageContext: PageContextClient & PageContextInternal) {
-  pageContext._headAlreadySet = true
+  pageContext._headAlreadySetWrapper!.val = true
 
   const title = getHeadSetting<string | null>('title', pageContext)
   const lang = getHeadSetting<string | null>('lang', pageContext)
