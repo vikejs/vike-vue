@@ -12,15 +12,16 @@ import {
   type Component,
   Fragment,
 } from 'vue'
-import type { PageContext } from 'vike/types'
+import type { PageContext, PageContextClient } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
 import type { PageContextInternal } from '../types/PageContext'
+import { applyHeadSettings } from './onRenderClient'
 
-type ChangePage = (pageContext: PageContext) => Promise<void>
+type ChangePage = (pageContext: PageContextClient & PageContextInternal) => Promise<void>
 async function createVueApp(
   pageContext: PageContext & PageContextInternal,
   ssr: boolean,
@@ -70,7 +71,7 @@ async function createVueApp(
   setData(app, dataReactive)
 
   // changePage() is called upon navigation, see +onRenderClient.ts
-  const changePage: ChangePage = async (pageContext: PageContext) => {
+  const changePage: ChangePage = async (pageContext) => {
     let returned = false
     let err: unknown
     app.config.errorHandler = (err_) => {
@@ -85,6 +86,7 @@ async function createVueApp(
     objectReplace(dataReactive, data)
     objectReplace(pageContextReactive, pageContext)
     onChangePage?.(pageContext)
+    applyHeadSettings(pageContext)
     await nextTick()
     returned = true
     if (err) throw err

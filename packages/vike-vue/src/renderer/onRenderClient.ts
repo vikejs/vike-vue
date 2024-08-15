@@ -1,5 +1,5 @@
 // https://vike.dev/onRenderClient
-export { onRenderClient }
+export { onRenderClient, applyHeadSettings }
 
 import { createVueApp, type ChangePage } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
@@ -17,7 +17,7 @@ const onRenderClient: OnRenderClientAsync = async (
   // Workaround for https://github.com/vikejs/vike-vue/pull/178#issuecomment-2285852251b
   pageContext._configFromHook ??= {}
   // Workaround for https://github.com/vikejs/vike-vue/issues/181
-  pageContext._headAlreadySetWrapper = { val: pageContext.isHydration }
+  pageContext._headAlreadySetWrapper = { val: !pageContext.isHydration }
 
   if (!app) {
     // First rendering/hydration
@@ -32,16 +32,12 @@ const onRenderClient: OnRenderClientAsync = async (
     await callCumulativeHooks(pageContext.config.onBeforeRenderClient, pageContext)
 
     app.mount(container)
+    applyHeadSettings(pageContext)
   } else {
     // Client-side navigation
 
     await callCumulativeHooks(pageContext.config.onBeforeRenderClient, pageContext)
     await changePage!(pageContext)
-  }
-
-  if (!pageContext.isHydration) {
-    pageContext._headAlreadySetWrapper!.val = true
-    applyHeadSettings(pageContext)
   }
 
   // Use cases:
@@ -50,8 +46,10 @@ const onRenderClient: OnRenderClientAsync = async (
   await callCumulativeHooks(pageContext.config.onAfterRenderClient, pageContext)
 }
 
-function applyHeadSettings(pageContext: PageContextClient) {
+function applyHeadSettings(pageContext: PageContextClient & PageContextInternal) {
   console.log('applyHeadSettings()')
+
+  pageContext._headAlreadySetWrapper!.val = true
   const title = getHeadSetting<string | null>('title', pageContext)
   const lang = getHeadSetting<string | null>('lang', pageContext)
 
