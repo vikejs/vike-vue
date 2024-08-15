@@ -4,6 +4,8 @@ import { isCallable } from '../utils/isCallable.js'
 import type { PageContext } from 'vike/types'
 import type { PageContextInternal } from '../types/PageContext.js'
 import type { ConfigFromHookResolved } from '../types/Config.js'
+import { configsCumulative } from '../hooks/useConfig/configsCumulative.js'
+import { includes } from '../utils/includes.js'
 
 // We use `any` instead of doing proper validation in order to save KBs sent to the client-side
 
@@ -12,14 +14,19 @@ function getHeadSetting<T>(
   pageContext: PageContext & PageContextInternal,
 ): undefined | T {
   // Set by useConfig()
-  {
-    const val = pageContext._configFromHook?.[headSetting]
-    if (val !== undefined) return val as any
-  }
-
+  const valFromUseConfig = pageContext._configFromHook?.[headSetting]
   // Set by +configName.js
+  const valFromConfig = pageContext.config[headSetting]
+
   const getCallable = (val: unknown) => (isCallable(val) ? val(pageContext) : val)
-  const val = pageContext.config[headSetting]
-  if (Array.isArray(val)) return val.map(getCallable) as any // cumulative configs
-  return getCallable(val) as any
+  if (!includes(configsCumulative, headSetting)) {
+    if (valFromUseConfig !== undefined) return valFromUseConfig as any
+    return getCallable(valFromConfig) as any
+  } else {
+    return [
+      //
+      ...((valFromConfig as any) ?? []).map(getCallable),
+      ...((valFromUseConfig as any) ?? []),
+    ] as any
+  }
 }
