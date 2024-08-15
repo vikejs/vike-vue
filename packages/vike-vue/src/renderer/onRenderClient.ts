@@ -32,7 +32,6 @@ const onRenderClient: OnRenderClientAsync = async (
     await callCumulativeHooks(pageContext.config.onBeforeRenderClient, pageContext)
 
     app.mount(container)
-    applyHeadSettings(pageContext)
   } else {
     // Client-side navigation
 
