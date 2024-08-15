@@ -28,6 +28,5 @@ declare global {
 // Internal usage
 export type PageContextInternal = {
   _configFromHook?: ConfigFromHookResolved
-  // We use a wrapper because of https://github.com/vikejs/vike-vue/issues/181
-  _headAlreadySetWrapper?: { val: boolean }
+  _headAlreadySet?: boolean
 }

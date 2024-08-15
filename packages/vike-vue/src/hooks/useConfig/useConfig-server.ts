@@ -22,7 +22,7 @@ function useConfig(): (config: ConfigFromHook) => void {
   // Component
   pageContext = usePageContext()
   return (config: ConfigFromHook) => {
-    if (!pageContext._headAlreadySetWrapper?.val) {
+    if (!pageContext._headAlreadySet) {
       setPageContextConfigFromHook(config, pageContext)
     } else {
       throw new Error("Using useConfig() with HTML streaming isn't supported yet")

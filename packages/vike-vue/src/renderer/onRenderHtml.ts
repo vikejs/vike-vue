@@ -83,7 +83,7 @@ async function getPageHtml(pageContext: PageContextServer) {
 }
 
 async function getHeadHtml(pageContext: PageContextServer & PageContextInternal) {
-  pageContext._headAlreadySetWrapper = { val: true }
+  pageContext._headAlreadySet = true
 
   const title = getHeadSetting<string | null>('title', pageContext)
   const favicon = getHeadSetting<string | null>('favicon', pageContext)

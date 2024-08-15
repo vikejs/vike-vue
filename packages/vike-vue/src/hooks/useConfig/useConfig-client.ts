@@ -16,7 +16,7 @@ function useConfig(): (config: ConfigFromHook) => void {
   pageContext = usePageContext()
   return (config: ConfigFromHook) => {
     console.log('config()')
-    if (!pageContext._headAlreadySetWrapper!.val) {
+    if (!pageContext._headAlreadySet) {
       setPageContextConfigFromHook(config, pageContext)
     } else {
       apply(config)

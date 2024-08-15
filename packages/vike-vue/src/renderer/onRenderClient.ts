@@ -17,7 +17,7 @@ const onRenderClient: OnRenderClientAsync = async (
   // Workaround for https://github.com/vikejs/vike-vue/pull/178#issuecomment-2285852251b
   pageContext._configFromHook ??= {}
   // Workaround for https://github.com/vikejs/vike-vue/issues/181
-  pageContext._headAlreadySetWrapper = { val: !pageContext.isHydration }
+  pageContext._headAlreadySet = !pageContext.isHydration
 
   if (!app) {
     // First rendering/hydration
@@ -49,7 +49,7 @@ const onRenderClient: OnRenderClientAsync = async (
 function applyHeadSettings(pageContext: PageContextClient & PageContextInternal) {
   console.log('applyHeadSettings()')
 
-  pageContext._headAlreadySetWrapper!.val = true
+  pageContext._headAlreadySet = true
   const title = getHeadSetting<string | null>('title', pageContext)
   const lang = getHeadSetting<string | null>('lang', pageContext)
 
