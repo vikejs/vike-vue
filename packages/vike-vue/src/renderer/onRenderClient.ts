@@ -51,6 +51,7 @@ const onRenderClient: OnRenderClientAsync = async (
 }
 
 function applyHeadSettings(pageContext: PageContextClient) {
+  console.log('applyHeadSettings()')
   const title = getHeadSetting<string | null>('title', pageContext)
   const lang = getHeadSetting<string | null>('lang', pageContext)
 

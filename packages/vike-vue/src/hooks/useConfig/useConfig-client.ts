@@ -7,6 +7,7 @@ import { usePageContext } from '../usePageContext.js'
 import { getPageContext } from 'vike/getPageContext'
 
 function useConfig(): (config: ConfigFromHook) => void {
+  console.log('useConfig()')
   // Vike hook
   let pageContext = getPageContext() as PageContext & PageContextInternal
   if (pageContext) return (config: ConfigFromHook) => setPageContextConfigFromHook(config, pageContext)
@@ -28,6 +29,7 @@ function setPageContextConfigFromHook(config: ConfigFromHook, pageContext: PageC
 }
 
 function apply(config: ConfigFromHook) {
+  console.log('apply()')
   const { title } = config
   if (title) window.document.title = title
 }

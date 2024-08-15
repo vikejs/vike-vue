@@ -22,4 +22,11 @@
 import type { Data } from './+data'
 import { useData } from 'vike-vue/useData'
 const data = useData<Data>()
+
+import { useConfig } from 'vike-vue/useConfig'
+
+const config = useConfig()
+config({
+  title: 'changed',
+})
 </script>
