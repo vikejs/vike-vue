@@ -1,4 +1,4 @@
-import type { ConfigFromHookCumulative } from '../hooks/useConfig/useConfig-server'
+import { ConfigsCumulative } from '../hooks/useConfig/configsCumulative'
 
 // JSDocs are preserved
 type PickWithoutGetter<T, K extends keyof T> = {
@@ -8,5 +8,5 @@ export type ConfigFromHook = PickWithoutGetter<
   Vike.Config,
   'Head' | 'title' | 'description' | 'image' | 'favicon' | 'lang' | 'viewport' | 'bodyAttributes' | 'htmlAttributes'
 >
-export type ConfigFromHookResolved = Omit<ConfigFromHook, ConfigFromHookCumulative> &
-  Pick<Vike.ConfigResolved, ConfigFromHookCumulative>
+export type ConfigFromHookResolved = Omit<ConfigFromHook, ConfigsCumulative> &
+  Pick<Vike.ConfigResolved, ConfigsCumulative>

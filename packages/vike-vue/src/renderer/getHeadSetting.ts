@@ -7,12 +7,13 @@ import type { ConfigFromHookResolved } from '../types/Config.js'
 
 // We use `any` instead of doing proper validation in order to save KBs sent to the client-side
 
-type HeadSetting = Exclude<keyof ConfigFromHookResolved, 'Head'>
-type HeadSettingFromHook = HeadSetting & keyof ConfigFromHookResolved
-function getHeadSetting<T>(headSetting: HeadSetting, pageContext: PageContext & PageContextInternal): undefined | T {
+function getHeadSetting<T>(
+  headSetting: keyof ConfigFromHookResolved,
+  pageContext: PageContext & PageContextInternal,
+): undefined | T {
   // Set by useConfig()
   {
-    const val = pageContext._configFromHook?.[headSetting as HeadSettingFromHook]
+    const val = pageContext._configFromHook?.[headSetting]
     if (val !== undefined) return val as any
   }
 
