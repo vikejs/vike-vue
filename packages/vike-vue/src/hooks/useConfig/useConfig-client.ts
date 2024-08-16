@@ -6,6 +6,7 @@ import type { ConfigFromHook } from '../../types/Config.js'
 import { usePageContext } from '../usePageContext.js'
 import { getPageContext } from 'vike/getPageContext'
 import { applyHeadSettings } from '../../renderer/applyHeadSettings.js'
+import { watchEffect } from 'vue'
 
 function useConfig(): (config: ConfigFromHook) => void {
   // Vike hook
@@ -15,11 +16,13 @@ function useConfig(): (config: ConfigFromHook) => void {
   // Component
   pageContext = usePageContext()
   return (config: ConfigFromHook) => {
-    if (!pageContext._headAlreadySetWrapper!.val) {
-      setPageContextConfigFromHook(config, pageContext)
-    } else {
-      applyHead(config)
-    }
+    watchEffect(() => {
+      if (!pageContext._headAlreadySetWrapper!.val) {
+        setPageContextConfigFromHook(config, pageContext)
+      } else {
+        applyHead(config)
+      }
+    })
   }
 }
 
