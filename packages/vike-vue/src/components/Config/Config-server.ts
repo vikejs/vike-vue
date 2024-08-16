@@ -4,22 +4,23 @@ export { Config }
 import { defineComponent } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
 import { noop } from '../../utils/noop.js'
-import { extractUnstyledChildren } from '../../utils/extractUnstyledChildren.js'
+import { configsFromHook } from '../../types/Config.js'
+import type { ConfigFromHook } from '../../types/Config.js'
 
 /**
  * Set configurations inside Vue components.
  *
- * (The children are added to `<head>`.)
- *
  * https://vike.dev/useConfig#config-head
  */
-const Config = defineComponent({
-  name: 'Config',
-  inheritAttrs: false,
-  setup(_, { attrs, slots }) {
-    const Head = extractUnstyledChildren(slots.default) || (() => attrs.Head)
+const Config = defineComponent<ConfigFromHook>(
+  (props) => {
     const config = useConfig()
-    config({ ...attrs, Head })
+    config({ ...props, Head: () => props.Head })
     return noop
   },
-})
+  {
+    name: 'Config',
+    inheritAttrs: false,
+    props: [...configsFromHook],
+  },
+)
