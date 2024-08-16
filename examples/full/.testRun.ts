@@ -192,6 +192,8 @@ function testConfigComponent() {
     )
     // check that origin description is removed
     expect(html).not.toMatch(partRegex`<meta name="description" content="Demo showcasing Vike + Vue">`)
+    // check that there is only one description
+    expect(countMatches(html, partRegex`<meta${/[^>]+/}name="description"`)).toBe(1)
   })
 }
 
@@ -215,6 +217,10 @@ function testHeadComponent() {
     )
     expect(html).not.toMatch(partRegex`<body>${/[^\x00]*/}<meta property="og:author" content="brillout">`)
     expect(html).not.toMatch(partRegex`<body>${/[^\x00]*/}<meta property="og:author" content="Romuald Brillout">`)
+
+    // check that there are 2 of each tag
+    expect(countMatches(html, partRegex`<meta${/[^>]+/}property="og:image"`)).toBe(2)
+    expect(countMatches(html, partRegex`<meta${/[^>]+/}property="og:author"`)).toBe(2)
   })
 }
 
@@ -274,4 +280,13 @@ function getAssetUrl(fileName: string) {
   const [fileBaseName, fileExt, ...r] = fileName.split('.')
   assert(r.length === 0)
   return partRegex`/assets/static/${fileBaseName}.${/[a-zA-Z0-9_-]+/}.${fileExt}`
+}
+
+function countMatches(haystack, needleRe) {
+  const re = new RegExp(needleRe, 'g')
+  let count = 0
+  while (re.exec(haystack)) {
+    count += 1
+  }
+  return count
 }
