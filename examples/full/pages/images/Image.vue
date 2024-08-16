@@ -1,15 +1,14 @@
 <template>
   <img :src v-bind="otherAttrs" />
 
-  <Head>
-    <meta property="og:image" :content="src" />
-  </Head>
-
   <Config
     :title="`Image created by ${ author }`"
     :description="`Image at address ${ src } was created by ${ author }`"
     :Head="headTag"
   />
+  <Head>
+    <meta property="og:image" :content="src" />
+  </Head>
 </template>
 
 <style scoped>
@@ -48,5 +47,5 @@ config({
   }),
 })
 
-const headTag = [h('meta', { property: 'og:author', content: author })]
+const headTag = h('meta', { property: 'og:author', content: author })
 </script>
