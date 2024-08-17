@@ -184,11 +184,11 @@ function testConfigComponent() {
     expect(getTitle(html)).toBe('Image created by Romuald Brillout')
     // check that description is rendered in <head>
     expect(html).toMatch(
-      partRegex`<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">${/.*/}</head>`,
+      partRegex`<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">${/.*/s}</head>`,
     )
     // check that description is not rendered in <body>
     expect(html).not.toMatch(
-      partRegex`<body>${/.*/}<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">`,
+      partRegex`<body>${/.*/s}<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">`,
     )
     // check that origin description is removed
     expect(html).not.toMatch(partRegex`<meta name="description" content="Demo showcasing Vike + Vue">`)
@@ -201,18 +201,18 @@ function testHeadComponent() {
   test('Head Component HTML', async () => {
     const html = await fetchHtml('/images')
     // check that all tags are rendered in <head>
-    expect(html).toMatch(partRegex`<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">${/.*/}</head>`)
-    expect(html).toMatch(partRegex`<meta property="og:image" content="${getAssetUrl('logo.svg')}">${/.*/}</head>`)
-    expect(html).toMatch(partRegex`<meta property="og:author" content="brillout">${/.*/}</head>`)
-    expect(html).toMatch(partRegex`<meta property="og:author" content="Romuald Brillout">${/.*/}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">${/.*/s}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:image" content="${getAssetUrl('logo.svg')}">${/.*/s}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:author" content="brillout">${/.*/s}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:author" content="Romuald Brillout">${/.*/s}</head>`)
 
     // check that none of the tags is rendered in <body>
     expect(html).not.toMatch(
-      partRegex`<body>${/.*/}<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">`,
+      partRegex`<body>${/.*/s}<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">`,
     )
-    expect(html).not.toMatch(partRegex`<body>${/.*/}<meta property="og:image" content="${getAssetUrl('logo.svg')}">`)
-    expect(html).not.toMatch(partRegex`<body>${/.*/}<meta property="og:author" content="brillout">`)
-    expect(html).not.toMatch(partRegex`<body>${/.*/}<meta property="og:author" content="Romuald Brillout">`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:image" content="${getAssetUrl('logo.svg')}">`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author" content="brillout">`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author" content="Romuald Brillout">`)
 
     // check that there are 2 of each tag
     expect(countMatches(html, partRegex`<meta${/[^>]+?/}property="og:image"`)).toBe(2)
