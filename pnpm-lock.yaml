@@ -18,7 +18,7 @@ importers:
         version: 1.8.3
       '@brillout/test-e2e':
         specifier: ^0.5.33
-        version: 0.5.33
+        version: 0.5.34
       '@brillout/test-types':
         specifier: ^0.1.14
         version: 0.1.15(typescript@5.5.4)
@@ -327,8 +327,8 @@ packages:
   '@brillout/json-serializer@0.5.13':
     resolution: {integrity: sha512-9FpmgpuoSISw6fAPVB2qwW1dGAADN28YbWpfwOErfcZxpBH4lsnejuY89qcivInnWXYJvyyPwghCuOTbtuaYFg==}
 
-  '@brillout/part-regex@0.1.3':
-    resolution: {integrity: sha512-ZyqtOYHvQs3Ca0xt9fb2OlGzCrKwXtMcAATDObkFmI4jKuObEORjWrqAslWTelquXlyEYLz7h1nt6jp50LDyJA==}
+  '@brillout/part-regex@0.1.4':
+    resolution: {integrity: sha512-PQy5LfRmIueEfGwhvMedsnj6KulDfxlfvUaTsUchBqA7nTge4C7taG/V6np2uCHVxxE4+cSmwM4COn9aNcMn7g==}
 
   '@brillout/picocolors@1.0.14':
     resolution: {integrity: sha512-XhyZY3/FUh56mDuLIjv5kN9qy+oQj7A/d2uQ6cJJ4uVv55+velua3abcrM5WIvs2RHZGA3EE7S9FWo+TjF10ew==}
@@ -340,8 +340,8 @@ packages:
   '@brillout/require-shim@0.1.2':
     resolution: {integrity: sha512-3I4LRHnVZXoSAsEoni5mosq9l6eiJED58d9V954W4CIZ88AUfYBanWGBGbJG3NztaRTpFHEA6wB3Hn93BmmJdg==}
 
-  '@brillout/test-e2e@0.5.33':
-    resolution: {integrity: sha512-CAhZQSGYVeMelcxbjFHZwZDT1Jk2BnNVS8JYYKkizin3ZoxQDdMYWskjO7jU+XN9xrjkvEUMlnXGXSO4E8/WjA==}
+  '@brillout/test-e2e@0.5.34':
+    resolution: {integrity: sha512-7opuTq9Uy06RwgTtCc2GHoTDcdZafsF5WktZXLYl+FAwrn6xW3f2UTeRBFLdKTgGw7g1MPv0QnTOIzlM9r+G6A==}
     hasBin: true
 
   '@brillout/test-types@0.1.15':
@@ -1668,13 +1668,18 @@ packages:
     resolution: {integrity: sha512-o8mkY4E/+LNUf6LzX96ht6k6CEDi65k9G2rjMtBe9Oo+VPKSvl+0GKHuH/AlG+GA5LPG/i5hrekkxUc3s2HU+Q==}
     hasBin: true
 
-  playwright-chromium@1.46.0:
-    resolution: {integrity: sha512-UTHYZsr49XFYRQkpCfaHxL63vfu6uThxR1DrNwnU6qik/OworFcugTOJMWFMoop3QP+ThU8laAMumauLdLZXCQ==}
+  playwright-chromium@1.46.1:
+    resolution: {integrity: sha512-WuNzXHHWaIqnq66Zkg1gu6LGkJ13HsSBkHBXiHKDfPfzAv8stIyNBHJiDqFLFaM5wSl+LSbPbLMlhCicaBg4oA==}
     engines: {node: '>=18'}
     hasBin: true
 
   playwright-core@1.46.0:
     resolution: {integrity: sha512-9Y/d5UIwuJk8t3+lhmMSAJyNP1BUC/DqP3cQJDQQL/oWqAiuPTLgy7Q5dzglmTLwcBRdetzgNM/gni7ckfTr6A==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright-core@1.46.1:
+    resolution: {integrity: sha512-h9LqIQaAv+CYvWzsZ+h3RsrqCStkBHlgo6/TJlFst3cOTlLghBQlJwPOZKQJTKNaD3QIB7aAVQ+gfWbN3NXB7A==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2117,7 +2122,7 @@ snapshots:
 
   '@brillout/json-serializer@0.5.13': {}
 
-  '@brillout/part-regex@0.1.3': {}
+  '@brillout/part-regex@0.1.4': {}
 
   '@brillout/picocolors@1.0.14': {}
 
@@ -2131,16 +2136,16 @@ snapshots:
 
   '@brillout/require-shim@0.1.2': {}
 
-  '@brillout/test-e2e@0.5.33':
+  '@brillout/test-e2e@0.5.34':
     dependencies:
-      '@brillout/part-regex': 0.1.3
+      '@brillout/part-regex': 0.1.4
       '@brillout/picocolors': 1.0.14
       chai: 4.5.0
       esbuild: 0.16.17
       fast-glob: 3.3.2
       node-fetch: 2.7.0
       pixelmatch: 5.3.0
-      playwright-chromium: 1.46.0
+      playwright-chromium: 1.46.1
       pngjs: 6.0.0
       source-map-support: 0.5.21
       strip-ansi: 6.0.1
@@ -3356,11 +3361,13 @@ snapshots:
     dependencies:
       pngjs: 6.0.0
 
-  playwright-chromium@1.46.0:
+  playwright-chromium@1.46.1:
     dependencies:
-      playwright-core: 1.46.0
+      playwright-core: 1.46.1
 
   playwright-core@1.46.0: {}
+
+  playwright-core@1.46.1: {}
 
   playwright@1.46.0:
     dependencies:
