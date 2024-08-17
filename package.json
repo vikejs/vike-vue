@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.0",
-    "@brillout/test-e2e": "^0.5.33",
+    "@brillout/test-e2e": "^0.5.34",
     "@brillout/test-types": "^0.1.14",
     "playwright": "^1.44.1",
     "prettier": "^3.2.5"

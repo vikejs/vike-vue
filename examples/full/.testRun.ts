@@ -34,6 +34,10 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview'}`) {
 
   testUseConfig()
 
+  testConfigComponent()
+
+  testHeadComponent()
+
   const textNoSSR = 'This page is rendered only in the browser'
   {
     const url = '/without-ssr'
@@ -146,6 +150,7 @@ function testUrl({
 function testUseConfig() {
   test('useConfig() HTML', async () => {
     const html = await fetchHtml('/images')
+    expect(getTitle(html)).toBe('Image created by Romuald Brillout')
     expect(html).toMatch(
       partRegex`<script type="application/ld+json">{"@context":"https://schema.org/","contentUrl":{"src":"${getAssetUrl(
         'logo-new.svg',
@@ -159,13 +164,53 @@ function testUseConfig() {
   })
   test('useConfig() hydration', async () => {
     await page.goto(getServerUrl() + '/')
+    expect(await page.title()).toBe('My Vike + Vue App')
     await testCounter()
     ensureWasClientSideRouted('/pages/index')
     await page.click('a:has-text("useConfig()")')
     await testCounter()
     ensureWasClientSideRouted('/pages/index')
     await page.goto(getServerUrl() + '/images')
+    expect(await page.title()).toBe('Image created by Romuald Brillout')
     await testCounter()
+    await page.goto(getServerUrl() + '/')
+    expect(await page.title()).toBe('My Vike + Vue App')
+  })
+}
+
+function testConfigComponent() {
+  test('Config Component HTML', async () => {
+    const html = await fetchHtml('/images')
+    expect(getTitle(html)).toBe('Image created by Romuald Brillout')
+    // check that description is rendered in <head>
+    expect(html).toMatch(
+      partRegex`<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">${/.*/s}</head>`,
+    )
+    // check that description is not rendered in <body>
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta name="description"`)
+    // check that origin description is removed
+    expect(html).not.toMatch(partRegex`Demo showcasing Vike + Vue`)
+    // check that there is only one description
+    expect(countMatches(html, partRegex`<meta${/[^>]+?/}name="description"`)).toBe(1)
+  })
+}
+
+function testHeadComponent() {
+  test('Head Component HTML', async () => {
+    const html = await fetchHtml('/images')
+    // check that all tags are rendered in <head>
+    expect(html).toMatch(partRegex`<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">${/.*/s}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:image" content="${getAssetUrl('logo.svg')}">${/.*/s}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:author" content="brillout">${/.*/s}</head>`)
+    expect(html).toMatch(partRegex`<meta property="og:author" content="Romuald Brillout">${/.*/s}</head>`)
+
+    // check that none of the tags is rendered in <body>
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:image"`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author"`)
+
+    // check that there are 2 of each tag
+    expect(countMatches(html, partRegex`<meta${/[^>]+?/}property="og:image"`)).toBe(2)
+    expect(countMatches(html, partRegex`<meta${/[^>]+?/}property="og:author"`)).toBe(2)
   })
 }
 
@@ -225,4 +270,8 @@ function getAssetUrl(fileName: string) {
   const [fileBaseName, fileExt, ...r] = fileName.split('.')
   assert(r.length === 0)
   return partRegex`/assets/static/${fileBaseName}.${/[a-zA-Z0-9_-]+/}.${fileExt}`
+}
+
+function countMatches(haystack: string, needleRe: RegExp) {
+  return (haystack.match(new RegExp(needleRe, 'g')) || []).length
 }
