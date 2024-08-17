@@ -187,11 +187,9 @@ function testConfigComponent() {
       partRegex`<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">${/.*/s}</head>`,
     )
     // check that description is not rendered in <body>
-    expect(html).not.toMatch(
-      partRegex`<body>${/.*/s}<meta name="description" content="Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout">`,
-    )
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta name="description"`)
     // check that origin description is removed
-    expect(html).not.toMatch(partRegex`<meta name="description" content="Demo showcasing Vike + Vue">`)
+    expect(html).not.toMatch(partRegex`Demo showcasing Vike + Vue`)
     // check that there is only one description
     expect(countMatches(html, partRegex`<meta${/[^>]+?/}name="description"`)).toBe(1)
   })
@@ -207,12 +205,10 @@ function testHeadComponent() {
     expect(html).toMatch(partRegex`<meta property="og:author" content="Romuald Brillout">${/.*/s}</head>`)
 
     // check that none of the tags is rendered in <body>
-    expect(html).not.toMatch(
-      partRegex`<body>${/.*/s}<meta property="og:image" content="${getAssetUrl('logo-new.svg')}">`,
-    )
-    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:image" content="${getAssetUrl('logo.svg')}">`)
-    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author" content="brillout">`)
-    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author" content="Romuald Brillout">`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:image"`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:image"`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author"`)
+    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author"`)
 
     // check that there are 2 of each tag
     expect(countMatches(html, partRegex`<meta${/[^>]+?/}property="og:image"`)).toBe(2)
