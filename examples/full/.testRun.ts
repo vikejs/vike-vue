@@ -278,6 +278,6 @@ function getAssetUrl(fileName: string) {
   return partRegex`/assets/static/${fileBaseName}.${/[a-zA-Z0-9_-]+/}.${fileExt}`
 }
 
-function countMatches(haystack, needleRe) {
-  return ((haystack || '').match(new RegExp(needleRe, 'g')) || []).length
+function countMatches(haystack: string, needleRe: RegExp) {
+  return (haystack.match(new RegExp(needleRe, 'g')) || []).length
 }
