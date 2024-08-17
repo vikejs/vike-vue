@@ -206,8 +206,6 @@ function testHeadComponent() {
 
     // check that none of the tags is rendered in <body>
     expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:image"`)
-    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:image"`)
-    expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author"`)
     expect(html).not.toMatch(partRegex`<body>${/.*/s}<meta property="og:author"`)
 
     // check that there are 2 of each tag
