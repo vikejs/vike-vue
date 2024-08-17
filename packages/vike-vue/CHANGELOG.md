@@ -1,3 +1,26 @@
+## [0.8.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.1...vike-vue@0.8.2) (2024-08-17)
+
+
+### Bug Fixes
+
+* enable useConfig() after hydration ([#179](https://github.com/vikejs/vike-vue/issues/179)) ([ff02b23](https://github.com/vikejs/vike-vue/commit/ff02b23b6a4b03e8fe5e9716d6f7145cfe25c12f))
+* fix `useConfig()` for `{body,html}Attributes` (fix [#180](https://github.com/vikejs/vike-vue/issues/180)) ([f25015b](https://github.com/vikejs/vike-vue/commit/f25015bb177dc81aa734af3d5081a9ea28c2873c))
+* fix JSDoc ([7277d83](https://github.com/vikejs/vike-vue/commit/7277d83f22b467272b444f34747255bff10cc97f))
+* fix pageContext._headAlreadySet (fix [#181](https://github.com/vikejs/vike-vue/issues/181)) ([aaa3ea9](https://github.com/vikejs/vike-vue/commit/aaa3ea90ff9e0ba6f87cb3428e2d967cb275223c))
+* fix useConfig() upon client-side navigation (fix [#178](https://github.com/vikejs/vike-vue/issues/178)) ([67962ee](https://github.com/vikejs/vike-vue/commit/67962ee9f6b3e8bd91eaf16ee77bc8b61c093197))
+* make useConfig() reactive (fix [#187](https://github.com/vikejs/vike-vue/issues/187)) ([#186](https://github.com/vikejs/vike-vue/issues/186)) ([846c4cd](https://github.com/vikejs/vike-vue/commit/846c4cd1723890dabc44d6372d2403c35a07a731))
+* make useConfig() respect cumulativeness (fix [#182](https://github.com/vikejs/vike-vue/issues/182)) ([11aff82](https://github.com/vikejs/vike-vue/commit/11aff82a8effdbc018e7260faa791e0d1b9f65c5))
+* support callable cumulative configs ([daf9514](https://github.com/vikejs/vike-vue/commit/daf9514d6749e7b8375c81888f967bd6a09f1884))
+* update lang upon useConfig() ([ff901d8](https://github.com/vikejs/vike-vue/commit/ff901d887fc905081856474131a12f05d7735197))
+
+
+### Features
+
+* new [components `<Head>` and `<Config>`](https://vike.dev/useConfig#config-head) (closes [#175](https://github.com/vikejs/vike-vue/issues/175)) ([#174](https://github.com/vikejs/vike-vue/issues/174)) ([ca92f98](https://github.com/vikejs/vike-vue/commit/ca92f98be2bc51e55d1c6eefdd047159e0347aca))
+* new [hook `onBeforeRenderHtml()`](https://vike.dev/onBeforeRenderHtml) (closes [#141](https://github.com/vikejs/vike-vue/issues/141)) ([4184bec](https://github.com/vikejs/vike-vue/commit/4184bec954d1a182cda52f8ffe43a1fe38b01d13))
+
+
+
 ## [0.8.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.0...vike-vue@0.8.1) (2024-08-12)
 
 
