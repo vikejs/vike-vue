@@ -1,54 +1,23 @@
+export { config }
+
+import type { Config, ImportString, PageContextServer, PageContext, PageContextClient } from 'vike/types'
 import type {
   OnCreateAppSync,
   OnCreateAppAsync,
+  OnBeforeRenderHtmlSync,
+  OnBeforeRenderHtmlAsync,
   OnAfterRenderHtmlSync,
   OnAfterRenderHtmlAsync,
   OnBeforeRenderClientSync,
   OnBeforeRenderClientAsync,
-  BodyInjectHtml,
-  OnBeforeRenderHtmlSync,
-  OnBeforeRenderHtmlAsync,
-} from './hooks/types'
-
-import type {
-  Config,
-  ConfigEffect,
-  ImportString,
-  PageContextServer,
-  // Rename it to `PageContext_` to be able to reference it from within `namespace Vike`
-  // - https://stackoverflow.com/questions/46559021/typescript-use-of-global-type-inside-namespace-with-same-type
-  // - https://github.com/Microsoft/TypeScript/issues/983
-  PageContext as PageContext_,
-  PageContextClient,
-} from 'vike/types'
-
+} from './types/VikeHooks'
 import type { Component } from './types/PageContext'
 import type { TagAttributes } from './utils/getTagAttributesString'
 import type { Viewport } from './renderer/onRenderHtml'
+import './utils/tsx-workaround.js'
+import { ssrEffect } from './renderer/ssrEffect.js'
 
-// Depending on the value of `config.meta.ssr`, set other config options' `env`
-// accordingly.
-// See https://vike.dev/meta#:~:text=Modifying%20the%20environment%20of%20existing%20hooks
-const toggleSsrRelatedConfig: ConfigEffect = ({ configDefinedAt, configValue }) => {
-  if (typeof configValue !== 'boolean') {
-    throw new Error(`${configDefinedAt} should be a boolean`)
-  }
-
-  return {
-    meta: {
-      // When the SSR flag is false, we want to render the page only in the
-      // browser. We achieve this by then making the `Page` implementation
-      // accessible only in the client's renderer.
-      Page: {
-        env: configValue
-          ? { server: true, client: true } // default
-          : { client: true },
-      },
-    },
-  }
-}
-
-export default {
+const config = {
   name: 'vike-vue',
   require: {
     vike: '>=0.4.183',
@@ -98,7 +67,7 @@ export default {
     },
     ssr: {
       env: { config: true },
-      effect: toggleSsrRelatedConfig,
+      effect: ssrEffect,
     },
     stream: {
       env: { server: true },
@@ -358,24 +327,9 @@ declare global {
   }
 }
 
-// This is a workaround for
-// * https://github.com/vuejs/core/issues/8303
-// * https://github.com/esbuild-kit/tsx/issues/113
-// Without this, when running vike-vue with tsx (for example when scaffolding a
-// Vue+Express project with Bati), querying the server will fail with the
-// following error:
-//     [vike][request(1)] HTTP request: /
-//     [vite][request(1)] __name is not defined
-//     [vite][request(1)] __name is not defined
-//     [vite][request(1)] __name is not defined
-//     [vite][request(1)] Error when evaluating SSR module virtual:vike:importPageCode:server:/pages/index: failed to import "/pages/index/+Page.vue"
-//     |- ReferenceError: __name is not defined
-const globalName = (target: Object, value: string) =>
-  Object.defineProperty(target, 'name', {
-    value,
-    configurable: true,
-  })
-declare global {
-  var __name: typeof globalName
-}
-globalThis.__name = globalName
+// Be able to reference it from within `namespace Vike`
+// - https://stackoverflow.com/questions/46559021/typescript-use-of-global-type-inside-namespace-with-same-type
+// - https://github.com/Microsoft/TypeScript/issues/983
+type PageContext_ = PageContext
+
+type BodyInjectHtml = string | ((pageContext: PageContext) => string)
