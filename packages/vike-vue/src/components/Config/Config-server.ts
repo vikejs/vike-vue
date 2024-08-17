@@ -1,6 +1,5 @@
 export { Config }
 
-// Same as ./Config-client.ts but importing useConfig-server.js
 import { defineComponent } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-server.js'
 import { noop } from '../../utils/noop.js'

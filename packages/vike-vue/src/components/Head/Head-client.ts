@@ -1,8 +1,3 @@
 import { noop } from '../../utils/noop.js'
-
-/**
- * Does nothing on client side.
- *
- * https://vike.dev/Head
- */
+// https://vike.dev/Head#only-html
 export { noop as Head }
