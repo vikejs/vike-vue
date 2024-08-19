@@ -25,6 +25,8 @@ declare global {
   }
 }
 
+export type __FakeExport_PageContext = never
+
 // Internal usage
 export type PageContextInternal = {
   _configFromHook?: ConfigFromHookResolved
