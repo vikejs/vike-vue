@@ -3,6 +3,7 @@ export type { Component }
 import type { App } from 'vue'
 import type { SSRContext } from 'vue/server-renderer'
 import type { ConfigFromHookResolved } from './Config'
+import type { PageHtmlStream } from '../renderer/onRenderHtml'
 
 // https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
 // TODO: use ComponentPublicInstance
@@ -21,6 +22,9 @@ declare global {
       fromHtmlRenderer: Record<string, unknown>
 
       ssrContext?: SSRContext
+
+      pageHtmlString?: string
+      pageHtmlSteam?: PageHtmlStream
     }
   }
 }

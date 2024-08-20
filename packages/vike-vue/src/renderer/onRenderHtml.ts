@@ -49,12 +49,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (
   }
 }
 
+export type PageHtmlStream = ReturnType<typeof renderToNodeStream> | ReturnType<typeof renderToWebStream>
 async function getPageHtml(pageContext: PageContextServer) {
-  let pageHtml:
-    | ReturnType<typeof dangerouslySkipEscape>
-    | ReturnType<typeof renderToNodeStream>
-    | ReturnType<typeof renderToWebStream>
-    | string = ''
+  let pageHtml: ReturnType<typeof dangerouslySkipEscape> | PageHtmlStream | string = ''
   const ssrContext: SSRContext = {}
   const fromHtmlRenderer: PageContextServer['fromHtmlRenderer'] = {}
 
@@ -72,11 +69,19 @@ async function getPageHtml(pageContext: PageContextServer) {
 
   if (!!pageContext.Page) {
     assert(app)
-    pageHtml = !pageContext.config.stream
-      ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app, ssrContext))
-      : pageContext.config.stream === 'web'
-        ? renderToWebStreamWithErrorHandling(app, ssrContext)
-        : renderToNodeStreamWithErrorHandling(app, ssrContext)
+
+    if (!pageContext.config.stream) {
+      const pageHtmlString = await renderToStringWithErrorHandling(app, ssrContext)
+      pageContext.pageHtmlString = pageHtmlString
+      pageHtml = dangerouslySkipEscape(pageHtmlString)
+    } else {
+      const pageHtmlStream =
+        pageContext.config.stream === 'web'
+          ? renderToWebStreamWithErrorHandling(app, ssrContext)
+          : renderToNodeStreamWithErrorHandling(app, ssrContext)
+      pageContext.pageHtmlSteam = pageHtmlStream
+      pageHtml = pageHtmlStream
+    }
 
     // TODO/breaking-change: always call onAfterRenderHtml()
     //  - I.e. don't call it inside this `if (!!pageContext.Page)` block.
