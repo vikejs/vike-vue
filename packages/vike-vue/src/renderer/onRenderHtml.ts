@@ -6,7 +6,6 @@ import type { OnRenderHtmlAsync, PageContextServer } from 'vike/types'
 import { App } from 'vue'
 import { type SSRContext, renderToNodeStream, renderToString, renderToWebStream } from 'vue/server-renderer'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
-import { objectAssign } from '../utils/objectAssign.js'
 import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
@@ -63,7 +62,7 @@ async function getPageHtml(pageContext: PageContextServer) {
   if (!!pageContext.Page) {
     // SSR is enabled
     const { app } = await createVueApp(pageContext, true, 'Page')
-    objectAssign(pageContext, { app })
+    pageContext.app = app
     pageHtml = !pageContext.config.stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app, ssrContext))
       : pageContext.config.stream === 'web'
