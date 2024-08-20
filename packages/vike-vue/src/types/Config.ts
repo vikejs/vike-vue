@@ -179,7 +179,7 @@ declare global {
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync | ImportString
 
       /**
-       * Hook called before rendering the page's HTML.
+       * Hook called right before rendering the page's HTML.
        *
        * https://vike.dev/onBeforeRenderHtml
        */

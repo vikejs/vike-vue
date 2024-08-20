@@ -6,6 +6,7 @@ import type { OnRenderHtmlAsync, PageContextServer } from 'vike/types'
 import { App } from 'vue'
 import { type SSRContext, renderToNodeStream, renderToString, renderToWebStream } from 'vue/server-renderer'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
+import { assert } from '../utils/assert.js'
 import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
@@ -14,8 +15,6 @@ import type { PageContextInternal } from '../types/PageContext.js'
 const onRenderHtml: OnRenderHtmlAsync = async (
   pageContext: PageContextServer & PageContextInternal,
 ): ReturnType<OnRenderHtmlAsync> => {
-  await callCumulativeHooks(pageContext.config.onBeforeRenderHtml, pageContext)
-
   const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
 
   const headHtml = await getHeadHtml(pageContext)
@@ -59,10 +58,20 @@ async function getPageHtml(pageContext: PageContextServer) {
   const ssrContext: SSRContext = {}
   const fromHtmlRenderer: PageContextServer['fromHtmlRenderer'] = {}
 
+  let app: App | undefined
   if (!!pageContext.Page) {
     // SSR is enabled
-    const { app } = await createVueApp(pageContext, true, 'Page')
+    const result = await createVueApp(pageContext, true, 'Page')
+    app = result.app
     pageContext.app = app
+  }
+
+  // - We call onBeforeRenderHtml() right before rendering, so that pageContext.app is available to onBeforeRenderHtml()
+  //   - https://github.com/vikejs/vike-vue/issues/141
+  await callCumulativeHooks(pageContext.config.onBeforeRenderHtml, pageContext)
+
+  if (!!pageContext.Page) {
+    assert(app)
     pageHtml = !pageContext.config.stream
       ? dangerouslySkipEscape(await renderToStringWithErrorHandling(app, ssrContext))
       : pageContext.config.stream === 'web'
