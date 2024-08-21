@@ -58,10 +58,12 @@ async function getPageHtml(pageContext: PageContextServer) {
   const fromHtmlRenderer: PageContextServer['fromHtmlRenderer'] = {}
 
   let app: App | undefined
-  if (!!pageContext.Page) {
-    // SSR is enabled
-    const result = await createVueApp(pageContext, true, 'Page')
-    app = result.app
+  if (
+    // Whether SSR is enabled
+    !!pageContext.Page
+  ) {
+    const { app: app_ } = await createVueApp(pageContext, true, 'Page')
+    app = app_
     pageContext.app = app
   }
 
