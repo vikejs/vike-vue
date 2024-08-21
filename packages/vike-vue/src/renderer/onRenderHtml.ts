@@ -17,7 +17,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (
 ): ReturnType<OnRenderHtmlAsync> => {
   const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
 
+  pageContext.isRenderingHead = true
   const headHtml = await getHeadHtml(pageContext)
+  pageContext.isRenderingHead = false
 
   const { bodyHtmlBegin, bodyHtmlEnd } = await getBodyHtmlBeginEnd(pageContext, ssrContext)
 

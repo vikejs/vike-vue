@@ -25,6 +25,8 @@ declare global {
 
       pageHtmlString?: string
       pageHtmlSteam?: PageHtmlStream
+      // https://vike.dev/onCreateApp
+      isRenderingHead?: boolean
     }
   }
 }
