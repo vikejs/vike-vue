@@ -23,8 +23,11 @@ declare global {
 
       ssrContext?: SSRContext
 
+      /** The +Page.vue component rendered to the HTML string. */
       pageHtmlString?: string
+      /** The +Page.vue component rendered to an HTML stream. */
       pageHtmlSteam?: PageHtmlStream
+
       // https://vike.dev/onCreateApp
       isRenderingHead?: boolean
     }
