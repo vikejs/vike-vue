@@ -83,7 +83,7 @@ async function getPageHtml(pageContext: PageContextServer) {
         pageContext.config.stream === 'web'
           ? renderToWebStreamWithErrorHandling(app, ssrContext)
           : renderToNodeStreamWithErrorHandling(app, ssrContext)
-      pageContext.pageHtmlSteam = pageHtmlStream
+      pageContext.pageHtmlStream = pageHtmlStream
       pageHtml = pageHtmlStream
     }
 
