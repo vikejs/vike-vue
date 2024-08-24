@@ -1,11 +1,9 @@
 {
   "name": "vike-vue",
   "version": "0.8.2",
+  "repository": "https://github.com/vikejs/vike-vue",
   "type": "module",
   "exports": {
-    "./config": "./dist/+config.js",
-    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
-    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
     "./usePageContext": "./dist/hooks/usePageContext.js",
     "./useData": "./dist/hooks/useData.js",
     "./useConfig": {
@@ -23,7 +21,15 @@
     "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
       "types": "./dist/types/public.d.ts"
-    }
+    },
+    "./config": "./dist/+config.js",
+    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
+    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "vike": ">=0.4.191",
+    "vue": ">=3.0.0"
   },
   "scripts": {
     "dev": "vite build --watch",
@@ -32,10 +38,6 @@
     "release": "release-me patch",
     "release:minor": "release-me minor",
     "release:commit": "release-me commit"
-  },
-  "peerDependencies": {
-    "vike": ">=0.4.191",
-    "vue": ">=3.0.0"
   },
   "devDependencies": {
     "@brillout/release-me": "^0.3.8",
@@ -85,6 +87,8 @@
   "files": [
     "dist/"
   ],
-  "repository": "github:vikejs/vike-vue",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "vue"
+  ]
 }
