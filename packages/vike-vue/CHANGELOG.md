@@ -1,3 +1,27 @@
+## [0.8.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.2...vike-vue@0.8.3) (2024-08-24)
+
+
+### Bug Fixes
+
+* add JSDocs ([3552702](https://github.com/vikejs/vike-vue/commit/35527026d90847cf4be86bcb18fa248b5d1490e1))
+* call onBeforeRenderHtml() right before rendering ([#141](https://github.com/vikejs/vike-vue/issues/141)) ([ca7fdfd](https://github.com/vikejs/vike-vue/commit/ca7fdfd8acb4e78437dcf09b6eee608b5dc98ae5))
+* make useConfig() work for vike-vue hooks ([#141](https://github.com/vikejs/vike-vue/issues/141)) ([47ac2d6](https://github.com/vikejs/vike-vue/commit/47ac2d68f77a0de043680760d92beb86afe86b4f))
+* remove unused types export ([0728c10](https://github.com/vikejs/vike-vue/commit/0728c10f9df2599b6b9d5496f95e89e598b1ed24))
+* use vike@0.4.191 ([efed97a](https://github.com/vikejs/vike-vue/commit/efed97a186b55c787322de07722f345ea40749c5))
+
+
+### Features
+
+* add pageContext.pageHtml{String,Stream} ([6c63604](https://github.com/vikejs/vike-vue/commit/6c636040479e8dbc60e3a7adfe4d57ae7c8c43fc))
+* pageContext.isRenderingHead ([#183](https://github.com/vikejs/vike-vue/issues/183)) ([9ffa550](https://github.com/vikejs/vike-vue/commit/9ffa5504c7f82838b329be56619855b1c0f1831c))
+
+
+### BREAKING CHANGES
+
+* Update to `vike@0.4.191` or above.
+
+
+
 ## [0.8.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.1...vike-vue@0.8.2) (2024-08-17)
 
 
