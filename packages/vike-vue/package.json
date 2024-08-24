@@ -22,7 +22,6 @@
     },
     "./clientOnly": "./dist/helpers/clientOnly.js",
     "./types": {
-      "default": "./dist/types/public.js",
       "types": "./dist/types/public.d.ts"
     }
   },
@@ -84,8 +83,7 @@
     }
   },
   "files": [
-    "dist/",
-    "types.d.ts"
+    "dist/"
   ],
   "repository": "github:vikejs/vike-vue",
   "license": "MIT"
