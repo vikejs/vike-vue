@@ -1,6 +1,6 @@
 import type { ImportString, PageContextServer, PageContext, PageContextClient } from 'vike/types'
 import type { TagAttributes } from '../utils/getTagAttributesString'
-import type { Viewport } from '../renderer/onRenderHtml'
+import type { Viewport } from '../integration/onRenderHtml'
 import type { ConfigsCumulative } from '../hooks/useConfig/configsCumulative'
 import type { Component } from './PageContext'
 import type {

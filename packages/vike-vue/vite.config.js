@@ -11,8 +11,8 @@ export default defineConfig({
     lib: {
       entry: {
         ['+config']: resolve(__dirname, './src/+config.ts'),
-        ['renderer/onRenderClient']: resolve(__dirname, './src/renderer/onRenderClient.ts'),
-        ['renderer/onRenderHtml']: resolve(__dirname, './src/renderer/onRenderHtml.ts'),
+        ['integration/onRenderClient']: resolve(__dirname, './src/integration/onRenderClient.ts'),
+        ['integration/onRenderHtml']: resolve(__dirname, './src/integration/onRenderHtml.ts'),
         ['helpers/clientOnly']: resolve(__dirname, './src/helpers/clientOnly.ts'),
         ['types/public']: resolve(__dirname, './src/types/public.ts'),
         ['hooks/usePageContext']: resolve(__dirname, './src/hooks/usePageContext.ts'),
@@ -29,7 +29,7 @@ export default defineConfig({
     rollupOptions: {
       // There doesn't seem to be way to externalize all dependencies.
       // We use assertExternal() to make sure we didn't forget any import in this list.
-      external: ['vue', 'vue/server-renderer', 'vike/server', 'vike/getPageContext'],
+      external: ['vue', 'vue/server-integration', 'vike/server', 'vike/getPageContext'],
       output: {
         sanitizeFileName: false,
         globals: {

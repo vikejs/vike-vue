@@ -7,9 +7,9 @@ export default {
   require: {
     'vike-vue': '>=0.7.0',
   },
-  onCreateApp: 'import:vike-vue-query/renderer/installVueQuery:installVueQuery',
-  onAfterRenderHtml: 'import:vike-vue-query/renderer/dehydrateVueQuery:dehydrateVueQuery',
-  onBeforeRenderClient: 'import:vike-vue-query/renderer/hydrateVueQuery:hydrateVueQuery',
+  onCreateApp: 'import:vike-vue-query/integration/installVueQuery:installVueQuery',
+  onAfterRenderHtml: 'import:vike-vue-query/integration/dehydrateVueQuery:dehydrateVueQuery',
+  onBeforeRenderClient: 'import:vike-vue-query/integration/hydrateVueQuery:hydrateVueQuery',
   meta: {
     queryClientConfig: {
       env: {

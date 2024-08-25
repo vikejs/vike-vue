@@ -7,9 +7,9 @@ export default {
   require: {
     'vike-vue': '>=0.7.0',
   },
-  onCreateApp: 'import:vike-vue-pinia/renderer/installPinia:installPinia',
-  onAfterRenderHtml: 'import:vike-vue-pinia/renderer/dehydratePinia:dehydratePinia',
-  onBeforeRenderClient: 'import:vike-vue-pinia/renderer/hydratePinia:hydratePinia',
+  onCreateApp: 'import:vike-vue-pinia/integration/installPinia:installPinia',
+  onAfterRenderHtml: 'import:vike-vue-pinia/integration/dehydratePinia:dehydratePinia',
+  onBeforeRenderClient: 'import:vike-vue-pinia/integration/hydratePinia:hydratePinia',
 } satisfies Config
 
 declare global {
