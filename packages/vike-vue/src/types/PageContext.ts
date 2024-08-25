@@ -1,7 +1,7 @@
 export type { Component }
 
 import type { App } from 'vue'
-import type { SSRContext } from 'vue/server-integration'
+import type { SSRContext } from 'vue/server-renderer'
 import type { ConfigFromHookResolved } from './Config'
 import type { PageHtmlStream } from '../integration/onRenderHtml'
 

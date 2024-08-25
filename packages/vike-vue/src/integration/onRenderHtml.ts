@@ -4,7 +4,7 @@ export { onRenderHtml }
 import { dangerouslySkipEscape, escapeInject } from 'vike/server'
 import type { OnRenderHtmlAsync, PageContextServer } from 'vike/types'
 import { App } from 'vue'
-import { type SSRContext, renderToNodeStream, renderToString, renderToWebStream } from 'vue/server-integration'
+import { type SSRContext, renderToNodeStream, renderToString, renderToWebStream } from 'vue/server-renderer'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 import { assert } from '../utils/assert.js'
 import { createVueApp } from './createVueApp.js'

@@ -29,7 +29,7 @@ export default defineConfig({
     rollupOptions: {
       // There doesn't seem to be way to externalize all dependencies.
       // We use assertExternal() to make sure we didn't forget any import in this list.
-      external: ['vue', 'vue/server-integration', 'vike/server', 'vike/getPageContext'],
+      external: ['vue', 'vue/server-renderer', 'vike/server', 'vike/getPageContext'],
       output: {
         sanitizeFileName: false,
         globals: {
