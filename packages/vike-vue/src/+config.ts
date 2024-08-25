@@ -11,9 +11,9 @@ const config = {
   },
 
   // https://vike.dev/onRenderHtml
-  onRenderHtml: 'import:vike-vue/integration/onRenderHtml:onRenderHtml',
+  onRenderHtml: 'import:vike-vue/__internal/integration/onRenderHtml:onRenderHtml',
   // https://vike.dev/onRenderClient
-  onRenderClient: 'import:vike-vue/integration/onRenderClient:onRenderClient',
+  onRenderClient: 'import:vike-vue/__internal/integration/onRenderClient:onRenderClient',
 
   // https://vike.dev/passToClient
   // It is a cumulative config option, so a web app using vike-vue can extend

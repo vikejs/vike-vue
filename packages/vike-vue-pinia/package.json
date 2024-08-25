@@ -15,22 +15,22 @@
   },
   "exports": {
     "./config": "./dist/+config.js",
-    "./integration/installPinia": "./dist/installPinia.js",
-    "./integration/dehydratePinia": "./dist/dehydratePinia.js",
-    "./integration/hydratePinia": "./dist/hydratePinia.js"
+    "./__internal/integration/installPinia": "./dist/installPinia.js",
+    "./__internal/integration/dehydratePinia": "./dist/dehydratePinia.js",
+    "./__internal/integration/hydratePinia": "./dist/hydratePinia.js"
   },
   "typesVersions": {
     "*": {
       "config": [
         "./dist/+config.d.ts"
       ],
-      "integration/installPinia": [
+      "__internal/integration/installPinia": [
         "./dist/installPinia.d.ts"
       ],
-      "integration/dehydratePinia": [
+      "__internal/integration/dehydratePinia": [
         "./dist/dehydratePinia.d.ts"
       ],
-      "integration/hydratePinia": [
+      "__internal/integration/hydratePinia": [
         "./dist/hydratePinia.d.ts"
       ]
     }

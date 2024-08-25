@@ -15,22 +15,22 @@
   },
   "exports": {
     "./config": "./dist/+config.js",
-    "./integration/installVueQuery": "./dist/installVueQuery.js",
-    "./integration/dehydrateVueQuery": "./dist/dehydrateVueQuery.js",
-    "./integration/hydrateVueQuery": "./dist/hydrateVueQuery.js"
+    "./__internal/integration/installVueQuery": "./dist/installVueQuery.js",
+    "./__internal/integration/dehydrateVueQuery": "./dist/dehydrateVueQuery.js",
+    "./__internal/integration/hydrateVueQuery": "./dist/hydrateVueQuery.js"
   },
   "typesVersions": {
     "*": {
       "config": [
         "./dist/+config.d.ts"
       ],
-      "integration/installVueQuery": [
+      "__internal/integration/installVueQuery": [
         "./dist/installVueQuery.d.ts"
       ],
-      "integration/dehydrateVueQuery": [
+      "__internal/integration/dehydrateVueQuery": [
         "./dist/dehydrateVueQuery.d.ts"
       ],
-      "integration/hydrateVueQuery": [
+      "__internal/integration/hydrateVueQuery": [
         "./dist/hydrateVueQuery.d.ts"
       ]
     }
