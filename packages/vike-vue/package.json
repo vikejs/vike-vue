@@ -23,8 +23,8 @@
       "types": "./dist/types/public.d.ts"
     },
     "./config": "./dist/+config.js",
-    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
-    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js"
+    "./__internal/integration/onRenderHtml": "./dist/integration/onRenderHtml.js",
+    "./__internal/integration/onRenderClient": "./dist/integration/onRenderClient.js"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -76,11 +76,11 @@
       "clientOnly": [
         "./dist/helpers/clientOnly.d.ts"
       ],
-      "renderer/onRenderHtml": [
-        "./dist/renderer/onRenderHtml.d.ts"
+      "__internal/integration/onRenderHtml": [
+        "./dist/integration/onRenderHtml.d.ts"
       ],
-      "renderer/onRenderClient": [
-        "./dist/renderer/onRenderClient.d.ts"
+      "__internal/integration/onRenderClient": [
+        "./dist/integration/onRenderClient.d.ts"
       ]
     }
   },

@@ -2,7 +2,7 @@ export { config }
 
 import type { Config } from 'vike/types'
 import './utils/tsx-workaround.js'
-import { ssrEffect } from './renderer/ssrEffect.js'
+import { ssrEffect } from './integration/ssrEffect.js'
 
 const config = {
   name: 'vike-vue',
@@ -11,9 +11,9 @@ const config = {
   },
 
   // https://vike.dev/onRenderHtml
-  onRenderHtml: 'import:vike-vue/renderer/onRenderHtml:onRenderHtml',
+  onRenderHtml: 'import:vike-vue/__internal/integration/onRenderHtml:onRenderHtml',
   // https://vike.dev/onRenderClient
-  onRenderClient: 'import:vike-vue/renderer/onRenderClient:onRenderClient',
+  onRenderClient: 'import:vike-vue/__internal/integration/onRenderClient:onRenderClient',
 
   // https://vike.dev/passToClient
   // It is a cumulative config option, so a web app using vike-vue can extend
