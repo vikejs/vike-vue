@@ -15,15 +15,18 @@ import type { PageContextInternal } from '../types/PageContext.js'
 const onRenderHtml: OnRenderHtmlAsync = async (
   pageContext: PageContextServer & PageContextInternal,
 ): ReturnType<OnRenderHtmlAsync> => {
-  const { pageHtml, fromHtmlRenderer, ssrContext } = await getPageHtml(pageContext)
+  const { pageHtml, fromHtmlRenderer } = await getPageHtml(pageContext)
 
   pageContext.isRenderingHead = true
   const headHtml = await getHeadHtml(pageContext)
   pageContext.isRenderingHead = false
 
-  const { bodyHtmlBegin, bodyHtmlEnd } = await getBodyHtmlBeginEnd(pageContext, ssrContext)
+  const { bodyHtmlBegin, bodyHtmlEnd } = await getBodyHtmlBoundary(pageContext)
 
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
+
+  // Not needed on the client-side, thus we remove it to save KBs sent to the client
+  delete pageContext._configFromHook
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html${dangerouslySkipEscape(htmlAttributesString)}>
@@ -36,11 +39,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (
         <div id="app">${pageHtml}</div>
         ${bodyHtmlEnd}
       </body>
-      <!-- built with https://github.com/vikejs/vike-vue -->
     </html>`
-
-  // Not needed on the client-side, thus we remove it to save KBs sent to the client
-  delete pageContext._configFromHook
 
   return {
     documentHtml,
@@ -95,7 +94,7 @@ async function getPageHtml(pageContext: PageContextServer) {
     pageContext.ssrContext = ssrContext
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
-  return { pageHtml, fromHtmlRenderer, ssrContext }
+  return { pageHtml, fromHtmlRenderer }
 }
 
 async function getHeadHtml(pageContext: PageContextServer & PageContextInternal) {
@@ -131,14 +130,13 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
   return headHtml
 }
 
-async function getBodyHtmlBeginEnd(pageContext: PageContextServer, ssrContext: SSRContext) {
+async function getBodyHtmlBoundary(pageContext: PageContextServer) {
   const bodyHtmlBegin = dangerouslySkipEscape(
     (await callCumulativeHooks(pageContext.config.bodyHtmlBegin, pageContext)).join(''),
   )
 
   // we define this hook here so that it doesn't need to be exported by vike-vue
-  const defaultTeleport = `<div id="teleported">${ssrContext.teleports?.['#teleported'] ?? ''}</div>`
-
+  const defaultTeleport = `<div id="teleported">${pageContext.ssrContext!.teleports?.['#teleported'] ?? ''}</div>`
   const bodyHtmlEndHooks = [defaultTeleport, ...(pageContext.config.bodyHtmlEnd ?? [])]
   const bodyHtmlEnd = dangerouslySkipEscape((await callCumulativeHooks(bodyHtmlEndHooks, pageContext)).join(''))
 

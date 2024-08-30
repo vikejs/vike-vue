@@ -158,7 +158,7 @@ declare global {
        *
        * https://vike.dev/bodyHtmlBegin
        */
-      bodyHtmlBegin?: BodyInjectHtml
+      bodyHtmlBegin?: BodyHtmlBoundary
 
       /**
        * Raw HTML injected at the end of `<body>`.
@@ -167,7 +167,7 @@ declare global {
        *
        * https://vike.dev/bodyHtmlEnd
        */
-      bodyHtmlEnd?: BodyInjectHtml
+      bodyHtmlEnd?: BodyHtmlBoundary
 
       /**
        * Hook called right after creating Vue's `app` instance.
@@ -215,8 +215,8 @@ declare global {
       onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
       onAfterRenderClient?: Function[]
-      bodyHtmlBegin?: BodyInjectHtml[]
-      bodyHtmlEnd?: BodyInjectHtml[]
+      bodyHtmlBegin?: BodyHtmlBoundary[]
+      bodyHtmlEnd?: BodyHtmlBoundary[]
       Layout?: Component[]
       Head?: Component[]
       bodyAttributes?: TagAttributes[]
@@ -232,7 +232,7 @@ export type __FakeExport_Config = never
 // - https://github.com/Microsoft/TypeScript/issues/983
 type PageContext_ = PageContext
 
-type BodyInjectHtml = string | ((pageContext: PageContext) => string)
+type BodyHtmlBoundary = string | ((pageContext: PageContext) => string)
 
 // JSDocs are preserved
 type PickWithoutGetter<T, K extends keyof T> = {
