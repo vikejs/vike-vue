@@ -53,7 +53,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (
 export type PageHtmlStream = ReturnType<typeof renderToNodeStream> | ReturnType<typeof renderToWebStream>
 async function getPageHtml(pageContext: PageContextServer) {
   let pageHtml: ReturnType<typeof dangerouslySkipEscape> | PageHtmlStream | string = ''
-  const ssrContext: SSRContext = {}
+  pageContext.ssrContext = {}
   const fromHtmlRenderer: PageContextServer['fromHtmlRenderer'] = {}
 
   let app: App | undefined
@@ -74,14 +74,14 @@ async function getPageHtml(pageContext: PageContextServer) {
     assert(app)
 
     if (!pageContext.config.stream) {
-      const pageHtmlString = await renderToStringWithErrorHandling(app, ssrContext)
+      const pageHtmlString = await renderToStringWithErrorHandling(app, pageContext.ssrContext)
       pageContext.pageHtmlString = pageHtmlString
       pageHtml = dangerouslySkipEscape(pageHtmlString)
     } else {
       const pageHtmlStream =
         pageContext.config.stream === 'web'
-          ? renderToWebStreamWithErrorHandling(app, ssrContext)
-          : renderToNodeStreamWithErrorHandling(app, ssrContext)
+          ? renderToWebStreamWithErrorHandling(app, pageContext.ssrContext)
+          : renderToNodeStreamWithErrorHandling(app, pageContext.ssrContext)
       pageContext.pageHtmlStream = pageHtmlStream
       pageHtml = pageHtmlStream
     }
@@ -91,7 +91,6 @@ async function getPageHtml(pageContext: PageContextServer) {
     //  - Tell users to use `!!pageContext.Page` if they want to apply the hook only for SSR.
     //    - Already done: https://vike.dev/onAfterRenderHtml
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
-    pageContext.ssrContext = ssrContext
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
   return { pageHtml, fromHtmlRenderer }
