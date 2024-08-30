@@ -154,14 +154,14 @@ declare global {
       Page?: Component
 
       /**
-       * The result of this is injected at the start of `<body>`.
+       * Raw HTML injected at the start of `<body>`.
        *
        * https://vike.dev/bodyHtmlBegin
        */
       bodyHtmlBegin?: BodyInjectHtml
 
       /**
-       * The result of this is injected at the end of `<body>`.
+       * Raw HTML injected at the end of `<body>`.
        *
        * @default `<div id="teleported"></div>`
        *
