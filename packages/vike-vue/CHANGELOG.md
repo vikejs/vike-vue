@@ -1,3 +1,15 @@
+## [0.8.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.3...vike-vue@0.8.4) (2024-09-10)
+
+
+### Bug Fixes
+
+* ensure pageContext.ssrContext is always defined ([1c0b011](https://github.com/vikejs/vike-vue/commit/1c0b0118b723216e516acc82e99fd46384f957e6))
+* improve JSDocs ([d0ba07e](https://github.com/vikejs/vike-vue/commit/d0ba07eed5a6833fb61d65279460f5cbbaea6527))
+* properly export config (fix [#194](https://github.com/vikejs/vike-vue/issues/194)) ([c01f129](https://github.com/vikejs/vike-vue/commit/c01f129a77a75222c39d123beba0f31c87625d28))
+* return undefined instead of throw error upon missing pageContext (fix vikejs/vike-react[#147](https://github.com/vikejs/vike-vue/issues/147)) ([103f30b](https://github.com/vikejs/vike-vue/commit/103f30b57c97aba2e25a43c7db1b3547c5624a3e))
+
+
+
 ## [0.8.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.2...vike-vue@0.8.3) (2024-08-24)
 
 
