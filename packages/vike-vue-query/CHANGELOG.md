@@ -4,19 +4,9 @@
 ### Bug Fixes
 
 * enforce peer dependencies ([802f02e](https://github.com/vikejs/vike-vue/commit/802f02e32c2aa3e92f5816d121c4b28a243aede2))
-* make bodyHtml{Start,End} a global setting (fix [#146](https://github.com/vikejs/vike-vue/issues/146)) ([#147](https://github.com/vikejs/vike-vue/issues/147)) ([ae9792e](https://github.com/vikejs/vike-vue/commit/ae9792e14e79cfd6b8643dd956d5541174da6c85))
 * optimistic peerDependencies ([83dc44b](https://github.com/vikejs/vike-vue/commit/83dc44b30226fdd6b9fb344da11beb2f71cc3e11))
 * simplify peerDependencies ([4a674a6](https://github.com/vikejs/vike-vue/commit/4a674a67bf19c19f111afdeb648629539a165e97))
 * tolerate missing pageContext.queryClient (fix [#163](https://github.com/vikejs/vike-vue/issues/163)) ([4934997](https://github.com/vikejs/vike-vue/commit/4934997e64e69027d8a46ddcf98dfad85705abd0))
-* use vike@0.4.191 ([efed97a](https://github.com/vikejs/vike-vue/commit/efed97a186b55c787322de07722f345ea40749c5))
-
-
-### BREAKING CHANGES
-
-* Update to `vike@0.4.191` or above.
-* the [bodyHtml{Start,End} settings](https://vike.dev/bodyHtmlEnd) are now global:
-you cannot use [config inheritance](https://vike.dev/config#inheritance) for them anymore,
-and make sure to define them at a global location such as `pages/+config.js`.
 
 
 
