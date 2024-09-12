@@ -1,8 +1,10 @@
+export { config as default }
+
 import type { Pinia, StateTree } from 'pinia'
 import type { Config } from 'vike/types'
 import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 
-export default {
+const config = {
   name: 'vike-vue-pinia',
   require: {
     'vike-vue': '>=0.7.0',

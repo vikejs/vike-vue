@@ -1,6 +1,6 @@
-import type { OnBeforeRenderClientSync } from 'vike-vue/types'
-
 export { onBeforeRenderClient }
+
+import type { OnBeforeRenderClientSync } from 'vike-vue/types'
 
 const onBeforeRenderClient: OnBeforeRenderClientSync = (pageContext): ReturnType<OnBeforeRenderClientSync> => {
   const { pinia, fromHtmlRenderer, isHydration } = pageContext
