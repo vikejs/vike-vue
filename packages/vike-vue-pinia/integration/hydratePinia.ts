@@ -2,11 +2,9 @@ import type { OnBeforeRenderClientSync } from 'vike-vue/types'
 
 export { hydratePinia }
 
-const hydratePinia: OnBeforeRenderClientSync = ({
-  pinia,
-  fromHtmlRenderer,
-  isHydration,
-}): ReturnType<OnBeforeRenderClientSync> => {
+const hydratePinia: OnBeforeRenderClientSync = (pageContext): ReturnType<OnBeforeRenderClientSync> => {
+  const { pinia, fromHtmlRenderer, isHydration } = pageContext
+
   if (!isHydration) {
     return
   }

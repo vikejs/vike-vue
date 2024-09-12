@@ -2,6 +2,7 @@ import type { OnAfterRenderHtmlSync } from 'vike-vue/types'
 
 export { dehydratePinia }
 
-const dehydratePinia: OnAfterRenderHtmlSync = ({ pinia }): ReturnType<OnAfterRenderHtmlSync> => {
+const dehydratePinia: OnAfterRenderHtmlSync = (pageContext): ReturnType<OnAfterRenderHtmlSync> => {
+  const { pinia } = pageContext
   return { piniaInitialState: pinia!.state.value }
 }
