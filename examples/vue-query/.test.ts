@@ -19,6 +19,12 @@ function runTest() {
     const body = await page.textContent('body')
     expect(body).toContain(fetchedText)
   })
+
+  test('Navigation', async () => {
+    await page.click('a[href="/about"]')
+    await page.click('a[href="/"]')
+    await testCounter()
+  })
 }
 
 async function testCounter() {
