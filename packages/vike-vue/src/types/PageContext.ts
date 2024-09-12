@@ -18,7 +18,9 @@ declare global {
       // Set by createVueApp()
       app?: App
 
-      // Set by onRenderHtml()
+      // TODO/eventually: remove (vike-vue-pinia and vike-vue-query don't use this anymore).
+      // - Let's wait a bit before removing as old vike-vue-pinia and vike-vue-query versions still need this.
+      /** @deprecated */
       fromHtmlRenderer: Record<string, unknown>
 
       ssrContext?: SSRContext

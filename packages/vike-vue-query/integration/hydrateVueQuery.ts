@@ -7,7 +7,7 @@ const hydrateVueQuery: OnBeforeRenderClientSync = (pageContext): ReturnType<OnBe
   if (!pageContext.isHydration) {
     return
   }
-  const { vueQueryInitialState } = pageContext.fromHtmlRenderer
+  const vueQueryInitialState = pageContext._vueQueryInitialState
   const queryClient = 'queryClient' in pageContext ? pageContext.queryClient : null
   if (!queryClient || !vueQueryInitialState) {
     // happens if SSR is off

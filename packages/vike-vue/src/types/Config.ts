@@ -187,7 +187,6 @@ declare global {
 
       /**
        * Hook called right after rendering the page's root Vue component to HTML.
-       * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
        *
        * https://vike.dev/onAfterRenderHtml
        */

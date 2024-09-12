@@ -46,18 +46,16 @@ type OnBeforeRenderHtmlAsync = (pageContext: PageContextServer) => Promise<void>
 
 /**
  * Hook called right after rendering the page's root Vue component to HTML.
- * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
  *
  * https://vike.dev/onAfterRenderHtml
  */
-type OnAfterRenderHtmlSync = (pageContext: PageContextServer) => PageContextServer['fromHtmlRenderer']
+type OnAfterRenderHtmlSync = (pageContext: PageContextServer) => void | PageContextServer['fromHtmlRenderer']
 /**
  * Hook called right after rendering the page's root Vue component to HTML.
- * The hook can return additional page context that will be passed to the client under `pageContext.fromHtmlRenderer`.
  *
  * https://vike.dev/onAfterRenderHtml
  */
-type OnAfterRenderHtmlAsync = (pageContext: PageContextServer) => Promise<PageContextServer['fromHtmlRenderer']>
+type OnAfterRenderHtmlAsync = (pageContext: PageContextServer) => Promise<void | PageContextServer['fromHtmlRenderer']>
 
 /**
  * Hook called right before mounting the page's root Vue component or when navigating on the client.

@@ -11,14 +11,11 @@ function hydratePinia(pageContext: PageContext) {
   if (!pageContext.isHydration) {
     return
   }
-  const {
-    pinia,
-    fromHtmlRenderer: { piniaInitialState },
-  } = pageContext
+  const { pinia } = pageContext
+  const piniaInitialState = pageContext._piniaInitialState
   if (!pinia || !piniaInitialState) {
     // happens if SSR is off
     return
   }
-  // @ts-expect-error TODO: fix type mismatch between Config['fromHtmlRenderer'] set by vike-vue and vike-vue-pinia
   pinia.state.value = piniaInitialState
 }

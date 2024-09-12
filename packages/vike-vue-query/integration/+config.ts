@@ -24,10 +24,7 @@ declare global {
   namespace Vike {
     interface PageContext {
       queryClient?: QueryClient
-      // @ts-expect-error TODO: fix type mismatch
-      fromHtmlRenderer: {
-        vueQueryInitialState?: DehydratedState
-      }
+      _vueQueryInitialState?: DehydratedState
     }
   }
   namespace Vike {
