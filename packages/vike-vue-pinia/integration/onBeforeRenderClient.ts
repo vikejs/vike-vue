@@ -3,7 +3,7 @@ export { onBeforeRenderClient }
 import type { OnBeforeRenderClientSync } from 'vike-vue/types'
 
 const onBeforeRenderClient: OnBeforeRenderClientSync = (pageContext): ReturnType<OnBeforeRenderClientSync> => {
-  hydratePinia(pageContext)
+  //hydratePinia(pageContext)
 }
 
 type PageContext = Parameters<typeof onBeforeRenderClient>[0]
