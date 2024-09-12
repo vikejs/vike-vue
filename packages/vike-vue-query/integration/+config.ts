@@ -7,7 +7,7 @@ import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 const config = {
   name: 'vike-vue-query',
   require: {
-    'vike-vue': '>=0.7.0',
+    'vike-vue': '^0.7.0 || ^0.8.0',
   },
   passToClient: ['_vueQueryInitialState'],
   onCreateApp: 'import:vike-vue-query/__internal/integration/onCreateApp:onCreateApp',

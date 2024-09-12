@@ -36,9 +36,9 @@
     }
   },
   "peerDependencies": {
-    "pinia": ">=2.0.0",
-    "vike-vue": ">=0.7.0",
-    "vue": ">=3.0.0"
+    "pinia": "^2.0.0",
+    "vike-vue": "^0.7.0 || ^0.8.0",
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@brillout/release-me": "^0.3.8",

@@ -7,7 +7,7 @@ import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 const config = {
   name: 'vike-vue-pinia',
   require: {
-    'vike-vue': '>=0.7.0',
+    'vike-vue': '^0.7.0 || ^0.8.0',
   },
   passToClient: ['_piniaInitialState'],
   onCreateApp: 'import:vike-vue-pinia/__internal/integration/onCreateApp:onCreateApp',
