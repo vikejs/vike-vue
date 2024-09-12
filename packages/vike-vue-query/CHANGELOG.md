@@ -1,3 +1,12 @@
+## [0.1.4](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.1.3...vike-vue-query@0.1.4) (2024-09-12)
+
+
+### Bug Fixes
+
+* more precise peer dependencies ([b3c77f0](https://github.com/vikejs/vike-vue/commit/b3c77f0eee7cec39f52b125e40d98a9dd7d8a7e4))
+
+
+
 ## [0.1.3](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.1.2...vike-vue-query@0.1.3) (2024-09-12)
 
 
