@@ -1,6 +1,6 @@
 <template>
   <h1>About</h1>
-  <p>Example of using Vike.</p>
+  <p>Example of using Pinia.</p>
   <Counter id="counter-3" />
 </template>
 

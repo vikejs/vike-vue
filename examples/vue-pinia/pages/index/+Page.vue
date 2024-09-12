@@ -1,5 +1,5 @@
 <template>
-  <h1>My Vike + Vue app</h1>
+  <h1>Vike + Vue + Pinia</h1>
   This page is:
   <ul>
     <li>Rendered to HTML.</li>
