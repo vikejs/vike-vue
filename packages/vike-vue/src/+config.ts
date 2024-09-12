@@ -7,7 +7,7 @@ import { ssrEffect } from './integration/ssrEffect.js'
 const config = {
   name: 'vike-vue',
   require: {
-    vike: '^0.4.191',
+    vike: '>=0.4.191',
   },
 
   // https://vike.dev/onRenderHtml
