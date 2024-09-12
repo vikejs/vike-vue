@@ -6,9 +6,9 @@
     <li>Interactive.</li>
   </ul>
   <h2>Counters synced via shared store</h2>
-  <Counter />
+  <Counter id="counter-1" />
   <hr />
-  <Counter />
+  <Counter id="counter-2"/>
 </template>
 
 <script lang="ts" setup>
