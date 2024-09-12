@@ -39,6 +39,7 @@ const onRenderClient: OnRenderClientAsync = async (
   } else {
     // Client-side navigation
 
+    objectAssign(pageContext, { app })
     await callCumulativeHooks(pageContext.config.onBeforeRenderClient, pageContext)
     await changePage!(pageContext)
   }
