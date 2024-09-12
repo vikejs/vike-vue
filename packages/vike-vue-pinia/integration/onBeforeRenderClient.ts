@@ -8,11 +8,10 @@ const onBeforeRenderClient: OnBeforeRenderClientSync = (pageContext): ReturnType
 
 type PageContext = Parameters<typeof onBeforeRenderClient>[0]
 function hydratePinia(pageContext: PageContext) {
-  const { pinia, fromHtmlRenderer, isHydration } = pageContext
-
-  if (!isHydration) {
+  if (!pageContext.isHydration) {
     return
   }
+  const { pinia, fromHtmlRenderer } = pageContext
 
   const { piniaInitialState } = fromHtmlRenderer
 
