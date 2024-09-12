@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.1.2...vike-vue-pinia@0.1.3) (2024-09-12)
+
+
+### Bug Fixes
+
+* more precise peer dependencies ([b3c77f0](https://github.com/vikejs/vike-vue/commit/b3c77f0eee7cec39f52b125e40d98a9dd7d8a7e4))
+
+
+
 ## [0.1.2](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.1.1...vike-vue-pinia@0.1.2) (2024-09-12)
 
 
