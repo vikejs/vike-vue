@@ -134,6 +134,9 @@ importers:
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
+      typescript:
+        specifier: 5.4.5
+        version: 5.4.5
       vike:
         specifier: ^0.4.195
         version: 0.4.195(vite@5.4.1(@types/node@22.3.0))
@@ -149,10 +152,6 @@ importers:
       vue:
         specifier: ^3.4.36
         version: 3.4.38(typescript@5.4.5)
-    devDependencies:
-      typescript:
-        specifier: 5.4.5
-        version: 5.4.5
       vue-tsc:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.4.5)

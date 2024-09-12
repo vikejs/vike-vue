@@ -15,23 +15,23 @@
   },
   "exports": {
     "./config": "./dist/+config.js",
-    "./__internal/integration/installVueQuery": "./dist/installVueQuery.js",
-    "./__internal/integration/dehydrateVueQuery": "./dist/dehydrateVueQuery.js",
-    "./__internal/integration/hydrateVueQuery": "./dist/hydrateVueQuery.js"
+    "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
+    "./__internal/integration/onAfterRenderHtml": "./dist/onAfterRenderHtml.js",
+    "./__internal/integration/onBeforeRenderClient": "./dist/onBeforeRenderClient.js"
   },
   "typesVersions": {
     "*": {
       "config": [
         "./dist/+config.d.ts"
       ],
-      "__internal/integration/installVueQuery": [
-        "./dist/installVueQuery.d.ts"
+      "__internal/integration/onCreateApp": [
+        "./dist/onCreateApp.d.ts"
       ],
-      "__internal/integration/dehydrateVueQuery": [
-        "./dist/dehydrateVueQuery.d.ts"
+      "__internal/integration/onAfterRenderHtml": [
+        "./dist/onAfterRenderHtml.d.ts"
       ],
-      "__internal/integration/hydrateVueQuery": [
-        "./dist/hydrateVueQuery.d.ts"
+      "__internal/integration/onBeforeRenderClient": [
+        "./dist/onBeforeRenderClient.d.ts"
       ]
     }
   },
@@ -51,7 +51,7 @@
     "vue-tsc": "^2.0.13"
   },
   "files": [
-    "dist"
+    "dist/"
   ],
   "license": "MIT"
 }

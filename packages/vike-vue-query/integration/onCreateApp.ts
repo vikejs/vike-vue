@@ -1,9 +1,14 @@
+export { onCreateApp }
+
 import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query'
 import type { OnCreateAppSync } from 'vike-vue/types'
 
-export { installVueQuery }
+const onCreateApp: OnCreateAppSync = (pageContext): ReturnType<OnCreateAppSync> => {
+  installVueQuery(pageContext)
+}
 
-const installVueQuery: OnCreateAppSync = (pageContext): ReturnType<OnCreateAppSync> => {
+type PageContext = Parameters<typeof onCreateApp>[0]
+function installVueQuery(pageContext: PageContext) {
   const queryClient = new QueryClient(pageContext.config.queryClientConfig)
   pageContext.app.use(VueQueryPlugin, { queryClient })
   Object.assign(pageContext, { queryClient })

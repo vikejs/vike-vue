@@ -45,10 +45,6 @@ a {
   line-height: 1.8em;
   border-right: 2px solid #eee;
 }
-.logo {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
 .content {
   transition: opacity 0.1s ease-in;
 }

@@ -1,15 +1,18 @@
+export { config as default }
+
 import type { DehydratedState, QueryClient, QueryClientConfig } from '@tanstack/vue-query'
 import type { Config } from 'vike/types'
 import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 
-export default {
+const config = {
   name: 'vike-vue-query',
   require: {
     'vike-vue': '>=0.7.0',
   },
-  onCreateApp: 'import:vike-vue-query/__internal/integration/installVueQuery:installVueQuery',
-  onAfterRenderHtml: 'import:vike-vue-query/__internal/integration/dehydrateVueQuery:dehydrateVueQuery',
-  onBeforeRenderClient: 'import:vike-vue-query/__internal/integration/hydrateVueQuery:hydrateVueQuery',
+  passToClient: ['_vueQueryInitialState'],
+  onCreateApp: 'import:vike-vue-query/__internal/integration/onCreateApp:onCreateApp',
+  onAfterRenderHtml: 'import:vike-vue-query/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
+  onBeforeRenderClient: 'import:vike-vue-query/__internal/integration/onBeforeRenderClient:onBeforeRenderClient',
   meta: {
     queryClientConfig: {
       env: {

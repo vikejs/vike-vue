@@ -15,12 +15,6 @@
   </ol>
   <p>Source: <a href="https://brillout.github.io/star-wars">brillout.github.io/star-wars</a>.</p>
   <p>
-    While initial data is fetched on the server, the client will refresh after rendering.<br>
-    <code>
-      Refreshing: {{ isFetching ? 'Yes' : 'No' }}
-    </code>
-  </p>
-  <p>
   This page is:
   </p>
   <ul>
