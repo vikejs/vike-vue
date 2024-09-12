@@ -1,9 +1,6 @@
 <template>
   <div class="layout">
     <div class="navigation">
-      <a href="/" class="logo">
-        <img src="../assets/logo.svg" height="64" width="64" />
-      </a>
       <Link href="/">Welcome</Link>
       <Link href="/about">About</Link>
     </div>

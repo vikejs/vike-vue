@@ -15,23 +15,23 @@
   },
   "exports": {
     "./config": "./dist/+config.js",
-    "./__internal/integration/installPinia": "./dist/installPinia.js",
-    "./__internal/integration/dehydratePinia": "./dist/dehydratePinia.js",
-    "./__internal/integration/hydratePinia": "./dist/hydratePinia.js"
+    "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
+    "./__internal/integration/onAfterRenderHtml": "./dist/onAfterRenderHtml.js",
+    "./__internal/integration/onBeforeRenderClient": "./dist/onBeforeRenderClient.js"
   },
   "typesVersions": {
     "*": {
       "config": [
         "./dist/+config.d.ts"
       ],
-      "__internal/integration/installPinia": [
-        "./dist/installPinia.d.ts"
+      "__internal/integration/onCreateApp": [
+        "./dist/onCreateApp.d.ts"
       ],
-      "__internal/integration/dehydratePinia": [
-        "./dist/dehydratePinia.d.ts"
+      "__internal/integration/onAfterRenderHtml": [
+        "./dist/onAfterRenderHtml.d.ts"
       ],
-      "__internal/integration/hydratePinia": [
-        "./dist/hydratePinia.d.ts"
+      "__internal/integration/onBeforeRenderClient": [
+        "./dist/onBeforeRenderClient.d.ts"
       ]
     }
   },

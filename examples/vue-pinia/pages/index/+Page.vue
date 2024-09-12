@@ -1,14 +1,14 @@
 <template>
-  <h1>My Vike + Vue app</h1>
+  <h1>Vike + Vue + Pinia</h1>
   This page is:
   <ul>
     <li>Rendered to HTML.</li>
     <li>Interactive.</li>
   </ul>
   <h2>Counters synced via shared store</h2>
-  <Counter />
+  <Counter id="counter-1" />
   <hr />
-  <Counter />
+  <Counter id="counter-2"/>
 </template>
 
 <script lang="ts" setup>
