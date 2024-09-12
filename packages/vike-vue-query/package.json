@@ -51,7 +51,7 @@
     "vue-tsc": "^2.0.13"
   },
   "files": [
-    "dist"
+    "dist/"
   ],
   "license": "MIT"
 }

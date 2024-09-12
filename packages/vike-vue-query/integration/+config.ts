@@ -1,8 +1,10 @@
+export { config as default }
+
 import type { DehydratedState, QueryClient, QueryClientConfig } from '@tanstack/vue-query'
 import type { Config } from 'vike/types'
 import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 
-export default {
+const config = {
   name: 'vike-vue-query',
   require: {
     'vike-vue': '>=0.7.0',
