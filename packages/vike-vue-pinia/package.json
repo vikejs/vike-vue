@@ -16,7 +16,7 @@
   "exports": {
     "./config": "./dist/+config.js",
     "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
-    "./__internal/integration/dehydratePinia": "./dist/dehydratePinia.js",
+    "./__internal/integration/onAfterRenderHtml": "./dist/onAfterRenderHtml.js",
     "./__internal/integration/hydratePinia": "./dist/hydratePinia.js"
   },
   "typesVersions": {
@@ -27,8 +27,8 @@
       "__internal/integration/onCreateApp": [
         "./dist/onCreateApp.d.ts"
       ],
-      "__internal/integration/dehydratePinia": [
-        "./dist/dehydratePinia.d.ts"
+      "__internal/integration/onAfterRenderHtml": [
+        "./dist/onAfterRenderHtml.d.ts"
       ],
       "__internal/integration/hydratePinia": [
         "./dist/hydratePinia.d.ts"

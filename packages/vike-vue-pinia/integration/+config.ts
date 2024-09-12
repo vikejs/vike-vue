@@ -8,7 +8,7 @@ export default {
     'vike-vue': '>=0.7.0',
   },
   onCreateApp: 'import:vike-vue-pinia/__internal/integration/onCreateApp:onCreateApp',
-  onAfterRenderHtml: 'import:vike-vue-pinia/__internal/integration/dehydratePinia:dehydratePinia',
+  onAfterRenderHtml: 'import:vike-vue-pinia/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
   onBeforeRenderClient: 'import:vike-vue-pinia/__internal/integration/hydratePinia:hydratePinia',
 } satisfies Config
 
