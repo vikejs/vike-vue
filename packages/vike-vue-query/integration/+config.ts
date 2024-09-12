@@ -9,6 +9,7 @@ const config = {
   require: {
     'vike-vue': '>=0.7.0',
   },
+  passToClient: ['_vueQueryInitialState'],
   onCreateApp: 'import:vike-vue-query/__internal/integration/onCreateApp:onCreateApp',
   onAfterRenderHtml: 'import:vike-vue-query/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
   onBeforeRenderClient: 'import:vike-vue-query/__internal/integration/onBeforeRenderClient:onBeforeRenderClient',
