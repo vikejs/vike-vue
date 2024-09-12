@@ -1,10 +1,8 @@
-export { config as default }
-
 import type { Config } from 'vike/types'
 import './utils/tsx-workaround.js'
 import { ssrEffect } from './integration/ssrEffect.js'
 
-const config = {
+export default {
   name: 'vike-vue',
   require: {
     vike: '>=0.4.191',
