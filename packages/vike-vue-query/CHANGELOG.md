@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.1.2...vike-vue-query@0.1.3) (2024-09-12)
+
+
+### Bug Fixes
+
+* simplify vike-vue-{query,pinia} integration ([08b612f](https://github.com/vikejs/vike-vue/commit/08b612f689545e54e42cfd7ed2639680c182f7fb))
+
+
+
 ## [0.1.2](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.1.1...vike-vue-query@0.1.2) (2024-09-11)
 
 
