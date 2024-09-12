@@ -11,7 +11,7 @@ const config = {
   },
   onCreateApp: 'import:vike-vue-query/__internal/integration/onCreateApp:onCreateApp',
   onAfterRenderHtml: 'import:vike-vue-query/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
-  onBeforeRenderClient: 'import:vike-vue-query/__internal/integration/hydrateVueQuery:hydrateVueQuery',
+  onBeforeRenderClient: 'import:vike-vue-query/__internal/integration/onBeforeRenderClient:onBeforeRenderClient',
   meta: {
     queryClientConfig: {
       env: {
