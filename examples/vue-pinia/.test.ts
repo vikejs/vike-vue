@@ -4,6 +4,7 @@ runTest()
 
 const counter1 = 'button#counter-1'
 const counter2 = 'button#counter-2'
+const counter3 = 'button#counter-3'
 
 function runTest() {
   run('pnpm run dev')
@@ -30,5 +31,15 @@ function runTest() {
     )
     expect(await page.textContent(counter1)).toBe('Counter 2')
     expect(await page.textContent(counter2)).toBe('Counter 2')
+  })
+
+  test('preserved state upon client-side navigation', async () => {
+    await page.click('a[href="/about"]')
+    expect(await page.textContent(counter3)).toBe('Counter 2')
+    await page.click(counter3)
+    expect(await page.textContent(counter3)).toContain('Counter 3')
+    await page.click('a[href="/"]')
+    expect(await page.textContent(counter1)).toBe('Counter 3')
+    expect(await page.textContent(counter2)).toBe('Counter 3')
   })
 }
