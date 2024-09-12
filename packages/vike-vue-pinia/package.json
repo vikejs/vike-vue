@@ -15,7 +15,7 @@
   },
   "exports": {
     "./config": "./dist/+config.js",
-    "./__internal/integration/installPinia": "./dist/installPinia.js",
+    "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
     "./__internal/integration/dehydratePinia": "./dist/dehydratePinia.js",
     "./__internal/integration/hydratePinia": "./dist/hydratePinia.js"
   },
@@ -24,8 +24,8 @@
       "config": [
         "./dist/+config.d.ts"
       ],
-      "__internal/integration/installPinia": [
-        "./dist/installPinia.d.ts"
+      "__internal/integration/onCreateApp": [
+        "./dist/onCreateApp.d.ts"
       ],
       "__internal/integration/dehydratePinia": [
         "./dist/dehydratePinia.d.ts"
