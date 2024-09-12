@@ -9,7 +9,7 @@ export default {
   },
   onCreateApp: 'import:vike-vue-pinia/__internal/integration/onCreateApp:onCreateApp',
   onAfterRenderHtml: 'import:vike-vue-pinia/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
-  onBeforeRenderClient: 'import:vike-vue-pinia/__internal/integration/hydratePinia:hydratePinia',
+  onBeforeRenderClient: 'import:vike-vue-pinia/__internal/integration/onBeforeRenderClient:onBeforeRenderClient',
 } satisfies Config
 
 declare global {

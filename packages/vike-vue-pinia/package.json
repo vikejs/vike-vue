@@ -17,7 +17,7 @@
     "./config": "./dist/+config.js",
     "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
     "./__internal/integration/onAfterRenderHtml": "./dist/onAfterRenderHtml.js",
-    "./__internal/integration/hydratePinia": "./dist/hydratePinia.js"
+    "./__internal/integration/onBeforeRenderClient": "./dist/onBeforeRenderClient.js"
   },
   "typesVersions": {
     "*": {
@@ -30,8 +30,8 @@
       "__internal/integration/onAfterRenderHtml": [
         "./dist/onAfterRenderHtml.d.ts"
       ],
-      "__internal/integration/hydratePinia": [
-        "./dist/hydratePinia.d.ts"
+      "__internal/integration/onBeforeRenderClient": [
+        "./dist/onBeforeRenderClient.d.ts"
       ]
     }
   },
