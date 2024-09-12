@@ -15,16 +15,20 @@ function runTest() {
 
   test('Hydration', async () => {
     await page.goto(getServerUrl() + url)
-    await testCounter()
-    const body = await page.textContent('body')
-    expect(body).toContain(fetchedText)
+    await testDOM()
   })
 
   test('Navigation', async () => {
     await page.click('a[href="/about"]')
     await page.click('a[href="/"]')
-    await testCounter()
+    await testDOM()
   })
+}
+
+async function testDOM() {
+  await testCounter()
+  const body = await page.textContent('body')
+  expect(body).toContain(fetchedText)
 }
 
 async function testCounter() {
