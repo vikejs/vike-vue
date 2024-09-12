@@ -9,7 +9,7 @@ const config = {
   require: {
     'vike-vue': '>=0.7.0',
   },
-  onCreateApp: 'import:vike-vue-query/__internal/integration/installVueQuery:installVueQuery',
+  onCreateApp: 'import:vike-vue-query/__internal/integration/onCreateApp:onCreateApp',
   onAfterRenderHtml: 'import:vike-vue-query/__internal/integration/dehydrateVueQuery:dehydrateVueQuery',
   onBeforeRenderClient: 'import:vike-vue-query/__internal/integration/hydrateVueQuery:hydrateVueQuery',
   meta: {

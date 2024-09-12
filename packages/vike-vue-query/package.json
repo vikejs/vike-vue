@@ -15,7 +15,7 @@
   },
   "exports": {
     "./config": "./dist/+config.js",
-    "./__internal/integration/installVueQuery": "./dist/installVueQuery.js",
+    "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
     "./__internal/integration/dehydrateVueQuery": "./dist/dehydrateVueQuery.js",
     "./__internal/integration/hydrateVueQuery": "./dist/hydrateVueQuery.js"
   },
@@ -24,8 +24,8 @@
       "config": [
         "./dist/+config.d.ts"
       ],
-      "__internal/integration/installVueQuery": [
-        "./dist/installVueQuery.d.ts"
+      "__internal/integration/onCreateApp": [
+        "./dist/onCreateApp.d.ts"
       ],
       "__internal/integration/dehydrateVueQuery": [
         "./dist/dehydrateVueQuery.d.ts"
