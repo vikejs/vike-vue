@@ -9,15 +9,13 @@
     "@types/node-fetch": "^2.6.11",
     "@tanstack/vue-query": "^5.0.0",
     "node-fetch": "^3.3.2",
+    "typescript": "5.4.5",
     "vike": "^0.4.195",
     "vike-vue-query": "^0.1.2",
     "vike-vue": "^0.8.4",
     "vite": "^5.4.0",
-    "vue": "^3.4.36"
-  },
-  "type": "module",
-  "devDependencies": {
-    "typescript": "5.4.5",
+    "vue": "^3.4.36",
     "vue-tsc": "^1.8.27"
-  }
+  },
+  "type": "module"
 }
