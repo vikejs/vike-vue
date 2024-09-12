@@ -1,3 +1,14 @@
+## [0.8.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.4...vike-vue@0.8.5) (2024-09-12)
+
+
+### Bug Fixes
+
+* make pageContext.app available upon client-side navigation ([1c0b6fb](https://github.com/vikejs/vike-vue/commit/1c0b6fb74a92274afb779726056fefc4ed664447))
+* more precise peer dependencies ([b3c77f0](https://github.com/vikejs/vike-vue/commit/b3c77f0eee7cec39f52b125e40d98a9dd7d8a7e4))
+* simplify vike-vue-{query,pinia} integration ([08b612f](https://github.com/vikejs/vike-vue/commit/08b612f689545e54e42cfd7ed2639680c182f7fb))
+
+
+
 ## [0.8.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.3...vike-vue@0.8.4) (2024-09-10)
 
 
