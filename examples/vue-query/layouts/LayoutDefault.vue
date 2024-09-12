@@ -1,9 +1,6 @@
 <template>
   <div class="layout">
     <div class="navigation">
-      <a href="/" class="logo">
-        <img src="../assets/logo.svg" height="64" width="64" />
-      </a>
       <Link href="/">Welcome</Link>
       <Link href="/about">About</Link>
     </div>
@@ -47,10 +44,6 @@ a {
   flex-direction: column;
   line-height: 1.8em;
   border-right: 2px solid #eee;
-}
-.logo {
-  margin-top: 20px;
-  margin-bottom: 10px;
 }
 .content {
   transition: opacity 0.1s ease-in;
