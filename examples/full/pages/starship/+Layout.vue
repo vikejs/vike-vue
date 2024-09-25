@@ -15,9 +15,9 @@
   </p>
   <br />
   <div class="sub-navigation">
-    <a keep-scroll-position href="/starship">Overview</a>
-    <a keep-scroll-position href="/starship/reviews">Reviews</a>
-    <a keep-scroll-position href="/starship/spec">Tech Spec</a>
+    <a href="/starship">Overview</a>
+    <a href="/starship/reviews">Reviews</a>
+    <a href="/starship/spec">Tech Spec</a>
   </div>
   <div style="margin-top: 20px; border: 1px solid black; padding: 10px 40px">
     <slot />
