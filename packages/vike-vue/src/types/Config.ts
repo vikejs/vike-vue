@@ -179,7 +179,7 @@ declare global {
       onCreateApp?: OnCreateAppSync | OnCreateAppAsync | ImportString
 
       /**
-       * Hook called right before rendering the page's HTML.
+       * Hook called right before rendering the page's root Vue component to HTML.
        *
        * https://vike.dev/onBeforeRenderHtml
        */
