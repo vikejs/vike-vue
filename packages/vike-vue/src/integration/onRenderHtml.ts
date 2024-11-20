@@ -70,7 +70,7 @@ async function getPageHtml(pageContext: PageContextServer) {
   //   - https://github.com/vikejs/vike-vue/issues/141
   await callCumulativeHooks(pageContext.config.onBeforeRenderHtml, pageContext)
 
-  if (!!pageContext.Page) {
+  if (pageContext.Page) {
     assert(app)
 
     if (!pageContext.config.stream) {
