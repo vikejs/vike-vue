@@ -7,6 +7,7 @@ const queryClientConfig: QueryClientConfig = {
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: import.meta.env.PROD,
+      // staleTime: 1000 * 60 * 5,
     },
   },
 }

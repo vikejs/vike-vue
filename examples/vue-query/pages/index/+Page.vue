@@ -34,6 +34,8 @@ const components = { Counter }
 const { isError, isPending, isFetching, data, error, suspense } = useQuery({
   queryKey: ['movies'],
   queryFn: fetchMovies,
+  // Or set global `staleTime` at pages/+queryClientConfig.ts
+  staleTime: 1000 * 60 * 5,
   select: (data) => minimize(data),
 })
 
