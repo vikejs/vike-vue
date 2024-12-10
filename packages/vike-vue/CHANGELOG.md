@@ -1,3 +1,15 @@
+## [0.8.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.5...vike-vue@0.8.6) (2024-12-10)
+
+
+### Bug Fixes
+
+* improve JSDoc ([5b4be67](https://github.com/vikejs/vike-vue/commit/5b4be67761bbb568636c07fbee410be3ec5c0e2c))
+* improve stream setting type ([2770f98](https://github.com/vikejs/vike-vue/commit/2770f98d4fb8df0b32d7569147eae8c07a0b7f5b))
+* optimistic peer dependencies ([f1e8ba6](https://github.com/vikejs/vike-vue/commit/f1e8ba69d732d5786dbda8ce5a0d37562f75f998))
+* simplify JSDocs for stream setting ([9ddce6b](https://github.com/vikejs/vike-vue/commit/9ddce6bd3897d44b9fd5104d718b470169226fa1))
+
+
+
 ## [0.8.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.4...vike-vue@0.8.5) (2024-09-12)
 
 
