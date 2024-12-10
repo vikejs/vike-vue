@@ -137,10 +137,7 @@ declare global {
       ssr?: boolean
 
       /**
-       * Whether to stream the page's HTML. Requires Server-Side Rendering (`ssr: true`).
-       * If true, the stream will be a Node Stream. If you need a Web Stream, use `stream: 'web'`.
-       *
-       * @default false
+       * Enable or disable HTML Streaming.
        *
        * https://vike.dev/stream
        */
