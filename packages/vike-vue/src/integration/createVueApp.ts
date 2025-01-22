@@ -15,6 +15,7 @@ import {
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
+import { objectReplace } from '../utils/objectReplace'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
@@ -97,10 +98,4 @@ async function createVueApp(
 
 function assertDataIsObject(data: unknown): asserts data is Record<string, unknown> {
   if (!isPlainObject(data)) throw new Error('data() should return a plain object, undefined, or null')
-}
-
-export function objectReplace(obj: object, objAddendum: object) {
-  // @ts-ignore
-  Object.keys(obj).forEach((key) => delete obj[key])
-  Object.assign(obj, objAddendum)
 }
