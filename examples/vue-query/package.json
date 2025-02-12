@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite build && vite preview"
+    "dev": "vike dev",
+    "build": "vike build",
+    "preview": "vike build && vike preview"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
@@ -10,7 +10,7 @@
     "@tanstack/vue-query": "^5.0.0",
     "node-fetch": "^3.3.2",
     "typescript": "5.4.5",
-    "vike": "^0.4.197",
+    "vike": "^0.4.222",
     "vike-vue-query": "^0.1.4",
     "vike-vue": "^0.8.6",
     "vite": "^5.4.0",
