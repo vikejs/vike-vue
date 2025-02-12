@@ -44,7 +44,7 @@
     "@types/node": "^22.1.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.5.4",
-    "vike": "^0.4.197",
+    "vike": "^0.4.222",
     "vite": "^5.4.0",
     "vite-plugin-dts": "^3.8.3",
     "vue": "^3.4.36",

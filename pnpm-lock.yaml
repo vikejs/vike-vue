@@ -50,8 +50,8 @@ importers:
         specifier: ^0.26.2
         version: 0.26.2(rollup@4.20.0)(vite@5.4.1(@types/node@22.3.0))
       vike:
-        specifier: ^0.4.197
-        version: 0.4.197(vite@5.4.1(@types/node@22.3.0))
+        specifier: ^0.4.222
+        version: 0.4.222(vite@5.4.1(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -77,8 +77,8 @@ importers:
         specifier: ^5.0.4
         version: 5.1.2(vite@5.4.1(@types/node@22.3.0))(vue@3.4.38(typescript@5.5.4))
       vike:
-        specifier: ^0.4.197
-        version: 0.4.197(vite@5.4.1(@types/node@22.3.0))
+        specifier: ^0.4.222
+        version: 0.4.222(vite@5.4.1(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -98,8 +98,8 @@ importers:
         specifier: ^2.1.7
         version: 2.2.2(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
       vike:
-        specifier: ^0.4.197
-        version: 0.4.197(vite@5.4.1(@types/node@22.3.0))
+        specifier: ^0.4.222
+        version: 0.4.222(vite@5.4.1(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -138,8 +138,8 @@ importers:
         specifier: 5.4.5
         version: 5.4.5
       vike:
-        specifier: ^0.4.197
-        version: 0.4.197(vite@5.4.1(@types/node@22.3.0))
+        specifier: ^0.4.222
+        version: 0.4.222(vite@5.4.1(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -171,8 +171,8 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
       vike:
-        specifier: ^0.4.197
-        version: 0.4.197(vite@5.4.1(@types/node@22.3.0))
+        specifier: ^0.4.222
+        version: 0.4.222(vite@5.4.1(@types/node@22.3.0))
       vite:
         specifier: ^5.4.0
         version: 5.4.1(@types/node@22.3.0)
@@ -201,8 +201,8 @@ importers:
         specifier: ^5.4.5
         version: 5.5.4
       vike:
-        specifier: ^0.4.197
-        version: 0.4.197(vite@5.4.1(@types/node@22.3.0))
+        specifier: ^0.4.222
+        version: 0.4.222(vite@5.4.1(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -228,8 +228,8 @@ importers:
         specifier: ^5.4.5
         version: 5.5.4
       vike:
-        specifier: ^0.4.197
-        version: 0.4.197(vite@5.4.1(@types/node@22.3.0))
+        specifier: ^0.4.222
+        version: 0.4.222(vite@5.4.1(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -323,8 +323,8 @@ packages:
   '@brillout/import@0.2.3':
     resolution: {integrity: sha512-1T8WlD75eeFSMrptGy8jiLHmfHgMmSjWvLOIUvHmSVZt+6k0eQqYUoK4KbmE4T9pVLIfxvZSOm2D68VEqKRHRw==}
 
-  '@brillout/json-serializer@0.5.13':
-    resolution: {integrity: sha512-9FpmgpuoSISw6fAPVB2qwW1dGAADN28YbWpfwOErfcZxpBH4lsnejuY89qcivInnWXYJvyyPwghCuOTbtuaYFg==}
+  '@brillout/json-serializer@0.5.15':
+    resolution: {integrity: sha512-iLAyV1HNC3nG07ypBwCJohFrajY1HeZdfBBgGuRtMH/JPddgG9bPmoSI18A1RBx67vRmY6/8rgisjR5YfTvZHA==}
 
   '@brillout/part-regex@0.1.4':
     resolution: {integrity: sha512-PQy5LfRmIueEfGwhvMedsnj6KulDfxlfvUaTsUchBqA7nTge4C7taG/V6np2uCHVxxE4+cSmwM4COn9aNcMn7g==}
@@ -352,8 +352,8 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
-  '@brillout/vite-plugin-server-entry@0.4.12':
-    resolution: {integrity: sha512-d2GPMPFfKEIjajW6wylIL9QsW4Sp/QyY7yr1FDxpgehgcgiXJUjRSvHBt0Ynyb4PtOyeLbhJECVIKwVMU4+BmQ==}
+  '@brillout/vite-plugin-server-entry@0.6.0':
+    resolution: {integrity: sha512-ELqCpB3l4dCZviobZKcHcNvuSPG86ZfBAHUYQWnf3K28PToBrXEagwPBEU/63ITcdpK9m7DOamQPcShtitTx5g==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -677,9 +677,6 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
-
-  '@polka/url@1.0.0-next.25':
-    resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
 
   '@rollup/pluginutils@5.1.0':
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -1338,6 +1335,11 @@ packages:
   json-stringify-safe@5.0.1:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
 
+  json5@2.2.3:
+    resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
+    engines: {node: '>=6'}
+    hasBin: true
+
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
 
@@ -1432,10 +1434,6 @@ packages:
 
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-
-  mrmime@2.0.0:
-    resolution: {integrity: sha512-eu38+hdgojoyq63s+yTpN4XMBdt5l8HhMhc4VKLO9KM5caLIBvUm4thi7fFaxyTmCKeNnXZ5pAlBwCUnhA09uw==}
-    engines: {node: '>=10'}
 
   ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
@@ -1637,10 +1635,6 @@ packages:
   signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
-  sirv@2.0.4:
-    resolution: {integrity: sha512-94Bdh3cC2PKrbgSOUqTiGPWVZeSiXfKOVZNJniWoqrWrRkB1CJzBU3NEbiTsPcYy1lDsANA/THzS+9WBiy5nfQ==}
-    engines: {node: '>= 10'}
-
   source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
@@ -1718,10 +1712,6 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
-  totalist@3.0.1:
-    resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
-    engines: {node: '>=6'}
-
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
 
@@ -1786,8 +1776,8 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vike@0.4.197:
-    resolution: {integrity: sha512-WPQjnMRx9moxukRx2yV0+PayQLDAv7JG4s11+d/xXvM2Y1WqNKNCXSTKbqMdIGae24GkK9lWyHzuFSPVFzb4sw==}
+  vike@0.4.222:
+    resolution: {integrity: sha512-SeUvh/hDMUW0T0kAJIPmqfW3ijJwMa4KPJhB5sInOq5QjZQI4y0D67kYGm8kUE349NPsfw4hD7kV9TyYz7TT7w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -1795,6 +1785,8 @@ packages:
       vite: '>=5.1.0'
     peerDependenciesMeta:
       react-streaming:
+        optional: true
+      vite:
         optional: true
 
   vite-plugin-cjs-interop@2.1.2:
@@ -1986,7 +1978,7 @@ snapshots:
 
   '@brillout/import@0.2.3': {}
 
-  '@brillout/json-serializer@0.5.13': {}
+  '@brillout/json-serializer@0.5.15': {}
 
   '@brillout/part-regex@0.1.4': {}
 
@@ -2027,9 +2019,10 @@ snapshots:
       source-map-support: 0.5.21
       typescript: 5.5.4
 
-  '@brillout/vite-plugin-server-entry@0.4.12':
+  '@brillout/vite-plugin-server-entry@0.6.0':
     dependencies:
       '@brillout/import': 0.2.3
+      '@brillout/picocolors': 1.0.15
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
@@ -2236,8 +2229,6 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
-
-  '@polka/url@1.0.0-next.25': {}
 
   '@rollup/pluginutils@5.1.0(rollup@4.20.0)':
     dependencies:
@@ -2976,6 +2967,8 @@ snapshots:
 
   json-stringify-safe@5.0.1: {}
 
+  json5@2.2.3: {}
+
   jsonfile@4.0.0:
     optionalDependencies:
       graceful-fs: 4.2.11
@@ -3059,8 +3052,6 @@ snapshots:
       brace-expansion: 2.0.1
 
   minimist@1.2.8: {}
-
-  mrmime@2.0.0: {}
 
   ms@2.1.2: {}
 
@@ -3247,12 +3238,6 @@ snapshots:
 
   signal-exit@3.0.7: {}
 
-  sirv@2.0.4:
-    dependencies:
-      '@polka/url': 1.0.0-next.25
-      mrmime: 2.0.0
-      totalist: 3.0.1
-
   source-map-js@1.2.0: {}
 
   source-map-support@0.5.21:
@@ -3312,8 +3297,6 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
-  totalist@3.0.1: {}
-
   tr46@0.0.3: {}
 
   type-detect@4.1.0: {}
@@ -3368,21 +3351,22 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.197(vite@5.4.1(@types/node@22.3.0)):
+  vike@0.4.222(vite@5.4.1(@types/node@22.3.0)):
     dependencies:
       '@brillout/import': 0.2.3
-      '@brillout/json-serializer': 0.5.13
+      '@brillout/json-serializer': 0.5.15
       '@brillout/picocolors': 1.0.15
       '@brillout/require-shim': 0.1.2
-      '@brillout/vite-plugin-server-entry': 0.4.12
+      '@brillout/vite-plugin-server-entry': 0.6.0
       acorn: 8.12.1
       cac: 6.7.14
       es-module-lexer: 1.5.4
       esbuild: 0.23.1
       fast-glob: 3.3.2
+      json5: 2.2.3
       semver: 7.6.3
-      sirv: 2.0.4
       source-map-support: 0.5.21
+    optionalDependencies:
       vite: 5.4.1(@types/node@22.3.0)
 
   vite-plugin-cjs-interop@2.1.2:
