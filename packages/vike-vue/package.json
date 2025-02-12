@@ -32,7 +32,7 @@
     "vue": ">=3.0.0"
   },
   "scripts": {
-    "dev": "vite build --watch",
+    "dev": "vike build --watch",
     "dev:typecheck": "tsc --noEmit --watch",
     "build": "rm -rf dist/ && vue-tsc --noEmit && vite build",
     "release": "release-me patch",
