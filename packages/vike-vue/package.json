@@ -47,7 +47,7 @@
     "vike": "^0.4.222",
     "vite": "^6.1.0",
     "vite-plugin-dts": "^3.8.3",
-    "vue": "^3.4.36",
+    "vue": "^3.5.13",
     "vue-tsc": "^2.0.13"
   },
   "typesVersions": {
