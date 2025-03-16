@@ -12,7 +12,7 @@
     "typescript": "5.4.5",
     "vike": "^0.4.222",
     "vike-vue-query": "^0.1.4",
-    "vike-vue": "^0.8.6",
+    "vike-vue": "^0.8.7",
     "vite": "^6.1.0",
     "vue": "^3.4.36",
     "vue-tsc": "^1.8.27"

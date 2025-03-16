@@ -1,3 +1,12 @@
+## [0.8.7](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.6...vike-vue@0.8.7) (2025-03-16)
+
+
+### Bug Fixes
+
+* allow user to override pageContext.{pageHtmlString,pageHtmlStream} ([86b306f](https://github.com/vikejs/vike-vue/commit/86b306f9292795f11b9ee18bc5a74d6b155fae55))
+
+
+
 ## [0.8.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.5...vike-vue@0.8.6) (2024-12-10)
 
 

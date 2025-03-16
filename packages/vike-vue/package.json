@@ -1,6 +1,6 @@
 {
   "name": "vike-vue",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "repository": "https://github.com/vikejs/vike-vue",
   "type": "module",
   "exports": {
