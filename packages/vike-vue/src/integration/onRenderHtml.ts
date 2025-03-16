@@ -15,7 +15,7 @@ import type { PageContextInternal } from '../types/PageContext.js'
 const onRenderHtml: OnRenderHtmlAsync = async (
   pageContext: PageContextServer & PageContextInternal,
 ): ReturnType<OnRenderHtmlAsync> => {
-  const { pageHtml, fromHtmlRenderer } = await getPageHtml(pageContext)
+  const { fromHtmlRenderer } = await renderPageToHtml(pageContext)
 
   pageContext.isRenderingHead = true
   const headHtml = await getHeadHtml(pageContext)
@@ -28,6 +28,19 @@ const onRenderHtml: OnRenderHtmlAsync = async (
   // Not needed on the client-side, thus we remove it to save KBs sent to the client
   delete pageContext._configFromHook
 
+  // pageContext.{pageHtmlString,pageHtmlStream} is set by renderPageToHtml() and can be overridden by user at onAfterRenderHtml()
+  let pageHtmlStringOrStream: string | ReturnType<typeof dangerouslySkipEscape> | PageHtmlStream =
+    // Set to empty string if SSR is disabled
+    ''
+  if (pageContext.pageHtmlString) {
+    assert(pageContext.pageHtmlStream === undefined)
+    pageHtmlStringOrStream = dangerouslySkipEscape(pageContext.pageHtmlString)
+  }
+  if (pageContext.pageHtmlStream) {
+    assert(pageContext.pageHtmlString === undefined)
+    pageHtmlStringOrStream = pageContext.pageHtmlStream
+  }
+
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html${dangerouslySkipEscape(htmlAttributesString)}>
       <head>
@@ -36,7 +49,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (
       </head>
       <body${dangerouslySkipEscape(bodyAttributesString)}>
         ${bodyHtmlBegin}
-        <div id="app">${pageHtml}</div>
+        <div id="app">${pageHtmlStringOrStream}</div>
         ${bodyHtmlEnd}
       </body>
     </html>`
@@ -51,8 +64,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (
 }
 
 export type PageHtmlStream = ReturnType<typeof renderToNodeStream> | ReturnType<typeof renderToWebStream>
-async function getPageHtml(pageContext: PageContextServer) {
-  let pageHtml: ReturnType<typeof dangerouslySkipEscape> | PageHtmlStream | string = ''
+async function renderPageToHtml(pageContext: PageContextServer) {
   pageContext.ssrContext = {}
   const fromHtmlRenderer: PageContextServer['fromHtmlRenderer'] = {}
 
@@ -76,14 +88,12 @@ async function getPageHtml(pageContext: PageContextServer) {
     if (!pageContext.config.stream) {
       const pageHtmlString = await renderToStringWithErrorHandling(app, pageContext.ssrContext)
       pageContext.pageHtmlString = pageHtmlString
-      pageHtml = dangerouslySkipEscape(pageHtmlString)
     } else {
       const pageHtmlStream =
         pageContext.config.stream === 'web'
           ? renderToWebStreamWithErrorHandling(app, pageContext.ssrContext)
           : renderToNodeStreamWithErrorHandling(app, pageContext.ssrContext)
       pageContext.pageHtmlStream = pageHtmlStream
-      pageHtml = pageHtmlStream
     }
 
     // TODO/breaking-change: always call onAfterRenderHtml()
@@ -93,7 +103,7 @@ async function getPageHtml(pageContext: PageContextServer) {
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
-  return { pageHtml, fromHtmlRenderer }
+  return { fromHtmlRenderer }
 }
 
 async function getHeadHtml(pageContext: PageContextServer & PageContextInternal) {
