@@ -1,3 +1,17 @@
+# [0.9.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.7...vike-vue@0.9.0) (2025-03-19)
+
+
+### Bug Fixes
+
+* **deps:** update pinia to v3 ([#204](https://github.com/vikejs/vike-vue/issues/204)) ([040ddba](https://github.com/vikejs/vike-vue/commit/040ddba61a1bbe6c05760cfc8ea608715d19c3ef))
+
+
+### BREAKING CHANGES
+
+* **deps:** bumps pinia peer dep to v3
+
+
+
 ## [0.8.7](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.6...vike-vue@0.8.7) (2025-03-16)
 
 
