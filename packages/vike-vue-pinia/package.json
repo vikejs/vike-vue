@@ -36,18 +36,18 @@
     }
   },
   "peerDependencies": {
-    "pinia": ">=2.0.0",
+    "pinia": ">=3.0.0",
     "vike-vue": ">=0.7.0",
     "vue": ">=3.0.0"
   },
   "devDependencies": {
     "@brillout/release-me": "^0.3.8",
     "@types/node": "^22.1.0",
-    "pinia": "^2.1.7",
+    "pinia": "^3.0.1",
     "typescript": "^5.4.5",
     "vike": "^0.4.222",
     "vike-vue": "^0.8.7",
-    "vue": "^3.4.36",
+    "vue": "^3.5.13",
     "vue-tsc": "^2.0.13"
   },
   "files": [
