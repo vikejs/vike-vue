@@ -1,3 +1,26 @@
+# [0.2.0](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.1.3...vike-vue-pinia@0.2.0) (2025-03-27)
+
+
+### Bug Fixes
+
+* **deps:** update pinia to v3 ([#204](https://github.com/vikejs/vike-vue/issues/204)) ([040ddba](https://github.com/vikejs/vike-vue/commit/040ddba61a1bbe6c05760cfc8ea608715d19c3ef))
+* optimistic peer dependencies ([f1e8ba6](https://github.com/vikejs/vike-vue/commit/f1e8ba69d732d5786dbda8ce5a0d37562f75f998))
+
+
+### BREAKING CHANGES
+
+* **deps:** bumps pinia peer dep to v3
+
+* chore(deps): update pinia to v3, update vue as needed by pinia's peer dep
+
+* chore(deps): use same vue version for all packages / examples
+
+* chore(git): add .idea to .gitignore
+
+* chore(deps): update vite in minimal example
+
+
+
 ## [0.1.3](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.1.2...vike-vue-pinia@0.1.3) (2024-09-12)
 
 
