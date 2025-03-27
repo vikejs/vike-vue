@@ -9,16 +9,7 @@
 
 ### BREAKING CHANGES
 
-* **deps:** bumps pinia peer dep to v3
-
-* chore(deps): update pinia to v3, update vue as needed by pinia's peer dep
-
-* chore(deps): use same vue version for all packages / examples
-
-* chore(git): add .idea to .gitignore
-
-* chore(deps): update vite in minimal example
-
+* **deps:** Upina pinia to v3 or above.
 
 
 ## [0.1.3](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.1.2...vike-vue-pinia@0.1.3) (2024-09-12)
