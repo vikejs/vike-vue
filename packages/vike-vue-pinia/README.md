@@ -1,13 +1,13 @@
 # `vike-vue-pinia`
 
+Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.dev/vike-vue) app.
+
 [Installation](#installation)  
 [Example](https://github.com/vikejs/vike-vue/tree/main/examples/vue-pinia)  
 [Version history](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue-pinia/CHANGELOG.md)  
 [See also](#see-also)  
 
 <br/>
-
-Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.dev/vike-vue) app.
 
 
 ## Installation

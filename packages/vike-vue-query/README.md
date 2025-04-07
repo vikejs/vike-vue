@@ -1,5 +1,7 @@
 # `vike-vue-query`
 
+Integrates [TanStack Query](https://tanstack.com/query) into your [`vike-vue`](https://vike.dev/vike-vue) app.
+
 [Installation](#installation)  
 [Settings](#settings)  
 [Example](https://github.com/vikejs/vike-vue/tree/main/examples/vue-query)  
@@ -7,8 +9,6 @@
 [See also](#see-also)  
 
 <br/>
-
-Integrates [TanStack Query](https://tanstack.com/query) into your [`vike-vue`](https://vike.dev/vike-vue) app.
 
 
 ## Installation
