@@ -3,7 +3,7 @@
 [Installation](#installation)  
 [Example](https://github.com/vikejs/vike-vue/tree/main/examples/vue-pinia)  
 [Version history](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue-pinia/CHANGELOG.md)  
-[See Also](#see-also)  
+[See also](#see-also)  
 
 <br/>
 

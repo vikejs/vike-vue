@@ -4,7 +4,7 @@
 [Settings](#settings)  
 [Example](https://github.com/vikejs/vike-vue/tree/main/examples/vue-query)  
 [Version history](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue-query/CHANGELOG.md)  
-[See Also](#see-also)  
+[See also](#see-also)  
 
 <br/>
 
