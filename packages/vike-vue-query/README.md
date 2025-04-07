@@ -26,7 +26,7 @@ Integrates [TanStack Query](https://tanstack.com/query) into your [`vike-vue`](h
      extends: [vikeVue, vikeVueQuery]
    }
    ```
-3. You can now use TanStack Query at any of your components.
+3. You can now use TanStack Query in any of your components.
    ```vue
    <template>
       <h1>Star Wars Movies</h1>

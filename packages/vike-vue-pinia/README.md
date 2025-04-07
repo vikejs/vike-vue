@@ -25,7 +25,7 @@ Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.
      extends: [vikeVue, vikeVuePinia]
    }
    ```
-3. You can now use Pinia at any of your components.
+3. You can now use Pinia in any of your components.
    ```vue
     <template>
       <button type="button" @click="counterStore.increment">Counter {{ counterStore.count }}</button>
