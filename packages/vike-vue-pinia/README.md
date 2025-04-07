@@ -7,7 +7,7 @@
 
 <br/>
 
-Integrates [Pinia](https://pinia.vuejs.org) to your [`vike-vue`](https://vike.dev/vike-vue) app.
+Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.dev/vike-vue) app.
 
 
 ## Installation
