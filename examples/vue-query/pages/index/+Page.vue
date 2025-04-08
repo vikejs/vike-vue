@@ -39,7 +39,7 @@ const { isError, isPending, isFetching, data, error, suspense } = useQuery({
   select: (data) => minimize(data),
 })
 
-// this will be called on the server to prefetch the data
+// This will be called on the server to prefetch the data
 onServerPrefetch(suspense)
 
 async function fetchMovies() {
