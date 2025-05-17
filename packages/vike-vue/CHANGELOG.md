@@ -1,3 +1,12 @@
+## [0.9.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.0...vike-vue@0.9.1) (2025-05-17)
+
+
+### Bug Fixes
+
+* fix providePageContext usage ([b730cbc](https://github.com/vikejs/vike-vue/commit/b730cbc01b0c85ec9f8617765032aa6c5ff32cff))
+
+
+
 # [0.9.0](https://github.com/vikejs/vike-vue/compare/vike-vue@0.8.7...vike-vue@0.9.0) (2025-03-19)
 
 No changes.
