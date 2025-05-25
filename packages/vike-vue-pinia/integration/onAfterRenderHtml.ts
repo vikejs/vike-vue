@@ -1,13 +1,7 @@
 export { onAfterRenderHtml }
 
-import type { OnAfterRenderHtmlSync } from 'vike-vue/types'
+import type { PageContextServer } from 'vike/types'
 
-const onAfterRenderHtml: OnAfterRenderHtmlSync = (pageContext): ReturnType<OnAfterRenderHtmlSync> => {
-  dehydratePinia(pageContext)
-}
-
-type PageContext = Parameters<typeof onAfterRenderHtml>[0]
-function dehydratePinia(pageContext: PageContext) {
-  const { pinia } = pageContext
-  pageContext._piniaInitialState = pinia!.state.value
+function onAfterRenderHtml(pageContext: PageContextServer) {
+  pageContext._piniaInitialState = pageContext.pinia?.state.value
 }

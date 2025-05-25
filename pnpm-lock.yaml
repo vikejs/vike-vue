@@ -50,8 +50,8 @@ importers:
         specifier: ^0.26.2
         version: 0.26.2(rollup@4.34.6)(vite@6.1.0(@types/node@22.3.0))
       vike:
-        specifier: ^0.4.222
-        version: 0.4.222(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -77,8 +77,8 @@ importers:
         specifier: ^5.1.2
         version: 5.2.1(vite@6.1.0(@types/node@22.3.0))(vue@3.5.13(typescript@5.5.4))
       vike:
-        specifier: ^0.4.222
-        version: 0.4.222(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -98,8 +98,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(typescript@5.5.4)(vue@3.5.13(typescript@5.5.4))
       vike:
-        specifier: ^0.4.222
-        version: 0.4.222(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -138,8 +138,8 @@ importers:
         specifier: 5.4.5
         version: 5.4.5
       vike:
-        specifier: ^0.4.222
-        version: 0.4.222(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -171,8 +171,8 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
       vike:
-        specifier: ^0.4.222
-        version: 0.4.222(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vite:
         specifier: ^6.1.0
         version: 6.1.0(@types/node@22.3.0)
@@ -201,8 +201,8 @@ importers:
         specifier: ^5.4.5
         version: 5.5.4
       vike:
-        specifier: ^0.4.222
-        version: 0.4.222(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -228,8 +228,8 @@ importers:
         specifier: ^5.4.5
         version: 5.5.4
       vike:
-        specifier: ^0.4.222
-        version: 0.4.222(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -320,8 +320,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@brillout/import@0.2.3':
-    resolution: {integrity: sha512-1T8WlD75eeFSMrptGy8jiLHmfHgMmSjWvLOIUvHmSVZt+6k0eQqYUoK4KbmE4T9pVLIfxvZSOm2D68VEqKRHRw==}
+  '@brillout/import@0.2.6':
+    resolution: {integrity: sha512-1GUTmADc8trUC1YSW2lp9r6PmwluMoEyHajnE1kxVdbKGD0wJOlq/DvTWMUqLtBDCnQR+n//qgMtz6HwA/lotA==}
 
   '@brillout/json-serializer@0.5.15':
     resolution: {integrity: sha512-iLAyV1HNC3nG07ypBwCJohFrajY1HeZdfBBgGuRtMH/JPddgG9bPmoSI18A1RBx67vRmY6/8rgisjR5YfTvZHA==}
@@ -334,6 +334,9 @@ packages:
 
   '@brillout/picocolors@1.0.15':
     resolution: {integrity: sha512-VrgvPtfnKP/i8kxCAyQVd0DWg6xU8OZJndbLf/lrywd96UdMhnGL/PK42HhHhhwkDSkaiQU+zc+OPWpvqOe4Cg==}
+
+  '@brillout/picocolors@1.0.26':
+    resolution: {integrity: sha512-oJF92OEpzunaJyaEWXuS4PWY0k8JsqNO18kMf5hIwvsh+tyhbv+UwAnPPauSlO2eyvMSciui+YFKV9DEzTpmGA==}
 
   '@brillout/release-me@0.3.10':
     resolution: {integrity: sha512-Fi1HirObB31ZWTJKyb4TC4wYyP3FgWTuKuMvuCx2nodphQu0zGackTQrHWtH1suQxovjKTnyF+if0TKDYyy18A==}
@@ -352,8 +355,8 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
-  '@brillout/vite-plugin-server-entry@0.6.0':
-    resolution: {integrity: sha512-ELqCpB3l4dCZviobZKcHcNvuSPG86ZfBAHUYQWnf3K28PToBrXEagwPBEU/63ITcdpK9m7DOamQPcShtitTx5g==}
+  '@brillout/vite-plugin-server-entry@0.7.9':
+    resolution: {integrity: sha512-mJrUakPTj8Zf3Pm4beKmHowfozHOLS/deMqheYYIlqK8FSR4Hd3vMeFQBL/rxLLd+svIlW/j2K3M2SVPDmvX7A==}
 
   '@esbuild/aix-ppc64@0.23.1':
     resolution: {integrity: sha512-6VhYk1diRqrhBAqpJEdjASR/+WVRtfjpqKuNw11cLiaWpAT/Uu+nokB+UJnevzy/P9C/ty6AOe0dwueMrGh/iQ==}
@@ -690,6 +693,9 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
+  '@polka/url@1.0.0-next.29':
+    resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+
   '@rollup/pluginutils@5.1.0':
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
@@ -959,6 +965,7 @@ packages:
 
   acorn-import-assertions@1.9.0:
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -1230,6 +1237,14 @@ packages:
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
 
+  fdir@6.4.4:
+    resolution: {integrity: sha512-1NZP+GK4GfuAv3PqKvxQRDMjdSRZjnkq7KfhlNrCNNlZ0ygQFpebfrnfnq/W7fpUnAv9aGWmY1zKx7FYL3gwhg==}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
+
   fetch-blob@3.2.0:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
     engines: {node: ^12.20 || >= 14.13}
@@ -1429,9 +1444,11 @@ packages:
 
   lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    deprecated: This package is deprecated. Use the optional chaining (?.) operator instead.
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -1448,6 +1465,9 @@ packages:
 
   magic-string@0.30.11:
     resolution: {integrity: sha512-+Wri9p0QHMy+545hKww7YAu5NyzF8iomPL/RQazugQ9+Ez4Ic3mERMd8ZTX5rfK944j+560ZJi8iAwgak1Ac7A==}
+
+  magic-string@0.30.17:
+    resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
 
   markdown-it@14.1.0:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
@@ -1500,6 +1520,10 @@ packages:
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
 
+  mrmime@2.0.1:
+    resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
+    engines: {node: '>=10'}
+
   ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
@@ -1520,6 +1544,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -1591,6 +1616,10 @@ packages:
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+
+  picomatch@4.0.2:
+    resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
+    engines: {node: '>=12'}
 
   pinia@3.0.1:
     resolution: {integrity: sha512-WXglsDzztOTH6IfcJ99ltYZin2mY8XZCXujkYWVIJlBjqsP6ST7zw+Aarh63E1cDVYeyUcPCxPHzJpEOmzB6Wg==}
@@ -1706,6 +1735,10 @@ packages:
   signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
+  sirv@3.0.1:
+    resolution: {integrity: sha512-FoqMu0NCGBLCcAkS1qA+XJIQTR6/JHfQXl+uGteNCQ76T91DMUjPa9xfmeqMY3z80nLSg9yQmNjK0Px6RWsH/A==}
+    engines: {node: '>=18'}
+
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -1783,6 +1816,10 @@ packages:
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
+  tinyglobby@0.2.13:
+    resolution: {integrity: sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw==}
+    engines: {node: '>=12.0.0'}
+
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -1790,6 +1827,10 @@ packages:
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
+
+  totalist@3.0.1:
+    resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
+    engines: {node: '>=6'}
 
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
@@ -1855,8 +1896,8 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vike@0.4.222:
-    resolution: {integrity: sha512-SeUvh/hDMUW0T0kAJIPmqfW3ijJwMa4KPJhB5sInOq5QjZQI4y0D67kYGm8kUE349NPsfw4hD7kV9TyYz7TT7w==}
+  vike@0.4.230:
+    resolution: {integrity: sha512-i/zOb1Ig/79fzafDU/4sz8NwxNN7/tYl5/gTgomN3RAybOvb+KCVvEtSZu0j0iIPVRxfU4jbz3yYWvsPnHnzUg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -2064,7 +2105,7 @@ snapshots:
   '@biomejs/cli-win32-x64@1.8.3':
     optional: true
 
-  '@brillout/import@0.2.3': {}
+  '@brillout/import@0.2.6': {}
 
   '@brillout/json-serializer@0.5.15': {}
 
@@ -2073,6 +2114,8 @@ snapshots:
   '@brillout/picocolors@1.0.14': {}
 
   '@brillout/picocolors@1.0.15': {}
+
+  '@brillout/picocolors@1.0.26': {}
 
   '@brillout/release-me@0.3.10':
     dependencies:
@@ -2107,10 +2150,10 @@ snapshots:
       source-map-support: 0.5.21
       typescript: 5.5.4
 
-  '@brillout/vite-plugin-server-entry@0.6.0':
+  '@brillout/vite-plugin-server-entry@0.7.9':
     dependencies:
-      '@brillout/import': 0.2.3
-      '@brillout/picocolors': 1.0.15
+      '@brillout/import': 0.2.6
+      '@brillout/picocolors': 1.0.26
 
   '@esbuild/aix-ppc64@0.23.1':
     optional: true
@@ -2323,6 +2366,8 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
+
+  '@polka/url@1.0.0-next.29': {}
 
   '@rollup/pluginutils@5.1.0(rollup@4.34.6)':
     dependencies:
@@ -2975,6 +3020,10 @@ snapshots:
     dependencies:
       reusify: 1.0.4
 
+  fdir@6.4.4(picomatch@4.0.2):
+    optionalDependencies:
+      picomatch: 4.0.2
+
   fetch-blob@3.2.0:
     dependencies:
       node-domexception: 1.0.0
@@ -3159,6 +3208,10 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  magic-string@0.30.17:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+
   markdown-it@14.1.0:
     dependencies:
       argparse: 2.0.1
@@ -3204,6 +3257,8 @@ snapshots:
   minimist@1.2.8: {}
 
   mitt@3.0.1: {}
+
+  mrmime@2.0.1: {}
 
   ms@2.1.2: {}
 
@@ -3276,6 +3331,8 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
+
+  picomatch@4.0.2: {}
 
   pinia@3.0.1(typescript@5.5.4)(vue@3.5.13(typescript@5.5.4)):
     dependencies:
@@ -3398,6 +3455,12 @@ snapshots:
 
   signal-exit@3.0.7: {}
 
+  sirv@3.0.1:
+    dependencies:
+      '@polka/url': 1.0.0-next.29
+      mrmime: 2.0.1
+      totalist: 3.0.1
+
   source-map-js@1.2.1: {}
 
   source-map-support@0.5.21:
@@ -3457,11 +3520,18 @@ snapshots:
 
   through@2.3.8: {}
 
+  tinyglobby@0.2.13:
+    dependencies:
+      fdir: 6.4.4(picomatch@4.0.2)
+      picomatch: 4.0.2
+
   to-fast-properties@2.0.0: {}
 
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  totalist@3.0.1: {}
 
   tr46@0.0.3: {}
 
@@ -3517,21 +3587,24 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.222(vite@6.1.0(@types/node@22.3.0)):
+  vike@0.4.230(vite@6.1.0(@types/node@22.3.0)):
     dependencies:
-      '@brillout/import': 0.2.3
+      '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.15
-      '@brillout/picocolors': 1.0.15
+      '@brillout/picocolors': 1.0.26
       '@brillout/require-shim': 0.1.2
-      '@brillout/vite-plugin-server-entry': 0.6.0
+      '@brillout/vite-plugin-server-entry': 0.7.9
       acorn: 8.12.1
       cac: 6.7.14
       es-module-lexer: 1.5.4
-      esbuild: 0.23.1
-      fast-glob: 3.3.2
+      esbuild: 0.24.2
       json5: 2.2.3
+      magic-string: 0.30.17
+      picomatch: 4.0.2
       semver: 7.6.3
+      sirv: 3.0.1
       source-map-support: 0.5.21
+      tinyglobby: 0.2.13
     optionalDependencies:
       vite: 6.1.0(@types/node@22.3.0)
 

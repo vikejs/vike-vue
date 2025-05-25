@@ -1,15 +1,18 @@
 export { onCreateApp }
 
+import type { PageContext } from 'vike/types'
 import { createPinia } from 'pinia'
-import type { OnCreateAppSync } from 'vike-vue/types'
 
-const onCreateApp: OnCreateAppSync = (pageContext): ReturnType<OnCreateAppSync> => {
-  installPinia(pageContext)
-}
+function onCreateApp(pageContext: PageContext) {
+  const { app } = pageContext
+  if (!app) return
 
-type PageContext = Parameters<typeof onCreateApp>[0]
-function installPinia(pageContext: PageContext) {
-  const pinia = createPinia()
-  pageContext.app.use(pinia)
-  Object.assign(pageContext, { pinia })
+  if (pageContext.isClientSide) {
+    const pinia = createPinia()
+    const { _piniaInitialState } = pageContext
+    if (_piniaInitialState) pinia.state.value = _piniaInitialState
+    pageContext.globalContext.pinia = pinia
+  }
+
+  app.use(pageContext.globalContext.pinia ?? pageContext.pinia!)
 }
