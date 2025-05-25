@@ -66,12 +66,6 @@ function runTest() {
   test('todos - add to-do', async () => {
     await page.fill('input[type="text"]', 'Buy bananas')
     await page.click('button[type="submit"]')
-    const expectBananas = async () => {
-      await autoRetry(async () => {
-        expect(await getNumberOfItems()).toBe(3)
-      })
-      expect(await page.textContent('body')).toContain('Buy bananas')
-    }
     await expectBananas()
 
     await testCounter(1)
@@ -82,21 +76,26 @@ function runTest() {
     await fullPageReload()
     await expectInitialList()
   })
-}
-
-async function clientSideNavigation() {
-  await page.click('a:has-text("About")')
-  await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/about')
-  await testCounter(2)
-  await page.click('a:has-text("Welcome")')
-  await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/')
-  await testCounter(3)
-}
-async function fullPageReload() {
-  await page.goto(getServerUrl() + '/about')
-  await testCounter()
-  await page.goto(getServerUrl() + '/')
-  await testCounter(1)
+  async function expectBananas() {
+    await autoRetry(async () => {
+      expect(await getNumberOfItems()).toBe(3)
+    })
+    expect(await page.textContent('body')).toContain('Buy bananas')
+  }
+  async function clientSideNavigation() {
+    await page.click('a:has-text("About")')
+    await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/about')
+    await testCounter(2)
+    await page.click('a:has-text("Welcome")')
+    await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/')
+    await testCounter(3)
+  }
+  async function fullPageReload() {
+    await page.goto(getServerUrl() + '/about')
+    await testCounter()
+    await page.goto(getServerUrl() + '/')
+    await testCounter(1)
+  }
 }
 
 async function getNumberOfItems() {
