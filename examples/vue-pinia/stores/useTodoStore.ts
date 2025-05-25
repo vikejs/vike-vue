@@ -12,9 +12,9 @@ export const useTodoStore = defineStore('todo', () => {
     todos.value.push(...todo)
   }
 
-  const initTodos = (todo: Todo[]) => {
+  const initTodos = (todosInit: Todo[]) => {
     if (todos.value.length !== 0) return
-    todos.value = todo
+    todos.value = todosInit
   }
 
   return { todos, addTodos, initTodos }
