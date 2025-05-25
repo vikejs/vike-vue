@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import { PageContext } from 'vike/types'
 
 const onCreateApp = (pageContext: PageContext) => {
-  const { app, globalContext, _piniaInitialState, isClientSide } = pageContext;
+  const { app, globalContext, _piniaInitialState, isClientSide } = pageContext
 
   if (!app) return
 

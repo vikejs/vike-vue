@@ -12,17 +12,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { useTodoStore } from "../../stores/useTodoStore"
+import { ref } from 'vue'
+import { useTodoStore } from '../../stores/useTodoStore'
 import { storeToRefs } from 'pinia'
 
-const { todos } = storeToRefs(useTodoStore());
-const { addTodos } = useTodoStore();
+const { todos } = storeToRefs(useTodoStore())
+const { addTodos } = useTodoStore()
 
-const newTodo = ref("");
+const newTodo = ref('')
 
 const handleSubmit = () => {
   addTodos([{ text: newTodo.value }])
-  newTodo.value = ""
-};
+  newTodo.value = ''
+}
 </script>
