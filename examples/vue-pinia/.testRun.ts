@@ -1,12 +1,13 @@
+export { testRun }
+
 import { test, expect, run, fetchHtml, page, getServerUrl, autoRetry } from '@brillout/test-e2e'
-
-runTest()
-
 const counter1 = 'button#counter-1'
 const counter2 = 'button#counter-2'
 const counter3 = 'button#counter-3'
 
-function runTest() {
+function testRun(cmd: `pnpm run ${'dev' | 'preview' | 'preview:ssg'}`) {
+  run(cmd)
+
   run('pnpm run dev')
 
   test('initial state', async () => {
