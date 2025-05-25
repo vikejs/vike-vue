@@ -5,7 +5,6 @@ runTest()
 const counter1 = 'button#counter-1'
 const counter2 = 'button#counter-2'
 const counter3 = 'button#counter-3'
-const counterInitValue = 1
 
 function runTest() {
   run('pnpm run dev')
@@ -75,7 +74,7 @@ function runTest() {
     }
     await expectBananas()
 
-    await testCounter(counterInitValue)
+    await testCounter(1)
     await clientSideNavigation()
     await expectBananas()
 
@@ -85,30 +84,32 @@ function runTest() {
   })
 }
 
-  async function clientSideNavigation() {
-    await page.click('a:has-text("About")')
-    await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/about')
-    await testCounter(counterInitValue + 1)
-    await page.click('a:has-text("Welcome")')
-    await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/')
-    await testCounter(counterInitValue + 2)
-  }
-  async function fullPageReload() {
-    await page.goto(getServerUrl() + '/about')
-    await testCounter(counterInitValue)
-    await page.goto(getServerUrl() + '/')
-    await testCounter(counterInitValue)
-  }
+async function clientSideNavigation() {
+  await page.click('a:has-text("About")')
+  await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/about')
+  await testCounter(2)
+  await page.click('a:has-text("Welcome")')
+  await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/')
+  await testCounter(3)
+}
+async function fullPageReload() {
+  await page.goto(getServerUrl() + '/about')
+  await testCounter()
+  await page.goto(getServerUrl() + '/')
+  await testCounter(1)
+}
 
 async function getNumberOfItems() {
   return await page.evaluate(() => document.querySelectorAll('#todo-list li').length)
 }
 
-async function testCounter(currentValue = 0) {
+async function testCounter(inc: 0 | 1 | 2 | 3 = 0) {
+  const counterInitValue = 0
+  const currentValue = counterInitValue + inc
   // autoRetry() in case page just got client-side navigated
   await autoRetry(
     async () => {
-      const btn = page.locator('button', { hasText: 'Counter' })
+      const btn = page.locator('button', { hasText: 'Counter' }).first()
       expect(await btn.textContent()).toBe(`Counter ${currentValue}`)
     },
     { timeout: 5 * 1000 },
@@ -116,7 +117,7 @@ async function testCounter(currentValue = 0) {
   // autoRetry() in case page isn't hydrated yet
   await autoRetry(
     async () => {
-      const btn = page.locator('button', { hasText: 'Counter' })
+      const btn = page.locator('button', { hasText: 'Counter' }).first()
       await btn.click()
       expect(await btn.textContent()).toBe(`Counter ${currentValue + 1}`)
     },
