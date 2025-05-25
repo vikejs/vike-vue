@@ -41,7 +41,7 @@
     "vue": ">=3.0.0"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.4.4",
+    "@brillout/release-me": "^0.4.5",
     "@tanstack/vue-query": "^5.29.0",
     "@types/node": "^22.1.0",
     "typescript": "^5.4.5",
