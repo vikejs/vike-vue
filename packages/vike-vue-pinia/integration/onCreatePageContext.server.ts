@@ -1,6 +1,8 @@
-import { createPinia } from 'pinia'
-import { PageContext } from 'vike/types'
+export { onCreatePageContext }
 
-export const onCreatePageContext = (pageContext: PageContext) => {
+import type { PageContextServer } from 'vike/types'
+import { createPinia } from 'pinia'
+
+function onCreatePageContext(pageContext: PageContextServer) {
   pageContext.pinia = createPinia()
 }

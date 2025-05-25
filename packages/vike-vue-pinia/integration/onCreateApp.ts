@@ -1,17 +1,17 @@
 export { onCreateApp }
 
+import type { PageContext } from 'vike/types'
 import { createPinia } from 'pinia'
-import { PageContext } from 'vike/types'
 
-const onCreateApp = (pageContext: PageContext) => {
-  const { app, globalContext, _piniaInitialState, isClientSide } = pageContext
-
+function onCreateApp(pageContext: PageContext) {
+  const { app } = pageContext
   if (!app) return
 
-  if (isClientSide) {
+  if (pageContext.isClientSide) {
     const pinia = createPinia()
+    const { _piniaInitialState } = pageContext
     if (_piniaInitialState) pinia.state.value = _piniaInitialState
-    Object.assign(globalContext, { pinia })
+    pageContext.globalContext.pinia = pinia
   }
 
   app.use(pageContext.globalContext?.pinia ?? pageContext.pinia!)
