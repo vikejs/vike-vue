@@ -1,5 +1,5 @@
 import { PageContext } from 'vike/types'
 
-export const onAfterRenderHtml = (ctx: PageContext) => {
-  ctx._piniaInitialState = ctx.pinia?.state.value
+export const onAfterRenderHtml = (pageContext: PageContext) => {
+  pageContext._piniaInitialState = pageContext.pinia?.state.value
 }

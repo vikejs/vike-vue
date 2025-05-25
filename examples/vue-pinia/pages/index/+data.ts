@@ -2,7 +2,7 @@ import { PageContext } from 'vike/types'
 
 export type Data = Awaited<ReturnType<typeof data>>
 
-export const data = async (ctx: PageContext) => {
+export const data = async (pageContext: PageContext) => {
   const todosInit = await fetchTodosInit()
   return { todosInit }
 }

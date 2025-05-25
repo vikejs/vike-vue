@@ -171,7 +171,7 @@ function mergeTagAttributesList(tagAttributesList: TagAttributes[] = []) {
   return tagAttributes
 }
 
-async function renderToStringWithErrorHandling(app: App, ctx?: SSRContext) {
+async function renderToStringWithErrorHandling(app: App, pageContext?: SSRContext) {
   let returned = false
   let err: unknown
   // Workaround: Vue's renderToString() swallows errors in production https://github.com/vuejs/core/issues/7876
@@ -183,13 +183,13 @@ async function renderToStringWithErrorHandling(app: App, ctx?: SSRContext) {
       err = err_
     }
   }
-  const appHtml = await renderToString(app, ctx)
+  const appHtml = await renderToString(app, pageContext)
   returned = true
   if (err) throw err
   return appHtml
 }
 
-function renderToNodeStreamWithErrorHandling(app: App, ctx?: SSRContext) {
+function renderToNodeStreamWithErrorHandling(app: App, pageContext?: SSRContext) {
   let returned = false
   let err: unknown
   app.config.errorHandler = (err_) => {
@@ -199,13 +199,13 @@ function renderToNodeStreamWithErrorHandling(app: App, ctx?: SSRContext) {
       err = err_
     }
   }
-  const appHtml = renderToNodeStream(app, ctx)
+  const appHtml = renderToNodeStream(app, pageContext)
   returned = true
   if (err) throw err
   return appHtml
 }
 
-function renderToWebStreamWithErrorHandling(app: App, ctx?: SSRContext) {
+function renderToWebStreamWithErrorHandling(app: App, pageContext?: SSRContext) {
   let returned = false
   let err: unknown
   app.config.errorHandler = (err_) => {
@@ -215,7 +215,7 @@ function renderToWebStreamWithErrorHandling(app: App, ctx?: SSRContext) {
       err = err_
     }
   }
-  const appHtml = renderToWebStream(app, ctx)
+  const appHtml = renderToWebStream(app, pageContext)
   returned = true
   if (err) throw err
   return appHtml
