@@ -88,8 +88,6 @@ See To-Do List example at [examples/vue-pinia](https://github.com/vikejs/vike-vu
 > During [SSR](https://vike.dev/ssr), `+onData` is called only on the server. That's because the store state is sent to the client, so that when the page hydrates, the client has the exact same state as the server — preventing [hydration mismatches](https://vike.dev/hydration-mismatch).
 >
 > As a result, the store doesn't need to be populated on the client: it's already populated on the server and then sent to the client.
->
-> See also: [What it does](#what-it-does).
 
 <br/>
 
