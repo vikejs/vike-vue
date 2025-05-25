@@ -97,6 +97,9 @@ importers:
       pinia:
         specifier: ^3.0.1
         version: 3.0.1(typescript@5.5.4)(vue@3.5.13(typescript@5.5.4))
+      vike:
+        specifier: ^0.4.230
+        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -113,9 +116,6 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.5.4
-      vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
       vue-tsc:
         specifier: ^2.0.13
         version: 2.0.29(typescript@5.5.4)
