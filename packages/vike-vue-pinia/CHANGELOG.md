@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.0...vike-vue-pinia@0.2.1) (2025-05-25)
+
+
+### Bug Fixes
+
+* support populating store with +data (fix [#206](https://github.com/vikejs/vike-vue/issues/206)) ([#207](https://github.com/vikejs/vike-vue/issues/207)) ([b7cf5ff](https://github.com/vikejs/vike-vue/commit/b7cf5ff7b68f373e31ade80e53c9b8eb9bb03eee))
+
+
+
 # [0.2.0](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.1.3...vike-vue-pinia@0.2.0) (2025-03-27)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "vike-vue-pinia",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "./dist/+config.js",
   "types": "./dist/+config.d.ts",
