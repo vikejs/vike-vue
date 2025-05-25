@@ -14,5 +14,5 @@ function onCreateApp(pageContext: PageContext) {
     pageContext.globalContext.pinia = pinia
   }
 
-  app.use(pageContext.globalContext?.pinia ?? pageContext.pinia!)
+  app.use(pageContext.pinia!)
 }
