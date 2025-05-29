@@ -1,3 +1,12 @@
+## [0.9.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.1...vike-vue@0.9.2) (2025-05-29)
+
+
+### Features
+
+* +stream.enable ([df59787](https://github.com/vikejs/vike-vue/commit/df59787810351e0c4d94de13fb5b4ba0807faace))
+
+
+
 ## [0.9.1](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.0...vike-vue@0.9.1) (2025-05-17)
 
 
