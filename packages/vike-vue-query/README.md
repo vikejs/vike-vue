@@ -1,3 +1,7 @@
+<!-- WARNING: keep links absolute in this file so they work on NPM too -->
+
+[![npm version](https://img.shields.io/npm/v/vike-vue-query)](https://www.npmjs.com/package/vike-vue-query)
+
 # `vike-vue-query`
 
 Integrates [TanStack Query](https://tanstack.com/query) into your [`vike-vue`](https://vike.dev/vike-vue) app.
