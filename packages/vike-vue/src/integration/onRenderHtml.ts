@@ -11,6 +11,9 @@ import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
 import type { PageContextInternal } from '../types/PageContext.js'
+import { isNotNullish } from '../utils/isNotNullish.js'
+import { isObject } from '../utils/isObject.js'
+import { isType } from '../utils/isType.js'
 
 const onRenderHtml: OnRenderHtmlAsync = async (
   pageContext: PageContextServer & PageContextInternal,
@@ -85,12 +88,13 @@ async function renderPageToHtml(pageContext: PageContextServer) {
   if (pageContext.Page) {
     assert(app)
 
-    if (!pageContext.config.stream) {
+    const streamSetting = resolveStreamSetting(pageContext)
+    if (!streamSetting.enable) {
       const pageHtmlString = await renderToStringWithErrorHandling(app, pageContext.ssrContext)
       pageContext.pageHtmlString = pageHtmlString
     } else {
       const pageHtmlStream =
-        pageContext.config.stream === 'web'
+        streamSetting.type === 'web'
           ? renderToWebStreamWithErrorHandling(app, pageContext.ssrContext)
           : renderToNodeStreamWithErrorHandling(app, pageContext.ssrContext)
       pageContext.pageHtmlStream = pageHtmlStream
@@ -232,4 +236,38 @@ function getViewportTag(viewport: Viewport | undefined): string {
     return `<meta name="viewport" content="width=${viewport}">`
   }
   return ''
+}
+
+type StreamSetting = {
+  type: 'node' | 'web' | null
+  enable: boolean | null
+}
+function resolveStreamSetting(pageContext: PageContextServer): StreamSetting {
+  const { stream } = pageContext.config
+  const streamSetting: StreamSetting = {
+    type: null,
+    enable: null,
+  }
+  stream
+    ?.reverse()
+    .filter(isNotNullish)
+    .forEach((setting) => {
+      if (typeof setting === 'boolean') {
+        streamSetting.enable = setting
+        return
+      }
+      if (typeof setting === 'string') {
+        streamSetting.type = setting
+        streamSetting.enable = true
+        return
+      }
+      if (isObject(setting)) {
+        if (setting.enable !== null) streamSetting.enable = setting.enable ?? true
+        if (setting.type !== undefined) streamSetting.type = setting.type
+        return
+      }
+      isType<never>(setting)
+      throw new Error(`Unexpected +stream value ${setting}`)
+    })
+  return streamSetting
 }

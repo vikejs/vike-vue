@@ -58,6 +58,7 @@ const config = {
     },
     stream: {
       env: { server: true },
+      cumulative: true,
     },
     onCreateApp: {
       env: { server: true, client: true },
