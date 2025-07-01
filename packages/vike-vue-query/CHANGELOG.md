@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.2.0...vike-vue-query@0.2.1) (2025-07-01)
+
+
+### Bug Fixes
+
+* fix repo link on npm ([4d35181](https://github.com/vikejs/vike-vue/commit/4d35181e61b22dbc6cae5e1a97abc20bfefbc5e4))
+
+
+
 # [0.2.0](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.1.4...vike-vue-query@0.2.0) (2025-04-06)
 
 

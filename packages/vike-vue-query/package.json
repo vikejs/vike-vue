@@ -1,6 +1,6 @@
 {
   "name": "vike-vue-query",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/vikejs/vike-vue/tree/main/packages/vike-vue-query#readme",
   "main": "./dist/+config.js",
   "types": "./dist/+config.d.ts",
