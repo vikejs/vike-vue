@@ -40,7 +40,7 @@
     "release:commit": "release-me commit"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.4.5",
+    "@brillout/release-me": "^0.4.7",
     "@types/node": "^22.1.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "typescript": "^5.5.4",
