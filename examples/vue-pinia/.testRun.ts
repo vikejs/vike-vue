@@ -1,6 +1,6 @@
 export { testRun }
 
-import { test, expect, run, fetchHtml, page, getServerUrl, autoRetry } from '@brillout/test-e2e'
+import { test, expect, run, fetchHtml, page, getServerUrl, autoRetry, sleep } from '@brillout/test-e2e'
 const counter1 = 'button#counter-1'
 const counter2 = 'button#counter-2'
 const counter3 = 'button#counter-3'
@@ -65,6 +65,7 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview' | 'preview:ssg'}`) {
   }
 
   test('todos - add to-do', async () => {
+    await sleep(300) // Seems to be required, otherwise the test is flaky. I don't know why.
     await page.fill('input[type="text"]', 'Buy bananas')
     await page.click('button[type="submit"]')
     await expectBananas()
