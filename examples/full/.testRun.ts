@@ -1,6 +1,7 @@
 export { testRun }
 
 import { test, expect, run, fetchHtml, page, getServerUrl, autoRetry, partRegex } from '@brillout/test-e2e'
+// @ts-ignore
 import assert from 'node:assert'
 
 let isProd: boolean
