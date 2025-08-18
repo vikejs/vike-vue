@@ -50,8 +50,8 @@ importers:
         specifier: ^0.26.2
         version: 0.26.2(rollup@4.34.6)(vite@6.1.0(@types/node@22.3.0))
       vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.237
+        version: 0.4.237(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -77,8 +77,8 @@ importers:
         specifier: ^5.1.2
         version: 5.2.1(vite@6.1.0(@types/node@22.3.0))(vue@3.5.13(typescript@5.5.4))
       vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.237
+        version: 0.4.237(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -98,8 +98,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(typescript@5.5.4)(vue@3.5.13(typescript@5.5.4))
       vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.237
+        version: 0.4.237(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -138,8 +138,8 @@ importers:
         specifier: 5.4.5
         version: 5.4.5
       vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.237
+        version: 0.4.237(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -171,8 +171,8 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
       vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.237
+        version: 0.4.237(vite@6.1.0(@types/node@22.3.0))
       vite:
         specifier: ^6.1.0
         version: 6.1.0(@types/node@22.3.0)
@@ -201,8 +201,8 @@ importers:
         specifier: ^5.4.5
         version: 5.5.4
       vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.237
+        version: 0.4.237(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -228,8 +228,8 @@ importers:
         specifier: ^5.4.5
         version: 5.5.4
       vike:
-        specifier: ^0.4.230
-        version: 0.4.230(vite@6.1.0(@types/node@22.3.0))
+        specifier: ^0.4.237
+        version: 0.4.237(vite@6.1.0(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -315,17 +315,14 @@ packages:
   '@brillout/import@0.2.6':
     resolution: {integrity: sha512-1GUTmADc8trUC1YSW2lp9r6PmwluMoEyHajnE1kxVdbKGD0wJOlq/DvTWMUqLtBDCnQR+n//qgMtz6HwA/lotA==}
 
-  '@brillout/json-serializer@0.5.15':
-    resolution: {integrity: sha512-iLAyV1HNC3nG07ypBwCJohFrajY1HeZdfBBgGuRtMH/JPddgG9bPmoSI18A1RBx67vRmY6/8rgisjR5YfTvZHA==}
+  '@brillout/json-serializer@0.5.17':
+    resolution: {integrity: sha512-QDe1kMDj9qq+f/bmZKnKAeuVtqdqT1nc1nVrXotfJtUhh7Sqb369d/BKmHG7J/qOyQ87Y8P0Cl+GoZrhj9wQ6Q==}
 
   '@brillout/part-regex@0.1.4':
     resolution: {integrity: sha512-PQy5LfRmIueEfGwhvMedsnj6KulDfxlfvUaTsUchBqA7nTge4C7taG/V6np2uCHVxxE4+cSmwM4COn9aNcMn7g==}
 
   '@brillout/picocolors@1.0.14':
     resolution: {integrity: sha512-XhyZY3/FUh56mDuLIjv5kN9qy+oQj7A/d2uQ6cJJ4uVv55+velua3abcrM5WIvs2RHZGA3EE7S9FWo+TjF10ew==}
-
-  '@brillout/picocolors@1.0.26':
-    resolution: {integrity: sha512-oJF92OEpzunaJyaEWXuS4PWY0k8JsqNO18kMf5hIwvsh+tyhbv+UwAnPPauSlO2eyvMSciui+YFKV9DEzTpmGA==}
 
   '@brillout/picocolors@1.0.28':
     resolution: {integrity: sha512-FBsirUdUlmjmeUlEuqfnUoKAZUt+d0VfMVBYUsFQrDFEV9Rm/QDyG69PSQtQbI6SZQNiZuAWuyhE5USflzx6iQ==}
@@ -347,8 +344,8 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
-  '@brillout/vite-plugin-server-entry@0.7.9':
-    resolution: {integrity: sha512-mJrUakPTj8Zf3Pm4beKmHowfozHOLS/deMqheYYIlqK8FSR4Hd3vMeFQBL/rxLLd+svIlW/j2K3M2SVPDmvX7A==}
+  '@brillout/vite-plugin-server-entry@0.7.12':
+    resolution: {integrity: sha512-yh+tsIl2qpStgj1JofxC6tb1WoDYHGnth7XZtHou5baRkBE7DgmoCRIE+kw6S3511KwCMOcuBQSUszrYg5dLUw==}
 
   '@conventional-changelog/git-client@2.3.0':
     resolution: {integrity: sha512-QMDUPg9jMnclFoQL/YwLhdvDK+El3SPBiB6B9gqXQk283lWLw9qb4y4DPNZWMHaIeB6Xkx4CD7AEgnCxihWgng==}
@@ -1723,8 +1720,8 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vike@0.4.230:
-    resolution: {integrity: sha512-i/zOb1Ig/79fzafDU/4sz8NwxNN7/tYl5/gTgomN3RAybOvb+KCVvEtSZu0j0iIPVRxfU4jbz3yYWvsPnHnzUg==}
+  vike@0.4.237:
+    resolution: {integrity: sha512-+Fro/OPiu3X8LOKCQ640hGKcLr7luyi6euWwixsxE/ow9VFxpcU+i0IaUaVkcH7njvWLACay0lv45UkiyeP8TA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -1915,13 +1912,11 @@ snapshots:
 
   '@brillout/import@0.2.6': {}
 
-  '@brillout/json-serializer@0.5.15': {}
+  '@brillout/json-serializer@0.5.17': {}
 
   '@brillout/part-regex@0.1.4': {}
 
   '@brillout/picocolors@1.0.14': {}
-
-  '@brillout/picocolors@1.0.26': {}
 
   '@brillout/picocolors@1.0.28': {}
 
@@ -1958,10 +1953,10 @@ snapshots:
       source-map-support: 0.5.21
       typescript: 5.5.4
 
-  '@brillout/vite-plugin-server-entry@0.7.9':
+  '@brillout/vite-plugin-server-entry@0.7.12':
     dependencies:
       '@brillout/import': 0.2.6
-      '@brillout/picocolors': 1.0.26
+      '@brillout/picocolors': 1.0.28
 
   '@conventional-changelog/git-client@2.3.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0)':
     dependencies:
@@ -3243,13 +3238,13 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.230(vite@6.1.0(@types/node@22.3.0)):
+  vike@0.4.237(vite@6.1.0(@types/node@22.3.0)):
     dependencies:
       '@brillout/import': 0.2.6
-      '@brillout/json-serializer': 0.5.15
-      '@brillout/picocolors': 1.0.26
+      '@brillout/json-serializer': 0.5.17
+      '@brillout/picocolors': 1.0.28
       '@brillout/require-shim': 0.1.2
-      '@brillout/vite-plugin-server-entry': 0.7.9
+      '@brillout/vite-plugin-server-entry': 0.7.12
       acorn: 8.12.1
       cac: 6.7.14
       es-module-lexer: 1.5.4
