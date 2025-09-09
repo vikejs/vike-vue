@@ -13,7 +13,7 @@
       <Link href="/client-only">Client-only</Link>
       <Link href="/images">useConfig()</Link>
     </div>
-    <div class="content"><slot /></div>
+    <div class="content"><slot/></div>
   </div>
 </template>
 

@@ -4,7 +4,7 @@
       <Link href="/">Welcome</Link>
       <Link href="/about">About</Link>
     </div>
-    <div class="content"><slot /></div>
+    <div class="content"><slot/></div>
   </div>
 </template>
 

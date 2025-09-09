@@ -1,6 +1,6 @@
 <template>
   <a :class="{ active: isActive }">
-    <slot />
+    <slot/>
   </a>
 </template>
 <style scoped>

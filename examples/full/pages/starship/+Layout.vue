@@ -20,7 +20,7 @@
     <a href="/starship/spec">Tech Spec</a>
   </div>
   <div style="margin-top: 20px; border: 1px solid black; padding: 10px 40px">
-    <slot />
+    <slot/>
   </div>
   <br />
   <p>
