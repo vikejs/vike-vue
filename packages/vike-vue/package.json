@@ -43,7 +43,7 @@
     "@brillout/release-me": "^0.4.7",
     "@types/node": "^22.1.0",
     "@vitejs/plugin-vue": "^6.0.1",
-    "typescript": "^5.5.4",
+    "typescript": "^5.9.2",
     "vike": "^0.4.237",
     "vite": "^7.1.5",
     "vite-plugin-dts": "^3.8.3",
