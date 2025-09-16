@@ -44,11 +44,11 @@
     "@brillout/release-me": "^0.4.7",
     "@tanstack/vue-query": "^5.29.0",
     "@types/node": "^22.1.0",
-    "typescript": "^5.4.5",
+    "typescript": "^5.9.2",
     "vike": "^0.4.237",
     "vike-vue": "^0.9.2",
     "vue": "^3.5.13",
-    "vue-tsc": "^2.0.13"
+    "vue-tsc": "^3.0.7"
   },
   "files": [
     "dist/"
