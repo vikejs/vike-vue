@@ -3,7 +3,7 @@ export { clientOnly }
 import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
-type ClientOnlyComponent<T extends Component> = T & {
+type ClientOnlyComponent<ComponentLoaded extends Component> = ComponentLoaded & {
   $slots: ClientOnlySlots
 }
 
