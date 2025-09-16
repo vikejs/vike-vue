@@ -3,14 +3,14 @@ export { clientOnly }
 import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
+type ClientOnlyComponent<T extends Component> = T & {
+  $slots: ClientOnlySlots
+}
+
 type ClientOnlySlots = SlotsType<{
   fallback: { error: unknown; attrs: Record<string, any> }
   'client-only-fallback': { error: unknown; attrs: Record<string, any> }
 }>
-
-type ClientOnlyComponent<T extends Component> = T & {
-  $slots: ClientOnlySlots
-}
 
 /**
  * Load and render a component only on the client-side.
