@@ -14,5 +14,8 @@
     // Include .test* files
     // https://github.com/microsoft/TypeScript/issues/49555
     "**/.*"
+  ],
+  "exclude": [
+    "vite.config.ts"
   ]
 }
