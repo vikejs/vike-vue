@@ -1,3 +1,12 @@
+## [0.9.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.2...vike-vue@0.9.3) (2025-09-16)
+
+
+### Bug Fixes
+
+* support `vue-tsc@3` ([#211](https://github.com/vikejs/vike-vue/issues/211)) ([18ad27f](https://github.com/vikejs/vike-vue/commit/18ad27f709eb4036f7ab6727558fd0923691c03b))
+
+
+
 ## [0.9.2](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.1...vike-vue@0.9.2) (2025-05-29)
 
 
