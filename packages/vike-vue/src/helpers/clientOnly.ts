@@ -4,10 +4,10 @@ import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
 // Define the slots that clientOnly components expose
-type ClientOnlySlots = {
-  fallback?: (props: { error: unknown; attrs: Record<string, any> }) => any
-  'client-only-fallback'?: (props: { error: unknown; attrs: Record<string, any> }) => any
-}
+type ClientOnlySlots = SlotsType<{
+  fallback: { error: unknown; attrs: Record<string, any> }
+  'client-only-fallback': { error: unknown; attrs: Record<string, any> }
+}>
 
 // Define the return type for clientOnly function
 type ClientOnlyComponent<T extends Component> = T & {
@@ -56,11 +56,8 @@ function clientOnly<ComponentLoaded extends Component>(
       }
     },
 
-    slots: {} as SlotsType<{
-      fallback: { error: unknown; attrs: Record<string, any> }
-      'client-only-fallback': { error: unknown; attrs: Record<string, any> }
-    }>,
-  })
+    slots: {},
+  }) as ClientOnlyComponent<ComponentLoaded>
 
-  return componentWrapper as ClientOnlyComponent<ComponentLoaded>
+  return componentWrapper
 }
