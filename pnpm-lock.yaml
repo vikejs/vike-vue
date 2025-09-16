@@ -21,7 +21,7 @@ importers:
         version: 0.6.16
       '@brillout/test-types':
         specifier: ^0.1.14
-        version: 0.1.15(typescript@5.5.4)
+        version: 0.1.15(typescript@5.9.2)
       playwright:
         specifier: ^1.44.1
         version: 1.46.0
@@ -39,13 +39,13 @@ importers:
         version: 2.6.11
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.5.4))
+        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
+        specifier: ^5.9.2
+        version: 5.9.2
       unplugin-vue-markdown:
         specifier: ^0.26.2
         version: 0.26.2(rollup@4.50.2)(vite@7.1.5(@types/node@22.3.0))
@@ -63,19 +63,19 @@ importers:
         version: 2.1.2
       vue:
         specifier: ^3.5.13
-        version: 3.5.13(typescript@5.5.4)
+        version: 3.5.13(typescript@5.9.2)
       vue-toast-notification:
         specifier: ^3.1.2
-        version: 3.1.2(vue@3.5.13(typescript@5.5.4))
+        version: 3.1.2(vue@3.5.13(typescript@5.9.2))
       vue-tsc:
         specifier: ^2.0.29
-        version: 2.0.29(typescript@5.5.4)
+        version: 2.0.29(typescript@5.9.2)
 
   examples/minimal:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.5.4))
+        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
       vike:
         specifier: ^0.4.237
         version: 0.4.237(vite@7.1.5)
@@ -87,7 +87,7 @@ importers:
         version: 7.1.5(@types/node@22.3.0)
       vue:
         specifier: ^3.5.13
-        version: 3.5.13(typescript@5.5.4)
+        version: 3.5.13(typescript@5.9.2)
 
   examples/vue-pinia:
     dependencies:
@@ -1886,6 +1886,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  typescript@5.9.2:
+    resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   uc.micro@2.1.0:
     resolution: {integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==}
 
@@ -2146,12 +2151,12 @@ snapshots:
       source-map-support: 0.5.21
       strip-ansi: 6.0.1
 
-  '@brillout/test-types@0.1.15(typescript@5.5.4)':
+  '@brillout/test-types@0.1.15(typescript@5.9.2)':
     dependencies:
       '@brillout/picocolors': 1.0.14
       fast-glob: 3.3.2
       source-map-support: 0.5.21
-      typescript: 5.5.4
+      typescript: 5.9.2
 
   '@brillout/vite-plugin-server-entry@0.7.12':
     dependencies:
@@ -2614,6 +2619,12 @@ snapshots:
       vite: 7.1.5(@types/node@22.3.0)
       vue: 3.5.13(typescript@5.5.4)
 
+  '@vitejs/plugin-vue@6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))':
+    dependencies:
+      '@rolldown/pluginutils': 1.0.0-beta.29
+      vite: 7.1.5(@types/node@22.3.0)
+      vue: 3.5.13(typescript@5.9.2)
+
   '@vitejs/plugin-vue@6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.4.5))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.29
@@ -2754,6 +2765,19 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
 
+  '@vue/language-core@2.0.29(typescript@5.9.2)':
+    dependencies:
+      '@volar/language-core': 2.4.0-alpha.18
+      '@vue/compiler-dom': 3.4.38
+      '@vue/compiler-vue2': 2.7.16
+      '@vue/shared': 3.4.38
+      computeds: 0.0.1
+      minimatch: 9.0.5
+      muggle-string: 0.4.1
+      path-browserify: 1.0.1
+    optionalDependencies:
+      typescript: 5.9.2
+
   '@vue/reactivity@3.5.13':
     dependencies:
       '@vue/shared': 3.5.13
@@ -2781,6 +2805,12 @@ snapshots:
       '@vue/compiler-ssr': 3.5.13
       '@vue/shared': 3.5.13
       vue: 3.5.13(typescript@5.5.4)
+
+  '@vue/server-renderer@3.5.13(vue@3.5.13(typescript@5.9.2))':
+    dependencies:
+      '@vue/compiler-ssr': 3.5.13
+      '@vue/shared': 3.5.13
+      vue: 3.5.13(typescript@5.9.2)
 
   '@vue/shared@3.4.38': {}
 
@@ -3536,6 +3566,8 @@ snapshots:
 
   typescript@5.5.4: {}
 
+  typescript@5.9.2: {}
+
   uc.micro@2.1.0: {}
 
   uglify-js@3.19.2:
@@ -3649,9 +3681,9 @@ snapshots:
       de-indent: 1.0.2
       he: 1.2.0
 
-  vue-toast-notification@3.1.2(vue@3.5.13(typescript@5.5.4)):
+  vue-toast-notification@3.1.2(vue@3.5.13(typescript@5.9.2)):
     dependencies:
-      vue: 3.5.13(typescript@5.5.4)
+      vue: 3.5.13(typescript@5.9.2)
 
   vue-tsc@1.8.27(typescript@5.4.5):
     dependencies:
@@ -3674,6 +3706,13 @@ snapshots:
       semver: 7.6.3
       typescript: 5.5.4
 
+  vue-tsc@2.0.29(typescript@5.9.2):
+    dependencies:
+      '@volar/typescript': 2.4.0-alpha.18
+      '@vue/language-core': 2.0.29(typescript@5.9.2)
+      semver: 7.6.3
+      typescript: 5.9.2
+
   vue@3.5.13(typescript@5.4.5):
     dependencies:
       '@vue/compiler-dom': 3.5.13
@@ -3693,6 +3732,16 @@ snapshots:
       '@vue/shared': 3.5.13
     optionalDependencies:
       typescript: 5.5.4
+
+  vue@3.5.13(typescript@5.9.2):
+    dependencies:
+      '@vue/compiler-dom': 3.5.13
+      '@vue/compiler-sfc': 3.5.13
+      '@vue/runtime-dom': 3.5.13
+      '@vue/server-renderer': 3.5.13(vue@3.5.13(typescript@5.9.2))
+      '@vue/shared': 3.5.13
+    optionalDependencies:
+      typescript: 5.9.2
 
   walk-up-path@3.0.1: {}
 
