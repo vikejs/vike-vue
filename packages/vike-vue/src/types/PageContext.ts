@@ -6,7 +6,7 @@ import type { ConfigFromHookResolved } from './Config'
 import type { PageHtmlStream } from '../integration/onRenderHtml'
 
 // https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
-// TODO: use ComponentPublicInstance
+// TO-DO/eventually: use ComponentPublicInstance
 type Component = any
 
 declare global {
@@ -18,7 +18,7 @@ declare global {
       // Set by createVueApp()
       app?: App
 
-      // TODO/eventually: remove (vike-vue-pinia and vike-vue-query don't use this anymore).
+      // TO-DO/eventually: remove (vike-vue-pinia and vike-vue-query don't use this anymore).
       // - Let's wait a bit before removing as old vike-vue-pinia and vike-vue-query versions still need this.
       /** @deprecated */
       fromHtmlRenderer: Record<string, unknown>

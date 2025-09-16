@@ -100,7 +100,7 @@ async function renderPageToHtml(pageContext: PageContextServer) {
       pageContext.pageHtmlStream = pageHtmlStream
     }
 
-    // TODO/breaking-change: always call onAfterRenderHtml()
+    // TO-DO/breaking-change: always call onAfterRenderHtml()
     //  - I.e. don't call it inside this `if (!!pageContext.Page)` block.
     //  - Tell users to use `!!pageContext.Page` if they want to apply the hook only for SSR.
     //    - Already done: https://vike.dev/onAfterRenderHtml
