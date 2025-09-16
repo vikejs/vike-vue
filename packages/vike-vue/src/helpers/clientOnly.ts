@@ -3,6 +3,15 @@ export { clientOnly }
 import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
 
+type ClientOnlyComponent<ComponentLoaded extends Component> = ComponentLoaded & {
+  $slots: ClientOnlySlots
+}
+
+type ClientOnlySlots = SlotsType<{
+  fallback: { error: unknown; attrs: Record<string, any> }
+  'client-only-fallback': { error: unknown; attrs: Record<string, any> }
+}>
+
 /**
  * Load and render a component only on the client-side.
  *
@@ -10,7 +19,7 @@ import type { Component, SlotsType } from 'vue'
  */
 function clientOnly<ComponentLoaded extends Component>(
   load: () => Promise<ComponentLoaded | { default: ComponentLoaded }>,
-) {
+): ClientOnlyComponent<ComponentLoaded> {
   const componentWrapper = defineComponent({
     inheritAttrs: false,
 
@@ -45,10 +54,8 @@ function clientOnly<ComponentLoaded extends Component>(
       }
     },
 
-    slots: {} as SlotsType<{
-      fallback: { error: unknown; attrs: Record<string, any> }
-      'client-only-fallback': { error: unknown; attrs: Record<string, any> }
-    }>,
-  })
-  return componentWrapper as typeof componentWrapper & ComponentLoaded
+    slots: {} as ClientOnlySlots,
+  }) as ClientOnlyComponent<ComponentLoaded>
+
+  return componentWrapper
 }
