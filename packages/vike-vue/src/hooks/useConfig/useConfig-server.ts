@@ -8,22 +8,23 @@ import { getPageContext } from 'vike/getPageContext'
 import { objectKeys } from '../../utils/objectKeys.js'
 import { includes } from '../../utils/includes.js'
 import { configsCumulative } from './configsCumulative.js'
+import { type MaybeRefOrGetter, toValue } from 'vue'
 
 /**
  * Set configurations inside components and Vike hooks.
  *
  * https://vike.dev/useConfig
  */
-function useConfig(): (config: ConfigFromHook) => void {
+function useConfig(): (config: MaybeRefOrGetter<ConfigFromHook>) => void {
   // Vike hook
   let pageContext = getPageContext() as PageContext & PageContextInternal
-  if (pageContext) return (config: ConfigFromHook) => setPageContextConfigFromHook(config, pageContext)
+  if (pageContext) return (config) => setPageContextConfigFromHook(toValue(config), pageContext)
 
   // Component
   pageContext = usePageContext()
-  return (config: ConfigFromHook) => {
+  return (config) => {
     if (!pageContext._headAlreadySetWrapper?.val) {
-      setPageContextConfigFromHook(config, pageContext)
+      setPageContextConfigFromHook(toValue(config), pageContext)
     } else {
       throw new Error("Using useConfig() with HTML streaming isn't supported yet")
     }
