@@ -1,16 +1,7 @@
 export { createVueApp }
 export type { ChangePage }
 
-import {
-  type App,
-  createApp,
-  createSSRApp,
-  h,
-  nextTick,
-  shallowRef,
-  type Component,
-  Fragment,
-} from 'vue'
+import { type App, createApp, createSSRApp, h, nextTick, shallowRef, type Component, Fragment } from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
@@ -82,7 +73,7 @@ async function createVueApp(
     const data = pageContext.data ?? {}
     assertDataIsObject(data)
     dataReactive.value = data
-    pageContextReactive.value = pageContext as typeof pageContextReactive.value;
+    pageContextReactive.value = pageContext as typeof pageContextReactive.value
     onChangePage?.(pageContext)
     await nextTick()
     returned = true
