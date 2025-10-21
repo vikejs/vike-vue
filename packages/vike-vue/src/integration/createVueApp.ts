@@ -14,7 +14,6 @@ import {
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
-import { objectReplace } from '../utils/objectReplace'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
@@ -82,8 +81,8 @@ async function createVueApp(
     }
     const data = pageContext.data ?? {}
     assertDataIsObject(data)
-    objectReplace(dataReactive, data)
-    objectReplace(pageContextReactive, pageContext)
+    dataReactive.value = data
+    pageContextReactive.value = pageContext as typeof pageContextReactive.value;
     onChangePage?.(pageContext)
     await nextTick()
     returned = true
