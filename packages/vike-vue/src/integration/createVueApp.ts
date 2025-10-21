@@ -1,21 +1,10 @@
 export { createVueApp }
 export type { ChangePage }
 
-import {
-  type App,
-  createApp,
-  createSSRApp,
-  h,
-  nextTick,
-  shallowRef,
-  shallowReactive,
-  type Component,
-  Fragment,
-} from 'vue'
+import { type App, createApp, createSSRApp, h, nextTick, shallowRef, type Component, Fragment } from 'vue'
 import type { PageContext } from 'vike/types'
 import { setPageContext } from '../hooks/usePageContext'
 import { objectAssign } from '../utils/objectAssign'
-import { objectReplace } from '../utils/objectReplace'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks'
 import { isPlainObject } from '../utils/isPlainObject'
 import { setData } from '../hooks/useData'
@@ -65,10 +54,8 @@ async function createVueApp(
 
   const data = pageContext.data ?? {}
   assertDataIsObject(data)
-  // TO-DO/breaking-change: use shallowRef() instead of shallowReactive()
-  // - Remove workaround https://github.com/vikejs/vike-vue/blob/89ca09ed18ffa1c0401851a506f505813a7dece7/packages/vike-vue/src/integration/onRenderClient.ts#L18-L21
-  const dataReactive = shallowReactive(data)
-  const pageContextReactive = shallowReactive(pageContext)
+  const dataReactive = shallowRef(data)
+  const pageContextReactive = shallowRef(pageContext)
   setPageContext(app, pageContextReactive)
   setData(app, dataReactive)
 
@@ -85,8 +72,8 @@ async function createVueApp(
     }
     const data = pageContext.data ?? {}
     assertDataIsObject(data)
-    objectReplace(dataReactive, data)
-    objectReplace(pageContextReactive, pageContext)
+    dataReactive.value = data
+    pageContextReactive.value = pageContext as typeof pageContextReactive.value
     onChangePage?.(pageContext)
     await nextTick()
     returned = true

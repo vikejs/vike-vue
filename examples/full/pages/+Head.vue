@@ -23,5 +23,5 @@ function getCanonicalUrl(pageContext: PageContext): null | string {
   return new URL(pageContext.urlPathname, pageContext.config.baseCanonicalUrl).toString()
 }
 
-const canonicalUrl = getCanonicalUrl(pageContext)
+const canonicalUrl = getCanonicalUrl(pageContext.value)
 </script>
