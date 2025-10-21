@@ -6,20 +6,20 @@ import type { ConfigFromHook } from '../../types/Config.js'
 import { usePageContext } from '../usePageContext.js'
 import { getPageContext } from 'vike/getPageContext'
 import { applyHeadSettings } from '../../integration/applyHeadSettings.js'
-import { type MaybeRefOrGetter, toValue, watchEffect } from 'vue'
+import { type MaybeRefOrGetter, ShallowRef, toValue, watchEffect } from 'vue'
 
 function useConfig(): (config: MaybeRefOrGetter<ConfigFromHook>) => void {
   // Vike hook
-  let pageContext = getPageContext() as PageContext & PageContextInternal
-  if (pageContext) return (config) => setPageContextConfigFromHook(toValue(config), pageContext)
+  const pageContextInternal = getPageContext() as PageContext & PageContextInternal
+  if (pageContextInternal) return (config) => setPageContextConfigFromHook(toValue(config), pageContextInternal)
 
   // Component
-  pageContext = usePageContext()
+  const pageContext = usePageContext() as ShallowRef<PageContext & PageContextInternal>
   return (config) => {
     watchEffect(() => {
       const configValue = toValue(config)
-      if (!pageContext._headAlreadySetWrapper!.val) {
-        setPageContextConfigFromHook(configValue, pageContext)
+      if (!pageContext.value._headAlreadySetWrapper!.val) {
+        setPageContextConfigFromHook(configValue, pageContext.value)
       } else {
         applyHead(configValue)
       }

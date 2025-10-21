@@ -8,7 +8,6 @@ import {
   h,
   nextTick,
   shallowRef,
-  shallowReactive,
   type Component,
   Fragment,
 } from 'vue'
@@ -65,10 +64,8 @@ async function createVueApp(
 
   const data = pageContext.data ?? {}
   assertDataIsObject(data)
-  // TO-DO/breaking-change: use shallowRef() instead of shallowReactive()
-  // - Remove workaround https://github.com/vikejs/vike-vue/blob/89ca09ed18ffa1c0401851a506f505813a7dece7/packages/vike-vue/src/integration/onRenderClient.ts#L18-L21
-  const dataReactive = shallowReactive(data)
-  const pageContextReactive = shallowReactive(pageContext)
+  const dataReactive = shallowRef(data)
+  const pageContextReactive = shallowRef(pageContext)
   setPageContext(app, pageContextReactive)
   setData(app, dataReactive)
 
