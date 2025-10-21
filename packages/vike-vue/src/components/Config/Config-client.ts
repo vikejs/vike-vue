@@ -9,9 +9,7 @@ import type { ConfigFromHook } from '../../types/Config.js'
 const Config = defineComponent<ConfigFromHook>(
   (props) => {
     const config = useConfig()
-    watchEffect(() => {
-      config(props)
-    })
+    config(props)
     return noop
   },
   {
