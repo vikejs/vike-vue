@@ -15,8 +15,7 @@ Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.
 [See also](#see-also)  
 
 Features:
-- **Automatic SSR**: Store state is automatically serialized on the server and hydrated on the client
-- **Zero-config**: No manual setup needed for SSR state transfer
+- **Zero-config SSR**: Store state is automatically serialized on the server and hydrated on the client — no manual setup needed
 - **Type-safe**: Full TypeScript support with Pinia's composable stores
 - **Hydration-safe**: Prevents hydration mismatches by ensuring client and server have the same state
 

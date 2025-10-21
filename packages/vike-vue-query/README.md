@@ -17,8 +17,8 @@ Integrates [TanStack Query](https://tanstack.com/query) into your [`vike-vue`](h
 [See also](#see-also)  
 
 Features:
-- **Automatic SSR**: Data is fetched on the server and automatically hydrated on the client
-- **Progressive rendering**: The rest of your page renders while data is being fetched
+- **Component-level data fetching**: Fetch data at the component level (unlike [`+data`](https://vike.dev/data), which fetches at the page level)
+- **Automatic SSR**: Data is fetched on the server and automatically sent to the client
 - **Type-safe**: Full TypeScript support
 - **Caching & refetching**: Leverage TanStack Query's powerful caching and refetching capabilities
 - **Stale-while-revalidate**: Show stale data immediately while fetching fresh data in the background
@@ -87,12 +87,6 @@ async function fetchMovies() {
 }
 </script>
 ```
-
-Benefits:
- - **Component-level data fetching**: Fetch data at the component level (unlike [`+data`](https://vike.dev/data), which fetches at the page level).
- - **Automatic SSR**: Data is fetched on the server and automatically sent to the client.
- - **Progressive rendering**: The rest of the page renders while components wait for their data.
- - **Caching & refetching**: All the benefits of TanStack Query's caching, refetching, and stale-while-revalidate patterns.
 
 You can use TanStack Query alongside Vike's [`+data` hook](https://vike.dev/data) — use `+data` for some pages and `vike-vue-query` for others, or mix both approaches as needed.
 
