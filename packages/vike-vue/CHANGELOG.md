@@ -1,3 +1,12 @@
+## [0.9.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.3...vike-vue@0.9.4) (2025-10-21)
+
+
+### Features
+
+* make function returned by useConfig() accept reactive values ([#212](https://github.com/vikejs/vike-vue/issues/212)) ([429bf79](https://github.com/vikejs/vike-vue/commit/429bf796b581de1cf58ae922d57339c5412beda3))
+
+
+
 ## [0.9.3](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.2...vike-vue@0.9.3) (2025-09-16)
 
 
