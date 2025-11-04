@@ -26,7 +26,6 @@ const onRenderHtml: OnRenderHtmlAsync = async (
 
   const { headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd } = await getHtmlInjections(pageContext)
 
-
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
 
   // Not needed on the client-side, thus we remove it to save KBs sent to the client
@@ -148,9 +147,10 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
 
 async function getHtmlInjections(pageContext: PageContextServer) {
   const { config } = pageContext
+  const defaultTeleport = `<div id="teleported">${pageContext.ssrContext!.teleports?.['#teleported'] ?? ''}</div>`
   const [headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd] = await Promise.all([
     dangerouslySkipEscape((await callCumulativeHooks(config.headHtmlBegin, pageContext)).join('')),
-    dangerouslySkipEscape((await callCumulativeHooks(config.headHtmlEnd, pageContext)).join('')),
+    dangerouslySkipEscape([defaultTeleport, ...(await callCumulativeHooks(config.headHtmlEnd, pageContext))].join('')),
     dangerouslySkipEscape((await callCumulativeHooks(config.bodyHtmlBegin, pageContext)).join('')),
     dangerouslySkipEscape((await callCumulativeHooks(config.bodyHtmlEnd, pageContext)).join('')),
   ])
