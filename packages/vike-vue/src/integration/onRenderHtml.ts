@@ -147,6 +147,7 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
 
 async function getHtmlInjections(pageContext: PageContextServer) {
   const { config } = pageContext
+  // we define this hook here so that it doesn't need to be exported by vike-vue
   const defaultTeleport = `<div id="teleported">${pageContext.ssrContext!.teleports?.['#teleported'] ?? ''}</div>`
   const [headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd] = await Promise.all([
     dangerouslySkipEscape((await callCumulativeHooks(config.headHtmlBegin, pageContext)).join('')),
