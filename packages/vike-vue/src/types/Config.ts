@@ -178,6 +178,8 @@ declare global {
       /**
        * Raw HTML injected at the end of `<body>`.
        *
+       * @default `<div id="teleported"></div>`
+       *
        * https://vike.dev/bodyHtmlEnd
        */
       bodyHtmlEnd?: HtmlInjection
