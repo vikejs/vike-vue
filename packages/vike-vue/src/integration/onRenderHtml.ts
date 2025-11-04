@@ -148,7 +148,6 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
 
 async function getHtmlInjections(pageContext: PageContextServer) {
   const { config } = pageContext
-  // run these in Promise.all
   const [headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd] = await Promise.all([
     dangerouslySkipEscape((await callCumulativeHooks(config.headHtmlBegin, pageContext)).join('')),
     dangerouslySkipEscape((await callCumulativeHooks(config.headHtmlEnd, pageContext)).join('')),
