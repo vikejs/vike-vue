@@ -24,7 +24,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (
   const headHtml = await getHeadHtml(pageContext)
   pageContext.isRenderingHead = false
 
-  const { bodyHtmlBegin, bodyHtmlEnd } = await getBodyHtmlBoundary(pageContext)
+  const { headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd } = await getHtmlInjections(pageContext)
+
 
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
 
@@ -48,7 +49,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (
     <html${dangerouslySkipEscape(htmlAttributesString)}>
       <head>
         <meta charset="UTF-8" />
+        ${headHtmlBegin}
         ${headHtml}
+        ${headHtmlEnd}
       </head>
       <body${dangerouslySkipEscape(bodyAttributesString)}>
         ${bodyHtmlBegin}
@@ -143,17 +146,16 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
   return headHtml
 }
 
-async function getBodyHtmlBoundary(pageContext: PageContextServer) {
-  const bodyHtmlBegin = dangerouslySkipEscape(
-    (await callCumulativeHooks(pageContext.config.bodyHtmlBegin, pageContext)).join(''),
-  )
-
-  // we define this hook here so that it doesn't need to be exported by vike-vue
-  const defaultTeleport = `<div id="teleported">${pageContext.ssrContext!.teleports?.['#teleported'] ?? ''}</div>`
-  const bodyHtmlEndHooks = [defaultTeleport, ...(pageContext.config.bodyHtmlEnd ?? [])]
-  const bodyHtmlEnd = dangerouslySkipEscape((await callCumulativeHooks(bodyHtmlEndHooks, pageContext)).join(''))
-
-  return { bodyHtmlBegin, bodyHtmlEnd }
+async function getHtmlInjections(pageContext: PageContextServer) {
+  const { config } = pageContext
+  // run these in Promise.all
+  const [headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd] = await Promise.all([
+    dangerouslySkipEscape((await callCumulativeHooks(config.headHtmlBegin, pageContext)).join('')),
+    dangerouslySkipEscape((await callCumulativeHooks(config.headHtmlEnd, pageContext)).join('')),
+    dangerouslySkipEscape((await callCumulativeHooks(config.bodyHtmlBegin, pageContext)).join('')),
+    dangerouslySkipEscape((await callCumulativeHooks(config.bodyHtmlEnd, pageContext)).join('')),
+  ])
+  return { bodyHtmlBegin, bodyHtmlEnd, headHtmlBegin, headHtmlEnd }
 }
 
 function getTagAttributes(pageContext: PageContextServer) {

@@ -168,22 +168,33 @@ declare global {
        * https://vike.dev/Page
        */
       Page?: Component
-
       /**
        * Raw HTML injected at the start of `<body>`.
        *
        * https://vike.dev/bodyHtmlBegin
        */
-      bodyHtmlBegin?: BodyHtmlBoundary
+      bodyHtmlBegin?: HtmlInjection
 
       /**
        * Raw HTML injected at the end of `<body>`.
        *
-       * @default `<div id="teleported"></div>`
-       *
        * https://vike.dev/bodyHtmlEnd
        */
-      bodyHtmlEnd?: BodyHtmlBoundary
+      bodyHtmlEnd?: HtmlInjection
+
+      /**
+       * Raw HTML injected at the start of `<head>`.
+       *
+       * https://vike.dev/headHtmlBegin
+       */
+      headHtmlBegin?: HtmlInjection
+
+      /**
+       * Raw HTML injected at the end of `<head>`.
+       *
+       * https://vike.dev/headHtmlEnd
+       */
+      headHtmlEnd?: HtmlInjection
 
       /**
        * Hook called right after creating Vue's `app` instance.
@@ -230,8 +241,10 @@ declare global {
       onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
       onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
       onAfterRenderClient?: Function[]
-      bodyHtmlBegin?: BodyHtmlBoundary[]
-      bodyHtmlEnd?: BodyHtmlBoundary[]
+      bodyHtmlBegin?: HtmlInjection[]
+      bodyHtmlEnd?: HtmlInjection[]
+      headHtmlBegin?: HtmlInjection[]
+      headHtmlEnd?: HtmlInjection[]
       Layout?: Component[]
       Head?: Component[]
       bodyAttributes?: TagAttributes[]
@@ -248,7 +261,7 @@ export type __FakeExport_Config = never
 // - https://github.com/Microsoft/TypeScript/issues/983
 type PageContext_ = PageContext
 
-type BodyHtmlBoundary = string | ((pageContext: PageContext) => string)
+type HtmlInjection = string | ((pageContext: PageContext) => string)
 
 // JSDocs are preserved
 type PickWithoutGetter<T, K extends keyof T> = {
