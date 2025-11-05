@@ -1,6 +1,6 @@
 import type { ImportString, PageContextServer, PageContext, PageContextClient } from 'vike/types'
 import type { TagAttributes } from '../utils/getTagAttributesString'
-import type { Viewport } from '../integration/onRenderHtml'
+import type { Viewport, HtmlInjection } from '../integration/onRenderHtml'
 import type { ConfigsCumulative } from '../hooks/useConfig/configsCumulative'
 import type { Component } from './PageContext'
 import type {
@@ -262,8 +262,6 @@ export type __FakeExport_Config = never
 // - https://stackoverflow.com/questions/46559021/typescript-use-of-global-type-inside-namespace-with-same-type
 // - https://github.com/Microsoft/TypeScript/issues/983
 type PageContext_ = PageContext
-
-type HtmlInjection = string | ((pageContext: PageContext) => string)
 
 // JSDocs are preserved
 type PickWithoutGetter<T, K extends keyof T> = {
