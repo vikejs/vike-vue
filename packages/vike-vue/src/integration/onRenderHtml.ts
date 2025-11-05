@@ -24,7 +24,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (
   const headHtml = await getHeadHtml(pageContext)
   pageContext.isRenderingHead = false
 
-  const { bodyHtmlBegin, bodyHtmlEnd } = await getBodyHtmlBoundary(pageContext)
+  const { headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd } = await getHtmlInjections(pageContext)
 
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
 
@@ -48,7 +48,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (
     <html${dangerouslySkipEscape(htmlAttributesString)}>
       <head>
         <meta charset="UTF-8" />
+        ${headHtmlBegin}
         ${headHtml}
+        ${headHtmlEnd}
       </head>
       <body${dangerouslySkipEscape(bodyAttributesString)}>
         ${bodyHtmlBegin}
@@ -143,17 +145,24 @@ async function getHeadHtml(pageContext: PageContextServer & PageContextInternal)
   return headHtml
 }
 
-async function getBodyHtmlBoundary(pageContext: PageContextServer) {
-  const bodyHtmlBegin = dangerouslySkipEscape(
-    (await callCumulativeHooks(pageContext.config.bodyHtmlBegin, pageContext)).join(''),
-  )
+export type HtmlInjection = string | ((pageContext: PageContextServer) => string)
 
+async function getHtmlInjections(pageContext: PageContextServer) {
+  const { config } = pageContext
   // we define this hook here so that it doesn't need to be exported by vike-vue
   const defaultTeleport = `<div id="teleported">${pageContext.ssrContext!.teleports?.['#teleported'] ?? ''}</div>`
-  const bodyHtmlEndHooks = [defaultTeleport, ...(pageContext.config.bodyHtmlEnd ?? [])]
-  const bodyHtmlEnd = dangerouslySkipEscape((await callCumulativeHooks(bodyHtmlEndHooks, pageContext)).join(''))
 
-  return { bodyHtmlBegin, bodyHtmlEnd }
+  const renderHooks = async (hooks: HtmlInjection[] | undefined) => {
+    const values = await callCumulativeHooks(hooks, pageContext)
+    return dangerouslySkipEscape(values.join(''))
+  }
+  const [headHtmlBegin, headHtmlEnd, bodyHtmlBegin, bodyHtmlEnd] = await Promise.all([
+    renderHooks(config.headHtmlBegin),
+    renderHooks(config.headHtmlEnd),
+    renderHooks(config.bodyHtmlBegin),
+    renderHooks([defaultTeleport, ...(config.bodyHtmlEnd ?? [])]),
+  ])
+  return { bodyHtmlBegin, bodyHtmlEnd, headHtmlBegin, headHtmlEnd }
 }
 
 function getTagAttributes(pageContext: PageContextServer) {

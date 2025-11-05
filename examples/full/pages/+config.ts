@@ -16,6 +16,7 @@ export default {
   // https://vike.dev/extends
   extends: vikeVue,
   bodyHtmlEnd: '<div id="bodyHtmlEnd-test"></div>',
+  headHtmlEnd: '<meta name="headHtmlEnd-test" content="test" />',
   meta: {
     baseCanonicalUrl: {
       env: { server: true, client: true },
