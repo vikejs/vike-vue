@@ -1,3 +1,12 @@
+## [0.9.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.4...vike-vue@0.9.5) (2025-11-06)
+
+
+### Features
+
+* +headHtmlBegin and +headHtmlEnd (vikejs/vike[#2807](https://github.com/vikejs/vike-vue/issues/2807)) ([#216](https://github.com/vikejs/vike-vue/issues/216)) ([6b8f34f](https://github.com/vikejs/vike-vue/commit/6b8f34f2673df84c7214a6f810011c7abaa919a8))
+
+
+
 ## [0.9.4](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.3...vike-vue@0.9.4) (2025-10-21)
 
 
