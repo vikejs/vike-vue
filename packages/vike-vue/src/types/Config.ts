@@ -267,7 +267,7 @@ type PageContext_ = PageContext
 type PickWithoutGetter<T, K extends keyof T> = {
   [P in K]: Exclude<T[P], Function>
 }
-export const configsFromHook = [
+export const configsViaHook = [
   'Head',
   'title',
   'description',
@@ -278,7 +278,7 @@ export const configsFromHook = [
   'bodyAttributes',
   'htmlAttributes',
 ] as const
-type ConfigsViaHook = (typeof configsFromHook)[number]
+type ConfigsViaHook = (typeof configsViaHook)[number]
 export type ConfigViaHook = PickWithoutGetter<Vike.Config, ConfigsViaHook>
 export type ConfigViaHookResolved = Omit<ConfigViaHook, ConfigsCumulative> &
   Pick<Vike.ConfigResolved, ConfigsCumulative>
