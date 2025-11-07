@@ -18,7 +18,7 @@ const config = {
   // https://vike.dev/passToClient
   // It is a cumulative config option, so a web app using vike-vue can extend
   // this list.
-  passToClient: ['fromHtmlRenderer', '_configFromHook'],
+  passToClient: ['fromHtmlRenderer', '_configViaHook'],
 
   // https://vike.dev/clientRouting
   clientRouting: true,

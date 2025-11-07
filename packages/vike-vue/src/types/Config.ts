@@ -279,6 +279,6 @@ export const configsFromHook = [
   'htmlAttributes',
 ] as const
 type ConfigsFromHook = (typeof configsFromHook)[number]
-export type ConfigFromHook = PickWithoutGetter<Vike.Config, ConfigsFromHook>
-export type ConfigFromHookResolved = Omit<ConfigFromHook, ConfigsCumulative> &
+export type ConfigViaHook = PickWithoutGetter<Vike.Config, ConfigsFromHook>
+export type ConfigViaHookResolved = Omit<ConfigViaHook, ConfigsCumulative> &
   Pick<Vike.ConfigResolved, ConfigsCumulative>
