@@ -1,9 +1,9 @@
 export { onAfterRenderHtml }
 
 import { dehydrate } from '@tanstack/vue-query'
-import type { OnAfterRenderHtmlSync } from 'vike-vue/types'
+import type { PageContextServer } from 'vike/types'
 
-const onAfterRenderHtml: OnAfterRenderHtmlSync = (pageContext): ReturnType<OnAfterRenderHtmlSync> => {
+const onAfterRenderHtml = (pageContext: PageContextServer) => {
   dehydrateVueQuery(pageContext)
 }
 

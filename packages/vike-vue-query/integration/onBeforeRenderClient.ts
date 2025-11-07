@@ -1,9 +1,9 @@
 export { onBeforeRenderClient }
 
 import { hydrate } from '@tanstack/vue-query'
-import type { OnBeforeRenderClientSync } from 'vike-vue/types'
+import type { PageContextClient } from 'vike/types'
 
-const onBeforeRenderClient: OnBeforeRenderClientSync = (pageContext): ReturnType<OnBeforeRenderClientSync> => {
+const onBeforeRenderClient = (pageContext: PageContextClient) => {
   hydrateVueQuery(pageContext)
 }
 
