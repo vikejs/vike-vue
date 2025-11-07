@@ -7,8 +7,7 @@ const onCreateApp = (pageContext: PageContext) => {
   installVueQuery(pageContext)
 }
 
-type PageContextWithApp = Parameters<typeof onCreateApp>[0]
-function installVueQuery(pageContext: PageContextWithApp) {
+function installVueQuery(pageContext: PageContext) {
   const queryClient = new QueryClient(pageContext.config.queryClientConfig)
   pageContext.app!.use(VueQueryPlugin, { queryClient })
   Object.assign(pageContext, { queryClient })
