@@ -7,8 +7,7 @@ function onBeforeRenderClient(pageContext: PageContextClient) {
   hydrateVueQuery(pageContext)
 }
 
-type PageContext = Parameters<typeof onBeforeRenderClient>[0]
-function hydrateVueQuery(pageContext: PageContext) {
+function hydrateVueQuery(pageContext: PageContextClient) {
   if (!pageContext.isHydration) {
     return
   }
