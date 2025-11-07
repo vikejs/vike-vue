@@ -7,7 +7,6 @@ const onAfterRenderHtml = (pageContext: PageContextServer) => {
   dehydrateVueQuery(pageContext)
 }
 
-type PageContext = Parameters<typeof onAfterRenderHtml>[0]
-function dehydrateVueQuery(pageContext: PageContext) {
+function dehydrateVueQuery(pageContext: PageContextServer) {
   pageContext._vueQueryInitialState = dehydrate(pageContext.queryClient!)
 }
