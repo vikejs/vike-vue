@@ -1,12 +1,12 @@
 // https://vike.dev/onCreateApp
 export { onCreateApp }
 
-import type { OnCreateAppSync } from 'vike-vue/types'
+import type { PageContext } from 'vike/types'
 import ToastPlugin from 'vue-toast-notification'
 
-const onCreateApp: OnCreateAppSync = (pageContext): ReturnType<OnCreateAppSync> => {
+function onCreateApp(pageContext: PageContext) {
   if (pageContext.isRenderingHead) return
-  const { app } = pageContext
+  const app = pageContext.app!
   app.use(ToastPlugin)
   console.log(`Vue version: ${app.version}`)
 }
