@@ -52,7 +52,7 @@ async function createVueApp(
         // Added by +Head
         ...(pageContext.config.Head ?? []),
         // Added by useConfig()
-        ...(pageContext._configFromHook?.Head ?? []),
+        ...(pageContext._configViaHook?.Head ?? []),
       ].map((HeadComponent) => h(HeadComponent))
       return h(Fragment, null, HeadElements)
     }

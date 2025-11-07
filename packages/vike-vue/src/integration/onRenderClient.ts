@@ -16,7 +16,7 @@ const onRenderClient: OnRenderClientAsync = async (
   pageContext: PageContextClient & PageContextInternal,
 ): ReturnType<OnRenderClientAsync> => {
   // Workaround for https://github.com/vikejs/vike-vue/pull/178#issuecomment-2285852251b
-  pageContext._configFromHook ??= {}
+  pageContext._configViaHook ??= {}
   // Workaround for https://github.com/vikejs/vike-vue/issues/181
   pageContext._headAlreadySetWrapper = { val: pageContext.isHydration }
 
