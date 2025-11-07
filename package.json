@@ -17,6 +17,7 @@
     "release": "cd ./packages/vike-vue/ && pnpm run release",
     "release:minor": "cd ./packages/vike-vue/ && pnpm run release:minor",
     "release:commit": "cd ./packages/vike-vue/ && pnpm run release:commit",
+    "release:all": "pnpm --recursive --sequential run release --yes",
     "========= Reset": "",
     "reset": "git clean -Xdf && pnpm install && pnpm run build",
     "========= Only allow pnpm; forbid yarn & npm": "",
