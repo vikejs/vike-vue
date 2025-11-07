@@ -3,16 +3,6 @@ import type { TagAttributes } from '../utils/getTagAttributesString'
 import type { Viewport, HtmlInjection } from '../integration/onRenderHtml'
 import type { ConfigsCumulative } from '../hooks/useConfig/configsCumulative'
 import type { Component } from './PageContext'
-import type {
-  OnCreateAppSync,
-  OnCreateAppAsync,
-  OnBeforeRenderHtmlSync,
-  OnBeforeRenderHtmlAsync,
-  OnAfterRenderHtmlSync,
-  OnAfterRenderHtmlAsync,
-  OnBeforeRenderClientSync,
-  OnBeforeRenderClientAsync,
-} from './VikeHooks'
 
 // https://vike.dev/pageContext#typescript
 declare global {
@@ -205,21 +195,21 @@ declare global {
        *
        * https://vike.dev/onCreateApp
        */
-      onCreateApp?: OnCreateAppSync | OnCreateAppAsync | ImportString
+      onCreateApp?: ((pageContext: PageContext) => void | Promise<void>) | ImportString
 
       /**
        * Hook called right before rendering the page's root Vue component to HTML.
        *
        * https://vike.dev/onBeforeRenderHtml
        */
-      onBeforeRenderHtml?: OnBeforeRenderHtmlSync | OnBeforeRenderHtmlAsync | ImportString
+      onBeforeRenderHtml?: ((pageContext: PageContextServer) => void | Promise<void>) | ImportString
 
       /**
        * Hook called right after rendering the page's root Vue component to HTML.
        *
        * https://vike.dev/onAfterRenderHtml
        */
-      onAfterRenderHtml?: OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync | ImportString
+      onAfterRenderHtml?: ((pageContext: PageContextServer) => void | Record<string, unknown> | Promise<void | Record<string, unknown>>) | ImportString
 
       /**
        * Hook called right before mounting the page's root Vue component.
@@ -228,21 +218,21 @@ declare global {
        *
        * https://vike.dev/onBeforeRenderClient
        */
-      onBeforeRenderClient?: OnBeforeRenderClientSync | OnBeforeRenderClientAsync | ImportString
+      onBeforeRenderClient?: ((pageContext: PageContextClient) => void | Promise<void>) | ImportString
 
       /**
        * Client-side hook called after the page is rendered.
        *
        * https://vike.dev/onAfterRenderClient
        */
-      onAfterRenderClient?: (pageContext: PageContextClient) => void
+      onAfterRenderClient?: ((pageContext: PageContextClient) => void | Promise<void>) | ImportString
     }
     interface ConfigResolved {
-      onCreateApp?: Array<OnCreateAppSync | OnCreateAppAsync>
-      onBeforeRenderHtml?: Array<OnBeforeRenderHtmlSync | OnBeforeRenderHtmlAsync>
-      onAfterRenderHtml?: Array<OnAfterRenderHtmlSync | OnAfterRenderHtmlAsync>
-      onBeforeRenderClient?: Array<OnBeforeRenderClientSync | OnBeforeRenderClientAsync>
-      onAfterRenderClient?: Function[]
+      onCreateApp?: Array<(pageContext: PageContext) => void | Promise<void>>
+      onBeforeRenderHtml?: Array<(pageContext: PageContextServer) => void | Promise<void>>
+      onAfterRenderHtml?: Array<(pageContext: PageContextServer) => void | Record<string, unknown> | Promise<void | Record<string, unknown>>>
+      onBeforeRenderClient?: Array<(pageContext: PageContextClient) => void | Promise<void>>
+      onAfterRenderClient?: Array<(pageContext: PageContextClient) => void | Promise<void>>
       bodyHtmlBegin?: HtmlInjection[]
       bodyHtmlEnd?: HtmlInjection[]
       headHtmlBegin?: HtmlInjection[]
