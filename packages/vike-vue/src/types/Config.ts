@@ -209,7 +209,7 @@ declare global {
        *
        * https://vike.dev/onAfterRenderHtml
        */
-      onAfterRenderHtml?: ((pageContext: PageContextServer) => void | Record<string, unknown> | Promise<void | Record<string, unknown>>) | ImportString
+      onAfterRenderHtml?: ((pageContext: PageContextServer) => void | Promise<void>) | ImportString
 
       /**
        * Hook called right before mounting the page's root Vue component.
@@ -230,7 +230,7 @@ declare global {
     interface ConfigResolved {
       onCreateApp?: Array<(pageContext: PageContext) => void | Promise<void>>
       onBeforeRenderHtml?: Array<(pageContext: PageContextServer) => void | Promise<void>>
-      onAfterRenderHtml?: Array<(pageContext: PageContextServer) => void | Record<string, unknown> | Promise<void | Record<string, unknown>>>
+      onAfterRenderHtml?: Array<(pageContext: PageContextServer) => void | Promise<void>>
       onBeforeRenderClient?: Array<(pageContext: PageContextClient) => void | Promise<void>>
       onAfterRenderClient?: Array<(pageContext: PageContextClient) => void | Promise<void>>
       bodyHtmlBegin?: HtmlInjection[]

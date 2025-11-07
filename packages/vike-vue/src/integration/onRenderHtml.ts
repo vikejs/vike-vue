@@ -107,6 +107,7 @@ async function renderPageToHtml(pageContext: PageContextServer) {
     //  - Tell users to use `!!pageContext.Page` if they want to apply the hook only for SSR.
     //    - Already done: https://vike.dev/onAfterRenderHtml
     const afterRenderResults = await callCumulativeHooks(pageContext.config.onAfterRenderHtml, pageContext)
+    // TO-DO/soon: remove this — I think only https://github.com/4350pChris uses this
     Object.assign(fromHtmlRenderer, ...afterRenderResults)
   }
   return { fromHtmlRenderer }
