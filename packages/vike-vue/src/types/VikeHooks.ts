@@ -21,6 +21,10 @@ type PageContextWithApp = PageContext & { app: NonNullable<PageContext['app']> }
  * Typically used for registering Vue plugins.
  *
  * See https://vike.dev/onCreateApp
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onCreateApp
  */
 type OnCreateAppSync = (pageContext: PageContextWithApp) => void
 /**
@@ -29,6 +33,10 @@ type OnCreateAppSync = (pageContext: PageContextWithApp) => void
  * Typically used for registering Vue plugins.
  *
  * See https://vike.dev/onCreateApp
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onCreateApp
  */
 type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
 
@@ -36,12 +44,20 @@ type OnCreateAppAsync = (pageContext: PageContextWithApp) => Promise<void>
  * Hook called before rendering the page's HTML.
  *
  * https://vike.dev/onBeforeRenderHtml
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onBeforeRenderHtml
  */
 type OnBeforeRenderHtmlSync = (pageContext: PageContextServer) => void
 /**
  * Hook called before rendering the page's HTML.
  *
  * https://vike.dev/onBeforeRenderHtml
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onBeforeRenderHtml
  */
 type OnBeforeRenderHtmlAsync = (pageContext: PageContextServer) => Promise<void>
 
@@ -49,12 +65,20 @@ type OnBeforeRenderHtmlAsync = (pageContext: PageContextServer) => Promise<void>
  * Hook called right after rendering the page's root Vue component to HTML.
  *
  * https://vike.dev/onAfterRenderHtml
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onAfterRenderHtml
  */
 type OnAfterRenderHtmlSync = (pageContext: PageContextServer) => void | PageContextServer['fromHtmlRenderer']
 /**
  * Hook called right after rendering the page's root Vue component to HTML.
  *
  * https://vike.dev/onAfterRenderHtml
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onAfterRenderHtml
  */
 type OnAfterRenderHtmlAsync = (pageContext: PageContextServer) => Promise<void | PageContextServer['fromHtmlRenderer']>
 
@@ -63,6 +87,10 @@ type OnAfterRenderHtmlAsync = (pageContext: PageContextServer) => Promise<void |
  * When mounting pageContext.isHydration is true, otherwise false.
  *
  * Typically used for hydrating state management libraries.
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onBeforeRenderClient
  */
 type OnBeforeRenderClientSync = (pageContext: PageContextClient) => void
 /**
@@ -70,5 +98,9 @@ type OnBeforeRenderClientSync = (pageContext: PageContextClient) => void
  * When mounting pageContext.isHydration is true, otherwise false.
  *
  * Typically used for hydrating state management libraries.
+ *
+ * @deprecated This type is deprecated, see:
+ * - https://vike.dev/migration/hook-types
+ * - https://vike.dev/onBeforeRenderClient
  */
 type OnBeforeRenderClientAsync = (pageContext: PageContextClient) => Promise<void>
