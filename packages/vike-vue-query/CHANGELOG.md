@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.2.1...vike-vue-query@0.2.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* stop using deprecated hook types ([#219](https://github.com/vikejs/vike-vue/issues/219)) ([95b06c3](https://github.com/vikejs/vike-vue/commit/95b06c3934db95c3eef9adb42ad4688ede132a65))
+
+
+
 ## [0.2.1](https://github.com/vikejs/vike-vue/compare/vike-vue-query@0.2.0...vike-vue-query@0.2.1) (2025-07-01)
 
 
