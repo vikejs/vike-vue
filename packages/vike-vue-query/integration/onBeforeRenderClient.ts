@@ -3,7 +3,7 @@ export { onBeforeRenderClient }
 import { hydrate } from '@tanstack/vue-query'
 import type { PageContextClient } from 'vike/types'
 
-const onBeforeRenderClient = (pageContext: PageContextClient) => {
+function onBeforeRenderClient(pageContext: PageContextClient) {
   hydrateVueQuery(pageContext)
 }
 

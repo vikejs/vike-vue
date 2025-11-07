@@ -3,7 +3,7 @@ export { onAfterRenderHtml }
 import { dehydrate } from '@tanstack/vue-query'
 import type { PageContextServer } from 'vike/types'
 
-const onAfterRenderHtml = (pageContext: PageContextServer) => {
+function onAfterRenderHtml(pageContext: PageContextServer) {
   dehydrateVueQuery(pageContext)
 }
 

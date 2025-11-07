@@ -3,7 +3,7 @@ export { onCreateApp }
 import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query'
 import type { PageContext } from 'vike/types'
 
-const onCreateApp = (pageContext: PageContext) => {
+function onCreateApp(pageContext: PageContext) {
   installVueQuery(pageContext)
 }
 
