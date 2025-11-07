@@ -1,3 +1,13 @@
+## [0.9.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.5...vike-vue@0.9.6) (2025-11-07)
+
+
+### Bug Fixes
+
+* deprecate hook types ([#218](https://github.com/vikejs/vike-vue/issues/218)) ([c350eb3](https://github.com/vikejs/vike-vue/commit/c350eb3fd10d16a8ed5c7ccbfe14902bcd529816))
+* rename ConfigFromHook => ConfigViaHook ([#217](https://github.com/vikejs/vike-vue/issues/217)) ([dd83b8e](https://github.com/vikejs/vike-vue/commit/dd83b8e11c6243526451ef18a12230a1cbce3868))
+
+
+
 ## [0.9.5](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.4...vike-vue@0.9.5) (2025-11-06)
 
 
