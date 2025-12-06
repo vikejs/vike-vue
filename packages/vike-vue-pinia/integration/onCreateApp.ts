@@ -11,7 +11,10 @@ function onCreateApp(pageContext: PageContext) {
     const pinia = createPinia()
     const { _piniaInitialState } = pageContext
     if (_piniaInitialState) {
-      pinia.state.value = Object.assign({}, _piniaInitialState, pinia.state.value)
+      pinia.state.value = {
+        ..._piniaInitialState,
+        ...pinia.state.value,
+      }
     }
     pageContext.globalContext.pinia = pinia
   }
