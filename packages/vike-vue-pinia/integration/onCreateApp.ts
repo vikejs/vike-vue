@@ -10,7 +10,9 @@ function onCreateApp(pageContext: PageContext) {
   if (pageContext.isClientSide) {
     const pinia = createPinia()
     const { _piniaInitialState } = pageContext
-    if (_piniaInitialState) pinia.state.value = _piniaInitialState
+    if (_piniaInitialState) {
+      pinia.state.value = Object.assign({}, _piniaInitialState, pinia.state.value)
+    }
     pageContext.globalContext.pinia = pinia
   }
 
