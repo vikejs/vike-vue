@@ -1,3 +1,12 @@
+## [0.2.3](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.2...vike-vue-pinia@0.2.3) (2025-12-06)
+
+
+### Bug Fixes
+
+* support client persistence (fix vikejs/vike[#2881](https://github.com/vikejs/vike-vue/issues/2881)) ([#220](https://github.com/vikejs/vike-vue/issues/220)) ([9d984ec](https://github.com/vikejs/vike-vue/commit/9d984ecf583d706b59a00ed47e1c8c55f6b9e407))
+
+
+
 ## [0.2.2](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.1...vike-vue-pinia@0.2.2) (2025-07-01)
 
 
