@@ -13,7 +13,7 @@ function onCreateApp(pageContext: PageContext) {
     if (_piniaInitialState) {
       pinia.state.value = {
         ..._piniaInitialState,
-        // For client-side persistent state (e.g. `localStorage`)
+        // Preserve client-side persisted state — e.g. `localStorage`
         // https://github.com/vikejs/vike/issues/2881
         ...pinia.state.value,
       }
