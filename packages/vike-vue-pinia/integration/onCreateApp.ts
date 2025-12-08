@@ -10,14 +10,14 @@ async function onCreateApp(pageContext: PageContext) {
   if (pageContext.isClientSide) {
     const pinia = createPinia()
     pageContext.pinia = pinia
-    
+
     // Call user-provided onCreatePinia hooks to register plugins
     // https://github.com/vikejs/vike/issues/2881
     const { onCreatePinia } = pageContext.config
     if (onCreatePinia) {
-      await Promise.all(onCreatePinia.map(hook => hook(pageContext)))
+      await Promise.all(onCreatePinia.map((hook) => hook(pageContext)))
     }
-    
+
     const { _piniaInitialState } = pageContext
     if (_piniaInitialState) {
       pinia.state.value = {

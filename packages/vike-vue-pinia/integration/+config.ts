@@ -34,19 +34,19 @@ declare global {
       /**
        * Hook called after creating the Pinia instance but before applying initial state.
        * Use this to register Pinia plugins.
-       * 
+       *
        * @example
        * ```js
        * // pages/+config.js
        * import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-       * 
+       *
        * export default {
        *   onCreatePinia({ pinia }) {
        *     pinia.use(piniaPluginPersistedstate)
        *   }
        * }
        * ```
-       * 
+       *
        * https://github.com/vikejs/vike/issues/2881
        */
       onCreatePinia?: (pageContext: PageContext) => void | Promise<void>
