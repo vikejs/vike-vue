@@ -8,7 +8,6 @@ Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.
 
 [Installation](#installation)  
 [Example](#example)  
-[Pinia plugins](#pinia-plugins)  
 [Populate store with `+data`](#populate-store-with-data)  
 [Version history](#version-history)  
 [See also](#see-also)  
@@ -60,42 +59,6 @@ See [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/v
 
 > [!NOTE]
 > The `vike-vue-pinia` extension requires [`vike-vue`](https://vike.dev/vike-vue).
-
-<br/>
-
-## Pinia plugins
-
-To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/), define an `onCreatePinia()` hook.
-
-For client-only plugins (e.g. plugins that use `localStorage`), use the `.client.ts` suffix:
-
-```js
-// pages/+onCreatePinia.client.js
-
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-
-export function onCreatePinia(pageContext) {
-  pageContext.pinia.use(piniaPluginPersistedstate)
-}
-```
-
-Alternatively, you can use an environment check:
-
-```js
-// pages/+onCreatePinia.js
-
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-
-export function onCreatePinia(pageContext) {
-  if (pageContext.isClientSide) {
-    pageContext.pinia.use(piniaPluginPersistedstate)
-  }
-}
-```
-
-The `onCreatePinia()` hook is called after creating the Pinia instance but before the SSR state is applied, allowing persisted state (e.g. from `localStorage`) to be properly merged with server state.
-
-See [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/vue-pinia) for a working example.
 
 <br/>
 
