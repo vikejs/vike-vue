@@ -8,7 +8,7 @@ async function createPiniaPlus(pageContext: PageContext, useGloablContext?: bool
   const pinia = createPinia()
 
   if (useGloablContext) {
-    // Implicitly sets pageContext.pinia (because pageContext inherits all (as fallback) globalContext properties)
+    // Implicitly sets pageContext.pinia (because pageContext inherits all globalContext properties as fallback)
     pageContext.globalContext.pinia = pinia
   } else {
     pageContext.pinia = pinia
