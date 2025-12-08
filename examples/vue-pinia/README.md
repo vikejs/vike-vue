@@ -1,9 +1,13 @@
 Example of using [Pinia](https://pinia.vuejs.org) with the `vike-vue-pinia` extension.
 
 This example demonstrates:
-- Basic Pinia store usage with SSR
-- Client-side state persistence using `pinia-plugin-persistedstate` (counter state persists across page reloads)
+- Basic Pinia store usage with SSR (Home page: counters synced between components)
+- Client-side state persistence using `pinia-plugin-persistedstate` (About page: counter persists across page reloads)
 - Using `onCreatePinia` hook to register Pinia plugins
+- Todo list with SSR data fetching and store population
+
+> [!NOTE]
+> The home page uses a **non-persisted** store to demonstrate SSR without hydration issues. The about page uses a **persisted** store to demonstrate localStorage persistence.
 
 > [!NOTE]
 > For more examples, see [Bati](https://batijs.dev) which generates `vike-vue` apps.
