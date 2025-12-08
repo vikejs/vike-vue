@@ -39,7 +39,7 @@ importers:
         version: 2.6.11
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -51,7 +51,7 @@ importers:
         version: 0.26.2(rollup@4.50.2)(vite@7.1.5(@types/node@22.3.0))
       vike:
         specifier: ^0.4.237
-        version: 0.4.237(vite@7.1.5)
+        version: 0.4.237(vite@7.1.5(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -75,10 +75,10 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
       vike:
         specifier: ^0.4.237
-        version: 0.4.237(vite@7.1.5)
+        version: 0.4.237(vite@7.1.5(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -93,13 +93,16 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
       pinia:
         specifier: ^3.0.1
         version: 3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2))
+      pinia-plugin-persistedstate:
+        specifier: ^4.7.1
+        version: 4.7.1(pinia@3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2)))
       vike:
         specifier: ^0.4.237
-        version: 0.4.237(vite@7.1.5)
+        version: 0.4.237(vite@7.1.5(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -130,7 +133,7 @@ importers:
         version: 2.6.11
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -139,7 +142,7 @@ importers:
         version: 5.9.2
       vike:
         specifier: ^0.4.237
-        version: 0.4.237(vite@7.1.5)
+        version: 0.4.237(vite@7.1.5(@types/node@22.3.0))
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -166,13 +169,13 @@ importers:
         version: 22.3.0
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
       vike:
         specifier: ^0.4.237
-        version: 0.4.237(vite@7.1.5)
+        version: 0.4.237(vite@7.1.5(@types/node@22.3.0))
       vite:
         specifier: ^7.1.5
         version: 7.1.5(@types/node@22.3.0)
@@ -202,7 +205,7 @@ importers:
         version: 5.9.2
       vike:
         specifier: ^0.4.237
-        version: 0.4.237(vite@7.1.5)
+        version: 0.4.237(vite@7.1.5(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -229,7 +232,7 @@ importers:
         version: 5.9.2
       vike:
         specifier: ^0.4.237
-        version: 0.4.237(vite@7.1.5)
+        version: 0.4.237(vite@7.1.5(@types/node@22.3.0))
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -1282,6 +1285,9 @@ packages:
     resolution: {integrity: sha512-SUwdGfqdKOwxCPeVYjwSyRpJ7Z+fhpwIAtmCUdZIWZ/YP5R9WAsyuSgpLVDi9bjWoN2LXHNss/dk3urXtdQxGg==}
     engines: {node: '>=6'}
 
+  defu@6.1.4:
+    resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
+
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
@@ -1673,6 +1679,20 @@ packages:
   picomatch@4.0.3:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
     engines: {node: '>=12'}
+
+  pinia-plugin-persistedstate@4.7.1:
+    resolution: {integrity: sha512-WHOqh2esDlR3eAaknPbqXrkkj0D24h8shrDPqysgCFR6ghqP/fpFfJmMPJp0gETHsvrh9YNNg6dQfo2OEtDnIQ==}
+    peerDependencies:
+      '@nuxt/kit': '>=3.0.0'
+      '@pinia/nuxt': '>=0.10.0'
+      pinia: '>=3.0.0'
+    peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
+      '@pinia/nuxt':
+        optional: true
+      pinia:
+        optional: true
 
   pinia@3.0.1:
     resolution: {integrity: sha512-WXglsDzztOTH6IfcJ99ltYZin2mY8XZCXujkYWVIJlBjqsP6ST7zw+Aarh63E1cDVYeyUcPCxPHzJpEOmzB6Wg==}
@@ -2598,7 +2618,7 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@vitejs/plugin-vue@6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))':
+  '@vitejs/plugin-vue@6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.29
       vite: 7.1.5(@types/node@22.3.0)
@@ -2906,6 +2926,8 @@ snapshots:
   deep-eql@4.1.4:
     dependencies:
       type-detect: 4.1.0
+
+  defu@6.1.4: {}
 
   delayed-stream@1.0.0: {}
 
@@ -3305,6 +3327,12 @@ snapshots:
 
   picomatch@4.0.3: {}
 
+  pinia-plugin-persistedstate@4.7.1(pinia@3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2))):
+    dependencies:
+      defu: 6.1.4
+    optionalDependencies:
+      pinia: 3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2))
+
   pinia@3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2)):
     dependencies:
       '@vue/devtools-api': 7.7.2
@@ -3540,7 +3568,7 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.237(vite@7.1.5):
+  vike@0.4.237(vite@7.1.5(@types/node@22.3.0)):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.17
