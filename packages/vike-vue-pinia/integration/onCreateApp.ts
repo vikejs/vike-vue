@@ -3,18 +3,19 @@ export { onCreateApp }
 import type { PageContext } from 'vike/types'
 import { createPinia } from 'pinia'
 
-function onCreateApp(pageContext: PageContext) {
+async function onCreateApp(pageContext: PageContext) {
   const { app } = pageContext
   if (!app) return
 
   if (pageContext.isClientSide) {
     const pinia = createPinia()
+    pageContext.pinia = pinia
     
-    // Register user-provided plugins before setting initial state
+    // Call user-provided onCreatePinia hooks to register plugins
     // https://github.com/vikejs/vike/issues/2881
-    const { piniaPlugins } = pageContext.config
-    if (piniaPlugins) {
-      piniaPlugins.forEach(plugin => pinia.use(plugin))
+    const { onCreatePinia } = pageContext.config
+    if (onCreatePinia) {
+      await Promise.all(onCreatePinia.map(hook => hook(pageContext)))
     }
     
     const { _piniaInitialState } = pageContext

@@ -65,7 +65,7 @@ See [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/v
 
 ## Pinia plugins (e.g. persistence)
 
-To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/), use the `piniaPlugins` config:
+To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/), use the `onCreatePinia` hook:
 
 ```js
 // pages/+config.js
@@ -77,11 +77,13 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 export default {
   // ...
   extends: [vikeVue, vikeVuePinia],
-  piniaPlugins: [piniaPluginPersistedstate]
+  onCreatePinia({ pinia }) {
+    pinia.use(piniaPluginPersistedstate)
+  }
 }
 ```
 
-The plugins are registered on the client-side before the SSR state is applied, allowing persisted state (e.g. from `localStorage`) to be properly merged with server state.
+The `onCreatePinia` hook is called after creating the Pinia instance but before the SSR state is applied, allowing persisted state (e.g. from `localStorage`) to be properly merged with server state.
 
 <br/>
 

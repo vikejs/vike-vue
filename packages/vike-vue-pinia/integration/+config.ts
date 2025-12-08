@@ -1,6 +1,6 @@
 export { config as default }
 
-import type { Pinia, PiniaPlugin, StateTree } from 'pinia'
+import type { Pinia, StateTree } from 'pinia'
 import type { Config } from 'vike/types'
 import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 
@@ -14,8 +14,9 @@ const config = {
   onAfterRenderHtml: 'import:vike-vue-pinia/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
   onCreatePageContext: 'import:vike-vue-pinia/__internal/integration/onCreatePageContext:onCreatePageContext',
   meta: {
-    piniaPlugins: {
+    onCreatePinia: {
       env: { client: true },
+      cumulative: true,
     },
   },
 } satisfies Config
@@ -30,10 +31,28 @@ declare global {
       pinia?: Pinia
     }
     interface Config {
-      piniaPlugins?: PiniaPlugin[]
+      /**
+       * Hook called after creating the Pinia instance but before applying initial state.
+       * Use this to register Pinia plugins.
+       * 
+       * @example
+       * ```js
+       * // pages/+config.js
+       * import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+       * 
+       * export default {
+       *   onCreatePinia({ pinia }) {
+       *     pinia.use(piniaPluginPersistedstate)
+       *   }
+       * }
+       * ```
+       * 
+       * https://github.com/vikejs/vike/issues/2881
+       */
+      onCreatePinia?: (pageContext: PageContext) => void | Promise<void>
     }
     interface ConfigResolved {
-      piniaPlugins?: PiniaPlugin[]
+      onCreatePinia?: Array<(pageContext: PageContext) => void | Promise<void>>
     }
   }
 }
