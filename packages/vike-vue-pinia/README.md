@@ -8,6 +8,7 @@ Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.
 
 [Installation](#installation)  
 [Example](#example)  
+[Pinia plugins (e.g. persistence)](#pinia-plugins-eg-persistence)  
 [Populate store with `+data`](#populate-store-with-data)  
 [Version history](#version-history)  
 [See also](#see-also)  
@@ -59,6 +60,28 @@ See [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/v
 
 > [!NOTE]
 > The `vike-vue-pinia` extension requires [`vike-vue`](https://vike.dev/vike-vue).
+
+<br/>
+
+## Pinia plugins (e.g. persistence)
+
+To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/), use the `piniaPlugins` config:
+
+```js
+// pages/+config.js
+
+import vikeVue from 'vike-vue/config'
+import vikeVuePinia from 'vike-vue-pinia/config'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+export default {
+  // ...
+  extends: [vikeVue, vikeVuePinia],
+  piniaPlugins: [piniaPluginPersistedstate]
+}
+```
+
+The plugins are registered on the client-side before the SSR state is applied, allowing persisted state (e.g. from `localStorage`) to be properly merged with server state.
 
 <br/>
 

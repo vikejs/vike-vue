@@ -1,6 +1,6 @@
 export { config as default }
 
-import type { Pinia, StateTree } from 'pinia'
+import type { Pinia, PiniaPlugin, StateTree } from 'pinia'
 import type { Config } from 'vike/types'
 import type _ from 'vike-vue/config' // Needed for declaration merging of Config
 
@@ -13,6 +13,11 @@ const config = {
   onCreateApp: 'import:vike-vue-pinia/__internal/integration/onCreateApp:onCreateApp',
   onAfterRenderHtml: 'import:vike-vue-pinia/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
   onCreatePageContext: 'import:vike-vue-pinia/__internal/integration/onCreatePageContext:onCreatePageContext',
+  meta: {
+    piniaPlugins: {
+      env: { client: true },
+    },
+  },
 } satisfies Config
 
 declare global {
@@ -23,6 +28,12 @@ declare global {
     }
     interface GlobalContext {
       pinia?: Pinia
+    }
+    interface Config {
+      piniaPlugins?: PiniaPlugin[]
+    }
+    interface ConfigResolved {
+      piniaPlugins?: PiniaPlugin[]
     }
   }
 }

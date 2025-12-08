@@ -9,6 +9,14 @@ function onCreateApp(pageContext: PageContext) {
 
   if (pageContext.isClientSide) {
     const pinia = createPinia()
+    
+    // Register user-provided plugins before setting initial state
+    // https://github.com/vikejs/vike/issues/2881
+    const { piniaPlugins } = pageContext.config
+    if (piniaPlugins) {
+      piniaPlugins.forEach(plugin => pinia.use(plugin))
+    }
+    
     const { _piniaInitialState } = pageContext
     if (_piniaInitialState) {
       pinia.state.value = {
