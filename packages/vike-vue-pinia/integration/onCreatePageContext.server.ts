@@ -1,8 +1,8 @@
 export { onCreatePageContext }
 
 import type { PageContextServer } from 'vike/types'
-import { createPinia } from 'pinia'
+import { createPiniaPlus } from './createPiniaPlus'
 
-function onCreatePageContext(pageContext: PageContextServer) {
-  pageContext.pinia = createPinia()
+async function onCreatePageContext(pageContext: PageContextServer) {
+  await createPiniaPlus(pageContext)
 }

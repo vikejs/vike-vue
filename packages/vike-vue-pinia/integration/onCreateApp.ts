@@ -1,22 +1,14 @@
 export { onCreateApp }
 
 import type { PageContext } from 'vike/types'
-import { createPinia } from 'pinia'
+import { createPiniaPlus } from './createPiniaPlus'
 
 async function onCreateApp(pageContext: PageContext) {
   const { app } = pageContext
   if (!app) return
 
   if (pageContext.isClientSide) {
-    const pinia = createPinia()
-    pageContext.pinia = pinia
-
-    // Call +onCreatePinia hooks
-    const { onCreatePinia } = pageContext.config
-    if (onCreatePinia) {
-      await Promise.all(onCreatePinia.map((hook) => hook(pageContext)))
-    }
-
+    const pinia = await createPiniaPlus(pageContext, true)
     const { _piniaInitialState } = pageContext
     if (_piniaInitialState) {
       pinia.state.value = {
@@ -26,7 +18,6 @@ async function onCreateApp(pageContext: PageContext) {
         ...pinia.state.value,
       }
     }
-    pageContext.globalContext.pinia = pinia
   }
 
   app.use(pageContext.globalContext.pinia ?? pageContext.pinia!)
