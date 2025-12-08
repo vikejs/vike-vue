@@ -65,7 +65,21 @@ See [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/v
 
 ## Pinia plugins
 
-To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/), define an `onCreatePinia()` hook:
+To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/), define an `onCreatePinia()` hook.
+
+For client-only plugins (e.g. plugins that use `localStorage`), use the `.client.ts` suffix:
+
+```js
+// pages/+onCreatePinia.client.js
+
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+export function onCreatePinia(pageContext) {
+  pageContext.pinia.use(piniaPluginPersistedstate)
+}
+```
+
+Alternatively, you can use an environment check:
 
 ```js
 // pages/+onCreatePinia.js
@@ -73,7 +87,6 @@ To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.gi
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 export function onCreatePinia(pageContext) {
-  // Only register on client-side (plugin uses localStorage)
   if (pageContext.isClientSide) {
     pageContext.pinia.use(piniaPluginPersistedstate)
   }
