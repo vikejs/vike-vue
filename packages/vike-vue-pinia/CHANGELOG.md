@@ -1,10 +1,3 @@
-## [Unreleased]
-
-### Features
-
-* add `onCreatePinia` hook to support Pinia plugins (e.g. pinia-plugin-persistedstate) ([#2881](https://github.com/vikejs/vike/issues/2881))
-
-
 ## [0.2.3](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.2...vike-vue-pinia@0.2.3) (2025-12-06)
 
 

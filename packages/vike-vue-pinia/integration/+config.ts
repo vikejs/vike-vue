@@ -15,7 +15,7 @@ const config = {
   onCreatePageContext: 'import:vike-vue-pinia/__internal/integration/onCreatePageContext:onCreatePageContext',
   meta: {
     onCreatePinia: {
-      env: { client: true },
+      env: { client: true, server: true },
       cumulative: true,
     },
   },
@@ -32,22 +32,11 @@ declare global {
     }
     interface Config {
       /**
-       * Hook called after creating the Pinia instance but before applying initial state.
+       * Hook called after creating the Pinia instance.
+       *
        * Use this to register Pinia plugins.
        *
-       * @example
-       * ```js
-       * // pages/+config.js
-       * import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-       *
-       * export default {
-       *   onCreatePinia({ pinia }) {
-       *     pinia.use(piniaPluginPersistedstate)
-       *   }
-       * }
-       * ```
-       *
-       * https://github.com/vikejs/vike/issues/2881
+       * https://vike.dev/onCreatePinia
        */
       onCreatePinia?: (pageContext: PageContext) => void | Promise<void>
     }
