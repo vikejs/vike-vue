@@ -14,7 +14,7 @@ Features:
 You can completely stop using Vike's [`+data` hook](https://vike.dev/data) — or use both: `+data` for some pages, and `vike-vue-query` for others.
 
 > [!NOTE]
-> If you don't want to stop using Vike's `+data` hook, then you **don't need `vike-vue-query`** — you can use TanStack Query without any Vike integration.
+> If you don't want to stop using Vike's `+data` hook, then **you don't need `vike-vue-query`** — you can use TanStack Query without any Vike integration.
 
 <br/>
 
