@@ -35,8 +35,6 @@ declare global {
        * Hook called after creating the Pinia instance.
        *
        * Use this to register Pinia plugins.
-       *
-       * https://vike.dev/onCreatePinia
        */
       onCreatePinia?: (pageContext: PageContext) => void | Promise<void>
     }
