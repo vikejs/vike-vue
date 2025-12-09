@@ -96,7 +96,7 @@ See [examples/vue-query/](https://github.com/vikejs/vike-vue/tree/main/examples/
 
 ## Settings
 
-To customize the TanStack Query client:
+You can set TanStack Query client options:
 
 ```ts
 // pages/+queryClientConfig.ts
