@@ -70,7 +70,7 @@ const counterStore = useCounterStore()
 
 ## Example
 
-See [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/vue-pinia).
+See [examples/vue-pinia/](https://github.com/vikejs/vike-vue/tree/main/examples/vue-pinia).
 
 <br/>
 
