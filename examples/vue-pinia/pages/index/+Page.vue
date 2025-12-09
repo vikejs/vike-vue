@@ -20,7 +20,7 @@ import TodoList from './TodoList.vue'
 
 const { increment } = useCounterStore()
 onServerPrefetch(() => {
-  // Show that hydration works - the counter should start at 1
+  // Let the counter start at 1 (and hydration still works)
   increment()
 })
 </script>
