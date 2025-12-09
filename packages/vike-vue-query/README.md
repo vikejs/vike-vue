@@ -6,6 +6,16 @@
 
 Integrates [TanStack Query](https://tanstack.com/query) into your [`vike-vue`](https://vike.dev/vike-vue) app.
 
+Features:
+- Data is fetched at the component level (unlike [`+data`](https://vike.dev/data), which fetches at the page level)
+- All TanStack Query niceties
+- All SSR benefits
+
+You can completely stop using Vike's [`+data` hook](https://vike.dev/data) — or use both: `+data` for some pages, and `vike-vue-query` for others.
+
+> [!NOTE]
+> If you don't want to stop using Vike's `+data` hook, then you **don't need `vike-vue-query`** — you can use TanStack Query without any Vike integration.
+
 <br/>
 
 **Table of Contents**
