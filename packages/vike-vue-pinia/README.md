@@ -9,15 +9,9 @@ Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.
 [Installation](#installation)  
 [Basic usage](#basic-usage)  
 [Example](#example)  
-[SSR & Hydration](#ssr--hydration)  
 [Populate store with `+data`](#populate-store-with-data)  
 [Version history](#version-history)  
 [See also](#see-also)  
-
-Features:
-- **Zero-config SSR**: Store state is automatically serialized on the server and hydrated on the client — no manual setup needed
-- **Type-safe**: Full TypeScript support with Pinia's composable stores
-- **Hydration-safe**: Prevents hydration mismatches by ensuring client and server have the same state
 
 <br/>
 
@@ -42,13 +36,11 @@ Features:
 
 <br/>
 
-
-## Basic usage
-
-Define your stores using Pinia's composition API:
+# Basic usage
 
 ```js
 // stores/useCounterStore.ts
+
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
@@ -59,9 +51,9 @@ export const useCounterStore = defineStore('counter', () => {
 })
 ```
 
-Use the store in your components:
-
 ```vue
+<!-- components/Counter.vue -->
+
 <template>
   <button type="button" @click="counterStore.increment">
     Counter {{ counterStore.count }}
@@ -74,13 +66,7 @@ const counterStore = useCounterStore()
 </script>
 ```
 
-That's it! The store state is automatically:
-- **Initialized on the server** during SSR
-- **Serialized and sent to the client** with the HTML
-- **Hydrated on the client** so your app starts with the same state
-
 <br/>
-
 
 ## Example
 
@@ -88,57 +74,14 @@ See [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/v
 
 <br/>
 
-
-## SSR & Hydration
-
-When using SSR (Server-Side Rendering), `vike-vue-pinia` automatically handles state transfer between server and client:
-
-```vue
-<script setup>
-import { onServerPrefetch } from 'vue'
-import { useCounterStore } from '../stores/useCounterStore'
-
-const counterStore = useCounterStore()
-
-// Initialize state on the server
-onServerPrefetch(() => {
-  counterStore.increment()
-})
-</script>
-```
-
-Here's what happens:
-
-1. **On the server**: Your store is created and any `onServerPrefetch` hooks run to initialize the state
-2. **State serialization**: The store's state is automatically serialized and embedded in the HTML
-3. **On the client**: When the page hydrates, the store is initialized with the serialized state from the server
-
-This ensures that the client starts with the exact same state as the server, preventing [hydration mismatches](https://vike.dev/hydration-mismatch).
-
-> [!TIP]
-> You can access the Pinia instance via `pageContext.pinia` if you need to interact with it directly in hooks like `+onData`.
-
-<br/>
-
 ## Populate store with `+data`
 
-You can populate your store with data fetched via Vike's [`+data`](https://vike.dev/data) hook. Use the [`+onData`](https://vike.dev/onData) hook to initialize your store when data is fetched:
-
-```ts
-// pages/todos/+data.ts
-export { data }
-
-export type Data = Awaited<ReturnType<typeof data>>
-
-async function data() {
-  const todosInit = await fetchTodos()
-  return { todosInit }
-}
-```
+To populate your store with data fetched via the [`+data`](https://vike.dev/data) hook, use [`+onData`](https://vike.dev/onData) and [`pageContext.data`](https://vike.dev/pageContext#data).
 
 ```ts
 // pages/todos/+onData.ts
 // Environment: server, client
+
 export { onData }
 
 import type { PageContext } from 'vike/types'
@@ -146,50 +89,22 @@ import type { Data } from './+data'
 import { useTodoStore } from '../../stores/useTodoStore'
 
 function onData(pageContext: PageContext & { data?: Data }) {
-  // Access the Pinia instance from pageContext
-  const todoStore = useTodoStore(pageContext.pinia!)
-  todoStore.initTodos(pageContext.data!.todosInit)
+  const { initTodos } = useTodoStore(pageContext.pinia!)
+  initTodos(pageContext.data!.todosInit)
 
-  // Optional optimization: delete pageContext.data to save KBs
-  // The data is now in the store, so we don't need to send it separately
-  // Note: Only do this for SSR'd pages, not pre-rendered pages
-  if (!pageContext.isPrerendering) {
-    delete pageContext.data
-  }
+  // Saving KBs: we don't need pageContext.data (we use the store instead)
+  // - If we don't delete pageContext.data then Vike sends pageContext.data to the client-side
+  // - This optimization only works with SSR: if the page is pre-rendered then don't do this
+  delete pageContext.data
 }
-```
-
-Define your store with an initialization method:
-
-```ts
-// stores/useTodoStore.ts
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
-
-type Todo = { text: string }
-
-export const useTodoStore = defineStore('todo', () => {
-  const todos = ref<Todo[]>([])
-
-  const initTodos = (todosInit: Todo[]) => {
-    // Only initialize if not already populated
-    if (todos.value.length === 0) {
-      todos.value = todosInit
-    }
-  }
-
-  const addTodo = (todo: Todo) => {
-    todos.value.push(todo)
-  }
-
-  return { todos, initTodos, addTodo }
-})
 ```
 
 See complete To-Do List example at [examples/vue-pinia](https://github.com/vikejs/vike-vue/tree/main/examples/vue-pinia).
 
 > [!NOTE]
-> During [SSR](https://vike.dev/ssr), `+onData` is called only on the server. The store state is automatically sent to the client and restored during hydration, so there's no need to populate the store again on the client.
+> During [SSR](https://vike.dev/ssr), `+onData` is called only on the server — the store's initial state (set by `initTodos()`) is automatically sent to the client, so you don't need to populate the store again on the client.
+>
+> This approach prevents [hydration mismatches](https://vike.dev/hydration-mismatch), as it ensures the client has the exact same initial state as the server during SSR.
 
 <br/>
 
