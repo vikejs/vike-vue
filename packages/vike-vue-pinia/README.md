@@ -6,6 +6,10 @@
 
 Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.dev/vike-vue) app.
 
+<br/>
+
+**Table of Contents**
+
 [Installation](#installation)  
 [Basic usage](#basic-usage)  
 [Example](#example)  

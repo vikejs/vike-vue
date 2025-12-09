@@ -6,15 +6,18 @@
 
 Integrates [TanStack Query](https://tanstack.com/query) into your [`vike-vue`](https://vike.dev/vike-vue) app.
 
+<br/>
+
+**Table of Contents**
+
 [Installation](#installation)  
 [Basic usage](#basic-usage)  
 [Example](#example)  
 [Settings](#settings)  
-[Version history](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue-query/CHANGELOG.md)  
+[Version history](#version-history)  
 [See also](#see-also)  
 
 <br/>
-
 
 ## Installation
 
@@ -124,6 +127,11 @@ For all available options, see [TanStack Query > API reference > useQuery](https
 
 <br/>
 
+## Version history
+
+See [CHANGELOG.md](https://github.com/vikejs/vike-vue/blob/main/packages/vike-vue-query/CHANGELOG.md).
+
+<br/>
 
 ## See also
 
