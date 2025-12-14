@@ -17,7 +17,7 @@
     "./config": "./dist/+config.js",
     "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
     "./__internal/integration/onAfterRenderHtml": "./dist/onAfterRenderHtml.js",
-    "./__internal/integration/onCreatePageContext": "./dist/onCreatePageContext.server.js"
+    "./__internal/integration/onCreatePageContext": "./dist/onCreatePageContext.ssr.js"
   },
   "typesVersions": {
     "*": {
@@ -31,7 +31,7 @@
         "./dist/onAfterRenderHtml.d.ts"
       ],
       "__internal/integration/onCreatePageContext": [
-        "./dist/onCreatePageContext.server.d.ts"
+        "./dist/onCreatePageContext.ssr.d.ts"
       ]
     }
   },
