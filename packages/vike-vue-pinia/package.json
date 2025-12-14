@@ -41,7 +41,7 @@
     "vue": ">=3.0.0"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.4.8",
+    "@brillout/release-me": "^0.4.11",
     "@types/node": "^22.1.0",
     "pinia": "^3.0.1",
     "typescript": "^5.9.2",
