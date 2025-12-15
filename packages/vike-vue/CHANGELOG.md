@@ -1,3 +1,12 @@
+## [0.9.7](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.6...vike-vue@0.9.7) (2025-12-15)
+
+
+### Bug Fixes
+
+* ensure getPageContext() doesn't use async hooks ([d5fd966](https://github.com/vikejs/vike-vue/commit/d5fd966e5420ca56966133606202b10fbbcb6e18))
+
+
+
 ## [0.9.6](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.5...vike-vue@0.9.6) (2025-11-07)
 
 
