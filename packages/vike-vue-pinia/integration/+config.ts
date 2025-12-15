@@ -13,6 +13,7 @@ const config = {
   passToClient: ['_piniaInitialState'],
   onCreateApp: 'import:vike-vue-pinia/__internal/integration/onCreateApp:onCreateApp',
   onAfterRenderHtml: 'import:vike-vue-pinia/__internal/integration/onAfterRenderHtml:onAfterRenderHtml',
+  onAfterRenderClient: 'import:vike-vue-pinia/__internal/integration/onAfterRenderClient:onAfterRenderClient',
   onCreatePageContext: 'import:vike-vue-pinia/__internal/integration/onCreatePageContext:onCreatePageContext',
   meta: {
     onCreatePinia: {
@@ -27,6 +28,7 @@ declare global {
     interface PageContext {
       pinia?: Pinia
       _piniaInitialState?: StateTree
+      _piniaInitialStateClient?: StateTree
     }
     interface GlobalContext {
       pinia?: Pinia
