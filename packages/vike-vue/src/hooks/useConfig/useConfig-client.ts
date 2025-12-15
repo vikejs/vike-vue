@@ -10,7 +10,7 @@ import { type MaybeRefOrGetter, toValue, watchEffect } from 'vue'
 
 function useConfig(): (config: MaybeRefOrGetter<ConfigViaHook>) => void {
   // Vike hook
-  let pageContext = getPageContext() as PageContext & PageContextInternal
+  let pageContext = getPageContext({ asyncHook: false }) as PageContext & PageContextInternal
   if (pageContext) return (config) => setPageContextConfigViaHook(toValue(config), pageContext)
 
   // Component
