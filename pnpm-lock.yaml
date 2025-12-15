@@ -50,8 +50,8 @@ importers:
         specifier: ^0.26.2
         version: 0.26.2(rollup@4.50.2)(vite@7.1.5(@types/node@22.3.0))
       vike:
-        specifier: ^0.4.247
-        version: 0.4.247(vite@7.1.5)
+        specifier: ^0.4.249
+        version: 0.4.249(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -77,8 +77,8 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
       vike:
-        specifier: ^0.4.247
-        version: 0.4.247(vite@7.1.5)
+        specifier: ^0.4.249
+        version: 0.4.249(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -101,8 +101,8 @@ importers:
         specifier: ^4.7.1
         version: 4.7.1(pinia@3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2)))
       vike:
-        specifier: ^0.4.247
-        version: 0.4.247(vite@7.1.5)
+        specifier: ^0.4.249
+        version: 0.4.249(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -141,8 +141,8 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
       vike:
-        specifier: ^0.4.247
-        version: 0.4.247(vite@7.1.5)
+        specifier: ^0.4.249
+        version: 0.4.249(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -162,8 +162,8 @@ importers:
   packages/vike-vue:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.4.8
-        version: 0.4.8(conventional-commits-filter@5.0.0)
+        specifier: ^0.4.12
+        version: 0.4.12(conventional-commits-filter@5.0.0)
       '@types/node':
         specifier: ^22.1.0
         version: 22.3.0
@@ -174,8 +174,8 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
       vike:
-        specifier: ^0.4.247
-        version: 0.4.247(vite@7.1.5)
+        specifier: ^0.4.249
+        version: 0.4.249(vite@7.1.5)
       vite:
         specifier: ^7.1.5
         version: 7.1.5(@types/node@22.3.0)
@@ -192,8 +192,8 @@ importers:
   packages/vike-vue-pinia:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.4.8
-        version: 0.4.8(conventional-commits-filter@5.0.0)
+        specifier: ^0.4.12
+        version: 0.4.12(conventional-commits-filter@5.0.0)
       '@types/node':
         specifier: ^22.1.0
         version: 22.3.0
@@ -204,8 +204,8 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
       vike:
-        specifier: ^0.4.247
-        version: 0.4.247(vite@7.1.5)
+        specifier: ^0.4.249
+        version: 0.4.249(vite@7.1.5)
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -219,8 +219,8 @@ importers:
   packages/vike-vue-query:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.4.8
-        version: 0.4.8(conventional-commits-filter@5.0.0)
+        specifier: ^0.4.12
+        version: 0.4.12(conventional-commits-filter@5.0.0)
       '@tanstack/vue-query':
         specifier: ^5.29.0
         version: 5.51.21(vue@3.5.13(typescript@5.9.2))
@@ -231,8 +231,8 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
       vike:
-        specifier: ^0.4.247
-        version: 0.4.247(vite@7.1.5)
+        specifier: ^0.4.249
+        version: 0.4.249(vite@7.1.5)
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -333,8 +333,8 @@ packages:
   '@brillout/picocolors@1.0.29':
     resolution: {integrity: sha512-EKkqdFJD+CeP6GfpZNcWcCCXS5o0HFXhwISoN5JnHG/kplVE2MmF23eKtl4JRKU1rkR7s3kFIKiJf15aV/Uodg==}
 
-  '@brillout/release-me@0.4.8':
-    resolution: {integrity: sha512-3WtVJNyEU8EINekZ51sYEB4pGHcZTM7Ljip/vkUDguwTwe2AY6DjSd4Vgqs84a7H7u5j0OrXDAiMAmCti4QSfQ==}
+  '@brillout/release-me@0.4.12':
+    resolution: {integrity: sha512-0ONZeh7jt+7sZ94bZs0tnGaCQxFTgj7XFybG4jZkQxJJV81DXxzS1WT8aw86j37vO9irw9sShnqJzWE8/aPEqQ==}
     hasBin: true
 
   '@brillout/require-shim@0.1.2':
@@ -1770,8 +1770,8 @@ packages:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
     engines: {node: '>= 0.10'}
 
-  vike@0.4.247:
-    resolution: {integrity: sha512-rEVYi2cPtCGN92aChkGjV72jLfm9yLl/fx+jCgW7l905vxa4JV6ZTaThOKSbh+1+EsRE9sbDFhBc2KCikSJaog==}
+  vike@0.4.249:
+    resolution: {integrity: sha512-ZQpfmIclLCCLD9dsjTOwoczdjHJ7JrGww4b4vg3FpfrFZcSoNcrEtrwgbSqw9lMuYnkbfXPKFxwOf8VVp9Uftw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -1972,9 +1972,9 @@ snapshots:
 
   '@brillout/picocolors@1.0.29': {}
 
-  '@brillout/release-me@0.4.8(conventional-commits-filter@5.0.0)':
+  '@brillout/release-me@0.4.12(conventional-commits-filter@5.0.0)':
     dependencies:
-      '@brillout/picocolors': 1.0.28
+      '@brillout/picocolors': 1.0.29
       commander: 11.1.0
       conventional-changelog: 7.0.2(conventional-commits-filter@5.0.0)
       conventional-changelog-angular: 8.0.0
@@ -3288,7 +3288,7 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.247(vite@7.1.5):
+  vike@0.4.249(vite@7.1.5):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.21

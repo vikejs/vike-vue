@@ -1,3 +1,12 @@
+## [0.2.4](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.3...vike-vue-pinia@0.2.4) (2025-12-14)
+
+
+### Bug Fixes
+
+* avoid superfluous `pageContext.json` request (use `.ssr.js` instead of `.server.js`) ([#223](https://github.com/vikejs/vike-vue/issues/223)) ([a47b014](https://github.com/vikejs/vike-vue/commit/a47b014ffab4ff0770b56e78f887c58dd2f2419e))
+
+
+
 ## [0.2.3](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.2...vike-vue-pinia@0.2.3) (2025-12-06)
 
 
