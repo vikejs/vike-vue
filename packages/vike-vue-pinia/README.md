@@ -81,16 +81,16 @@ See [examples/vue-pinia/](https://github.com/vikejs/vike-vue/tree/main/examples/
 
 ## Pinia plugins
 
-To use Pinia plugins such as [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/), use `vike-vue-pinia'`s `+onCreatePinia` hook.
+You can install Pinia plugins (e.g. [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/)) by using `vike-vue-pinia'`s `+onCreatePinia` hook.
 
 ```ts
 // pages/+onCreatePinia.ts
 
-import piniaAwesomePlugin from 'pinia-awesome-plugin'
+import piniaPlugin from 'pinia-awesome-plugin'
 import type { PageContext } from 'vike/types'
 
-export function onCreatePinia(pageContext: PageContext) {
-  pageContext.pinia.use(piniaAwesomePlugin)
+export async function onCreatePinia(pageContext: PageContext) {
+  pageContext.pinia.use(piniaPlugin)
 }
 ```
 
