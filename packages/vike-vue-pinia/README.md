@@ -13,6 +13,7 @@ Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.
 [Installation](#installation)  
 [Basic usage](#basic-usage)  
 [Example](#example)  
+[Pinia plugins](#pinia-plugins)  
 [Populate store with `+data`](#populate-store-with-data)  
 [Version history](#version-history)  
 [See also](#see-also)  
@@ -75,6 +76,26 @@ const counterStore = useCounterStore()
 ## Example
 
 See [examples/vue-pinia/](https://github.com/vikejs/vike-vue/tree/main/examples/vue-pinia).
+
+<br/>
+
+## Pinia plugins
+
+You can install Pinia plugins (e.g. [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/)) by using `vike-vue-pinia'`s `+onCreatePinia` hook.
+
+```ts
+// pages/+onCreatePinia.ts
+
+import piniaPlugin from 'pinia-awesome-plugin'
+import type { PageContext } from 'vike/types'
+
+export async function onCreatePinia(pageContext: PageContext) {
+  pageContext.pinia.use(piniaPlugin)
+}
+```
+
+> [!TIP]
+> For client-only plugins, you can use [`.client.js`](https://vike.dev/file-env) or [`pageContext.isClientSide`](https://vike.dev/pageContext#typescript).
 
 <br/>
 
