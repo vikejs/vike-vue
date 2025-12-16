@@ -10,6 +10,7 @@
 
 <script lang="ts" setup>
 import Counter from '../../components/Counter.vue'
+// TODO/ai use clientOnly()
 import { ref, onMounted } from 'vue'
 import PersistedCounter from '../../components/PersistedCounter.vue'
 
