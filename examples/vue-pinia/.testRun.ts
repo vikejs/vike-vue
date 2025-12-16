@@ -4,6 +4,7 @@ import { test, expect, run, fetchHtml, page, getServerUrl, autoRetry, sleep } fr
 const counter1 = 'button#counter-1'
 const counter2 = 'button#counter-2'
 const counter3 = 'button#counter-3'
+const counter4 = 'button#counter-4'
 
 function testRun(cmd: `pnpm run ${'dev' | 'preview' | 'preview:ssg'}`) {
   run(cmd)
@@ -98,6 +99,73 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview' | 'preview:ssg'}`) {
     await page.goto(getServerUrl() + '/')
     await testCounter(1)
   }
+
+  test('clientOnly persisted counter - loading fallback and hydration', async () => {
+    await page.goto(getServerUrl() + '/about')
+
+    // Check that loading fallback is shown initially
+    const html = await fetchHtml('/about')
+    expect(html).not.toContain('Persisted Counter')
+    expect(html).toContain('Loading...')
+
+    // Wait for client-only component to load
+    await autoRetry(
+      async () => {
+        const bodyText = await page.textContent('body')
+        expect(bodyText).toContain('Persisted Counter')
+      },
+      { timeout: 5 * 1000 },
+    )
+
+    // Test that the counter works (is interactive)
+    await autoRetry(
+      async () => {
+        const initialText = await page.textContent(counter4)
+        expect(initialText).toMatch(/Persisted Counter \d+/)
+        await page.click(counter4)
+        const newText = await page.textContent(counter4)
+        expect(newText).not.toBe(initialText)
+      },
+      { timeout: 5 * 1000 },
+    )
+  })
+
+  test('clientOnly persisted counter - persistence across reloads', async () => {
+    await page.goto(getServerUrl() + '/about')
+
+    // Wait for component to load
+    await autoRetry(
+      async () => {
+        expect(await page.textContent('body')).toContain('Persisted Counter')
+      },
+      { timeout: 5 * 1000 },
+    )
+
+    // Get current counter value and increment it
+    const textBefore = await page.textContent(counter4)
+    const matchBefore = textBefore?.match(/Persisted Counter (\d+)/)
+    expect(matchBefore).toBeTruthy()
+    const valueBefore = parseInt(matchBefore![1])
+
+    await page.click(counter4)
+    await sleep(100)
+
+    // Reload the page
+    await page.reload()
+
+    // Wait for component to load again
+    await autoRetry(
+      async () => {
+        const textAfter = await page.textContent(counter4)
+        expect(textAfter).toContain('Persisted Counter')
+        const matchAfter = textAfter?.match(/Persisted Counter (\d+)/)
+        const valueAfter = parseInt(matchAfter![1])
+        // Value should be persisted (one more than before)
+        expect(valueAfter).toBe(valueBefore + 1)
+      },
+      { timeout: 5 * 1000 },
+    )
+  })
 }
 
 async function getNumberOfItems() {
