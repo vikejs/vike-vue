@@ -1,3 +1,17 @@
+## [0.2.5](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.4...vike-vue-pinia@0.2.5) (2025-12-16)
+
+
+### Bug Fixes
+
+* revert fake client persistence support ([#220](https://github.com/vikejs/vike-vue/issues/220)) (vikejs/vike[#2881](https://github.com/vikejs/vike-vue/issues/2881)) ([7f5205c](https://github.com/vikejs/vike-vue/commit/7f5205cfa16fbfd8c0fb8f797b187378a45a2308))
+
+
+### Features
+
+* +onCreatePinia ([#2881](https://github.com/vikejs/vike-vue/issues/2881)) ([#221](https://github.com/vikejs/vike-vue/issues/221)) ([3ffaaaa](https://github.com/vikejs/vike-vue/commit/3ffaaaa8372c700a12bf0f24c4176563f7be0519))
+
+
+
 ## [0.2.4](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.3...vike-vue-pinia@0.2.4) (2025-12-14)
 
 

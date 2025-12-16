@@ -11,7 +11,7 @@
     "pinia-plugin-persistedstate": "^4.7.1",
     "vike": "^0.4.249",
     "vike-vue": "^0.9.7",
-    "vike-vue-pinia": "^0.2.4",
+    "vike-vue-pinia": "^0.2.5",
     "vite": "^7.1.5",
     "vue": "^3.5.13"
   },
