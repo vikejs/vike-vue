@@ -102,12 +102,12 @@ export async function onCreatePinia(pageContext: PageContext) {
 
 ## Persistence
 
-You can use `vike-vue-pinia` with Pinia plugins persist your store, for example to [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) or [cookies](https://en.wikipedia.org/wiki/HTTP_cookie).
+You can use `vike-vue-pinia` with Pinia plugins that persist your store to [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [cookies](https://en.wikipedia.org/wiki/HTTP_cookie), etc.
 
 > [!TIP]
 > See [Pinia plugins](#pinia-plugins) for how to install Pinia plugins.
 
-If you use [SSR](https://vike.dev/ssr) and want to persist to `localStorage`, [the general recommendation](https://github.com/prazdevs/pinia-plugin-persistedstate/issues/304#issuecomment-2141560888) is to use [`clientOnly()`](https://vike.dev/clientOnly) to avoid a [hydration mismatch](https://vike.dev/hydration-mismatch). Alternatively, you can persist to cookies — states persisted to cookies are passed to server and can be server-side rendered.
+If you use [SSR](https://vike.dev/ssr) and want to persist to `localStorage`, [the general recommendation](https://github.com/prazdevs/pinia-plugin-persistedstate/issues/304#issuecomment-2141560888) is to use [`clientOnly()`](https://vike.dev/clientOnly) to avoid a [hydration mismatch](https://vike.dev/hydration-mismatch). Alternatively, you can persist to cookies — state that is stored in cookies is passed to the server and can be server-side rendered.
 
 <br/>
 
