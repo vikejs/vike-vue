@@ -107,7 +107,7 @@ You can use `vike-vue-pinia` with Pinia plugins that persist your store to [`loc
 > [!TIP]
 > See [Pinia plugins](#pinia-plugins) for how to install Pinia plugins.
 
-If you use [SSR](https://vike.dev/ssr) and want to persist to `localStorage`, [the general recommendation](https://github.com/prazdevs/pinia-plugin-persistedstate/issues/304#issuecomment-2141560888) is to use [`clientOnly()`](https://vike.dev/clientOnly) to avoid a [hydration mismatch](https://vike.dev/hydration-mismatch). Alternatively, you can persist to cookies — state that is stored in cookies is passed to the server and can be server-side rendered.
+If you use [SSR](https://vike.dev/ssr) and want to persist to `localStorage`, [the general recommendation](https://github.com/prazdevs/pinia-plugin-persistedstate/issues/304#issuecomment-2141560888) is to use [`clientOnly()`](https://vike.dev/clientOnly) to avoid a [hydration mismatch](https://vike.dev/hydration-mismatch). Alternatively, you can persist to cookies — state stored in cookies is passed to the server and can be server-side rendered.
 
 <br/>
 
