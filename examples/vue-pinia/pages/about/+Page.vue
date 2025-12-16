@@ -4,18 +4,16 @@
   <Counter id="counter-3" />
   <p>Example of using Pinia with state persistence.</p>
   <p><strong>This counter persists across page reloads (stored in localStorage)</strong></p>
-  <PersistedCounter v-if="mounted" id="counter-4" />
-  <div v-else>Loading...</div>
+  <ClientOnlyPersistedCounter id="counter-4">
+    <template #fallback>
+      <div>Loading...</div>
+    </template>
+  </ClientOnlyPersistedCounter>
 </template>
 
 <script lang="ts" setup>
 import Counter from '../../components/Counter.vue'
-// TODO/ai use clientOnly()
-import { ref, onMounted } from 'vue'
-import PersistedCounter from '../../components/PersistedCounter.vue'
+import { clientOnly } from 'vike-vue/clientOnly'
 
-const mounted = ref(false)
-onMounted(() => {
-  mounted.value = true
-})
+const ClientOnlyPersistedCounter = clientOnly(() => import('../../components/PersistedCounter.vue'))
 </script>
