@@ -1,7 +1,7 @@
 export { onCreateApp }
 
 import type { PageContext } from 'vike/types'
-import { createPiniaPlus } from './createPiniaPlus'
+import { createPiniaPlus } from './createPiniaPlus.js'
 
 async function onCreateApp(pageContext: PageContext) {
   const { app } = pageContext
