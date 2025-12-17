@@ -1,3 +1,12 @@
+## [0.9.8](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.7...vike-vue@0.9.8) (2025-12-17)
+
+
+### Bug Fixes
+
+* improve tsconfig output ([#227](https://github.com/vikejs/vike-vue/issues/227)) ([1e3b106](https://github.com/vikejs/vike-vue/commit/1e3b1067f980fd21705319ec11a4400a6cd5f3c7))
+
+
+
 ## [0.9.7](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.6...vike-vue@0.9.7) (2025-12-15)
 
 
