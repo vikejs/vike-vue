@@ -15,9 +15,9 @@
   },
   "exports": {
     "./config": "./dist/integration/+config.js",
-    "./__internal/integration/onCreateApp": "./dist/integration/onCreateApp.js",
-    "./__internal/integration/onAfterRenderHtml": "./dist/integration/onAfterRenderHtml.js",
-    "./__internal/integration/onBeforeRenderClient": "./dist/integration/onBeforeRenderClient.js"
+    "./__internal/integration/onCreateApp": "./dist/integration/+onCreateApp.js",
+    "./__internal/integration/onAfterRenderHtml": "./dist/integration/+onAfterRenderHtml.js",
+    "./__internal/integration/onBeforeRenderClient": "./dist/integration/+onBeforeRenderClient.js"
   },
   "typesVersions": {
     "*": {
@@ -25,13 +25,13 @@
         "./dist/integration/+config.d.ts"
       ],
       "__internal/integration/onCreateApp": [
-        "./dist/integration/onCreateApp.d.ts"
+        "./dist/integration/+onCreateApp.d.ts"
       ],
       "__internal/integration/onAfterRenderHtml": [
-        "./dist/integration/onAfterRenderHtml.d.ts"
+        "./dist/integration/+onAfterRenderHtml.d.ts"
       ],
       "__internal/integration/onBeforeRenderClient": [
-        "./dist/integration/onBeforeRenderClient.d.ts"
+        "./dist/integration/+onBeforeRenderClient.d.ts"
       ]
     }
   },
