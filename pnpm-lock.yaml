@@ -209,6 +209,9 @@ importers:
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
+      vite:
+        specifier: ^7.1.5
+        version: 7.1.5(@types/node@22.3.0)
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.9.2)
@@ -236,6 +239,9 @@ importers:
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
+      vite:
+        specifier: ^7.1.5
+        version: 7.1.5(@types/node@22.3.0)
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.9.2)
