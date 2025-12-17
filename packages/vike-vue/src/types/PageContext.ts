@@ -2,8 +2,8 @@ export type { Component }
 
 import type { App } from 'vue'
 import type { SSRContext } from 'vue/server-renderer'
-import type { ConfigViaHookResolved } from './Config'
-import type { PageHtmlStream } from '../integration/onRenderHtml'
+import type { ConfigViaHookResolved } from './Config.js'
+import type { PageHtmlStream } from '../integration/onRenderHtml.js'
 
 // https://stackoverflow.com/questions/63985658/how-to-type-vue-instance-out-of-definecomponent-in-vue-3/63986086#63986086
 // TO-DO/eventually: use ComponentPublicInstance

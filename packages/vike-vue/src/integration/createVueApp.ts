@@ -13,13 +13,13 @@ import {
   Fragment,
 } from 'vue'
 import type { PageContext } from 'vike/types'
-import { setPageContext } from '../hooks/usePageContext'
-import { objectAssign } from '../utils/objectAssign'
-import { objectReplace } from '../utils/objectReplace'
-import { callCumulativeHooks } from '../utils/callCumulativeHooks'
-import { isPlainObject } from '../utils/isPlainObject'
-import { setData } from '../hooks/useData'
-import type { PageContextInternal } from '../types/PageContext'
+import { setPageContext } from '../hooks/usePageContext.js'
+import { objectAssign } from '../utils/objectAssign.js'
+import { objectReplace } from '../utils/objectReplace.js'
+import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
+import { isPlainObject } from '../utils/isPlainObject.js'
+import { setData } from '../hooks/useData.js'
+import type { PageContextInternal } from '../types/PageContext.js'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
 async function createVueApp(

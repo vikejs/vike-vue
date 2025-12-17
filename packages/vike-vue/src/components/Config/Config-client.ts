@@ -1,6 +1,6 @@
 export { Config }
 
-import { defineComponent, watchEffect } from 'vue'
+import { defineComponent } from 'vue'
 import { useConfig } from '../../hooks/useConfig/useConfig-client.js'
 import { noop } from '../../utils/noop.js'
 import { configsViaHook } from '../../types/Config.js'
