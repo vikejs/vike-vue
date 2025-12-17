@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -rf dist/ && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-me patch",
     "release:minor": "release-me minor",
     "release:commit": "release-me commit"
