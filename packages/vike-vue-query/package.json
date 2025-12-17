@@ -2,8 +2,6 @@
   "name": "vike-vue-query",
   "version": "0.2.2",
   "homepage": "https://github.com/vikejs/vike-vue/tree/main/packages/vike-vue-query#readme",
-  "main": "./dist/+config.js",
-  "types": "./dist/+config.d.ts",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",

@@ -2,8 +2,6 @@
   "name": "vike-vue-pinia",
   "version": "0.2.5",
   "homepage": "https://github.com/vikejs/vike-vue/tree/main/packages/vike-vue-pinia#readme",
-  "main": "./dist/+config.js",
-  "types": "./dist/+config.d.ts",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
