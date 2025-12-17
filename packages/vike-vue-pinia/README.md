@@ -14,8 +14,8 @@ Integrates [Pinia](https://pinia.vuejs.org) into your [`vike-vue`](https://vike.
 [Basic usage](#basic-usage)  
 [Example](#example)  
 [Pinia plugins](#pinia-plugins)  
-[Persistence](#persistence)  
 [Populate store with `+data`](#populate-store-with-data)  
+[Persistence](#persistence)  
 [Version history](#version-history)  
 [See also](#see-also)  
 
@@ -100,17 +100,6 @@ export async function onCreatePinia(pageContext: PageContext) {
 
 <br/>
 
-## Persistence
-
-You can use `vike-vue-pinia` with Pinia plugins that persist your store to [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [cookies](https://en.wikipedia.org/wiki/HTTP_cookie), etc.
-
-> [!TIP]
-> See [Pinia plugins](#pinia-plugins) for how to install Pinia plugins.
-
-If you use [SSR](https://vike.dev/ssr) and want to persist to `localStorage`, [the general recommendation](https://github.com/prazdevs/pinia-plugin-persistedstate/issues/304#issuecomment-2141560888) is to use [`clientOnly()`](https://vike.dev/clientOnly) to avoid a [hydration mismatch](https://vike.dev/hydration-mismatch). Alternatively, you can persist to cookies — state stored in cookies is passed to the server and can be server-side rendered.
-
-<br/>
-
 ## Populate store with `+data`
 
 To populate your store with data fetched via the [`+data`](https://vike.dev/data) hook, use [`+onData`](https://vike.dev/onData) and [`pageContext.data`](https://vike.dev/pageContext#data).
@@ -142,6 +131,17 @@ See complete To-Do List example at [examples/vue-pinia](https://github.com/vikej
 > During [SSR](https://vike.dev/ssr), `+onData` is called only on the server — the store's initial state (set by `initTodos()`) is automatically sent to the client, so you don't need to populate the store again on the client.
 >
 > This approach prevents [hydration mismatches](https://vike.dev/hydration-mismatch), as it ensures the client has the exact same initial state as the server during SSR.
+
+<br/>
+
+## Persistence
+
+You can use `vike-vue-pinia` with Pinia plugins that persist your store to [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [cookies](https://en.wikipedia.org/wiki/HTTP_cookie), etc.
+
+> [!TIP]
+> See [Pinia plugins](#pinia-plugins) for how to install Pinia plugins.
+
+If you use [SSR](https://vike.dev/ssr) and want to persist to `localStorage`, [the general recommendation](https://github.com/prazdevs/pinia-plugin-persistedstate/issues/304#issuecomment-2141560888) is to use [`clientOnly()`](https://vike.dev/clientOnly) to avoid a [hydration mismatch](https://vike.dev/hydration-mismatch). Alternatively, you can persist to cookies — state stored in cookies is passed to the server and can be server-side rendered.
 
 <br/>
 
