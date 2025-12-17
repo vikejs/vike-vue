@@ -1,3 +1,19 @@
+## [0.2.6](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.5...vike-vue-pinia@0.2.6) (2025-12-17)
+
+
+### Bug Fixes
+
+* fix internal import path ([ff3bfa4](https://github.com/vikejs/vike-vue/commit/ff3bfa475d156a71d1b7964ae0d148d2d1e9d3f6))
+* improve tsconfig output ([#227](https://github.com/vikejs/vike-vue/issues/227)) ([1e3b106](https://github.com/vikejs/vike-vue/commit/1e3b1067f980fd21705319ec11a4400a6cd5f3c7))
+* remove main export ([c92e525](https://github.com/vikejs/vike-vue/commit/c92e525c3a86dbd8944777a8fc36a3ca5b76979b))
+
+
+### BREAKING CHANGES
+
+* In your `pages/+config.js`, importing the config from `vike-vue-{pinia,query}` isn't supported anymore — import it from `vike-vue-{pinia,query}/config` instead (as documented).
+
+
+
 ## [0.2.5](https://github.com/vikejs/vike-vue/compare/vike-vue-pinia@0.2.4...vike-vue-pinia@0.2.5) (2025-12-16)
 
 
