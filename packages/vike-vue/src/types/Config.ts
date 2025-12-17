@@ -1,5 +1,4 @@
-// @ts-expect-error - Types are used in namespace declaration below but TS doesn't detect it
-import type { ImportString, PageContextServer, PageContext, PageContextClient } from 'vike/types'
+import type { ImportString, PageContext } from 'vike/types'
 import type { TagAttributes } from '../utils/getTagAttributesString.js'
 import type { Viewport, HtmlInjection } from '../integration/onRenderHtml.js'
 import type { ConfigsCumulative } from '../hooks/useConfig/configsCumulative.js'
