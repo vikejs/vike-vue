@@ -15,9 +15,9 @@
   },
   "exports": {
     "./config": "./dist/integration/+config.js",
-    "./__internal/integration/onCreateApp": "./dist/integration/onCreateApp.js",
-    "./__internal/integration/onAfterRenderHtml": "./dist/integration/onAfterRenderHtml.js",
-    "./__internal/integration/onCreatePageContext": "./dist/integration/onCreatePageContext.ssr.js"
+    "./__internal/integration/onCreateApp": "./dist/integration/+onCreateApp.js",
+    "./__internal/integration/onAfterRenderHtml": "./dist/integration/+onAfterRenderHtml.js",
+    "./__internal/integration/onCreatePageContext": "./dist/integration/+onCreatePageContext.ssr.js"
   },
   "typesVersions": {
     "*": {
@@ -25,13 +25,13 @@
         "./dist/integration/+config.d.ts"
       ],
       "__internal/integration/onCreateApp": [
-        "./dist/integration/onCreateApp.d.ts"
+        "./dist/integration/+onCreateApp.d.ts"
       ],
       "__internal/integration/onAfterRenderHtml": [
-        "./dist/integration/onAfterRenderHtml.d.ts"
+        "./dist/integration/+onAfterRenderHtml.d.ts"
       ],
       "__internal/integration/onCreatePageContext": [
-        "./dist/integration/onCreatePageContext.ssr.d.ts"
+        "./dist/integration/+onCreatePageContext.ssr.d.ts"
       ]
     }
   },
