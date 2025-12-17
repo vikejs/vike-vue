@@ -2,36 +2,36 @@
   "name": "vike-vue-pinia",
   "version": "0.2.5",
   "homepage": "https://github.com/vikejs/vike-vue/tree/main/packages/vike-vue-pinia#readme",
-  "main": "./dist/+config.js",
-  "types": "./dist/+config.d.ts",
+  "main": "./dist/integration/+config.js",
+  "types": "./dist/integration/+config.d.ts",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist/ && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-me patch",
     "release:minor": "release-me minor",
     "release:commit": "release-me commit"
   },
   "exports": {
-    "./config": "./dist/+config.js",
-    "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
-    "./__internal/integration/onAfterRenderHtml": "./dist/onAfterRenderHtml.js",
-    "./__internal/integration/onCreatePageContext": "./dist/onCreatePageContext.ssr.js"
+    "./config": "./dist/integration/+config.js",
+    "./__internal/integration/onCreateApp": "./dist/integration/onCreateApp.js",
+    "./__internal/integration/onAfterRenderHtml": "./dist/integration/onAfterRenderHtml.js",
+    "./__internal/integration/onCreatePageContext": "./dist/integration/onCreatePageContext.ssr.js"
   },
   "typesVersions": {
     "*": {
       "config": [
-        "./dist/+config.d.ts"
+        "./dist/integration/+config.d.ts"
       ],
       "__internal/integration/onCreateApp": [
-        "./dist/onCreateApp.d.ts"
+        "./dist/integration/onCreateApp.d.ts"
       ],
       "__internal/integration/onAfterRenderHtml": [
-        "./dist/onAfterRenderHtml.d.ts"
+        "./dist/integration/onAfterRenderHtml.d.ts"
       ],
       "__internal/integration/onCreatePageContext": [
-        "./dist/onCreatePageContext.ssr.d.ts"
+        "./dist/integration/onCreatePageContext.ssr.d.ts"
       ]
     }
   },
