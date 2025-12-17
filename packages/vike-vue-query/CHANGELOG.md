@@ -7,7 +7,10 @@
 * remove main export ([c92e525](https://github.com/vikejs/vike-vue/commit/c92e525c3a86dbd8944777a8fc36a3ca5b76979b))
 
 
-### BREAKING CHANGES
+### MINOR BREAKING CHANGES
+
+> [!NOTE]
+> We recommend ignoring `MINOR BREAKING CHANGES` unless this version breaks your app, see [Vike Versioning](https://vike.dev/versioning).
 
 * In your `pages/+config.js`, importing the config from `vike-vue-{pinia,query}` isn't supported anymore — import it from `vike-vue-{pinia,query}/config` instead (as documented).
 

@@ -143,7 +143,10 @@ This major release has no breaking change.
 * pageContext.isRenderingHead ([#183](https://github.com/vikejs/vike-vue/issues/183)) ([9ffa550](https://github.com/vikejs/vike-vue/commit/9ffa5504c7f82838b329be56619855b1c0f1831c))
 
 
-### BREAKING CHANGES
+### MINOR BREAKING CHANGES
+
+> [!NOTE]
+> We recommend ignoring `MINOR BREAKING CHANGES` unless this version breaks your app, see [Vike Versioning](https://vike.dev/versioning).
 
 * Update to `vike@0.4.191` or above.
 
