@@ -1,1 +1,1 @@
-export type * from './VikeHooks'
+export type * from './VikeHooks.js'
