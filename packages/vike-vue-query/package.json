@@ -2,8 +2,8 @@
   "name": "vike-vue-query",
   "version": "0.2.2",
   "homepage": "https://github.com/vikejs/vike-vue/tree/main/packages/vike-vue-query#readme",
-  "main": "./dist/integration/+config.js",
-  "types": "./dist/integration/+config.d.ts",
+  "main": "./dist/+config.js",
+  "types": "./dist/+config.d.ts",
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
@@ -14,7 +14,7 @@
     "release:commit": "release-me commit"
   },
   "exports": {
-    "./config": "./dist/integration/+config.js",
+    "./config": "./dist/+config.js",
     "./__internal/integration/onCreateApp": "./dist/integration/+onCreateApp.js",
     "./__internal/integration/onAfterRenderHtml": "./dist/integration/+onAfterRenderHtml.js",
     "./__internal/integration/onBeforeRenderClient": "./dist/integration/+onBeforeRenderClient.js"
@@ -22,7 +22,7 @@
   "typesVersions": {
     "*": {
       "config": [
-        "./dist/integration/+config.d.ts"
+        "./dist/+config.d.ts"
       ],
       "__internal/integration/onCreateApp": [
         "./dist/integration/+onCreateApp.d.ts"
