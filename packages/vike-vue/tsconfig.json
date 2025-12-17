@@ -1,16 +1,21 @@
 {
   "compilerOptions": {
-    "module": "ES2020",
+    // Misc
+    "skipLibCheck": true,
+    // Strictness
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    // Resolution
     "moduleResolution": "Node",
-    "target": "ES2019",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // Libs
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client"],
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "noUncheckedIndexedAccess": true,
-    "strict": true,
-    "rootDir": "./src/",
-    "outDir": "./dist/"
+    // Output
+    "module": "ES2020",
+    "target": "ES2019",
+    "outDir": "./dist/",
+    "rootDir": "./src/"
   }
 }

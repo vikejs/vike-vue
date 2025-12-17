@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist/ && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "release-me patch",
     "release:minor": "release-me minor",
@@ -15,9 +15,9 @@
   },
   "exports": {
     "./config": "./dist/+config.js",
-    "./__internal/integration/onCreateApp": "./dist/onCreateApp.js",
-    "./__internal/integration/onAfterRenderHtml": "./dist/onAfterRenderHtml.js",
-    "./__internal/integration/onBeforeRenderClient": "./dist/onBeforeRenderClient.js"
+    "./__internal/integration/onCreateApp": "./dist/integration/+onCreateApp.js",
+    "./__internal/integration/onAfterRenderHtml": "./dist/integration/+onAfterRenderHtml.js",
+    "./__internal/integration/onBeforeRenderClient": "./dist/integration/+onBeforeRenderClient.js"
   },
   "typesVersions": {
     "*": {
@@ -25,13 +25,13 @@
         "./dist/+config.d.ts"
       ],
       "__internal/integration/onCreateApp": [
-        "./dist/onCreateApp.d.ts"
+        "./dist/integration/+onCreateApp.d.ts"
       ],
       "__internal/integration/onAfterRenderHtml": [
-        "./dist/onAfterRenderHtml.d.ts"
+        "./dist/integration/+onAfterRenderHtml.d.ts"
       ],
       "__internal/integration/onBeforeRenderClient": [
-        "./dist/onBeforeRenderClient.d.ts"
+        "./dist/integration/+onBeforeRenderClient.d.ts"
       ]
     }
   },
@@ -47,6 +47,7 @@
     "typescript": "^5.9.2",
     "vike": "^0.4.249",
     "vike-vue": "^0.9.7",
+    "vite": "^7.1.5",
     "vue": "^3.5.13",
     "vue-tsc": "^3.0.7"
   },
