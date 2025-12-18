@@ -19,7 +19,10 @@ const ClientOnly = defineComponent({
   setup(_, { slots }) {
     const pageContext = usePageContext()
     if (!pageContext.isClientSide) {
-      assert(slots.default === undefined)
+      assert(
+        slots.default === undefined,
+        'ClientOnly default slot should be stripped by babel transformation on server-side',
+      )
     }
 
     const hydrated = useHydrated()
