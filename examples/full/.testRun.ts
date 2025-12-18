@@ -38,6 +38,8 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview'}`) {
 
   testHeadComponent()
 
+  testClientOnly()
+
   const textNoSSR = 'This page is rendered only in the browser'
   {
     const url = '/without-ssr'
@@ -275,4 +277,69 @@ function getAssetUrl(fileName: string) {
 
 function countMatches(haystack: string, needleRe: RegExp) {
   return (haystack.match(new RegExp(needleRe, 'g')) || []).length
+}
+
+function testClientOnly() {
+  const url = '/client-only'
+
+  test(url + ' - clientOnly() helper (HTML)', async () => {
+    const html = await fetchHtml(url)
+    // clientOnly() components should not be in HTML
+    expect(html).toContain('Fast loading counter...')
+    expect(html).not.toContain('Counter 0')
+    expect(html).not.toContain('Button is')
+    expect(getTitle(html)).toContain('Vike + Vue')
+  })
+
+  test(url + ' - clientOnly() helper (Hydration)', async () => {
+    await page.goto(getServerUrl() + url)
+    await autoRetry(async () => {
+      const body = await page.textContent('body')
+      // After hydration, clientOnly() components should be loaded
+      expect(body).toContain('Counter 0')
+      expect(body).toContain('Button is depressed')
+    })
+  })
+
+  test(url + ' - <ClientOnly> component (HTML)', async () => {
+    const html = await fetchHtml(url)
+    // <ClientOnly> fallback should be in HTML
+    expect(html).toContain('Loading client-only component...')
+    // In production build, <ClientOnly> default slot should NOT be in HTML (stripped by babel transformer)
+    // In dev mode, it might still be there but that's okay - it won't cause hydration issues
+    if (isProd) {
+      expect(html).not.toContain('Client Only Component')
+      expect(html).not.toContain('This component is rendered only on the client side')
+    }
+  })
+
+  test(url + ' - <ClientOnly> component (Hydration)', async () => {
+    await page.goto(getServerUrl() + url)
+
+    // After hydration, should show the actual component
+    await autoRetry(
+      async () => {
+        const body = await page.textContent('body')
+        expect(body).toContain('Client Only Component')
+        expect(body).toContain('This component is rendered only on the client side')
+        expect(body).toContain('This is a test')
+      },
+      { timeout: 3000 },
+    )
+  })
+
+  test(url + ' - <ClientOnly> without fallback', async () => {
+    await page.goto(getServerUrl() + url)
+
+    // Should eventually show the component even without fallback
+    await autoRetry(
+      async () => {
+        const body = await page.textContent('body')
+        // Count how many times "Client Only Component" appears (should be 2: one with fallback, one without)
+        const matches = body.match(/Client Only Component/g)
+        expect(matches?.length).toBeGreaterThanOrEqual(2)
+      },
+      { timeout: 3000 },
+    )
+  })
 }

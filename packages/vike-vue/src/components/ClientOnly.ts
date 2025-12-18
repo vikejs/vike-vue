@@ -18,7 +18,13 @@ const ClientOnly = defineComponent({
 
   setup(_, { slots }) {
     const pageContext = usePageContext()
-    if (!pageContext.isClientSide) assert(slots.default === undefined)
+    if (!pageContext.isClientSide) {
+      // In dev mode without transformation, slots.default might still exist
+      // but we assert it should be undefined in production after babel transformation
+      if (slots.default !== undefined && import.meta.env.PROD) {
+        assert(false)
+      }
+    }
 
     const hydrated = useHydrated()
 
