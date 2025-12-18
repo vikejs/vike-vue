@@ -19,6 +19,7 @@ const ClientOnly = defineComponent({
   setup(_, { slots }) {
     const pageContext = usePageContext()
     if (!pageContext.isClientSide) {
+      // TODO/ai I think this is wrong? Shouldn't the transform always be applied — also in dev?
       // In dev mode without transformation, slots.default might still exist
       // but we assert it should be undefined in production after babel transformation
       if (slots.default !== undefined && import.meta.env.PROD) {
