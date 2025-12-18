@@ -1,0 +1,9 @@
+// pages/starship/+config.ts
+var config_default = {
+  // https://vike.dev/keepScrollPosition
+  keepScrollPosition: true
+};
+export {
+  config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsiK2NvbmZpZy50cyJdLAogICJzb3VyY2VzQ29udGVudCI6IFsiaW1wb3J0IHR5cGUgeyBDb25maWcgfSBmcm9tICd2aWtlL3R5cGVzJ1xuXG5leHBvcnQgZGVmYXVsdCB7XG4gIC8vIGh0dHBzOi8vdmlrZS5kZXYva2VlcFNjcm9sbFBvc2l0aW9uXG4gIGtlZXBTY3JvbGxQb3NpdGlvbjogdHJ1ZSxcbn0gc2F0aXNmaWVzIENvbmZpZ1xuIl0sCiAgIm1hcHBpbmdzIjogIjtBQUVBLElBQU8saUJBQVE7QUFBQTtBQUFBLEVBRWIsb0JBQW9CO0FBQ3RCOyIsCiAgIm5hbWVzIjogW10KfQo=

@@ -2,10 +2,16 @@ export { vikeVueClientOnly }
 
 import type { Plugin } from 'vite'
 import { transformCode, type TransformOptions } from './babelTransformer.js'
+import { assert } from '../utils/assert.js'
 
 const skipNonJsFiles = /\.[jt]sx?$/
 const skipNodeModules = 'node_modules'
-
+const filterRolldown = {
+  id: {
+    include: skipNonJsFiles,
+    exclude: `**/${skipNodeModules}/**`,
+  },
+}
 const filterFunction = (id: string) => {
   if (id.includes(skipNodeModules)) return false
   if (!skipNonJsFiles.test(id)) return false
@@ -48,14 +54,15 @@ function vikeVueClientOnly() {
     {
       name: 'vike-vue:client-only',
       enforce: 'post',
-      async transform(code, id, options) {
-        // Only transform for SSR (server-side)
-        if (!options?.ssr) return null
-        if (!filterFunction(id)) return null
-
-        // Determine environment name - use 'ssr' for SSR mode
-        const env = 'ssr'
-        return await transformCode({ code, id, env, options: defaultOptions })
+      applyToEnvironment(environment) {
+        return environment.name !== 'client'
+      },
+      transform: {
+        filter: filterRolldown,
+        handler(code, id) {
+          assert(filterFunction(id))
+          return transformCode({ code, id, env: this.environment.name, options: defaultOptions })
+        },
       },
     },
   ]
