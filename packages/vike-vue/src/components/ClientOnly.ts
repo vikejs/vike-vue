@@ -1,0 +1,34 @@
+export { ClientOnly }
+
+import { defineComponent } from 'vue'
+import { usePageContext } from '../hooks/usePageContext.js'
+import { useHydrated } from '../hooks/useHydrated.js'
+import { assert } from '../utils/assert.js'
+
+/**
+ * Render children only on the client-side.
+ *
+ * Strips the children slot on server-side to remove
+ * the component from the server bundle.
+ *
+ * https://vike.dev/ClientOnly
+ */
+const ClientOnly = defineComponent({
+  name: 'ClientOnly',
+
+  setup(_, { slots }) {
+    const pageContext = usePageContext()
+    if (!pageContext.isClientSide) assert(slots.default === undefined)
+
+    const hydrated = useHydrated()
+
+    return () => {
+      if (hydrated.value) {
+        return slots.default?.()
+      } else if (slots.fallback) {
+        return slots.fallback()
+      }
+      return null
+    }
+  },
+})

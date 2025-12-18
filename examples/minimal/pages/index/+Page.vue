@@ -4,11 +4,20 @@
   <ul>
     <li>Rendered to HTML.</li>
     <li>Interactive. <Counter /></li>
+    <ClientOnly>
+      <template #fallback>
+        <li>Loading client-only component...</li>
+      </template>
+      <ClientOnlyComponent />
+      <div>This is a test</div>
+    </ClientOnly>
   </ul>
 </template>
 
 <script lang="ts">
 import Counter from '../../components/Counter.vue'
-const components = { Counter }
+import { ClientOnly } from 'vike-vue/ClientOnly'
+import ClientOnlyComponent from './ClientOnlyComponent.vue'
+const components = { Counter, ClientOnly, ClientOnlyComponent }
 export default { components }
 </script>
