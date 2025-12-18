@@ -334,7 +334,7 @@ function testClientOnly() {
         const body = await page.textContent('body')
         expect(body).toBeTruthy()
         // Count how many times "Client Only Component" appears (should be 2: one with fallback, one without)
-        const matches = body!.match(/Client Only Component/g)
+        const matches = body?.match(/Client Only Component/g)
         expect(matches?.length).toBeGreaterThanOrEqual(2)
       },
       { timeout: 3000 },
