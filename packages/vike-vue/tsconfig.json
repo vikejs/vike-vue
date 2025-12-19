@@ -8,8 +8,6 @@
     // Strictness
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     // Resolution
     "esModuleInterop": true,
     "moduleResolution": "Node16",
