@@ -3,12 +3,10 @@ export { vikeVueClientOnly }
 import type { Plugin } from 'vite'
 import { transformCode, type TransformOptions } from './babelTransformer.js'
 
-const skipNonJsFiles = /\.[jt]sx?$/
 const skipNodeModules = 'node_modules'
 
 const filterFunction = (id: string) => {
   if (id.includes(skipNodeModules)) return false
-  if (!skipNonJsFiles.test(id)) return false
   return true
 }
 
@@ -64,7 +62,7 @@ function vikeVueClientOnly() {
           if (!filterFunction(id)) return null
           const env = 'ssr'
           if (code.includes('ClientOnly')) {
-            console.log('id  ===== ', id)
+            console.log('id', id)
             console.log('code', code)
           }
           return await transformCode({ code, id, env, options: defaultOptions })
