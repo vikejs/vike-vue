@@ -39,6 +39,7 @@ const defaultOptions: TransformOptions = {
           function: ['import:vue/server-renderer:ssrRenderComponent'],
           args: {
             0: {
+              // TODO/ai remove `member: true`
               member: true,
               object: '$setup',
               property: 'ClientOnly',
