@@ -22,7 +22,15 @@ const defaultOptions: TransformOptions = {
         match: {
           // function: ['import:vue:h', 'import:vue:createVNode'],
           function: ['import:vue/server-renderer:ssrRenderComponent'],
-          args: { 0: 'import:vike-vue/ClientOnly:ClientOnly' },
+          args: {
+            // TODO/ai implement this so that we can remove the default from `ssrRenderComponent(unref(ClientOnly), null, { default })`
+            0: {
+              call: 'import:vue:unref',
+              args: {
+                0: 'import:vike-vue/ClientOnly:ClientOnly',
+              },
+            },
+          },
         },
         remove: { arg: 2, prop: 'default' },
       },
