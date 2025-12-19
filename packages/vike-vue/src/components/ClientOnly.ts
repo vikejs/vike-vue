@@ -1,36 +1,39 @@
 export { ClientOnly }
 
-import { defineComponent } from 'vue'
-import { usePageContext } from '../hooks/usePageContext.js'
-import { useHydrated } from '../hooks/useHydrated.js'
-import { assert } from '../utils/assert.js'
+import { cloneVNode, defineComponent, onMounted, shallowRef } from 'vue'
+import type { InjectionKey, SlotsType, VNode } from 'vue'
 
-/**
- * Render children only on the client-side.
- *
- * Strips the children slot on server-side to remove
- * the component from the server bundle.
- *
- * https://vike.dev/ClientOnly
- */
+export const clientOnlySymbol: InjectionKey<boolean> = Symbol.for('nuxt:client-only')
+
+type ClientOnlySlots = SlotsType<{
+  default?: () => VNode[]
+  fallback: { attrs: Record<string, any> }
+  'client-only-fallback': { attrs: Record<string, any> }
+}>
+
 const ClientOnly = defineComponent({
   name: 'ClientOnly',
-
-  setup(_, { slots }) {
-    const pageContext = usePageContext()
-    if (!pageContext.isClientSide) {
-      assert(slots.default === undefined)
-    }
-
-    const hydrated = useHydrated()
-
+  inheritAttrs: false,
+  slots: {} as ClientOnlySlots,
+  setup(_, { slots, attrs }) {
+    const mounted = shallowRef(false)
+    onMounted(() => {
+      mounted.value = true
+    })
     return () => {
-      if (hydrated.value) {
-        return slots.default?.()
-      } else if (slots.fallback) {
-        return slots.fallback()
+      if (mounted.value) {
+        const vnodes = slots.default?.()
+        if (vnodes && vnodes.length === 1) {
+          return [cloneVNode(vnodes[0]!, attrs)]
+        }
+        return vnodes
       }
-      return null
+      if (slots['client-only-fallback']) {
+        return slots['client-only-fallback']({ attrs })
+      }
+      if (slots['fallback']) {
+        return slots['fallback']({ attrs })
+      }
     }
   },
 })
