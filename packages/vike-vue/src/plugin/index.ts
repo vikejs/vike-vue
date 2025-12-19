@@ -23,7 +23,6 @@ const defaultOptions: TransformOptions = {
           // function: ['import:vue:h', 'import:vue:createVNode'],
           function: ['import:vue/server-renderer:ssrRenderComponent'],
           args: {
-            // TODO/ai implement this so that we can remove the default from `ssrRenderComponent(unref(ClientOnly), null, { default })`
             0: {
               call: 'import:vue:unref',
               args: {
@@ -64,10 +63,6 @@ function vikeVueClientOnly() {
           if (!options?.ssr) return null
           if (!filterFunction(id)) return null
           const env = 'ssr'
-          if (code.includes('ClientOnly')) {
-            console.log('id  ===== ', id)
-            console.log('code', code)
-          }
           return await transformCode({ code, id, env, options: defaultOptions })
         },
       },
