@@ -77,15 +77,7 @@ function vikeVueClientOnly() {
           if (!options?.ssr) return null
           if (!filterFunction(id)) return null
           const env = 'ssr'
-          const after = await transformCode({ code, id, env: env, options: defaultOptions })
-          if (after) {
-            console.log('======')
-            console.log(code)
-            console.log('======')
-            console.log(after.code)
-            console.log('======')
-          }
-          return after
+          return await transformCode({ code, id, env, options: defaultOptions })
         },
       },
     },
