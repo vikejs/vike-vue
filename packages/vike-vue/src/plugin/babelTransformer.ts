@@ -38,8 +38,8 @@ export type CallRule = {
     match: {
       /**
        * Function name(s) to match.
-       * - Plain string: matches function name directly (e.g., 'h')
-       * - Import string: 'import:source:exportName' (e.g., 'import:vue:h')
+       * - Plain string: matches function name directly (e.g., 'jsx')
+       * - Import string: 'import:source:exportName' (e.g., 'import:react/jsx-runtime:jsx')
        */
       function: string | string[]
       /** Conditions on arguments: index -> condition */
@@ -57,14 +57,26 @@ export type CallRule = {
  * Currently only supports function call rules, but can be extended in the future.
  *
  * @example
- * // h: remove slots from third argument
+ * // jsx/jsxs/jsxDEV: replace children prop with null
  * {
  *   call: {
  *     match: {
- *       function: 'h',
- *       args: { 0: 'import:vike-vue/ClientOnly:ClientOnly' }
+ *       function: ['jsx', 'jsxs', 'jsxDEV'],
+ *       args: { 0: 'import:vike-react/ClientOnly:ClientOnly' }
  *     },
- *     remove: { arg: 2, prop: 'default' }
+ *     replace: { arg: 1, prop: 'children', with: null }
+ *   }
+ * }
+ *
+ * @example
+ * // createElement: remove all children (args from index 2)
+ * {
+ *   call: {
+ *     match: {
+ *       function: 'createElement',
+ *       args: { 0: 'import:vike-react/ClientOnly:ClientOnly' }
+ *     },
+ *     remove: { argsFrom: 2 }
  *   }
  * }
  */
@@ -196,10 +208,8 @@ function collectImportsPlugin(state: State): PluginItem {
 
         for (const specifier of path.node.specifiers) {
           let exportName: string
-          // @ts-expect-error - Babel type conflicts
           if (t.isImportSpecifier(specifier) && t.isIdentifier(specifier.imported)) {
             exportName = specifier.imported.name
-            // @ts-expect-error - Babel type conflicts
           } else if (t.isImportDefaultSpecifier(specifier)) {
             exportName = 'default'
           } else {
@@ -220,18 +230,14 @@ function applyRulesPlugin(state: State, rules: ReplaceRule[]): PluginItem {
   return {
     visitor: {
       CallExpression(path) {
-        // @ts-expect-error - Babel type conflicts
         const calleeName = getCalleeName(path.node.callee)
         if (!calleeName) return
 
         for (const rule of rules) {
-          // @ts-expect-error - Babel type conflicts
           if (!matchesRule(path, rule, calleeName, state)) continue
           if (rule.call.replace) {
-            // @ts-expect-error - Babel type conflicts
             applyReplace(path, rule.call.replace, state)
           } else if (rule.call.remove) {
-            // @ts-expect-error - Babel type conflicts
             applyRemove(path, rule.call.remove, state)
           }
         }
@@ -284,8 +290,8 @@ function matchesCallee(
           return true
         }
       }
-      // Import string: check member expression like Vue.h
-      // where Vue is the default import and h is the method
+      // Import string: check member expression like React.createElement
+      // where React is the default import and createElement is the method
       if (t.isMemberExpression(callee) && t.isIdentifier(callee.object) && t.isIdentifier(callee.property)) {
         const imported = state.imports.get(callee.object.name)
         if (
@@ -354,7 +360,6 @@ function matchesCondition(
 function applyReplace(path: NodePath<t.CallExpression>, replace: ReplaceTarget, state: State): void {
   // Replace the entire call expression
   if (!('arg' in replace) && !('argsFrom' in replace)) {
-    // @ts-expect-error - Babel type conflicts
     path.replaceWith(valueToAst(replace.with))
     state.modified = true
     return
@@ -436,7 +441,6 @@ function removeUnreferencedPlugin(state: State): PluginItem {
         },
         exit(program) {
           if (!state.modified) return
-          // @ts-expect-error - Babel type conflicts
           removeUnreferenced(program, state.alreadyUnreferenced)
         },
       },
