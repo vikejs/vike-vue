@@ -63,6 +63,10 @@ function vikeVueClientOnly() {
           if (!options?.ssr) return null
           if (!filterFunction(id)) return null
           const env = 'ssr'
+          if (code.includes('ClientOnly')) {
+            console.log('id  ===== ', id)
+            console.log('code', code)
+          }
           return await transformCode({ code, id, env, options: defaultOptions })
         },
       },
