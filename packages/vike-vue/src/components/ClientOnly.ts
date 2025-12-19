@@ -2,7 +2,7 @@ export { ClientOnly }
 
 import { cloneVNode, defineComponent, onMounted, shallowRef } from 'vue'
 import type { InjectionKey, SlotsType, VNode } from 'vue'
-import {usePageContext} from '../hooks/usePageContext.js'
+import { usePageContext } from '../hooks/usePageContext.js'
 import { assert } from '../utils/assert.js'
 
 export const clientOnlySymbol: InjectionKey<boolean> = Symbol.for('nuxt:client-only')
