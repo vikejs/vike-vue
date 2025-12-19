@@ -1,7 +1,26 @@
 <template>
   <h1>ClientOnly</h1>
-  
-  <h2>Using clientOnly() helper</h2>
+
+
+  <h2>Using <code>&lt;ClientOnly&gt;</code> component</h2>
+
+  <h3>Basic example with fallback</h3>
+  <ClientOnly>
+    <template #fallback>
+      <p>Loading...</p>
+    </template>
+    <p>Some text before</p>
+    <ClientOnlyComponent msg="hello" />
+    <p>Some text after</p>
+  </ClientOnly>
+
+  <h3>Without fallback</h3>
+  <ClientOnly>
+    <ClientOnlyComponent msg="bonjour" />
+  </ClientOnly>
+
+
+  <h2>Using <code>clientOnly()</code> helper</h2>
   <pre><code>{{ `const ClientOnlyCounter = clientOnly(() => import('../../components/Counter.vue'))
 
 <ClientOnlyCounter>
@@ -50,33 +69,6 @@
 
     <template #fallback>Buton is in limbo</template>
   </FastClientOnlyToggler>
-
-  <h2>Using &lt;ClientOnly&gt; component</h2>
-  <pre><code>{{ `import { ClientOnly } from 'vike-vue/ClientOnly'
-import ClientOnlyComponent from './ClientOnlyComponent.vue'
-
-<ClientOnly>
-  <template #fallback>
-    <p>Loading client-only component...</p>
-  </template>
-  <ClientOnlyComponent />
-  <div>This is a test</div>
-</ClientOnly>
-` }}</code></pre>
-
-  <h3>Basic example with fallback</h3>
-  <ClientOnly>
-    <template #fallback>
-      <p>Loading client-only component...</p>
-    </template>
-    <ClientOnlyComponent />
-    <div>This is a test</div>
-  </ClientOnly>
-
-  <h3>Without fallback</h3>
-  <ClientOnly>
-    <ClientOnlyComponent />
-  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
@@ -123,5 +115,8 @@ const ErrorClientOnlyToggler = clientOnly(() => {
 pre {
   background-color: #eee;
   padding: 1rem;
+}
+h2 {
+  margin-top: 50px;
 }
 </style>

@@ -1,10 +1,22 @@
 <template>
   <div>
-    <h1>Client Only Component</h1>
-    <p>This component is rendered only on the client side.</p>
+    <p>Client-side only text.</p>
+    <p>Message: {{ msg }}</p>
+    <p><Counter /></p>
   </div>
 </template>
 
+<style scoped>
+p {
+  color: blue;
+}
+</style>
+
 <script setup lang="ts">
-console.log('This will only run on the client side.')
+const props = defineProps<{ msg: string }>()
+import Counter from '../../components/Counter.vue'
+
+const isBrowser = typeof window !== 'undefined'
+console.log('Runs only on the client side — isBrowser:', isBrowser)
+if (!isBrowser) throw new Error('<ClientOnlyComponent> loaded on the server')
 </script>
