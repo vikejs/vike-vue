@@ -14,11 +14,12 @@ import type {
 const SSR_RENDER_RE = /ssrRenderComponent/
 const PLACEHOLDER_EXACT_RE = /^(?:fallback|placeholder)$/
 const CLIENT_ONLY_NAME_RE = /^(?:_unref\()?(?:_component_)?(?:Lazy|lazy_)?(?:ClientOnly\)?)$/
+const CLIENT_ONLY_IN_CODE_RE = /ClientOnly/
 
 export async function treeShake(code: string, id: string) {
   const s = new MagicString(code)
 
-  if (!CLIENT_ONLY_NAME_RE.test(code)) {
+  if (!CLIENT_ONLY_IN_CODE_RE.test(code)) {
     return
   }
 
