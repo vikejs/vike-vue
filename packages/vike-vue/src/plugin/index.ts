@@ -20,7 +20,8 @@ const defaultOptions: TransformOptions = {
       env: 'server',
       call: {
         match: {
-          function: ['import:vue:h', 'import:vue:createVNode'],
+          // function: ['import:vue:h', 'import:vue:createVNode'],
+          function: ['import:vue/server-renderer:ssrRenderComponent'],
           args: { 0: 'import:vike-vue/ClientOnly:ClientOnly' },
         },
         remove: { arg: 2, prop: 'default' },
@@ -48,14 +49,19 @@ function vikeVueClientOnly() {
     {
       name: 'vike-vue:client-only',
       enforce: 'post',
-      async transform(code, id, options) {
-        // Only transform for SSR (server-side)
-        if (!options?.ssr) return null
-        if (!filterFunction(id)) return null
-
-        // Determine environment name - use 'ssr' for SSR mode
-        const env = 'ssr'
-        return await transformCode({ code, id, env, options: defaultOptions })
+      transform: {
+        // order: 'pre',
+        async handler(code, id, options) {
+          // Only transform for SSR (server-side)
+          if (!options?.ssr) return null
+          if (!filterFunction(id)) return null
+          const env = 'ssr'
+          if (code.includes('ClientOnly')) {
+            console.log('id  ===== ', id)
+            console.log('code', code)
+          }
+          return await transformCode({ code, id, env, options: defaultOptions })
+        },
       },
     },
   ]
