@@ -10,11 +10,13 @@ import * as t from '@babel/types'
  * - string starting with 'import:' matches an imported identifier
  * - { prop, equals } matches a property value inside an object argument
  * - { call, args } matches a call expression with specific arguments
+ * - { member, object, property } matches a member expression like $setup["ClientOnly"]
  */
 export type ArgCondition =
   | string
   | { prop: string; equals: unknown }
   | { call: string; args?: Record<number, ArgCondition> }
+  | { member: true; object: string; property: string | ArgCondition }
 
 /**
  * Target for replace operation.
@@ -387,6 +389,29 @@ function matchesCondition(
     }
 
     return true
+  }
+
+  // Member expression condition: match $setup["ClientOnly"]
+  if ('member' in condition) {
+    if (!t.isMemberExpression(arg)) return false
+
+    // Check object
+    if (!t.isIdentifier(arg.object) || arg.object.name !== condition.object) return false
+
+    // Check property
+    if (typeof condition.property === 'string') {
+      // Simple string property
+      if (t.isIdentifier(arg.property) && !arg.computed) {
+        return arg.property.name === condition.property
+      }
+      if (t.isStringLiteral(arg.property) && arg.computed) {
+        return arg.property.value === condition.property
+      }
+      return false
+    } else {
+      // Nested condition on property (for future extensibility)
+      return false
+    }
   }
 
   // Object condition: match prop value inside an object argument
