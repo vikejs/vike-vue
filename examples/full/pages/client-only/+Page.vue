@@ -7,7 +7,7 @@
   <h3>Basic example with fallback</h3>
   <ClientOnly>
     <template #fallback>
-      <p>Loading...</p>
+      <p>Loading client-only component...</p>
     </template>
     <p>Some text before</p>
     <ClientOnlyComponent msg="hello" />
