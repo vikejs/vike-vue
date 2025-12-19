@@ -73,7 +73,6 @@ function vikeVueClientOnly() {
       transform: {
         // order: 'pre',
         async handler(code, id, options) {
-          if (true as boolean) return
           // Only transform for SSR (server-side)
           if (!options?.ssr) return null
           if (!filterFunction(id)) return null
