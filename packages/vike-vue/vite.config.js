@@ -33,7 +33,15 @@ const config = defineConfig({
     rollupOptions: {
       // There doesn't seem to be way to externalize all dependencies.
       // We use assertExternal() to make sure we didn't forget any import in this list.
-      external: ['vue', 'vue/server-renderer', 'vike/server', 'vike/getPageContext', '@babel/core', '@babel/types'],
+      external: [
+        'vue',
+        'vue/server-renderer',
+        'vike/server',
+        'vike/getPageContext',
+        'magic-string',
+        'oxc-parser',
+        'oxc-walker',
+      ],
       output: {
         sanitizeFileName: false,
         globals: {

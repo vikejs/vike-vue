@@ -1,10 +1,14 @@
-import { transformAsync, type PluginItem, type NodePath } from '@babel/core'
-import * as t from '@babel/types'
-
-/* TODO/ai:
-- Copy logic from https://github.com/nuxt/nuxt/blob/323f27bc854fcd1eb1ba19cdfac4df522b523aef/packages/nuxt/src/components/plugins/tree-shake.ts
-- Remove Babel
-*/
+import MagicString from 'magic-string'
+import { parseSync } from 'oxc-parser'
+import { walk } from 'oxc-walker'
+import type {
+  Program,
+  CallExpression,
+  Expression,
+  Argument,
+  StaticMemberExpression,
+  ComputedMemberExpression,
+} from 'oxc-parser'
 
 // ============================================================================
 // Public API
@@ -126,10 +130,8 @@ type TransformResult = { code: string; map: any } | null
 type ParsedImport = { source: string; exportName: string }
 
 type State = {
-  modified: boolean
   /** Map: localName -> { source, exportName } */
   imports: Map<string, ParsedImport>
-  alreadyUnreferenced: Set<string>
 }
 
 // ============================================================================
@@ -157,24 +159,28 @@ export async function transformCode({ code, id, env, options }: TransformInput):
   }
 
   try {
+    const s = new MagicString(code)
     const state: State = {
-      modified: false,
       imports: new Map(),
-      alreadyUnreferenced: new Set(),
     }
 
-    const result = await transformAsync(code, {
-      filename: id,
-      ast: true,
-      sourceMaps: true,
-      plugins: [collectImportsPlugin(state), applyRulesPlugin(state, filteredRules), removeUnreferencedPlugin(state)],
-    })
+    const result = parseSync(id, code)
+    const ast = result.program
 
-    if (!result?.code || !state.modified) {
+    // Collect imports
+    collectImports(ast, state)
+
+    // Apply rules
+    const modified = applyRules(ast, filteredRules, state, s)
+
+    if (!modified) {
       return null
     }
 
-    return { code: result.code, map: result.map }
+    // Remove unreferenced imports
+    removeUnreferencedImports(ast, s, state)
+
+    return { code: s.toString(), map: s.generateMap({ hires: true }) }
   } catch (error) {
     console.error(`Error transforming ${id}:`, error)
     return null
@@ -194,101 +200,98 @@ function parseImportString(str: string): ParsedImport | null {
   return { source, exportName }
 }
 
-function valueToAst(value: unknown): t.Expression {
-  if (value === null) return t.nullLiteral()
-  if (value === undefined) return t.identifier('undefined')
-  if (typeof value === 'string') return t.stringLiteral(value)
-  if (typeof value === 'number') return t.numericLiteral(value)
-  if (typeof value === 'boolean') return t.booleanLiteral(value)
-  return t.callExpression(t.memberExpression(t.identifier('JSON'), t.identifier('parse')), [
-    t.stringLiteral(JSON.stringify(value)),
-  ])
-}
-
-function getCalleeName(callee: t.Expression | t.V8IntrinsicIdentifier): string | null {
-  if (t.isIdentifier(callee)) return callee.name
-  if (t.isMemberExpression(callee) && t.isIdentifier(callee.property)) return callee.property.name
+function getCalleeName(callee: Expression): string | null {
+  if (callee.type === 'Identifier') return callee.name
+  if (callee.type === 'MemberExpression' && !callee.computed) {
+    // StaticMemberExpression
+    return (callee as StaticMemberExpression).property.name
+  }
   return null
 }
 
 /**
  * Check if an identifier matches an import condition
  */
-function matchesImport(arg: t.Expression, parsed: ParsedImport, state: State): boolean {
-  if (!t.isIdentifier(arg)) return false
+function matchesImport(arg: Expression, parsed: ParsedImport, state: State): boolean {
+  if (arg.type !== 'Identifier') return false
   const imported = state.imports.get(arg.name)
   if (!imported) return false
   return imported.source === parsed.source && imported.exportName === parsed.exportName
 }
 
 // ============================================================================
-// Babel plugins
+// Implementation functions
 // ============================================================================
 
 /**
  * Collect all imports: localName -> { source, exportName }
  */
-function collectImportsPlugin(state: State): PluginItem {
-  return {
-    visitor: {
-      ImportDeclaration(path) {
-        const source = path.node.source.value
+function collectImports(program: Program, state: State): void {
+  for (const node of program.body) {
+    if (node.type !== 'ImportDeclaration') continue
 
-        for (const specifier of path.node.specifiers) {
-          let exportName: string
-          if (t.isImportSpecifier(specifier) && t.isIdentifier(specifier.imported)) {
-            exportName = specifier.imported.name
-          } else if (t.isImportDefaultSpecifier(specifier)) {
-            exportName = 'default'
-          } else {
-            continue
-          }
+    const source = node.source.value
 
-          state.imports.set(specifier.local.name, { source, exportName })
-        }
-      },
-    },
+    for (const specifier of node.specifiers) {
+      let exportName: string
+      if (specifier.type === 'ImportSpecifier' && specifier.imported.type === 'Identifier') {
+        exportName = specifier.imported.name
+      } else if (specifier.type === 'ImportDefaultSpecifier') {
+        exportName = 'default'
+      } else {
+        continue
+      }
+
+      state.imports.set(specifier.local.name, { source, exportName })
+    }
   }
 }
 
 /**
  * Apply replacement rules to matching call expressions
+ * Returns true if any modifications were made
  */
-function applyRulesPlugin(state: State, rules: ReplaceRule[]): PluginItem {
-  return {
-    visitor: {
-      CallExpression(path) {
-        const calleeName = getCalleeName(path.node.callee)
-        if (!calleeName) return
+function applyRules(program: Program, rules: ReplaceRule[], state: State, s: MagicString): boolean {
+  let modified = false
 
-        for (const rule of rules) {
-          if (!matchesRule(path, rule, calleeName, state)) continue
-          if (rule.call.replace) {
-            applyReplace(path, rule.call.replace, state)
-          } else if (rule.call.remove) {
-            applyRemove(path, rule.call.remove, state)
-          }
+  walk(program, {
+    enter(node) {
+      if (node.type !== 'CallExpression') return
+
+      const calleeName = getCalleeName(node.callee)
+      if (!calleeName) return
+
+      for (const rule of rules) {
+        if (!matchesRule(node, rule, calleeName, state)) continue
+        if (rule.call.replace) {
+          applyReplace(node, rule.call.replace, state, s)
+          modified = true
+        } else if (rule.call.remove) {
+          applyRemove(node, rule.call.remove, s)
+          modified = true
         }
-      },
+      }
     },
-  }
+  })
+
+  return modified
 }
 
 /**
  * Check if a call expression matches a rule
  */
-function matchesRule(path: NodePath<t.CallExpression>, rule: ReplaceRule, calleeName: string, state: State): boolean {
+function matchesRule(node: CallExpression, rule: ReplaceRule, calleeName: string, state: State): boolean {
   const { match } = rule.call
 
   // Check callee name
   const functions = Array.isArray(match.function) ? match.function : [match.function]
-  if (!matchesCallee(path.node.callee, calleeName, functions, state)) return false
+  if (!matchesCallee(node.callee, calleeName, functions, state)) return false
 
   // Check argument conditions
   if (match.args) {
     for (const [indexStr, condition] of Object.entries(match.args)) {
       const index = Number(indexStr)
-      const arg = path.node.arguments[index]
+      const arg = node.arguments[index]
       if (!arg) return false
 
       if (!matchesCondition(arg, condition, state)) return false
@@ -301,18 +304,13 @@ function matchesRule(path: NodePath<t.CallExpression>, rule: ReplaceRule, callee
 /**
  * Check if callee matches any of the function patterns
  */
-function matchesCallee(
-  callee: t.Expression | t.V8IntrinsicIdentifier,
-  calleeName: string,
-  functions: string[],
-  state: State,
-): boolean {
+function matchesCallee(callee: Expression, calleeName: string, functions: string[], state: State): boolean {
   for (const fn of functions) {
     const parsed = parseImportString(fn)
 
     if (parsed) {
       // Import string: check if callee is an imported identifier
-      if (t.isIdentifier(callee)) {
+      if (callee.type === 'Identifier') {
         const imported = state.imports.get(callee.name)
         if (imported && imported.source === parsed.source && imported.exportName === parsed.exportName) {
           return true
@@ -320,15 +318,18 @@ function matchesCallee(
       }
       // Import string: check member expression like React.createElement
       // where React is the default import and createElement is the method
-      if (t.isMemberExpression(callee) && t.isIdentifier(callee.object) && t.isIdentifier(callee.property)) {
-        const imported = state.imports.get(callee.object.name)
-        if (
-          imported &&
-          imported.source === parsed.source &&
-          imported.exportName === 'default' &&
-          callee.property.name === parsed.exportName
-        ) {
-          return true
+      if (callee.type === 'MemberExpression' && !callee.computed) {
+        const staticCallee = callee as StaticMemberExpression
+        if (staticCallee.object.type === 'Identifier') {
+          const imported = state.imports.get(staticCallee.object.name)
+          if (
+            imported &&
+            imported.source === parsed.source &&
+            imported.exportName === 'default' &&
+            staticCallee.property.name === parsed.exportName
+          ) {
+            return true
+          }
         }
       }
     } else {
@@ -343,28 +344,26 @@ function matchesCallee(
 /**
  * Check if an argument matches a condition
  */
-function matchesCondition(
-  arg: t.ArgumentPlaceholder | t.SpreadElement | t.Expression,
-  condition: ArgCondition,
-  state: State,
-): boolean {
+function matchesCondition(arg: Argument, condition: ArgCondition, state: State): boolean {
+  if (arg.type === 'SpreadElement') return false
+
   // String condition
   if (typeof condition === 'string') {
     // Import condition: 'import:source:exportName'
     const parsed = parseImportString(condition)
     if (parsed) {
-      return t.isExpression(arg) && matchesImport(arg, parsed, state)
+      return matchesImport(arg, parsed, state)
     }
 
     // Plain string: match string literal or identifier name
-    if (t.isStringLiteral(arg)) return arg.value === condition
-    if (t.isIdentifier(arg)) return arg.name === condition
+    if (arg.type === 'Literal' && typeof arg.value === 'string') return arg.value === condition
+    if (arg.type === 'Identifier') return arg.name === condition
     return false
   }
 
   // Call expression condition: match call with specific arguments
   if ('call' in condition) {
-    if (!t.isCallExpression(arg)) return false
+    if (arg.type !== 'CallExpression') return false
 
     const calleeName = getCalleeName(arg.callee)
     if (!calleeName) return false
@@ -373,7 +372,7 @@ function matchesCondition(
     const parsed = parseImportString(condition.call)
     if (parsed) {
       // Import string: check if callee is an imported identifier
-      if (!t.isIdentifier(arg.callee)) return false
+      if (arg.callee.type !== 'Identifier') return false
       const imported = state.imports.get(arg.callee.name)
       if (!imported || imported.source !== parsed.source || imported.exportName !== parsed.exportName) {
         return false
@@ -398,19 +397,24 @@ function matchesCondition(
 
   // Member expression condition: match $setup["ClientOnly"]
   if ('member' in condition) {
-    if (!t.isMemberExpression(arg)) return false
+    if (arg.type !== 'MemberExpression') return false
 
     // Check object
-    if (!t.isIdentifier(arg.object) || arg.object.name !== condition.object) return false
+    if (arg.object.type !== 'Identifier' || arg.object.name !== condition.object) return false
 
     // Check property
     if (typeof condition.property === 'string') {
       // Simple string property
-      if (t.isIdentifier(arg.property) && !arg.computed) {
-        return arg.property.name === condition.property
+      if (!arg.computed) {
+        // StaticMemberExpression
+        return (arg as StaticMemberExpression).property.name === condition.property
       }
-      if (t.isStringLiteral(arg.property) && arg.computed) {
-        return arg.property.value === condition.property
+      if (arg.computed) {
+        // ComputedMemberExpression
+        const computedArg = arg as ComputedMemberExpression
+        if (computedArg.property.type === 'Literal' && typeof computedArg.property.value === 'string') {
+          return computedArg.property.value === condition.property
+        }
       }
       return false
     } else {
@@ -420,20 +424,22 @@ function matchesCondition(
   }
 
   // Object condition: match prop value inside an object argument
-  if (!t.isObjectExpression(arg)) return false
+  if (arg.type !== 'ObjectExpression') return false
 
   for (const prop of arg.properties) {
-    if (!t.isObjectProperty(prop)) continue
-    if (!t.isIdentifier(prop.key) || prop.key.name !== condition.prop) continue
+    if (prop.type !== 'Property') continue
+    if (prop.kind !== 'init') continue
+    if (prop.key.type !== 'Identifier' || prop.key.name !== condition.prop) continue
 
-    // Check value
-    if (condition.equals === null && t.isNullLiteral(prop.value)) return true
-    if (condition.equals === true && t.isBooleanLiteral(prop.value) && prop.value.value === true) return true
-    if (condition.equals === false && t.isBooleanLiteral(prop.value) && prop.value.value === false) return true
-    if (typeof condition.equals === 'string' && t.isStringLiteral(prop.value) && prop.value.value === condition.equals)
-      return true
-    if (typeof condition.equals === 'number' && t.isNumericLiteral(prop.value) && prop.value.value === condition.equals)
-      return true
+    // Check value (all literals have type "Literal" in oxc)
+    if (prop.value.type !== 'Literal') continue
+    const value = prop.value.value
+
+    if (condition.equals === null && value === null) return true
+    if (condition.equals === true && value === true) return true
+    if (condition.equals === false && value === false) return true
+    if (typeof condition.equals === 'string' && value === condition.equals) return true
+    if (typeof condition.equals === 'number' && value === condition.equals) return true
   }
 
   return false
@@ -442,39 +448,38 @@ function matchesCondition(
 /**
  * Apply a replacement to a call expression
  */
-function applyReplace(path: NodePath<t.CallExpression>, replace: ReplaceTarget, state: State): void {
+function applyReplace(node: CallExpression, replace: ReplaceTarget, _state: State, s: MagicString): void {
   // Replace the entire call expression
   if (!('arg' in replace) && !('argsFrom' in replace)) {
-    path.replaceWith(valueToAst(replace.with))
-    state.modified = true
+    s.overwrite(node.start, node.end, valueToString(replace.with))
     return
   }
   // Replace a prop inside an object argument
   if ('arg' in replace && 'prop' in replace) {
-    const arg = path.node.arguments[replace.arg]
-    if (!t.isObjectExpression(arg)) return
+    const arg = node.arguments[replace.arg]
+    if (!arg || arg.type === 'SpreadElement' || arg.type !== 'ObjectExpression') return
 
     for (const prop of arg.properties) {
-      if (!t.isObjectProperty(prop)) continue
-      if (!t.isIdentifier(prop.key) || prop.key.name !== replace.prop) continue
+      if (prop.type !== 'Property') continue
+      if (prop.key.type !== 'Identifier' || prop.key.name !== replace.prop) continue
 
-      prop.value = valueToAst(replace.with)
-      state.modified = true
+      s.overwrite(prop.value.start, prop.value.end, valueToString(replace.with))
       return
     }
   }
   // Replace entire argument
   else if ('arg' in replace) {
-    if (path.node.arguments.length > replace.arg) {
-      path.node.arguments[replace.arg] = valueToAst(replace.with)
-      state.modified = true
+    if (node.arguments.length > replace.arg) {
+      const arg = node.arguments[replace.arg]!
+      s.overwrite(arg.start, arg.end, valueToString(replace.with))
     }
   }
   // Replace all args from index onwards with a single value
   else if ('argsFrom' in replace) {
-    if (path.node.arguments.length > replace.argsFrom) {
-      path.node.arguments = [...path.node.arguments.slice(0, replace.argsFrom), valueToAst(replace.with)]
-      state.modified = true
+    if (node.arguments.length > replace.argsFrom) {
+      const firstArg = node.arguments[replace.argsFrom]!
+      const lastArg = node.arguments[node.arguments.length - 1]!
+      s.overwrite(firstArg.start, lastArg.end, valueToString(replace.with))
     }
   }
 }
@@ -482,74 +487,126 @@ function applyReplace(path: NodePath<t.CallExpression>, replace: ReplaceTarget, 
 /**
  * Apply a removal to a call expression
  */
-function applyRemove(path: NodePath<t.CallExpression>, remove: RemoveTarget, state: State): void {
+function applyRemove(node: CallExpression, remove: RemoveTarget, s: MagicString): void {
   // Remove a prop inside an object argument
   if ('prop' in remove) {
-    const arg = path.node.arguments[remove.arg]
-    if (!t.isObjectExpression(arg)) return
+    const arg = node.arguments[remove.arg]
+    if (!arg || arg.type === 'SpreadElement' || arg.type !== 'ObjectExpression') return
 
     const index = arg.properties.findIndex(
-      (prop) => t.isObjectProperty(prop) && t.isIdentifier(prop.key) && prop.key.name === remove.prop,
+      (prop) => prop.type === 'Property' && prop.key.type === 'Identifier' && prop.key.name === remove.prop,
     )
     if (index !== -1) {
-      arg.properties.splice(index, 1)
-      state.modified = true
+      const prop = arg.properties[index]!
+      // Remove the property and any trailing comma
+      let end = prop.end
+      if (index < arg.properties.length - 1) {
+        end = arg.properties[index + 1]!.start
+      }
+      s.remove(prop.start, end)
     }
   }
   // Remove entire argument
   else if ('arg' in remove) {
-    if (path.node.arguments.length > remove.arg) {
-      path.node.arguments.splice(remove.arg, 1)
-      state.modified = true
+    if (node.arguments.length > remove.arg) {
+      const arg = node.arguments[remove.arg]!
+      // Remove the argument and handle commas
+      let start = arg.start
+      let end = arg.end
+      if (remove.arg < node.arguments.length - 1) {
+        // Not the last arg, remove up to next arg
+        end = node.arguments[remove.arg + 1]!.start
+      } else if (remove.arg > 0) {
+        // Last arg, remove from previous arg end
+        start = node.arguments[remove.arg - 1]!.end
+      }
+      s.remove(start, end)
     }
   }
   // Remove all args from index onwards
   else if ('argsFrom' in remove) {
-    if (path.node.arguments.length > remove.argsFrom) {
-      path.node.arguments = path.node.arguments.slice(0, remove.argsFrom)
-      state.modified = true
+    if (node.arguments.length > remove.argsFrom) {
+      const firstArg = node.arguments[remove.argsFrom]!
+      const lastArg = node.arguments[node.arguments.length - 1]!
+      s.remove(firstArg.start, lastArg.end)
     }
   }
 }
 
 /**
- * Remove unreferenced bindings after modifications
+ * Convert a value to its string representation
  */
-function removeUnreferencedPlugin(state: State): PluginItem {
-  return {
-    visitor: {
-      Program: {
-        enter(program) {
-          for (const [name, binding] of Object.entries(program.scope.bindings)) {
-            if (!binding.referenced) state.alreadyUnreferenced.add(name)
-          }
-        },
-        exit(program) {
-          if (!state.modified) return
-          removeUnreferenced(program, state.alreadyUnreferenced)
-        },
-      },
-    },
-  }
+function valueToString(value: unknown): string {
+  if (value === null) return 'null'
+  if (value === undefined) return 'undefined'
+  if (typeof value === 'string') return JSON.stringify(value)
+  if (typeof value === 'number') return String(value)
+  if (typeof value === 'boolean') return String(value)
+  return `JSON.parse(${JSON.stringify(JSON.stringify(value))})`
 }
 
-function removeUnreferenced(program: NodePath<t.Program>, alreadyUnreferenced: Set<string>): void {
-  for (;;) {
-    program.scope.crawl()
-    let removed = false
+/**
+ * Remove unreferenced imports after modifications
+ */
+function removeUnreferencedImports(program: Program, s: MagicString, _state: State): void {
+  const usedIdentifiers = new Set<string>()
 
-    for (const [name, binding] of Object.entries(program.scope.bindings)) {
-      if (binding.referenced || alreadyUnreferenced.has(name)) continue
-
-      const parent = binding.path.parentPath
-      if (parent?.isImportDeclaration() && parent.node.specifiers.length === 1) {
-        parent.remove()
-      } else {
-        binding.path.remove()
+  // Collect all used identifiers
+  walk(program, {
+    enter(node) {
+      if (node.type === 'Identifier') {
+        usedIdentifiers.add(node.name)
       }
-      removed = true
+    },
+  })
+
+  // Check each import to see if it's still used
+  for (const node of program.body) {
+    if (node.type !== 'ImportDeclaration') continue
+
+    const unusedSpecifiers: number[] = []
+
+    for (let i = 0; i < node.specifiers.length; i++) {
+      const specifier = node.specifiers[i]!
+      // Count how many times this identifier appears (should be 1 for just the import)
+      let count = 0
+      walk(program, {
+        enter(n) {
+          if (n.type === 'Identifier' && n.name === specifier.local.name) {
+            count++
+          }
+        },
+      })
+
+      // If only appears once (the import itself), it's unused
+      if (count <= 1) {
+        unusedSpecifiers.push(i)
+      }
     }
 
-    if (!removed) break
+    if (unusedSpecifiers.length === 0) continue
+
+    if (unusedSpecifiers.length === node.specifiers.length) {
+      // Remove entire import
+      s.remove(node.start, node.end)
+    } else {
+      // Remove specific specifiers
+      for (const i of unusedSpecifiers.reverse()) {
+        const specifier = node.specifiers[i]!
+        let start = specifier.start
+        let end = specifier.end
+
+        // Handle comma removal
+        if (i < node.specifiers.length - 1) {
+          // Not the last specifier, remove up to next
+          end = node.specifiers[i + 1]!.start
+        } else if (i > 0) {
+          // Last specifier, remove from previous
+          start = node.specifiers[i - 1]!.end
+        }
+
+        s.remove(start, end)
+      }
+    }
   }
 }

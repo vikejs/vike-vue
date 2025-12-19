@@ -29,8 +29,9 @@
     "./__internal/integration/onRenderClient": "./dist/integration/onRenderClient.js"
   },
   "dependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/types": "^7.28.5"
+    "magic-string": "^0.30.21",
+    "oxc-parser": "^0.104.0",
+    "oxc-walker": "^0.6.0"
   },
   "peerDependencies": {
     "vike": ">=0.4.191",
@@ -46,7 +47,7 @@
   },
   "devDependencies": {
     "@brillout/release-me": "^0.4.12",
-    "@types/babel__core": "^7.20.5",
+    "@oxc-project/types": "^0.104.0",
     "@types/node": "^22.1.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "typescript": "^5.9.2",
