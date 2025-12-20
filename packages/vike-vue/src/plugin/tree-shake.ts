@@ -11,21 +11,27 @@ import type {
   VariableDeclaration,
 } from 'oxc-parser'
 
+// COPY: verbatim
+// https://github.com/nuxt/nuxt/blob/323f27bc854fcd1eb1ba19cdfac4df522b523aef/packages/nuxt/src/components/plugins/tree-shake.ts#L17
 const SSR_RENDER_RE = /ssrRenderComponent/
 const PLACEHOLDER_EXACT_RE = /^(?:fallback|placeholder)$/
-const CLIENT_ONLY_NAME_RE = /^(?:_unref\()?(?:_component_)?(?:Lazy|lazy_)?(?:ClientOnly\)?)$/
-const CLIENT_ONLY_IN_CODE_RE = /ClientOnly/
+const CLIENT_ONLY_NAME_RE = /^(?:_unref\()?(?:_component_)?(?:Lazy|lazy_)?(?:client_only|ClientOnly\)?)$/
 
 export async function treeShake(code: string, id: string) {
+  const options = { sourcemap: true } as const
+  const COMPONENTS_RE = /ClientOnly/
+  const COMPONENTS_IDENTIFIERS_RE = CLIENT_ONLY_NAME_RE
   const s = new MagicString(code)
 
-  if (!CLIENT_ONLY_IN_CODE_RE.test(code)) {
+  // COPY: verbatim (after `$ pnpm run format`) from now until end of this function.
+  // https://github.com/nuxt/nuxt/blob/323f27bc854fcd1eb1ba19cdfac4df522b523aef/packages/nuxt/src/components/plugins/tree-shake.ts#L46-L105
+  if (!COMPONENTS_RE.test(code)) {
     return
   }
 
   const componentsToRemoveSet = new Set<string>()
 
-  // Remove client only components or components called in ClientOnly default slot
+  // remove client only components or components called in ClientOnly default slot
   const { program: ast } = parseAndWalk(code, id, (node) => {
     if (!isSsrRender(node)) {
       return
@@ -42,15 +48,17 @@ export async function treeShake(code: string, id: string) {
       componentCall.type === 'CallExpression'
     ) {
       const componentName = getComponentName(node)
-      if (!componentName || !CLIENT_ONLY_NAME_RE.test(componentName) || children?.type !== 'ObjectExpression') {
+      if (!componentName || !COMPONENTS_IDENTIFIERS_RE.test(componentName) || children?.type !== 'ObjectExpression') {
         return
       }
 
-      // Remove all slots except fallback/placeholder for ClientOnly
-      const slotsToRemove = children.properties.filter(
-        (prop) =>
-          prop.type === 'Property' && prop.key.type === 'Identifier' && !PLACEHOLDER_EXACT_RE.test(prop.key.name),
-      )
+      const isClientOnlyComponent = CLIENT_ONLY_NAME_RE.test(componentName)
+      const slotsToRemove = isClientOnlyComponent
+        ? children.properties.filter(
+            (prop) =>
+              prop.type === 'Property' && prop.key.type === 'Identifier' && !PLACEHOLDER_EXACT_RE.test(prop.key.name),
+          )
+        : children.properties
 
       for (const slot of slotsToRemove) {
         s.remove(slot.start, slot.end + 1)
@@ -66,7 +74,7 @@ export async function treeShake(code: string, id: string) {
             return
           }
 
-          // Detect if the component is called elsewhere
+          // detect if the component is called else where
           const nameToRemove = isComponentNotCalledInSetup(currentState, id, name)
           if (nameToRemove) {
             componentsToRemoveSet.add(nameToRemove)
@@ -80,22 +88,27 @@ export async function treeShake(code: string, id: string) {
   const removedNodes = new WeakSet<Node>()
 
   for (const componentName of componentsToRemove) {
-    // Remove import declaration if it exists
+    // remove import declaration if it exists
     removeImportDeclaration(ast, componentName, s)
-    // Remove variable declaration
+    // remove variable declaration
     removeVariableDeclarator(ast, componentName, s, removedNodes)
-    // Remove from setup return statement
+    // remove from setup return statement
     removeFromSetupReturn(ast, componentName, s)
   }
 
   if (s.hasChanged()) {
     return {
       code: s.toString(),
-      map: s.generateMap({ hires: true }),
+      map: options.sourcemap ? s.generateMap({ hires: true }) : undefined,
     }
   }
 }
 
+// COPY: verbatim (after `$ pnpm run format`) from now until end of this file.
+// https://github.com/nuxt/nuxt/blob/323f27bc854fcd1eb1ba19cdfac4df522b523aef/packages/nuxt/src/components/plugins/tree-shake.ts#L110-L286
+/**
+ * find and remove all property with the name parameter from the setup return statement and the __returned__ object
+ */
 function removeFromSetupReturn(codeAst: Program, name: string, magicString: MagicString) {
   let walkedInSetup = false
   walk(codeAst, {
@@ -108,15 +121,18 @@ function removeFromSetupReturn(codeAst: Program, name: string, magicString: Magi
         node.key.name === 'setup' &&
         (node.value.type === 'FunctionExpression' || node.value.type === 'ArrowFunctionExpression')
       ) {
+        // walk into the setup function
         walkedInSetup = true
         if (node.value.body?.type === 'BlockStatement') {
           const returnStatement = node.value.body.body.find(
             (statement) => statement.type === 'ReturnStatement',
           ) as ReturnStatement
           if (returnStatement && returnStatement.argument?.type === 'ObjectExpression') {
+            // remove from return statement
             removePropertyFromObject(returnStatement.argument, name, magicString)
           }
 
+          // remove from __returned__
           const variableList = node.value.body.body.filter(
             (statement): statement is VariableDeclaration => statement.type === 'VariableDeclaration',
           )
@@ -138,6 +154,9 @@ function removeFromSetupReturn(codeAst: Program, name: string, magicString: Magi
   })
 }
 
+/**
+ * remove a property from an object expression
+ */
 function removePropertyFromObject(node: ObjectExpression, name: string, magicString: MagicString) {
   for (const property of node.properties) {
     if (property.type === 'Property' && property.key.type === 'Identifier' && property.key.name === name) {
@@ -148,6 +167,9 @@ function removePropertyFromObject(node: ObjectExpression, name: string, magicStr
   return false
 }
 
+/**
+ * is the node a call expression ssrRenderComponent()
+ */
 function isSsrRender(node: Node): node is CallExpression {
   return node.type === 'CallExpression' && node.callee.type === 'Identifier' && SSR_RENDER_RE.test(node.callee.name)
 }
@@ -172,6 +194,11 @@ function removeImportDeclaration(ast: Program, importName: string, magicString: 
   return false
 }
 
+/**
+ * detect if the component is called else where
+ * ImportDeclarations and VariableDeclarations are ignored
+ * return the name of the component if is not called
+ */
 function isComponentNotCalledInSetup(code: string, id: string, name: string): string | void {
   if (!name) {
     return
@@ -185,6 +212,7 @@ function isComponentNotCalledInSetup(code: string, id: string, name: string): st
         node.key.name === 'setup') ||
       (node.type === 'FunctionDeclaration' && (node.id?.name === '_sfc_ssrRender' || node.id?.name === 'ssrRender'))
     ) {
+      // walk through the setup function node or the ssrRender function
       walk(node, {
         enter(node) {
           if (found || node.type === 'VariableDeclaration') {
@@ -192,6 +220,7 @@ function isComponentNotCalledInSetup(code: string, id: string, name: string): st
           } else if (node.type === 'Identifier' && node.name === name) {
             found = true
           } else if (node.type === 'MemberExpression') {
+            // dev only with $setup or _ctx
             found =
               (node.property.type === 'Literal' && node.property.value === name) ||
               (node.property.type === 'Identifier' && node.property.name === name)
@@ -205,6 +234,10 @@ function isComponentNotCalledInSetup(code: string, id: string, name: string): st
   }
 }
 
+/**
+ * retrieve the component identifier being used on ssrRender callExpression
+ * @param ssrRenderNode - ssrRender callExpression
+ */
 function getComponentName(ssrRenderNode: CallExpression): string | undefined {
   const componentCall = ssrRenderNode.arguments[0]
   if (!componentCall) {
@@ -222,12 +255,16 @@ function getComponentName(ssrRenderNode: CallExpression): string | undefined {
   }
 }
 
+/**
+ * remove a variable declaration within the code
+ */
 function removeVariableDeclarator(
   codeAst: Program,
   name: string,
   magicString: MagicString,
   removedNodes: WeakSet<Node>,
 ): Node | void {
+  // remove variables
   walk(codeAst, {
     enter(node) {
       if (node.type !== 'VariableDeclaration') {
@@ -244,6 +281,9 @@ function removeVariableDeclarator(
   })
 }
 
+/**
+ * find the Pattern to remove which the identifier is equal to the name parameter.
+ */
 function findMatchingPatternToRemove(
   node: BindingPattern,
   toRemoveIfMatched: Node,
