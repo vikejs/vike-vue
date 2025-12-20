@@ -1,3 +1,5 @@
+export { treeShake }
+
 import MagicString from 'magic-string'
 import { parseAndWalk, walk } from 'oxc-walker'
 import type {
@@ -17,7 +19,7 @@ const SSR_RENDER_RE = /ssrRenderComponent/
 const PLACEHOLDER_EXACT_RE = /^(?:fallback|placeholder)$/
 const CLIENT_ONLY_NAME_RE = /^(?:_unref\()?(?:_component_)?(?:Lazy|lazy_)?(?:client_only|ClientOnly\)?)$/
 
-export async function treeShake(code: string, id: string) {
+async function treeShake(code: string, id: string) {
   const options = { sourcemap: true } as const
   const COMPONENTS_RE = /ClientOnly/
   const COMPONENTS_IDENTIFIERS_RE = CLIENT_ONLY_NAME_RE
