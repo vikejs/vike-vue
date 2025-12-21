@@ -9,7 +9,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.7.1",
-    "vike": "^0.4.249",
+    "vike": "0.4.249-commit-03c7a15",
     "vike-vue": "^0.9.8",
     "vike-vue-pinia": "^0.2.6",
     "vite": "^7.1.5",
