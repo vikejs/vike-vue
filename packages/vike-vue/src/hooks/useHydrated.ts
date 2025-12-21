@@ -1,6 +1,6 @@
 export { useHydrated }
 
-import { shallowRef, onMounted } from 'vue'
+import { usePageContext } from './usePageContext.js'
 
 /**
  * Returns whether the component has been hydrated on the client-side.
@@ -9,11 +9,6 @@ import { shallowRef, onMounted } from 'vue'
  * https://vike.dev/useHydrated
  */
 function useHydrated() {
-  const hydrated = shallowRef(false)
-
-  onMounted(() => {
-    hydrated.value = true
-  })
-
-  return hydrated
+  const pageContext = usePageContext()
+  return pageContext.isClientSide && !pageContext.isHydration
 }
