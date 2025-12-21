@@ -12,13 +12,17 @@ import { usePageContext } from './usePageContext.js'
  * always start with true.
  *
  * Example: Disable a button that needs JS to work.
- * ```tsx
- * let hydrated = useHydrated();
- * return (
- *   <button type="button" disabled={!hydrated} onClick={doSomethingCustom}>
+ * ```vue
+ * <template>
+ *   <button type="button" :disabled="!hydrated" @click="doSomethingCustom">
  *     Click me
  *   </button>
- * );
+ * </template>
+ *
+ * <script setup lang="ts">
+ * import { useHydrated } from 'vike-vue/useHydrated'
+ * const hydrated = useHydrated()
+ * </script>
  * ```
  */
 function useHydrated() {
