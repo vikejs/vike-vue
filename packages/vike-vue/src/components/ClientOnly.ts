@@ -19,7 +19,7 @@ const ClientOnly = defineComponent({
   inheritAttrs: false,
   slots: {} as ClientOnlySlots,
   setup(_, { slots, attrs }) {
-    const hydrated = useHydrated()
+    const isHydrated = useHydrated()
     return () => {
       const pageContext = usePageContext()
 
@@ -27,7 +27,7 @@ const ClientOnly = defineComponent({
       if (!pageContext.isClientSide) assert(slots.default === undefined)
 
       // Main
-      if (hydrated.value) {
+      if (isHydrated.value) {
         const vnodes = slots.default?.()
         if (vnodes && vnodes.length === 1) {
           return [cloneVNode(vnodes[0]!, attrs)]
