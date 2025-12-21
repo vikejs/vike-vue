@@ -1,5 +1,6 @@
 export { useHydrated }
 
+import { ref, onMounted } from 'vue'
 import { usePageContext } from './usePageContext.js'
 
 /**
@@ -10,5 +11,13 @@ import { usePageContext } from './usePageContext.js'
  */
 function useHydrated() {
   const pageContext = usePageContext()
-  return pageContext.isClientSide && !pageContext.isHydration
+  const isHydrated = ref(pageContext.isClientSide && !pageContext.isHydration)
+
+  if (!isHydrated.value && pageContext.isClientSide) {
+    onMounted(() => {
+      isHydrated.value = true
+    })
+  }
+
+  return isHydrated
 }
