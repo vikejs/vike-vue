@@ -18,7 +18,7 @@ const ClientOnly = defineComponent({
   inheritAttrs: false,
   slots: {} as ClientOnlySlots,
   setup(_, { slots, attrs }) {
-    // TODO: useHydrated instead
+    // TODO/ai: useHydrated instead
     const mounted = shallowRef(false)
     onMounted(() => {
       mounted.value = true
