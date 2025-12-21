@@ -1,8 +1,9 @@
 export { ClientOnly }
 
-import { cloneVNode, defineComponent, onMounted, shallowRef } from 'vue'
+import { cloneVNode, defineComponent } from 'vue'
 import type { InjectionKey, SlotsType, VNode } from 'vue'
 import { usePageContext } from '../hooks/usePageContext.js'
+import { useHydrated } from '../hooks/useHydrated.js'
 import { assert } from '../utils/assert.js'
 
 export const clientOnlySymbol: InjectionKey<boolean> = Symbol.for('nuxt:client-only')
@@ -18,11 +19,7 @@ const ClientOnly = defineComponent({
   inheritAttrs: false,
   slots: {} as ClientOnlySlots,
   setup(_, { slots, attrs }) {
-    // TODO/ai: useHydrated instead
-    const mounted = shallowRef(false)
-    onMounted(() => {
-      mounted.value = true
-    })
+    const hydrated = useHydrated()
     return () => {
       const pageContext = usePageContext()
 
@@ -30,7 +27,7 @@ const ClientOnly = defineComponent({
       if (!pageContext.isClientSide) assert(slots.default === undefined)
 
       // Main
-      if (mounted.value) {
+      if (hydrated.value) {
         const vnodes = slots.default?.()
         if (vnodes && vnodes.length === 1) {
           return [cloneVNode(vnodes[0]!, attrs)]
