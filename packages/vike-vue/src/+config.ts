@@ -28,19 +28,6 @@ const config = {
   // https://vike.dev/clientRouting
   clientRouting: true,
   hydrationCanBeAborted: true,
-
-  staticReplace: [
-    {
-      env: 'server',
-      filter: 'vike-vue/useHydrated',
-      type: 'call',
-      match: {
-        function: 'import:vike-vue/useHydrated:useHydrated',
-      },
-      replace: { with: { value: false } },
-    },
-  ],
-
   // https://vike.dev/meta
   meta: {
     Head: {
