@@ -19,7 +19,7 @@ import { usePageContext } from './usePageContext.js'
  *   </button>
  * </template>
  *
- * <script setup lang="ts">
+ * <script setup>
  * import { useHydrated } from 'vike-vue/useHydrated'
  * const hydrated = useHydrated()
  * </script>
