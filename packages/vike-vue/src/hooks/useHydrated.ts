@@ -23,12 +23,9 @@ import { usePageContext } from './usePageContext.js'
  */
 function useHydrated() {
   const pageContext = usePageContext()
+  const isHydrated = ref(pageContext.isClientSide && !pageContext.isHydration)
 
-  if (!pageContext.isClientSide) return false
-
-  const isHydrated = ref(!pageContext.isHydration)
-
-  if (!isHydrated.value) {
+  if (pageContext.isClientSide && !isHydrated.value) {
     onMounted(() => {
       isHydrated.value = true
     })
