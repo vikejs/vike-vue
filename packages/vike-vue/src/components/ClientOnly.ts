@@ -1,12 +1,10 @@
 export { ClientOnly }
 
 import { cloneVNode, defineComponent } from 'vue'
-import type { InjectionKey, SlotsType, VNode } from 'vue'
+import type { SlotsType, VNode } from 'vue'
 import { usePageContext } from '../hooks/usePageContext.js'
 import { useHydrated } from '../hooks/useHydrated.js'
 import { assert } from '../utils/assert.js'
-
-export const clientOnlySymbol: InjectionKey<boolean> = Symbol.for('vike:ClientOnly')
 
 type ClientOnlySlots = SlotsType<{
   default?: () => VNode[]
