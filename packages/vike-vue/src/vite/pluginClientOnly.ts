@@ -1,4 +1,4 @@
-export { vikeVueClientOnly }
+export { pluginClientOnly }
 
 import type { Plugin } from 'vite'
 import { treeShake } from './pluginClientOnly/tree-shake.js'
@@ -15,10 +15,10 @@ const filterFunction = (id: string) => {
  * - Strips default slots of <ClientOnly>
  * - Removes unreferenced imports that result from the stripping
  */
-function vikeVueClientOnly() {
+function pluginClientOnly() {
   const plugins: Plugin[] = [
     {
-      name: 'vike-vue:vikeVueClientOnly',
+      name: 'vike-vue:pluginClientOnly',
       enforce: 'post',
       transform: {
         // order: 'pre',
