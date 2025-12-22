@@ -6,6 +6,8 @@ import { usePageContext } from '../hooks/usePageContext.js'
 import { useHydrated } from '../hooks/useHydrated.js'
 import { assert } from '../utils/assert.js'
 
+// Nuxt implementation: https://github.com/nuxt/nuxt/blob/1363c12dac07e7a926db66082e1b6b46f8fb2b32/packages/nuxt/src/app/components/client-only.ts
+
 type ClientOnlySlots = SlotsType<{
   default?: () => VNode[]
   fallback: { attrs: Record<string, any> }
