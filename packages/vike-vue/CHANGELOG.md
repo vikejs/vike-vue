@@ -1,3 +1,12 @@
+## [0.9.9](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.8...vike-vue@0.9.9) (2025-12-22)
+
+
+### Features
+
+* <ClientOnly> & `useHydrated()` ([#229](https://github.com/vikejs/vike-vue/issues/229)) ([35b0a18](https://github.com/vikejs/vike-vue/commit/35b0a188073cefc2186cb54390ebe767067d2fcb))
+
+
+
 ## [0.9.8](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.7...vike-vue@0.9.8) (2025-12-17)
 
 
