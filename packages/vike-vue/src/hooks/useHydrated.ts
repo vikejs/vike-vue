@@ -5,15 +5,13 @@ import { usePageContext } from './usePageContext.js'
 
 // Adapted from https://github.com/quasarframework/quasar/blob/4ebebf02ab0cc7c049d2697544210115ed89e491/ui/src/composables/use-hydration/use-hydration.js
 /**
- * Return a boolean indicating if the JS has been hydrated already.
- * When doing Server-Side Rendering, the result will always be false.
- * When doing Client-Side Rendering, the result will always be false on the
- * first render and true from then on. Even if a new component renders it will
- * always start with true.
+ * Whether the page has already been hydrated.
+ *
+ * On the server, it always returns `false`. On the client, it returns `false` on first render and `true` after hydration completes.
  *
  * https://vike.dev/useHydrated
  *
- * Example: Disable a button that needs JS to work.
+ * Example: Disable a button that needs JavaScript to work.
  * ```vue
  * <template>
  *   <button type="button" :disabled="!hydrated" @click="doSomething">
