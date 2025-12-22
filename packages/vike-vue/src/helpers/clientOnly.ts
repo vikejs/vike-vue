@@ -1,3 +1,6 @@
+// TODO/soon: add deprecation warning in favor of <ClientOnly>
+// TO-DO/breaking-change: remove it
+
 export { clientOnly }
 
 import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
