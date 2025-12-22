@@ -281,12 +281,12 @@ function countMatches(haystack: string, needleRe: RegExp) {
 
 function testClientOnly() {
   const url = '/client-only'
-  const htmlLoading = 'Loading client-only component...'
+  const textLoading = 'Loading client-only component...'
   const textLoaded = 'Client-side only text.'
 
   test(url + ' - <ClientOnly> component (HTML)', async () => {
     const html = await fetchHtml(url)
-    expect(html).toContain(htmlLoading)
+    expect(html).toContain(textLoading)
     expect(html).not.toContain(textLoaded)
   })
 
@@ -295,6 +295,6 @@ function testClientOnly() {
     await testCounter()
     const body = await page.textContent('body')
     expect(body).toContain(textLoaded)
-    expect(body).not.toContain(htmlLoading)
+    expect(body).not.toContain(textLoading)
   })
 }
