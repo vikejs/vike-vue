@@ -19,19 +19,29 @@ const config = defineConfig({
         ['types/public']: resolve(__dirname, './src/types/public.ts'),
         ['hooks/usePageContext']: resolve(__dirname, './src/hooks/usePageContext.ts'),
         ['hooks/useData']: resolve(__dirname, './src/hooks/useData.ts'),
+        ['hooks/useHydrated']: resolve(__dirname, './src/hooks/useHydrated.ts'),
         ['hooks/useConfig/useConfig-client']: resolve(__dirname, './src/hooks/useConfig/useConfig-client.ts'),
         ['hooks/useConfig/useConfig-server']: resolve(__dirname, './src/hooks/useConfig/useConfig-server.ts'),
         ['components/Config/Config-client']: resolve(__dirname, './src/components/Config/Config-client.ts'),
         ['components/Config/Config-server']: resolve(__dirname, './src/components/Config/Config-server.ts'),
         ['components/Head/Head-client']: resolve(__dirname, './src/components/Head/Head-client.ts'),
         ['components/Head/Head-server']: resolve(__dirname, './src/components/Head/Head-server.ts'),
+        ['components/ClientOnly']: resolve(__dirname, './src/components/ClientOnly.ts'),
       },
       formats: ['es'],
     },
     rollupOptions: {
       // There doesn't seem to be way to externalize all dependencies.
       // We use assertExternal() to make sure we didn't forget any import in this list.
-      external: ['vue', 'vue/server-renderer', 'vike/server', 'vike/getPageContext'],
+      external: [
+        'vue',
+        'vue/server-renderer',
+        'vike/server',
+        'vike/getPageContext',
+        'magic-string',
+        'oxc-parser',
+        'oxc-walker',
+      ],
       output: {
         sanitizeFileName: false,
         globals: {

@@ -38,6 +38,8 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview'}`) {
 
   testHeadComponent()
 
+  testClientOnly()
+
   const textNoSSR = 'This page is rendered only in the browser'
   {
     const url = '/without-ssr'
@@ -275,4 +277,24 @@ function getAssetUrl(fileName: string) {
 
 function countMatches(haystack: string, needleRe: RegExp) {
   return (haystack.match(new RegExp(needleRe, 'g')) || []).length
+}
+
+function testClientOnly() {
+  const url = '/client-only'
+  const textLoading = 'Loading client-only component...'
+  const textLoaded = 'Client-side only text.'
+
+  test(url + ' - <ClientOnly> component (HTML)', async () => {
+    const html = await fetchHtml(url)
+    expect(html).toContain(textLoading)
+    expect(html).not.toContain(textLoaded)
+  })
+
+  test(url + ' - <ClientOnly> component (Hydration)', async () => {
+    await page.goto(getServerUrl() + url)
+    await testCounter()
+    const body = await page.textContent('body')
+    expect(body).toContain(textLoaded)
+    expect(body).not.toContain(textLoading)
+  })
 }
