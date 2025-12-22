@@ -1,7 +1,7 @@
 export { vikeVueClientOnly }
 
 import type { Plugin } from 'vite'
-import { treeShake } from '../plugin/tree-shake.js'
+import { treeShake } from './tree-shake.js'
 
 const skipNodeModules = 'node_modules'
 
