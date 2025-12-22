@@ -4,7 +4,6 @@ import type { Plugin } from 'vite'
 import { treeShake } from './pluginClientOnly/tree-shake.js'
 
 const skipNodeModules = 'node_modules'
-
 const filterFunction = (id: string) => {
   if (id.includes(skipNodeModules)) return false
   return true
@@ -15,8 +14,8 @@ const filterFunction = (id: string) => {
  * - Strips default slots of <ClientOnly>
  * - Removes unreferenced imports that result from the stripping
  */
-function pluginClientOnly() {
-  const plugins: Plugin[] = [
+function pluginClientOnly(): Plugin[] {
+  return [
     {
       name: 'vike-vue:pluginClientOnly',
       enforce: 'post',
@@ -29,6 +28,4 @@ function pluginClientOnly() {
       },
     },
   ]
-
-  return plugins
 }

@@ -3,7 +3,7 @@ export { config as default }
 import type { Config } from 'vike/types'
 import './utils/tsx-workaround.js'
 import { ssrEffect } from './integration/ssrEffect.js'
-import { pluginClientOnly } from './vite/pluginClientOnly.js'
+import { vitePlugin } from './vite/index.js'
 
 const config = {
   name: 'vike-vue',
@@ -17,7 +17,7 @@ const config = {
   onRenderClient: 'import:vike-vue/__internal/integration/onRenderClient:onRenderClient',
 
   vite: {
-    plugins: [pluginClientOnly()],
+    plugins: [vitePlugin()],
   },
 
   // https://vike.dev/passToClient
