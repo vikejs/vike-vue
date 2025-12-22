@@ -8,7 +8,7 @@ import { assert } from '../utils/assert.js'
 
 // Nuxt implementation: https://github.com/nuxt/nuxt/blob/1363c12dac07e7a926db66082e1b6b46f8fb2b32/packages/nuxt/src/app/components/client-only.ts
 
-type ClientOnlySlots = SlotsType<{
+type Slots = SlotsType<{
   default?: () => VNode[]
   fallback?: { attrs: Record<string, any> }
 }>
@@ -16,7 +16,7 @@ type ClientOnlySlots = SlotsType<{
 const ClientOnly = defineComponent({
   name: 'ClientOnly',
   inheritAttrs: false,
-  slots: {} as ClientOnlySlots,
+  slots: {} as Slots,
   setup(_, { slots, attrs }) {
     const isHydrated = useHydrated()
     return () => {
