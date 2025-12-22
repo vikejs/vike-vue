@@ -29,6 +29,7 @@ import { usePageContext } from './usePageContext.js'
  */
 function useHydrated() {
   const pageContext = usePageContext()
+
   const hydrated = ref(pageContext.isClientSide && !pageContext.isHydration)
 
   if (pageContext.isClientSide && pageContext.isHydration) {
