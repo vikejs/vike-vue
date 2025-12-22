@@ -18,7 +18,7 @@ const filterFunction = (id: string) => {
 function vikeVueClientOnly() {
   const plugins: Plugin[] = [
     {
-      name: 'vike-vue:client-only',
+      name: 'vike-vue:vikeVueClientOnly',
       enforce: 'post',
       transform: {
         // order: 'pre',
