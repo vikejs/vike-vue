@@ -3,7 +3,7 @@ export { config as default }
 import type { Config } from 'vike/types'
 import './utils/tsx-workaround.js'
 import { ssrEffect } from './integration/ssrEffect.js'
-import { vikeVueClientOnly } from './plugin/index.js'
+import { vikeVueClientOnly } from './vite/index.js'
 
 const config = {
   name: 'vike-vue',
