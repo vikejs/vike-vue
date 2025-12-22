@@ -29,7 +29,7 @@ function useHydrated() {
   const pageContext = usePageContext()
   const hydrated = ref(pageContext.isClientSide && !pageContext.isHydration)
 
-  if (pageContext.isClientSide && !hydrated.value) {
+  if (pageContext.isClientSide && pageContext.isHydration) {
     onMounted(() => {
       hydrated.value = true
     })
