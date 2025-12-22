@@ -21,9 +21,7 @@ function pluginClientOnly() {
       name: 'vike-vue:pluginClientOnly',
       enforce: 'post',
       transform: {
-        // order: 'pre',
         async handler(code, id, options) {
-          // Only transform for SSR (server-side)
           if (!options?.ssr) return null
           if (!filterFunction(id)) return null
           return await treeShake(code, id)
