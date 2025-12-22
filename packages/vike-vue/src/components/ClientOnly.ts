@@ -9,7 +9,6 @@ import { assert } from '../utils/assert.js'
 type ClientOnlySlots = SlotsType<{
   default?: () => VNode[]
   fallback: { attrs: Record<string, any> }
-  'client-only-fallback': { attrs: Record<string, any> }
 }>
 
 const ClientOnly = defineComponent({
@@ -34,9 +33,6 @@ const ClientOnly = defineComponent({
       }
 
       // Fallback
-      if (slots['client-only-fallback']) {
-        return slots['client-only-fallback']({ attrs })
-      }
       if (slots['fallback']) {
         return slots['fallback']({ attrs })
       }
