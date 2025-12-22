@@ -32,7 +32,7 @@ const ClientOnly = defineComponent({
       // Assert tree-shaking: children should be removed on the server-side
       if (!pageContext.isClientSide) assert(slots.default === undefined)
 
-      // Main
+      // Default slot
       if (hydrated.value) {
         const vnodes = slots.default?.()
         if (vnodes && vnodes.length === 1) {
@@ -41,7 +41,7 @@ const ClientOnly = defineComponent({
         return vnodes
       }
 
-      // Fallback
+      // Fallback slot
       if (slots['fallback']) {
         return slots['fallback']({ attrs })
       }
