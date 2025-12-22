@@ -13,6 +13,13 @@ type Slots = SlotsType<{
   fallback?: { attrs: Record<string, any> }
 }>
 
+/**
+ * Render children only on the client-side.
+ *
+ * Children (default slot) are completely removed and never loaded on the server.
+ *
+ * https://vike.dev/ClientOnly
+ */
 const ClientOnly = defineComponent({
   name: 'ClientOnly',
   inheritAttrs: false,

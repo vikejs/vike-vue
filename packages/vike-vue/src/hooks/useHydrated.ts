@@ -11,10 +11,12 @@ import { usePageContext } from './usePageContext.js'
  * first render and true from then on. Even if a new component renders it will
  * always start with true.
  *
+ * https://vike.dev/useHydrated
+ *
  * Example: Disable a button that needs JS to work.
  * ```vue
  * <template>
- *   <button type="button" :disabled="!hydrated" @click="doSomethingCustom">
+ *   <button type="button" :disabled="!hydrated" @click="doSomething">
  *     Click me
  *   </button>
  * </template>
