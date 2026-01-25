@@ -1,3 +1,12 @@
+## [0.9.10](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.9...vike-vue@0.9.10) (2026-01-25)
+
+
+### Bug Fixes
+
+* add clientOnly() deprecation warning ([#232](https://github.com/vikejs/vike-vue/issues/232)) ([d92699c](https://github.com/vikejs/vike-vue/commit/d92699c41eff4b4ab8880b1c59dfb123dae1d119))
+
+
+
 ## [0.9.9](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.8...vike-vue@0.9.9) (2025-12-22)
 
 
