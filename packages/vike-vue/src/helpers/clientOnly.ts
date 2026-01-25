@@ -5,6 +5,7 @@ export { clientOnly }
 
 import { h, nextTick, shallowRef, defineComponent, onBeforeMount } from 'vue'
 import type { Component, SlotsType } from 'vue'
+import { assertWarning } from '../utils/assert.js'
 
 type ClientOnlyComponent<ComponentLoaded extends Component> = ComponentLoaded & {
   $slots: ClientOnlySlots
@@ -23,6 +24,8 @@ type ClientOnlySlots = SlotsType<{
 function clientOnly<ComponentLoaded extends Component>(
   load: () => Promise<ComponentLoaded | { default: ComponentLoaded }>,
 ): ClientOnlyComponent<ComponentLoaded> {
+  assertWarning(false, 'clientOnly() is deprecated — use <ClientOnly> https://vike.dev/ClientOnly')
+
   const componentWrapper = defineComponent({
     inheritAttrs: false,
 
