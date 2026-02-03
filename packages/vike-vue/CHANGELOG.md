@@ -1,3 +1,12 @@
+## [0.9.11](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.10...vike-vue@0.9.11) (2026-02-03)
+
+
+### Bug Fixes
+
+* fix support for Cloudflare Workers (fix photon-js/photon[#64](https://github.com/vikejs/vike-vue/issues/64)) ([7d546d4](https://github.com/vikejs/vike-vue/commit/7d546d4466bcd74665f633fec13cd8f4c864f816))
+
+
+
 ## [0.9.10](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.9...vike-vue@0.9.10) (2026-01-25)
 
 
