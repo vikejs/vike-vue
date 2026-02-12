@@ -78,7 +78,7 @@ const { isError, isPending, isFetching, data, error, suspense } = useQuery({
   queryKey: ['movies'],
   queryFn: fetchMovies,
   staleTime: 1000 * 60 * 5,
-  select: (data) => minimize(data),
+  select: (data) => minimize(data)
 })
 
 // This will be called on the server to prefetch the data
@@ -126,7 +126,7 @@ const queryClientConfig: QueryClientConfig = {
       // Consider data stale after 2 minutes
       staleTime: 1000 * 60 * 2,
       // Don't refetch when window loses or gains focus during development
-      refetchOnWindowFocus: import.meta.env.PROD,
+      refetchOnWindowFocus: import.meta.env.PROD
       // ... more options ...
     }
   }
