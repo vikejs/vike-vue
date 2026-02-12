@@ -126,7 +126,7 @@ const queryClientConfig: QueryClientConfig = {
       // Consider data stale after 2 minutes
       staleTime: 1000 * 60 * 2,
       // Don't refetch when window loses or gains focus during development
-      refetchOnWindowFocus: import.meta.env.PROD
+      refetchOnWindowFocus: import.meta.env.PROD,
       // ... more options ...
     }
   }
