@@ -1,4 +1,9 @@
 packages:
   - 'packages/*'
   - 'examples/*'
+allowBuilds:
+  '@biomejs/biome': true
+  esbuild: true
+  playwright-chromium: true
+  vue-demi: true
 minimumReleaseAge: 0
