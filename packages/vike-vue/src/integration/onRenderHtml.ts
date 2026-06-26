@@ -14,6 +14,9 @@ import type { PageContextInternal } from '../types/PageContext.js'
 import { isNotNullish } from '../utils/isNotNullish.js'
 import { isObject } from '../utils/isObject.js'
 import { isType } from '../utils/isType.js'
+import { objectKeys } from '../utils/objectKeys.js'
+import { includes } from '../utils/includes.js'
+import { configsClientSide } from '../hooks/useConfig/configsClientSide.js'
 
 const onRenderHtml: OnRenderHtmlAsync = async (
   pageContext: PageContextServer & PageContextInternal,
@@ -28,8 +31,8 @@ const onRenderHtml: OnRenderHtmlAsync = async (
 
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
 
-  // Not needed on the client-side, thus we remove it to save KBs sent to the client
-  delete pageContext._configViaHook
+  // Keep only useConfig() settings needed by client-side navigation.
+  removeServerOnlyConfigViaHook(pageContext)
 
   // pageContext.{pageHtmlString,pageHtmlStream} is set by renderPageToHtml() and can be overridden by user at onAfterRenderHtml()
   let pageHtmlStringOrStream: string | ReturnType<typeof dangerouslySkipEscape> | PageHtmlStream =
@@ -280,4 +283,19 @@ function resolveStreamSetting(pageContext: PageContextServer): StreamSetting {
       throw new Error(`Unexpected +stream value ${setting}`)
     })
   return streamSetting
+}
+
+function removeServerOnlyConfigViaHook(pageContext: PageContextInternal) {
+  const configViaHook = pageContext._configViaHook
+  if (!configViaHook) return
+
+  objectKeys(configViaHook).forEach((configName) => {
+    if (!includes(configsClientSide, configName)) {
+      delete configViaHook[configName]
+    }
+  })
+
+  if (objectKeys(configViaHook).length === 0) {
+    delete pageContext._configViaHook
+  }
 }

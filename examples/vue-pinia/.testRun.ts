@@ -5,6 +5,7 @@ const counter1 = 'button#counter-1'
 const counter2 = 'button#counter-2'
 const counter3 = 'button#counter-3'
 const counter4 = 'button#counter-4'
+const titleAbout = 'About via useConfig() - My Vike + Vue App'
 
 function testRun(cmd: `pnpm run ${'dev' | 'preview' | 'preview:ssg'}`) {
   run(cmd)
@@ -37,12 +38,24 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview' | 'preview:ssg'}`) {
 
   test('preserved state upon client-side navigation', async () => {
     await page.click('a[href="/about"]')
+    await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/about')
+    expect(await page.title()).toBe(titleAbout)
     expect(await page.textContent(counter3)).toBe('Counter 2')
     await page.click(counter3)
     expect(await page.textContent(counter3)).toContain('Counter 3')
     await page.click('a[href="/"]')
     expect(await page.textContent(counter1)).toBe('Counter 3')
     expect(await page.textContent(counter2)).toBe('Counter 3')
+  })
+
+  test('useConfig() title in +data survives client-side navigation', async () => {
+    const html = await fetchHtml('/about')
+    expect(html).toContain(`<title>${titleAbout}</title>`)
+    await page.goto(getServerUrl() + '/')
+    await page.waitForFunction(() => (window as any)._vike?.fullyRenderedUrl === '/')
+    await page.click('a[href="/about"]')
+    await page.waitForFunction(() => (window as any)._vike.fullyRenderedUrl === '/about')
+    expect(await page.title()).toBe(titleAbout)
   })
 
   test('todos - initial list', async () => {
