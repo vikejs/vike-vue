@@ -11,8 +11,9 @@ import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
 import type { PageContextInternal } from '../types/PageContext.js'
-import type { ConfigViaHookResolved } from '../types/Config.js'
 import { configsClientSide } from '../hooks/useConfig/configsClientSide.js'
+import { objectKeys } from '../utils/objectKeys.js'
+import { includes } from '../utils/includes.js'
 import { isNotNullish } from '../utils/isNotNullish.js'
 import { isObject } from '../utils/isObject.js'
 import { isType } from '../utils/isType.js'
@@ -30,22 +31,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (
 
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
 
-  // `_configViaHook` may contain HTML-only and/or non-serializable values (such as <Head> components).
-  // We keep only the settings that the client-side applies upon navigation (see applyHeadSettings()), and
-  // remove everything else.
-  // - Saves KBs sent to the client.
-  // - Avoids serialization errors.
-  // - The kept values (e.g. `title`) are preserved in prerendered `*.pageContext.json` files, so that
-  //   they're available upon client-side navigation of statically deployed (pre-rendered) apps.
-  //   https://github.com/vikejs/vike-vue/issues/233
-  if (pageContext._configViaHook) {
-    const configViaHook: ConfigViaHookResolved = {}
-    for (const configName of configsClientSide) {
-      const configValue = pageContext._configViaHook[configName]
-      if (configValue !== undefined) configViaHook[configName] = configValue as any
-    }
-    pageContext._configViaHook = configViaHook
-  }
+  // Keep only what the client-side applies upon navigation, and remove the rest (HTML-only and/or
+  // non-serializable values such as <Head> components). https://github.com/vikejs/vike-vue/issues/233
+  removeServerOnlyConfigViaHook(pageContext)
 
   // pageContext.{pageHtmlString,pageHtmlStream} is set by renderPageToHtml() and can be overridden by user at onAfterRenderHtml()
   let pageHtmlStringOrStream: string | ReturnType<typeof dangerouslySkipEscape> | PageHtmlStream =
@@ -82,6 +70,16 @@ const onRenderHtml: OnRenderHtmlAsync = async (
       fromHtmlRenderer,
     },
   }
+}
+
+function removeServerOnlyConfigViaHook(pageContext: PageContextInternal) {
+  const configViaHook = pageContext._configViaHook
+  if (!configViaHook) return
+  objectKeys(configViaHook).forEach((configName) => {
+    if (!includes(configsClientSide, configName)) delete configViaHook[configName]
+  })
+  // Remove it altogether if there isn't anything left, saving KBs sent to the client
+  if (objectKeys(configViaHook).length === 0) delete pageContext._configViaHook
 }
 
 export type PageHtmlStream = ReturnType<typeof renderToNodeStream> | ReturnType<typeof renderToWebStream>
