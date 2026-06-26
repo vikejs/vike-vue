@@ -1,3 +1,13 @@
+## [0.9.12](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.11...vike-vue@0.9.12) (2026-06-26)
+
+
+### Bug Fixes
+
+* improve npm landing page ([e1dab71](https://github.com/vikejs/vike-vue/commit/e1dab71c245790b53861e5d60b3bacc1b1b61bc0))
+* preserve client-side useConfig() settings in server-side pageContext (fix [#233](https://github.com/vikejs/vike-vue/issues/233)) ([#234](https://github.com/vikejs/vike-vue/issues/234)) ([7ca1028](https://github.com/vikejs/vike-vue/commit/7ca1028fb727f57ebb5b490b1f0cbcc7aabe9615))
+
+
+
 ## [0.9.11](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.10...vike-vue@0.9.11) (2026-02-03)
 
 
