@@ -11,6 +11,9 @@ import { createVueApp } from './createVueApp.js'
 import { getHeadSetting } from './getHeadSetting.js'
 import { getTagAttributesString, type TagAttributes } from '../utils/getTagAttributesString.js'
 import type { PageContextInternal } from '../types/PageContext.js'
+import { configsClientSide } from '../hooks/useConfig/configsClientSide.js'
+import { objectKeys } from '../utils/objectKeys.js'
+import { includes } from '../utils/includes.js'
 import { isNotNullish } from '../utils/isNotNullish.js'
 import { isObject } from '../utils/isObject.js'
 import { isType } from '../utils/isType.js'
@@ -28,8 +31,9 @@ const onRenderHtml: OnRenderHtmlAsync = async (
 
   const { htmlAttributesString, bodyAttributesString } = getTagAttributes(pageContext)
 
-  // Not needed on the client-side, thus we remove it to save KBs sent to the client
-  delete pageContext._configViaHook
+  // Keep only what the client-side applies upon navigation, and remove the rest (HTML-only and/or
+  // non-serializable values such as <Head> components). https://github.com/vikejs/vike-vue/issues/233
+  removeServerOnlyConfigViaHook(pageContext)
 
   // pageContext.{pageHtmlString,pageHtmlStream} is set by renderPageToHtml() and can be overridden by user at onAfterRenderHtml()
   let pageHtmlStringOrStream: string | ReturnType<typeof dangerouslySkipEscape> | PageHtmlStream =
@@ -66,6 +70,16 @@ const onRenderHtml: OnRenderHtmlAsync = async (
       fromHtmlRenderer,
     },
   }
+}
+
+function removeServerOnlyConfigViaHook(pageContext: PageContextInternal) {
+  const configViaHook = pageContext._configViaHook
+  if (!configViaHook) return
+  objectKeys(configViaHook).forEach((configName) => {
+    if (!includes(configsClientSide, configName)) delete configViaHook[configName]
+  })
+  // Remove it altogether if there isn't anything left, saving KBs sent to the client
+  if (objectKeys(configViaHook).length === 0) delete pageContext._configViaHook
 }
 
 export type PageHtmlStream = ReturnType<typeof renderToNodeStream> | ReturnType<typeof renderToWebStream>
