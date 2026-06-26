@@ -8,6 +8,7 @@ import { getPageContext } from 'vike/getPageContext'
 import { objectKeys } from '../../utils/objectKeys.js'
 import { includes } from '../../utils/includes.js'
 import { configsCumulative } from './configsCumulative.js'
+import { configsClientSide } from './configsClientSide.js'
 import { type MaybeRefOrGetter, toValue } from 'vue'
 
 /**
@@ -31,12 +32,11 @@ function useConfig(): (config: MaybeRefOrGetter<ConfigViaHook>) => void {
   }
 }
 
-const configsClientSide = ['title']
 function setPageContextConfigViaHook(config: ConfigViaHook, pageContext: PageContext & PageContextInternal) {
   pageContext._configViaHook ??= {}
   objectKeys(config).forEach((configName) => {
     // Skip HTML only configs which the client-side doesn't need, saving KBs sent to the client as well as avoiding serialization errors.
-    if (pageContext.isClientSideNavigation && !configsClientSide.includes(configName)) return
+    if (pageContext.isClientSideNavigation && !includes(configsClientSide, configName)) return
 
     if (!includes(configsCumulative, configName)) {
       // Overridable config
