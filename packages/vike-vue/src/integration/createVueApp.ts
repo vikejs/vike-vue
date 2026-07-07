@@ -6,6 +6,7 @@ import {
   createApp,
   createSSRApp,
   h,
+  KeepAlive,
   nextTick,
   shallowRef,
   shallowReactive,
@@ -19,6 +20,7 @@ import { objectReplace } from '../utils/objectReplace.js'
 import { callCumulativeHooks } from '../utils/callCumulativeHooks.js'
 import { isPlainObject } from '../utils/isPlainObject.js'
 import { setData } from '../hooks/useData.js'
+import { resolveVueSetting } from './resolveVueSetting.js'
 import type { PageContextInternal } from '../types/PageContext.js'
 
 type ChangePage = (pageContext: PageContext) => Promise<void>
@@ -33,11 +35,21 @@ async function createVueApp(
   if (entryComponentName === 'Page') {
     const entryComponentRef = shallowRef(pageContext.config[entryComponentName])
     const layoutRef = shallowRef(pageContext.config.Layout || [])
+    const keepAliveRef = shallowRef(resolveVueSetting(pageContext).keepAlive ?? false)
     onChangePage = (pageContext: PageContext) => {
       entryComponentRef.value = pageContext.config[entryComponentName]
       layoutRef.value = pageContext.config.Layout || []
+      keepAliveRef.value = resolveVueSetting(pageContext).keepAlive ?? false
     }
-    const EntryComponent = () => h(entryComponentRef.value)
+    // Wrap <Page> with <KeepAlive>
+    // - It's the only way to make <KeepAlive> work: it cannot be applied inside a +Layout component
+    //   because <KeepAlive> only caches its direct child component, whereas <Layout> receives <Page>
+    //   as slot content (Vue renders slot content as a Fragment which <KeepAlive> cannot cache).
+    const EntryComponent = () => {
+      const keepAlive = keepAliveRef.value
+      if (!keepAlive) return h(entryComponentRef.value)
+      return h(KeepAlive, keepAlive === true ? null : keepAlive, () => h(entryComponentRef.value))
+    }
     RootComponent = () => {
       let RootComp = EntryComponent
       layoutRef.value.forEach((layout) => {
