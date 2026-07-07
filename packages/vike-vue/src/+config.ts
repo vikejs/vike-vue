@@ -38,6 +38,10 @@ const config = {
       env: { server: true, client: true },
       cumulative: true,
     },
+    vue: {
+      env: { server: true, client: true },
+      cumulative: true,
+    },
     title: {
       env: { server: true, client: true },
     },

@@ -3,6 +3,21 @@ import type { TagAttributes } from '../utils/getTagAttributesString.js'
 import type { Viewport, HtmlInjection } from '../integration/onRenderHtml.js'
 import type { ConfigsCumulative } from '../hooks/useConfig/configsCumulative.js'
 import type { Component } from './PageContext.js'
+import type { KeepAliveProps } from 'vue'
+
+// https://vike.dev/vue-setting
+type VueSetting = {
+  /**
+   * Whether to wrap the `<Page>` component with Vue's built-in [`<KeepAlive>`](https://vuejs.org/guide/built-ins/keep-alive.html) component, preserving page component instances (and thus their state) across client-side navigation.
+   *
+   * Instead of `true`, you can provide `<KeepAlive>` props (e.g. `{ include, exclude, max }`) for controlling which page components are cached.
+   *
+   * @default false
+   *
+   * https://vike.dev/vue-setting#keepalive
+   */
+  keepAlive?: boolean | KeepAliveProps
+}
 
 // https://vike.dev/pageContext#typescript
 declare global {
@@ -23,6 +38,13 @@ declare global {
        * https://vike.dev/Layout
        */
       Layout?: Component
+
+      /**
+       * Vue integration settings.
+       *
+       * https://vike.dev/vue-setting
+       */
+      vue?: VueSetting | ((pageContext: PageContext_) => VueSetting | undefined)
 
       /**
        * Set the page's tilte.
@@ -242,6 +264,7 @@ declare global {
       bodyAttributes?: TagAttributes[]
       htmlAttributes?: TagAttributes[]
       stream?: Exclude<Config['stream'], ImportString>[]
+      vue?: Exclude<Config['vue'], undefined>[]
     }
   }
 }

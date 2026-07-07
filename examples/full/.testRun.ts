@@ -40,6 +40,8 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview'}`) {
 
   testClientOnly()
 
+  testKeepAlive()
+
   const textNoSSR = 'This page is rendered only in the browser'
   {
     const url = '/without-ssr'
@@ -293,6 +295,29 @@ function getAssetUrl(fileName: string) {
 
 function countMatches(haystack: string, needleRe: RegExp) {
   return (haystack.match(new RegExp(needleRe, 'g')) || []).length
+}
+
+// https://vike.dev/vue-setting
+function testKeepAlive() {
+  test('keepAlive - page state is preserved across client-side navigation', async () => {
+    await page.goto(getServerUrl() + '/keep-alive/first')
+    expect(await page.textContent('h1')).toBe('KeepAlive - First Page')
+    await testCounter()
+
+    await page.click('a:has-text("KeepAlive - Second Page")')
+    await autoRetry(async () => {
+      expect(await page.textContent('h1')).toBe('KeepAlive - Second Page')
+    })
+    await ensureWasClientSideRouted('/pages/keep-alive/first')
+
+    await page.click('a:has-text("KeepAlive - First Page")')
+    await autoRetry(async () => {
+      expect(await page.textContent('h1')).toBe('KeepAlive - First Page')
+    })
+    await ensureWasClientSideRouted('/pages/keep-alive/first')
+    // The counter didn't reset to 0: the page's component instance was preserved by <KeepAlive>
+    expect(await page.textContent('button')).toContain('Counter 1')
+  })
 }
 
 function testClientOnly() {
