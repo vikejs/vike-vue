@@ -1,3 +1,12 @@
+## [0.9.13](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.12...vike-vue@0.9.13) (2026-07-07)
+
+
+### Features
+
+* new setting `+vue` (`vue.keepAlive`, fix vikejs/vike[#3433](https://github.com/vikejs/vike-vue/issues/3433)) ([#236](https://github.com/vikejs/vike-vue/issues/236)) ([67e92fb](https://github.com/vikejs/vike-vue/commit/67e92fbe6f8b5bb43ae5b453bba1be10eb18f627))
+
+
+
 ## [0.9.12](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.11...vike-vue@0.9.12) (2026-06-26)
 
 
