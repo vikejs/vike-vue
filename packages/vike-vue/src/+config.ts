@@ -119,6 +119,11 @@ const config = {
       global: true,
       cumulative: true, // for Vike extensions
     },
+    rootAttributes: {
+      env: { server: true },
+      global: true,
+      cumulative: true, // for Vike extensions
+    },
   },
 } satisfies Config
 

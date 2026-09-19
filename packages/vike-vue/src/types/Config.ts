@@ -138,6 +138,13 @@ declare global {
       bodyAttributes?: TagAttributes | ((pageContext: PageContextServer) => TagAttributes | undefined)
 
       /**
+       * Add tag attributes to the root element such as `<div id="app" role="none">`.
+       *
+       * https://vike.dev/rootAttributes
+       */
+      rootAttributes?: TagAttributes | ((pageContext: PageContextServer) => TagAttributes | undefined)
+
+      /**
        * If `true`, the page is rendered twice: on the server-side (to HTML) and on the client-side (hydration).
        *
        * If `false`, the page is rendered only once in the browser.
@@ -263,6 +270,7 @@ declare global {
       Head?: Component[]
       bodyAttributes?: TagAttributes[]
       htmlAttributes?: TagAttributes[]
+      rootAttributes?: TagAttributes[]
       stream?: Exclude<Config['stream'], ImportString>[]
       vue?: Exclude<Config['vue'], undefined>[]
     }
@@ -290,6 +298,7 @@ export const configsViaHook = [
   'viewport',
   'bodyAttributes',
   'htmlAttributes',
+  'rootAttributes',
 ] as const
 type ConfigsViaHook = (typeof configsViaHook)[number]
 export type ConfigViaHook = PickWithoutGetter<Vike.Config, ConfigsViaHook>
