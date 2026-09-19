@@ -1,3 +1,17 @@
+## [0.9.14](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.13...vike-vue@0.9.14) (2026-09-19)
+
+
+### Bug Fixes
+
+* let the app's `htmlAttributes`/`bodyAttributes` take precedence over the ones set by Vike extensions ([#237](https://github.com/vikejs/vike-vue/issues/237)) ([a06b102](https://github.com/vikejs/vike-vue/commit/a06b102e82782396e6ef71cdd0fb7158292b43d1))
+
+
+### Features
+
+* new setting +rootAttributes ([#238](https://github.com/vikejs/vike-vue/issues/238)) ([2e11889](https://github.com/vikejs/vike-vue/commit/2e1188915fad5fa06be89cd2b4de712db87a7326))
+
+
+
 ## [0.9.13](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.12...vike-vue@0.9.13) (2026-07-07)
 
 
