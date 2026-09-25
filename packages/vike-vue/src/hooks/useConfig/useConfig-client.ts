@@ -33,6 +33,6 @@ function setPageContextConfigViaHook(config: ConfigViaHook, pageContext: PageCon
 }
 
 function applyHead(config: ConfigViaHook) {
-  const { title, lang } = config
-  applyHeadSettings(title, lang)
+  const { title, lang, description } = config
+  applyHeadSettings(title, lang, description)
 }
