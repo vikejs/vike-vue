@@ -193,9 +193,7 @@ function testUseConfig() {
     await ensureWasClientSideRouted('/pages/index')
     // The movie page sets its <title> via useConfig({ title }) inside its server-side +data() hook.
     await page.click('a:has-text("Return of the Jedi")')
-    await autoRetry(async () => {
-      expect(await page.title()).toBe('Return of the Jedi')
-    })
+    await expectTitle('Return of the Jedi')
     await ensureWasClientSideRouted('/pages/index')
   })
   // useConfig() inside UI components has precedence over useConfig() inside Vike hooks and over +title, also upon
@@ -207,15 +205,18 @@ function testUseConfig() {
     // The <title> is set by <Config> inside <Image>, overriding the title set by useConfig() inside +data()
     await page.click('a:has-text("useConfig()")')
     await testCounter()
-    await autoRetry(async () => {
-      expect(await page.title()).toBe('Image created by Romuald Brillout')
-    })
+    await expectTitle('Image created by Romuald Brillout')
     await page.click('a:has-text("Welcome")')
     await testCounter()
-    await autoRetry(async () => {
-      expect(await page.title()).toBe('My Vike + Vue App')
-    })
+    await expectTitle('My Vike + Vue App')
     await ensureWasClientSideRouted('/pages/index')
+  })
+}
+// The og:title tag is updated as well
+async function expectTitle(title: string) {
+  await autoRetry(async () => {
+    expect(await page.title()).toBe(title)
+    expect(await getMetaContent('meta[property="og:title"]')).toBe(title)
   })
 }
 
@@ -245,10 +246,7 @@ function testPageNavigation_descriptionUpdate() {
 async function expectDescription(description: string | RegExp) {
   await autoRetry(async () => {
     for (const selector of ['meta[name="description"]', 'meta[property="og:description"]']) {
-      const content = await page.evaluate(
-        (selector) => document.querySelector(selector)?.getAttribute('content'),
-        selector,
-      )
+      const content = await getMetaContent(selector)
       if (typeof description === 'string') {
         expect(content).toBe(description)
       } else {
@@ -256,6 +254,9 @@ async function expectDescription(description: string | RegExp) {
       }
     }
   })
+}
+async function getMetaContent(selector: string) {
+  return await page.evaluate((selector) => document.querySelector(selector)?.getAttribute('content'), selector)
 }
 
 function testConfigComponent() {
