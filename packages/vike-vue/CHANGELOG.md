@@ -1,3 +1,17 @@
+## [0.9.15](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.14...vike-vue@0.9.15) (2026-09-25)
+
+
+### Bug Fixes
+
+* update the description tags upon client-side navigation (vikejs/vike[#3524](https://github.com/vikejs/vike-vue/issues/3524)) ([#240](https://github.com/vikejs/vike-vue/issues/240)) ([e643631](https://github.com/vikejs/vike-vue/commit/e64363136068cc1258f1871b480d92c675488b89))
+
+
+### BREAKING CHANGES
+
+* +description is loaded on the client-side and rendered upon client-side navigation
+
+
+
 ## [0.9.14](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.13...vike-vue@0.9.14) (2026-09-19)
 
 
