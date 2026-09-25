@@ -172,8 +172,8 @@ importers:
         version: 0.6.0(oxc-parser@0.104.0)
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.4.12
-        version: 0.4.12(conventional-commits-filter@5.0.0)
+        specifier: ^0.4.18
+        version: 0.4.18(conventional-commits-filter@5.0.0)
       '@oxc-project/types':
         specifier: ^0.104.0
         version: 0.104.0
@@ -205,8 +205,8 @@ importers:
   packages/vike-vue-pinia:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.4.12
-        version: 0.4.12(conventional-commits-filter@5.0.0)
+        specifier: ^0.4.18
+        version: 0.4.18(conventional-commits-filter@5.0.0)
       '@types/node':
         specifier: ^22.1.0
         version: 22.3.0
@@ -235,8 +235,8 @@ importers:
   packages/vike-vue-query:
     devDependencies:
       '@brillout/release-me':
-        specifier: ^0.4.12
-        version: 0.4.12(conventional-commits-filter@5.0.0)
+        specifier: ^0.4.18
+        version: 0.4.18(conventional-commits-filter@5.0.0)
       '@tanstack/vue-query':
         specifier: ^5.29.0
         version: 5.51.21(vue@3.5.13(typescript@5.9.2))
@@ -416,14 +416,11 @@ packages:
   '@brillout/picocolors@1.0.28':
     resolution: {integrity: sha512-FBsirUdUlmjmeUlEuqfnUoKAZUt+d0VfMVBYUsFQrDFEV9Rm/QDyG69PSQtQbI6SZQNiZuAWuyhE5USflzx6iQ==}
 
-  '@brillout/picocolors@1.0.29':
-    resolution: {integrity: sha512-EKkqdFJD+CeP6GfpZNcWcCCXS5o0HFXhwISoN5JnHG/kplVE2MmF23eKtl4JRKU1rkR7s3kFIKiJf15aV/Uodg==}
-
   '@brillout/picocolors@1.0.30':
     resolution: {integrity: sha512-xJjdgyN1H0qh2nB2xlzazIipiDixuUd9oD5msh/Qv5bXJG9j8MSD/m4lREt6Z10ej6FF31b8vB4tdT7lDUbiyA==}
 
-  '@brillout/release-me@0.4.12':
-    resolution: {integrity: sha512-0ONZeh7jt+7sZ94bZs0tnGaCQxFTgj7XFybG4jZkQxJJV81DXxzS1WT8aw86j37vO9irw9sShnqJzWE8/aPEqQ==}
+  '@brillout/release-me@0.4.18':
+    resolution: {integrity: sha512-X+IQ4pFYYuBiVgUxNTx/wpFQ4b/JLFI2OkDxW6IlA10TeJOGYrDSst1xuEzi7FmHw8kEzd0zU79yF+8bO4dnFA==}
     hasBin: true
 
   '@brillout/require-shim@0.1.2':
@@ -2384,13 +2381,11 @@ snapshots:
 
   '@brillout/picocolors@1.0.28': {}
 
-  '@brillout/picocolors@1.0.29': {}
-
   '@brillout/picocolors@1.0.30': {}
 
-  '@brillout/release-me@0.4.12(conventional-commits-filter@5.0.0)':
+  '@brillout/release-me@0.4.18(conventional-commits-filter@5.0.0)':
     dependencies:
-      '@brillout/picocolors': 1.0.29
+      '@brillout/picocolors': 1.0.30
       commander: 11.1.0
       conventional-changelog: 7.0.2(conventional-commits-filter@5.0.0)
       conventional-changelog-angular: 8.0.0
