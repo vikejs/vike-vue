@@ -34,6 +34,8 @@ function testRun(cmd: `pnpm run ${'dev' | 'preview'}`) {
 
   testUseConfig()
 
+  testPageNavigation_descriptionUpdate()
+
   testConfigComponent()
 
   testHeadComponent()
@@ -191,9 +193,7 @@ function testUseConfig() {
     await ensureWasClientSideRouted('/pages/index')
     // The movie page sets its <title> via useConfig({ title }) inside its server-side +data() hook.
     await page.click('a:has-text("Return of the Jedi")')
-    await autoRetry(async () => {
-      expect(await page.title()).toBe('Return of the Jedi')
-    })
+    await expectTitle('Return of the Jedi')
     await ensureWasClientSideRouted('/pages/index')
   })
   // useConfig() inside UI components has precedence over useConfig() inside Vike hooks and over +title, also upon
@@ -205,16 +205,58 @@ function testUseConfig() {
     // The <title> is set by <Config> inside <Image>, overriding the title set by useConfig() inside +data()
     await page.click('a:has-text("useConfig()")')
     await testCounter()
-    await autoRetry(async () => {
-      expect(await page.title()).toBe('Image created by Romuald Brillout')
-    })
+    await expectTitle('Image created by Romuald Brillout')
     await page.click('a:has-text("Welcome")')
     await testCounter()
-    await autoRetry(async () => {
-      expect(await page.title()).toBe('My Vike + Vue App')
-    })
+    await expectTitle('My Vike + Vue App')
     await ensureWasClientSideRouted('/pages/index')
   })
+}
+// The og:title tag is updated as well
+async function expectTitle(title: string) {
+  await autoRetry(async () => {
+    expect(await page.title()).toBe(title)
+    expect(await getMetaContent('meta[property="og:title"]')).toBe(title)
+  })
+}
+
+// The description tags are updated upon client-side navigation. https://github.com/vikejs/vike/issues/3524
+function testPageNavigation_descriptionUpdate() {
+  test('description update client-side page navigation', async () => {
+    await page.goto(getServerUrl() + '/')
+    await testCounter()
+    // Set by /pages/+config.ts
+    await expectDescription('Demo showcasing Vike + Vue')
+    // Set by +description.ts
+    await page.click('a:has-text("Data Fetching")')
+    await expectDescription('All the 6 movies from the Star Wars franchise')
+    // Set by useConfig() inside +data()
+    await page.click('a:has-text("Return of the Jedi")')
+    await expectDescription('Star Wars Movie Return of the Jedi from Richard Marquand')
+    // Set by <Config> inside UI components
+    await page.click('a:has-text("useConfig()")')
+    await testCounter()
+    await expectDescription(partRegex`Image at address ${getAssetUrl('logo.svg')} was created by Romuald Brillout`)
+    await page.click('a:has-text("Welcome")')
+    await testCounter()
+    await expectDescription('Demo showcasing Vike + Vue')
+    await ensureWasClientSideRouted('/pages/index')
+  })
+}
+async function expectDescription(description: string | RegExp) {
+  await autoRetry(async () => {
+    for (const selector of ['meta[name="description"]', 'meta[property="og:description"]']) {
+      const content = await getMetaContent(selector)
+      if (typeof description === 'string') {
+        expect(content).toBe(description)
+      } else {
+        expect(content).toMatch(description)
+      }
+    }
+  })
+}
+async function getMetaContent(selector: string) {
+  return await page.evaluate((selector) => document.querySelector(selector)?.getAttribute('content'), selector)
 }
 
 function testConfigComponent() {
