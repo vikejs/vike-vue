@@ -1,3 +1,12 @@
+## [0.9.16](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.15...vike-vue@0.9.16) (2026-10-19)
+
+
+### Bug Fixes
+
+* escape HTML attribute values set by +htmlAttributes, +bodyAttributes, +rootAttributes and +lang ([#241](https://github.com/vikejs/vike-vue/issues/241)) ([b09d391](https://github.com/vikejs/vike-vue/commit/b09d391d3b1f79a476fb1d8e73bba88e41368169))
+
+
+
 ## [0.9.15](https://github.com/vikejs/vike-vue/compare/vike-vue@0.9.14...vike-vue@0.9.15) (2026-09-25)
 
 
