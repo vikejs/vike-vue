@@ -7,9 +7,8 @@ async function callCumulativeHooks(values: undefined | unknown[], pageContext: P
   if (!values) return []
   const valuesPromises = values.map((val) => {
     if (typeof val === 'function') {
-      providePageContext(pageContext)
       // Hook
-      return val(pageContext)
+      return providePageContext(pageContext, () => val(pageContext))
     } else {
       // Plain value
       return val
