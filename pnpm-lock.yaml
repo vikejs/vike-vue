@@ -17,8 +17,8 @@ importers:
         specifier: ^1.7.0
         version: 1.8.3
       '@brillout/release-me':
-        specifier: ^0.5.2
-        version: 0.5.2(conventional-commits-filter@5.0.0)
+        specifier: ^0.5.4
+        version: 0.5.4(conventional-commits-filter@5.0.0)
       '@brillout/test-e2e':
         specifier: ^0.6.20
         version: 0.6.20
@@ -42,7 +42,7 @@ importers:
         version: 2.6.11
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -54,7 +54,7 @@ importers:
         version: 0.26.2(rollup@4.50.2)(vite@7.1.5(@types/node@22.3.0))
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(vite@7.1.5(@types/node@22.3.0))
+        version: 0.4.250(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -78,10 +78,10 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(vite@7.1.5(@types/node@22.3.0))
+        version: 0.4.250(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -96,7 +96,7 @@ importers:
     dependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
       pinia:
         specifier: ^3.0.1
         version: 3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2))
@@ -105,7 +105,7 @@ importers:
         version: 4.7.1(pinia@3.0.1(typescript@5.9.2)(vue@3.5.13(typescript@5.9.2)))
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(vite@7.1.5(@types/node@22.3.0))
+        version: 0.4.250(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -136,7 +136,7 @@ importers:
         version: 2.6.11
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -145,7 +145,7 @@ importers:
         version: 5.9.2
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(vite@7.1.5(@types/node@22.3.0))
+        version: 0.4.250(vite@7.1.5)
       vike-vue:
         specifier: link:../../packages/vike-vue
         version: link:../../packages/vike-vue
@@ -182,13 +182,13 @@ importers:
         version: 22.3.0
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))
+        version: 6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(vite@7.1.5(@types/node@22.3.0))
+        version: 0.4.250(vite@7.1.5)
       vite:
         specifier: ^7.1.5
         version: 7.1.5(@types/node@22.3.0)
@@ -215,7 +215,7 @@ importers:
         version: 5.9.2
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(vite@7.1.5(@types/node@22.3.0))
+        version: 0.4.250(vite@7.1.5)
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -242,7 +242,7 @@ importers:
         version: 5.9.2
       vike:
         specifier: ^0.4.250
-        version: 0.4.250(vite@7.1.5(@types/node@22.3.0))
+        version: 0.4.250(vite@7.1.5)
       vike-vue:
         specifier: link:../vike-vue
         version: link:../vike-vue
@@ -413,8 +413,8 @@ packages:
   '@brillout/picocolors@1.0.30':
     resolution: {integrity: sha512-xJjdgyN1H0qh2nB2xlzazIipiDixuUd9oD5msh/Qv5bXJG9j8MSD/m4lREt6Z10ej6FF31b8vB4tdT7lDUbiyA==}
 
-  '@brillout/release-me@0.5.2':
-    resolution: {integrity: sha512-pnndlG4jU3VghSCI7e1y2ZOc+92rVESt8KNJGKvPkEckxb085DydxLSvHGnRhx1JthjjcszlN4Lih8afMrRWKQ==}
+  '@brillout/release-me@0.5.4':
+    resolution: {integrity: sha512-5gOBmUvmnhs7NMjeekGRHJ35nL3u4CqIJTpT9L9PKRD5zvVvas/vrXYvYgLgR+98BhWBthGWi16dhg98YujCBw==}
     hasBin: true
 
   '@brillout/require-shim@0.1.2':
@@ -2377,7 +2377,7 @@ snapshots:
 
   '@brillout/picocolors@1.0.30': {}
 
-  '@brillout/release-me@0.5.2(conventional-commits-filter@5.0.0)':
+  '@brillout/release-me@0.5.4(conventional-commits-filter@5.0.0)':
     dependencies:
       '@brillout/picocolors': 1.0.30
       commander: 11.1.0
@@ -2878,7 +2878,7 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@vitejs/plugin-vue@6.0.1(vite@7.1.5(@types/node@22.3.0))(vue@3.5.13(typescript@5.9.2))':
+  '@vitejs/plugin-vue@6.0.1(vite@7.1.5)(vue@3.5.13(typescript@5.9.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.29
       vite: 7.1.5(@types/node@22.3.0)
@@ -3901,7 +3901,7 @@ snapshots:
 
   validator@13.12.0: {}
 
-  vike@0.4.250(vite@7.1.5(@types/node@22.3.0)):
+  vike@0.4.250(vite@7.1.5):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/types': 7.28.5
