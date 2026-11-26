@@ -8,7 +8,7 @@ import { vitePlugin } from './vite/index.js'
 const config = {
   name: 'vike-vue',
   require: {
-    vike: '>=0.4.191',
+    vike: '>=0.4.271',
   },
 
   // https://vike.dev/onRenderHtml

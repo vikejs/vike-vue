@@ -37,7 +37,7 @@
     "oxc-walker": "^0.6.0"
   },
   "peerDependencies": {
-    "vike": ">=0.4.191",
+    "vike": ">=0.4.271",
     "vue": ">=3.0.0"
   },
   "scripts": {
