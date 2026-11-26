@@ -1,6 +1,7 @@
 {
   "name": "vike-vue-pinia",
   "version": "0.2.6",
+  "repository": "https://github.com/vikejs/vike-vue",
   "homepage": "https://github.com/vikejs/vike-vue/tree/main/packages/vike-vue-pinia#readme",
   "type": "module",
   "scripts": {

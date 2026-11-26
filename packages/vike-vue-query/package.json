@@ -1,6 +1,7 @@
 {
   "name": "vike-vue-query",
   "version": "0.2.3",
+  "repository": "https://github.com/vikejs/vike-vue",
   "homepage": "https://github.com/vikejs/vike-vue/tree/main/packages/vike-vue-query#readme",
   "type": "module",
   "scripts": {
